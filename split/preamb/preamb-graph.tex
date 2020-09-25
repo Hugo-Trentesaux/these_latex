@@ -1,0 +1,23 @@
+%%% préamble pour les graphiques %%%
+\usepackage{graphicx,color} 
+\usepackage[svgnames]{xcolor} %seuls les noms des couleurs sont pris dans SVG
+%%% pour des graphiques incrustés dans le texte, déconseillé pour une thèse,
+%\usepackage{wrapfig,picins} %  %éviter wrapfig et picins au profit de floatflt
+%\usepackage{floatflt}
+%%% Pour un meilleur contrôle des objets flottants (figures, tables)
+\renewcommand{\topfraction}{0.7}     % autorise 70% page de graphique en haut
+\renewcommand{\bottomfraction}{0.5}  % autorise 50% page de graphique en bas
+\renewcommand{\floatpagefraction}{0.7}
+\renewcommand{\textfraction}{0.1}
+%%% Format français des légendes
+\usepackage{subcaption}
+% \captionsetup[figure]{name=Fig.,labelsep=quad,labelfont=normalfont,textfont=sl,%
+   % singlelinecheck=true,width=0.9\linewidth}
+%%% Autres paquets
+%\usepackage{placeins}   % pour  \FloatBarrier
+%\usepackage{epstopdf}   % pour inclure des eps
+%\usepackage{pdfpages}   % por inclure de portions d fichiers PDF
+%\usepackage{float} \usepackage{nonfloat} \usepackage{endfloat} \usepackage{topfloat}
+%%% Chemin des figures
+%\graphicspath{{./fig1/},{../fig2/}}
+

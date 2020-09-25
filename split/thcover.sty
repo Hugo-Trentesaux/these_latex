@@ -1,0 +1,261 @@
+\NeedsTeXFormat{LaTeX2e}[1995/12/01]
+\ProvidesPackage{thcover}[2017/11/21 v5.0 Build coverpage 1 and 4 for french thesis (J.Hare)]
+\RequirePackage{ifpdf}
+\RequirePackage{graphicx}
+\RequirePackage{geometry}[2010/03/13]
+\RequirePackage{datetime}
+\RequirePackage{etoolbox}
+\RequirePackage{calc}
+\RequirePackage{adjustbox}
+\RequirePackage{xstring}
+\newcommand{\numchars}[1]{\noindent The string ``#1'' has {\StrLen{#1}} characters.\\}
+\newcommand{\textcl@p}[1]{{\hbox to 0pt{\hss#1\hss}}}
+%\RequirePackage{hyperref}% is not required, but if loaded, 
+% is used  to set  PDF metadata (if PDF mode is active)
+
+%initize optionnals
+\gdef\@atlab{}
+\gdef\@atinstitution{} 
+\gdef\@ecoledoct{} 
+\gdef\@ecoledoctnum{}
+\gdef\@advisor{} 
+\gdef\@specialite{}
+\gdef\@date{\today}
+\gdef\@head{}
+\gdef\@logoone{}
+\gdef\@logotwo{}
+\gdef\@logothree{}
+\gdef\@titlemeta{}
+\gdef\@titlemetaen{}
+\gdef\@reference{}
+\gdef\@thesisname{Thèse de doctorat}
+\gdef\@gradename{docteur}
+\gdef\@univ{de l’université Pierre et Marie Curie}
+
+% parse mandatory values
+\def\logos#1#2#3{\gdef\@logoone{#1}%
+	\ifx\empty#2\relax\else\gdef\@logotwo{#2}\fi%
+	\ifx\empty#3\relax\else\gdef\@logothree{#3}\fi}
+\def\univ#1{\gdef\@univ{\MakeUppercase{#1}}}
+\def\@univ{\@latex@error{No \noexpand\univ given}\@ehc}
+\def\atlab#1{\gdef\@atlab{#1}}
+\def\atinstitution#1{\gdef\@atinstitution{#1}}
+\def\@atinstitution{\@latex@warning@no@line{No \noexpand\atinstitution given}}
+\def\ecoledoctnum#1{\gdef\@ecoledoctnum{#1}}
+\def\@ecoledoctnum{\@latex@warning@no@line{No \noexpand\ecoledoctnum given}}
+\def\ecoledoct#1{\gdef\@ecoledoct{#1}}
+\def\@ecoledoct{\@latex@warning@no@line{No \noexpand\ecoledoct given}}
+\def\specialite#1{\gdef\@specialite{#1}}
+\def\@specialite{\@latex@warning@no@line{No \noexpand\specialite given}}
+\def\author#1{\gdef\@author{#1}}
+\def\@author{\@latex@warning@no@line{No \noexpand\author given}}
+\def\advisor#1{\gdef\@advisor{#1}}
+\def\@advisor{\@latex@warning@no@line{No \noexpand\advisor given}}
+\long\def\title#1{\gdef\@title{#1}}
+\def\@title{\@latex@error{No \noexpand\title given}\@ehc}
+\def\date#1{\gdef\@date{#1}}
+\gdef\@date{\today}
+\long\def\jury#1{\gdef\@jury{#1}}
+\def\@jury{\@latex@warning@no@line{No \noexpand\jury given}}
+\long\def\resume#1{\gdef\@resume{#1}}
+\def\@resume{\@latex@warning@no@line{No \noexpand\resume given}}
+\long\def\motscles#1{\gdef\@motscles{#1}}
+\def\@motscles{\@latex@warning@no@line{No \noexpand\motscles given}}
+\long\def\titleen#1{\gdef\@titleen{#1}}
+\def\@titleen{\@latex@warning@no@line{No \noexpand\titleen given}}
+\long\def\titlemetaen#1{\gdef\@titlemetaen{#1}}
+\long\def\abstract#1{\gdef\@abstract{#1}}
+\def\@abstract{\@latex@warning@no@line{No \noexpand\abstract given}}
+\long\def\keywords#1{\gdef\@keywords{#1}}
+\def\@keywords{\@latex@warning@no@line{No \noexpand\keywords given}}
+\def\thesisname#1{\gdef\@thesisname{#1}}
+\def\gradename#1{\gdef\@gradename{#1}}
+
+
+
+% parse optionnals
+
+\newlength{\th@skip}
+%\setlength{\th@skip}{4mm plus 1mm minus 1mm}
+\settoheight{\th@skip}{\large A}
+\def\thskip{\vspace*{\th@skip}}
+
+    
+\long\def\frontcover{%
+    \begingroup 
+    \newgeometry{left=12mm,right=12mm,top=10mm,bottom=15mm}
+    \setlength{\th@skip}{10mm plus 5mm minus 5mm}
+    \pagestyle{empty}%
+    \setcounter{page}{-1}
+    \flushbottom%
+    \begin{center}%
+    \strut
+    \ifdefempty{\@head}{\par}{\large\bfseries\@head\par}%
+    \ifdefempty{\@logoone}{\par}{\centerline{%
+        \rlap{\includegraphics[height=2cm]{\@logoone}}\hfill%
+        \ifdefempty{\@logotwo}{\hfill\textcl@p{ }\hfill}{%
+        		\hfill\textcl@p{\includegraphics[height=2cm]{\@logotwo}}\hfill}%
+        \ifdefempty{\@logothree}{\relax}{%
+             \hfill\llap{\includegraphics[height=2cm]{\@logothree}}}%
+        }%
+    }%
+    \vfil% 
+    \bfseries% 
+    {\Large\MakeUppercase{\@thesisname}\\ \MakeUppercase{\@univ} \par}%
+    \vfil%
+    \vfil%
+    \vfil%
+    \ifdefempty{\@specialite}{\thskip}{{\Large Spécialité~: \@specialite\par}}%
+    \medskip%
+    \ifdefempty{\@ecoledoct}{\thskip}{{\large\bfseries École doctorale~nº\@ecoledoctnum : \@ecoledoct\par}}%
+    \vfil%
+    \vfil%
+    \vfil%
+    \ifdefempty{\@lab}{\thskip}{%
+    	réalisée\par \medskip {\Large\@atlab\par}}%
+    \vfil%
+    sous la direction de \@advisor
+    \vfil%
+    \vfil%
+    \vfil%
+    présentée par\par
+    \medskip{\huge\@author\par}
+    \vfil%
+    \vfil%
+    \vfil%
+    pour obtenir le grade de~:\par
+    \bigskip
+    {\large\MakeUppercase{\@gradename} \@univ\par}%
+    \vfil%
+    \vfil%
+   	Sujet de la thèse~:\par 
+   	\medskip
+   	{\LARGE\@title\par}%
+    \vfil%
+    \vfil%
+    \vfil%
+%    sous la direction de \@advisor
+%    \vfil%
+%    \vfil%
+%    \vfil%
+    {\Large soutenue le \@date\par}%
+    \vfil%
+    devant le jury composé de~:\par%
+    \vfil%
+    \begin{large}%
+    \begin{tabular}{p{0.3in}lll}%
+        \@jury%
+    \end{tabular}%
+    \end{large}%
+  \end{center}%
+  \par
+    \vfil%
+    \vfil%
+  \restoregeometry
+  \cleardoublepage
+  \endgroup
+}
+  
+%%%%%%%%%%% Start of back page 
+
+\newcommand{\clearevenpage}{\cleardoublepage\if@twoside \ifodd\c@page
+    \hbox{}\clearpage\if@twocolumn\hbox{}\clearpage\fi\fi\fi}
+
+\newenvironment{quoteabstract}
+  {\small\list{}{\rightmargin=5mm \leftmargin=5mm}%
+   \item\relax}
+  {\endlist}
+%\newif\ifresumetolong
+%\newif\ifabstracttolong
+\gdef\absmaxlength{1700}
+\newtoggle{restolong}
+\newtoggle{abstolong}
+
+\newlength{\th@bskip}
+
+\long\def\backcover{%
+	\StrLen{\@resume}[\resumelen]
+	\StrLen{\@abstract}[\abstractlen]
+    \ifnum\abstractlen>\absmaxlength \toggletrue{abstolong}\else\togglefalse{abstolong}\fi
+    \ifnum\resumelen>\absmaxlength \toggletrue{restolong}\else\togglefalse{restolong}\fi
+    \iftoggle{restolong}{\PackageWarningNoLine{thcover}{%
+    R'esum'e in thcoverdata.tex is \resumelen\space chars long, \MessageBreak but the max is \absmaxlength, including spaces}}{\relax}
+    \iftoggle{abstolong}{\PackageWarningNoLine{thcover}{%
+    Abstract in thcoverdata.tex is \abstractlen\space  chars long, \MessageBreak but the max is \absmaxlength, including spaces.}}{\relax}
+    \begingroup
+    \pagestyle{empty}%
+    \setlength{\th@bskip}{8mm plus 5mm minus 5mm}%
+    \newgeometry{left=20mm,right=20mm,bottom=20mm,top=20mm}
+	  \clearevenpage
+	  \flushbottom
+    %\vskip \th@skip%
+    \begin{center}\Large\bfseries
+    \framebox[\linewidth][c]{\rule[-0.5ex]{0pt}{3ex}\@author\hfil\hfil\@date}\\[\th@bskip]
+	  \hrulefill\\[1ex]
+   	{\Large\bfseries Sujet~: \@title\par}
+   	\hrulefill
+   	\end{center}
+   	\adjustbox{max width=\textwidth,max height=0.40\textheight,center}{
+	\parbox{0.95\linewidth}{
+   	\noindent\textbf{Résumé}~:~\normalfont\normalsize%
+   	\@resume\par
+   	\medskip
+   	\noindent\textbf{Mots clés}~:~\normalfont\normalsize%
+   	\@motscles}
+   	}
+   	\vskip \th@bskip%
+   	\begin{center}
+   	\hrulefill\\[1ex]
+   	{\Large\bfseries Subject~: \@titleen\par}
+   	\hrulefill
+   	\end{center}
+   	\adjustbox{max width=\textwidth,max height=0.36\textheight,center}{
+	\parbox{0.95\linewidth}{
+   	\noindent\textbf{Abstract}:~\normalfont\normalsize%
+   	\@abstract\par
+   	\medskip
+   	\noindent\textbf{Keywords}~:~\normalfont\normalsize%
+   	\@keywords}
+   	}
+%   	\hrulefill
+   	\restoregeometry
+   	\endgroup
+}
+
+\def\coverd@tafile{}
+
+\ifdef{\coverdatafile}%
+	{\typeout{using \coverdatafile}\def\coverd@tafile{\coverdatafile}}%
+	{\typeout{using thcoverdata.tex}\def\coverd@tafile{thcoverdata.tex}}
+
+
+\IfFileExists{\coverd@tafile}{
+% loadfile
+\typeout{\coverd@tafile exists}
+\input{\coverd@tafile}
+%add metadata
+\AtBeginDocument{
+\ifx\@titlemeta\empty\let\@titlemeta=\@title\fi
+\ifx\@titlemetaen\empty\let\@titlemetaen=\@titleen\fi
+\ifpdf
+	\@ifpackageloaded{hyperref}{
+		\hypersetup{
+			pdftitle={\@titlemeta}, 
+			pdfauthor={\@author},
+			pdfsubject={\@titlemetaen},
+			pdfkeywords={\@motscles,\@keywords}
+	  } 
+	}{
+	  \pdfinfo {
+		/Title (\@titlemeta)
+		/Creator (TeX)
+		/Author (\@author)
+		/Subject (\@titlemetaen)
+		/Keywords (\@motscles, \@keywords) 
+		}
+	}%
+\fi
+}
+}{\@latex@warning@no@line{Metadata File "\coverd@tafile" not found}}
+\endinput
+%end of thcover-upmc package

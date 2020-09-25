@@ -1,0 +1,15 @@
+%%% préambule pour les paquets à usabe temporaires %%%
+%%% Génération de fake text, et marquage des versions de travail  : à supprimer ! %%%
+\usepackage{lipsum} 
+\usepackage{blindtext}
+\blindmathtrue
+\AddToShipoutPictureBG{% Add picture to background of every page
+  \AtPageLowerLeft{%
+    \raisebox{3\baselineskip}{\makebox[\paperwidth][c]{Version \today, \currenttime}}%
+}}
+\usepackage[notref,notcite]{showkeys}
+\usepackage[pdftex]{changebar}
+\usepackage{versions}          % permet d'activer ou non certains environnements
+
+\AfterEndPreamble{\nocite{*}}
+
