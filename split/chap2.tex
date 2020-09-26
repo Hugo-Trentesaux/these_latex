@@ -1,4 +1,6 @@
-\chapter{Imagerie fonctionnelle sous stimulation sensorielle}
+\chapter{Imagerie fonctionnelle sous stimulation vestibulaire}
+
+TODO Papier Current Biology
 
 \section{Balayage laser}
 
@@ -36,7 +38,82 @@ Pour étudier le système visuel de la larve, il faut contrôler précisément s
 
 Plus tard, Vladimirov \emph{et al} [18] ont montré que l'étude de l'OMR était également possible en microscopie à feuille de lumière un photon, à condition de ne pas éclairer directement l'oeil du poisson. Ils ont utilisé deux feuilles de lumière, l'une éclairant le cerveau par le côté et l'autre par l'avant, entre les deux yeux. Cependant, l'OMR est un réflexe robuste qui ne recourt pas aux fonctions avancées de la vision, et la perturbation due à l'illumination des autres processus visuels n'est pas contrôlée. C'est pourquoi Wolf \emph{et al} ont appliqué la technique mise au point par Truong à l'étude du système visuel de la larve de poisson zèbre [10]. Ils ont construit un microscope à feuille de lumière deux photons et réalisé l'acquisition du cerveau entier lors de stimulations visuelles.
 
-\section{TODO Analyse}
+\section{Analyse}
 
-- données volumineuses
-- revue de l'existant (CaImAn, suite2P)
+L'analyse des données produites par le microscope est en enjeu en lui même. En effet, avec des images de 1024x600 pixels, 20 couches et vingt minutes d'enregistrement à 2 volumes par seconde, on obtient 48000 images. Pour des pixels stockés sur 16 bits, cela donne près de 60 Go de données brutes. Dans ce chapitre, je m'intéresse stratégies pour traiter ces données.
+
+\subsection{Logiciels existants}
+
+\subsubsection{Fiji}
+
+De nombreux laboratoires de biologie réalisent leur analyse d'image avec Fiji (une distribution du logiciel ImageJ). Cet outil générique offre en effet une bonne interface pour visualiser les données tout en y appliquant des transformations élémentaires, mais montre rapidement ses limites en terme de vitesse, d'automatisation, et de robustesse. Les différents laboratoires travaillant en imagerie neuronale se sont donc tournés vers des logiciels spécialisés.
+
+\subsubsection{Suite2P}
+
+Les laboratoires réalisant de l'imagerie deux photons sur le cerveau de rongeur ont des données de petit volume, mais nécessitant des algorithmes sophistiqués avant d'être exploitables. Le logiciel \href{https://www.suite2p.org/}{suite2p} TODOcite suite2P, doté d'une interface graphique intuitive expose une routine puissante pour la correction de mouvement et la détection de cellules par leur activité. Quelques essais sur nos jeux de données ont montré que le logiciel était fonctionnel mais excessivement lent, ce qui rend l'analyse systématique impossible.
+
+\subsubsection{CaImAn}
+
+Plusieurs laboratoires travaillant en microscopie à feuille de lumière analysent leurs données à l'aide de \href{https://github.com/flatironinstitute/CaImAn}{CaImAn} (pour \emph{Calcium Image Analysis}) TODOcite CaImAn. Ce programme est décliné en deux versions, la version \emph{online} pour l'analyse de données en temps réel sur une expérience en cours, et la version \emph{batch} pour l'analyse de données \emph{a posteriori}. La première nécessite des machines très puissantes pour atteindre le taux d'images par secondes requis alors que la seconde peut être exécutée sur des machines modestes. Le logiciel a été publié en 2019, je l'ai essayé sur nos jeux de données avec des résultats satisfaisants en terme de qualité, quoiqu'un peu lents.
+
+\subsection{Solution utilisée pour l'analyse de nos données}
+
+Aucun logiciel adapté à nos données n'étant disponible à l'époque, nous avons développé nos propres méthodes adaptées à l'imagerie sur plateforme rotative. Je décris ici les étapes principales de l'analyse, les enjeux techniques, et les pistes d'amélioration que j'ai identifié.
+
+\subsubsection{Étapes principales de l'analyse de données}
+
+\paragraph{Espace de référence}
+
+Dans la suite de cette section, j'appellerai de manière équivalente (x,y,z,t) les cooordonnées d'un point et les axes dans le repère du poisson. Ces coordonnées sont données dans l'espace de référence RAST (\emph{Right Anterior Superior Time}), c'est-à-dire que l'axe x est orienté vers la droite de la larve, l'axe y vers l'avant, l'axe z vers le haut, et le temps dans le sens naturel.
+
+% TODO illustration RAST
+
+\paragraph{Alignement temporel}
+
+Pour des données à quatre dimensions (x,y,z,t), il est impératif qu'un pixel (x,y,z) représente toujours le même espace objet dans le cerveau. Une première étape consiste donc à aligner toutes les images entre elles. Dans un cas totalement général, le tissus imagé peut connaître des déformations au cours de l'expérience, et il faut estimer et appliquer la transformation inverse. Suite2P et CaImAn fournissent tous les deux des algorithmes de déformation non rigide, mais ces algorithmes sont couteux en temps et il est difficile d'estimer numériquement leur performance. De plus, sur des expériences de vingt minutes, les déformations sont généralement trop faibles pour que cette étape soit réellement nécessaire, nous avons donc opté pour une transformation rigide. Cette transformation rigide peut avoir plusieurs degrés de liberté en translation et rotation. Comme précisé dans la partie sur la conception de la plateforme rotative, nous avons obtenu une excellente stabilité en z, les translations restantes sont donc uniquement selon (x,y), et les rotations sont également négligeables. 
+
+Une difficulté pour trouver cette translation est que l'image peut évoluer le long de l'enregistrement. En effet, la répartition de la concentration de calcium peut significativement fluctuer entre le début et la fin de l'expérience, ce qui dans certains cas empêche tout algorithme naïf de fonctionner. Dans le cas de l'imagerie un photon, le signal d'autofluorescence est suffisant pour qu'une simple autocorrélation sur l'ensemble de l'image permette de trouver le déplacement. Dans le cas de l'imagerie deux photons, ce signal étant bien plus faible, l'autocorrélation sur l'ensemble de l'image est dominée par les changements de fluorescence liée à l'activité de neurones. La solution retenue a donc été de réaliser l'autocorrélation sur une zone de l'image stable pendant toute la durée de l'expérience facilement identifiable à l'œil. C'est par exemple le cas pour un neurone mort qui reste toujours dépolarisé.
+
+Cette étape nécessite donc une supervision rapide à l'œil humain mais fonctionne en général du premier coup et est extrêmement rapide par rapport à tout autre algorithme utilisant l'image entière. De plus, il suffit de réaliser l'opération pour une seule couche et d'extrapoler à tout le volume. Cette étape permet de corriger les déplacements latéraux rapide (x,y) liés directement à la rotation de la plateforme ainsi que la dérive lente en y liée à la contraction du boudin d'agar tenant le poisson.
+
+\paragraph{Alignement sur un cerveau de référence}
+
+Après avoir obtenu une matrice 4D alignée temporellement, il est trivial de réaliser une moyenne temporelle qui permet d'obtenir une image avec un bon rapport signal à bruit et moins dépendante de l'activité des neurones. Ce volume moyenné suivant le temps peut être aligné sur un volume de référence à l'aide de \href{https://www.nitrc.org/projects/cmtk}{CMTK} (\emph{Computational Morphometry Toolkit}). Cela permet d'une part de reporter après analyse les résultats de différents enregistrements sur le même cerveau de référence afin de les comparer et d'autre part d'obtenir un contour du cerveau définissant la région d'intérêt. Cette région d'intérêt peut alternativement être précisée à la main. À partir de ce moment deux voies d'analyse sont possible : par pixel ou par neurone après segmentation.
+
+\paragraph{Analyse de Fourier par pixel}
+
+Il est intéressant de réaliser certaines analyses directement sur les pixels de l'image. Cela permet d'obtenir des figures avec une bonne résolution et contourne le problème de la segmentation des neurones tout en profitant au mieux de l'échantillonage permis par la caméra. Cependant, cette approche est couteuse en calcul car elle opère sur un grand nombre d'éléments. Nous l'avons principalement réservée à l'analyse de Fourier pour une stimulation périodique.
+Pour chaque pixel dans la région d'intérêt, on applique la transformée de Fourier discrète sur son profil temporel. Cela donne un pic en amplitude à la fréquence de stimulation et du bruit en dehors. On calcule un rapport signal à bruit comme le rapport de l'amplitude du signal sur l'amplitude du bruit moyennée sur une fenêtre autour du pic de largeur arbitraire. On considère également la phase du pic, qui représente le déphasage dus signal de fluorescence avec le stimulus.
+Ces valeurs pour chaque pixels sont ensuite utilisées pour représenter une couleur dans l'espace HSV (\emph{Hue, Saturation, Value}, Teinte, Saturation, Valeur). La teinte représente le déphasage, la saturation et réglée à 1, et la valeur représente le rapport signal à bruit. 
+
+\paragraph{Segmentation et analyse par neurone}
+
+L'analyse par pixel est pertinante pour des études préliminaires simples car elle est gourmande en calcul, chaque section de neurone (environ 6 µm de diamètre) étant imagée sur environ 40 pixels (pixel objet de 0.8 µm de côté). En regroupant les pixels appartenant au même neurone, on peut réduire le volume de données à traiter tout en conservant leur qualité. Il existe de nombreux algorithmes de segmentation, certains faisant appel aux données temporelles pour tirer profit de l'activité des neurones, d'autre opérant sur l'image moyenne. Nous nous avons pour l'instant uniquement utilisé l'algorithme de ligne de partage des eaux (\emph{watershed}) pour sa simplicité, sa rapidité et ses résultats satisfaisants.
+
+% TODO illustrer pixellation du neurone
+% TODO vérifier taille neurone en pixel
+% TODO regarder taille de la ROI moyenne par rapport au volume total (somme du masque)
+
+Après segmentation, on définit la valeur d'un neurone comme la moyenne des valeurs des pixels qui le constituent. Chaque segment peut représenter une partie d'un neurone, plusieurs neurones, ou même une zone de l'image sans neurones, mais beaucoup de segments représentent un neurone. Pour environ 200 000 segments, cela réduit l'échantillon à 500 Mo, ce qui permet d'appliquer des algorithmes plus gourmands en ressources en un temps raisonnable.
+
+% TODO vérifier nombre de segments
+% TODO baseline, df/f, régression...
+% Z-score
+
+\subsubsection{TODO Enjeux techniques}
+
+% disque dur / SSD
+% memory mapping, préallocation (fallocate, ext4)
+% fichier unique binaire, collection de fichier
+
+\subsubsection{TODO Pistes d'améliorations}
+
+% enregistrement des données de la ROI uniquement (réduire au nécessaire)
+% données sur 12 bits (réduire au nécessaire)
+% ordre des dimensions en mémoire pour le slicing (t,x,y,z)
+
+% taille du pixel objet
+% pixel caméra = 0.4 µm ?
+% grandissement avec LT 180mm = x20
+% -> avec 150mm -> 
+% Olympus TL = 180mm
