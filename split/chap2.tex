@@ -2,6 +2,11 @@
 
 TODO Papier Current Biology
 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Balayage laser}
 
 Le volume d'un cerveau de larve de poisson zèbre mesure 400 µm de largeur × 800 µm de longueur × 300 µm de hauteur et est situé sur le dessus de la larve. Afin de minimiser l'épaisseur de tissus traversée, on place donc l'objectif de détection sur la partie supérieure. Le laser peut donc être placé sur le côté. Les yeux sont très pigmentés et la lumière ne passe pas à travers, ce qui crée une zone d'ombre entre les yeux. Certains laboratoires qui sont intéressés par ces régions appartenant au télencéphale et au diencéphale peuvent donc ajouter un deuxième laser à l'avant pour éclairer cette région.
@@ -26,21 +31,30 @@ Pour effectuer le balayage, on déplace le faisceau horizontalement. Pour que l'
 
 Pour un temps d'exposition par couche de 10 ms en mode d'acquisition continu, on peut par exemple réaliser un scan du cerveau à 2,5 Hz en 30 couches espacées de 8µm. Cela permet d'imager la majeure partie du cerveau du poisson. Les couches les plus profondes sont moins nettes car le signal traverse plus de tissus avant d'atteindre l'objectif, et la zone située entre les yeux reste dans l'ombre si on n'utilise qu'un laser. Mais chaque neurone visible est imagé à une fréquence de 2.5 Hz.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Microscope miniature rotatif}
 
 Pour étudier le système vestibulaire de la larve de poisson zèbre, une option est de stimuler directement ses otolithes via des pinces optiques [16], une autre est de tourner réellement le poisson pour que la gravité bouge ses otolithes. Cette deuxième solution est plus performante, car elle reproduit réellement la stimulation vestibulaire sans les limitations dues au pinces optiques (manque de calibration, problème d'échauffement...) mais nécessite des développements techniques avancés pour être appliquée sous microscope. En effet, pour conserver le microscope fixe par rapport à un poisson mobile, il faut construire un microscope rotatif, tout en gardant les conditions de stabilité nécessaires à l'imagerie. Depuis 2018, c'est chose faite, Migault \emph{et al} [9] ont développé un microscope à feuille de lumière rotatif capable de mesurer l'activité du cerveau pendant une stimulation vestibulaire réelle.
 
 Pour cela, un microscope à feuille de lumière miniature a été assemblé afin d'être monté sur une plateforme rotative. L'unité d'illumination, composée d'un connecteur de fibre monté sur un positionneur piézoélectrique et de deux objectifs en montage confocal de part et d'autre d'un miroir galvanométrique, tient dans un cube de 10 cm de diamètre. L'unité de détection, composée d'un objectif à immersion monté sur un positionneur piézoélectrique, d'une lentille de tube, d'un filtre coupe-bande, d'un filtre GFP, et d'une caméra, est également très simple, l'élement le plus lourd et encombrant étant la caméra. Le tout pèse environ 2 kg (?) et tient sur une plaque de 50 cm de côté fixée à un moteur à grand couple et grande précision. Lors de la rotation du microscope, l'instabilité de l'imagerie reste inférieure à 500 nm dans la direction verticale et 2 µm dans la direction latérale (cette dernière peut être corrigée lors de l'analyse).
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Feuille de lumière deux photons}
 
 Pour étudier le système visuel de la larve, il faut contrôler précisément son environnement visuel. Or un microscope à feuille de lumière classique utilise un laser bleu pour stimuler la fluorescence, et cette longueur d'onde réside dans le domaine visible de la larve de poisson zèbre, ce qui peut l'éblouir et perturber son système visuel. Pour cette raison, Ahrens \emph{et al}, pour l'étude de l'OMR, ont utilisé un microscope à deux photons classique [11]. Cela permet d'illuminer dans l'infrarouge, une longueur d'onde invisible pour le poisson. Cependant ils ne bénéficiaient donc pas des avantages d'un microscope à feuille de lumière et étaient contraints par le balayage point par point à réaliser l'acquisition du cerveau une région après l'autre afin de reconstruire *a prosteriori* l'image du cerveau entier. À peu près en même temps, Truong \emph{et al} publiaient un microscope à feuille de lumière deux photons permettant d'allier les avantages de la microscopie deux photons et de la microscopie à feuille de lumière [17].
 
 Plus tard, Vladimirov \emph{et al} [18] ont montré que l'étude de l'OMR était également possible en microscopie à feuille de lumière un photon, à condition de ne pas éclairer directement l'oeil du poisson. Ils ont utilisé deux feuilles de lumière, l'une éclairant le cerveau par le côté et l'autre par l'avant, entre les deux yeux. Cependant, l'OMR est un réflexe robuste qui ne recourt pas aux fonctions avancées de la vision, et la perturbation due à l'illumination des autres processus visuels n'est pas contrôlée. C'est pourquoi Wolf \emph{et al} ont appliqué la technique mise au point par Truong à l'étude du système visuel de la larve de poisson zèbre [10]. Ils ont construit un microscope à feuille de lumière deux photons et réalisé l'acquisition du cerveau entier lors de stimulations visuelles.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Analyse}
 
-L'analyse des données produites par le microscope est en enjeu en lui même. En effet, avec des images de 1024x600 pixels, 20 couches et vingt minutes d'enregistrement à 2 volumes par seconde, on obtient 48000 images. Pour des pixels stockés sur 16 bits, cela donne près de 60 Go de données brutes. Dans ce chapitre, je m'intéresse stratégies pour traiter ces données.
+L'analyse des données produites par le microscope est en enjeu en lui même. En effet, avec des images de 1024x600 pixels, 20 couches et 25 minutes d'enregistrement à 2 volumes par seconde, on obtient 60000 images. Pour des pixels stockés sur 16 bits, cela donne près de 60 Go de données brutes. Dans ce chapitre, je m'intéresse aux stratégies pour traiter ces données. Les chiffres donnés ci-dessus sont ceux utilisés pour les calculs en ordre de grandeur par la suite.
 
 \subsection{Logiciels existants}
 
@@ -100,17 +114,58 @@ Après segmentation, on définit la valeur d'un neurone comme la moyenne des val
 % TODO baseline, df/f, régression...
 % Z-score
 
-\subsubsection{TODO Enjeux techniques}
 
-% disque dur / SSD
-% memory mapping, préallocation (fallocate, ext4)
-% fichier unique binaire, collection de fichier
+% améliorations apportées
+% git pour la gestion des versions
+% format standard
 
-\subsubsection{TODO Pistes d'améliorations}
+\subsubsection{Améliorations pratiques et techniques}
 
-% enregistrement des données de la ROI uniquement (réduire au nécessaire)
-% données sur 12 bits (réduire au nécessaire)
-% ordre des dimensions en mémoire pour le slicing (t,x,y,z)
+\paragraph{Versionnage du code}
+Le code utilisé pour l'analyse étant volumineux, sa gestion "génétique" (duplication et mutation) posait problème. J'ai donc mis en place un gestionnaire de version qui a permis d'unir les efforts de développement et de faciliter les mises à jour (correction de bugs, nouvelles fonctionnalités). Son utilisation a eu un effet positif sur la qualité du code, sa réutilisabilité, et sa prise en main. 
+
+\paragraph{Support matériel}
+Lors de l'acquisition, \href{https://hcimage.com/}{HCImage} le logiciel édité par Hamamatsu pour l'utilisation de la caméra propose deux options. L'une consiste à enregistrer en mémoire vive les images au cours de l'enregistrement et à les exporter sur le disque à la fin, l'autre consiste à enregistrer un fichier de cache au format propriétaire dcimg directement sur le disque. Dans le premier cas, la vitesse d'enregistrement ne pose pas problème, mais la taille de la mémoire vive est limitée, ce qui ne convient pas pour de longues expériences. Dans le deuxième cas, la vitesse d'enregistrement est limitante pour des images volumineuses avec une fréquence élevée, un disque dur rotatif ne convient pas et nous avons donc utilisé un disque SSD.
+
+\paragraph{Fichier de cache}
+Initialement, ce fichier de cache était converti en une collection d'images au format tiff via HCImage, qui étaient ensuite transférées sur le réseau interne depuis l'ordinateur d'acquisition vers l'ordinateur d'analyse pour enfin être traitées. Les programmes et systèmes de fichiers n'étant pas adaptés à la gestion de si nombreux fichiers, cela occasionnait un surcoût sur le temps de transfert et le temps de copie. Pour résoudre ce problème, nous sommes passés à l'utilisation directe du format dcimg. Après plusieurs tentatives infructueuses d'obtenir de la documentation auprès de l'entreprise Hamamatsu, nous avons opté pour une approche par rétroingéniérie (d'autres implémentations plus complètes ont été développées par la suite comme par exemple \href{https://github.com/lens-biophotonics/dcimg}{ce module dcimg pour python}).
+
+\paragraph{Memory mapping}
+Il n'est pas envisageable de charger un jeu de données de plus de 60 Go en mémoire vive, il faut donc ouvrir les données au moment de leur utilisation. Pour obtenir une tranche d'un pixel selon (t) sur des images individuelles, il est nécessaire d'ouvrir chacune des images. Le grand nombre d'opérations de fichiers requis peut être réduit en groupant plusieurs pixels, mais au prix d'une perte de simplicité qui rend le code difficile à gérer. La solution retenue est le memory mapping, qui permet de manipuler un fichier sur le disque comme un fichier en mémoire vive, entrainant un gain de simplicité et de performance. De plus, le memory mapping permet de travailler directement sur le fichier de cache, ce qui évite des copies supplémentaires couteuses en espace et en temps.
+
+Le memory mapping peut être combiné à l'allocation de mémoire disque pour être utilisé au moment de l'écriture. Cela facilite la manipulation des données par rapport à une écriture séquentielle dans un fichier binaire, et permet la modification d'une partie du fichier et la parallélisation de l'écriture. Pour cela, j'ai utilisé la fonction système \verb|fallocate| qui alloue de l'espace sur un disque formaté en \verb|ext4|.
+
+\paragraph{Calcul du quantile glissant}
+Une définition courante de la valeur de référence d'un signal calcique repose sur le calcul d'un quantile glissant (généralement le huitième centile). L'algorithme naïf est inefficace, j'ai donc cherché une implémentation astucieuse et ai trouvé la fonction \verb|runquantile| de la bibliothèque \verb|caTools|, qui a apporté un gain en vitesse par rapport à l'implémentation précédente.
+
+% TODO temps de conversion HCImage dcimg -> tiff
+% TODO temps de transfert réseau dcimg / tiff
+% TODO temps de copie SSD -> SSD, HDD -> HDD
+% TOOD comparaison runquantile
+
+\subsubsection{Pistes d'améliorations}
+
+\paragraph{Ordre des dimensions}
+L'ordre naturel des dimensions en mémoire est l'ordre obtenu lors de l'écriture ((x,y),z,t). Cet ordre permet de lire et écrire rapidement une image, mais n'est pas adapté à une tranche selon t. En effet les valeurs à deux instant successifs pour un même pixel (x,y,z) sont séparées en mémoire de 12 288 000 valeurs. Lire une tranche temporelle est extrêmement long sur un disque dur rotatif et reste limitant sur un SSD. Un gain de vitesse pour des tranches temporelles peut être obtenu en permutant l'ordre des dimensions en mémoire, au prix d'une perte pour la lecture d'images (tranche (x,y)). Pour un ordre (t,x,y,z), la vitesse de lecture des images reste suffisamment rapide pour un affichage à fréquence vidéo tout en accélérant immensément la lecture de tranches temporelles, bien plus sollicitée lors de l'analyse. Réaliser ce changement nécessite une grande part de ré-écriture du code actuel et bénéficierait d'un langage plus adapté.
+
+% TODO ressortir les benchmarks ordre dimensions
+
+\paragraph{Réduction des données}
+La taille des données brutes pourrait être largement réduite, ce qui accélérerait les copies et libérerait de l'espace disque. D'une part la dynamique des images n'exploite pas les 16 bits sur lesquels elles sont enregistrées, 12 bit suffiraient, ce qui entrainerait un gain immédiat de 25\% sur la taille des fichiers. D'autre part, la région d'intérêt ne recouvre qu'une faible part du volume enregistré, opérer sur cette région seule entrainerait un gain de 50\% environ.
+
+% TODO estimer la taille de la ROI sur plusieurs runs
+
+\paragraph{Langage adapté}
+Jusque là, une grande partie des données sont analysée en langage Matlab. Ce langage n'est pas très adapté à la gestion de données de ce type et souffre de plusieurs lacunes. Matlab est généralement lent, ce qui est handicapant. Matlab n'accepte de données que sur 8, 16, 32, ou 64 bits, ce qui interdit l' amélioration consistant à encoder les données sur 12 bits. Matlab est mauvais pour réaliser un système modulaire, ce qui augmente dramatiquement les efforts pour maintenir un programme. Matlab est fermé, opaque, et sous licence propriétaire, ce qui diminue les possibilités d'utilisation du code.
+Des recherches et tests m'ont conduit à penser que le langage Julia serait bien plus adapté pour produire une base de code saine pour une évolution à court, moyen et long terme.
+
+
+
+
+
+
+
+% Partie microscope
 
 % taille du pixel objet
 % pixel caméra = 0.4 µm ?
