@@ -10,6 +10,5 @@
 *.cb
 *.xml
 *.toc
-*.bst
 *.gz
 *.fdb_latexmk
