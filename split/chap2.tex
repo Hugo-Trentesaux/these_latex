@@ -11,7 +11,10 @@ Pour étudier le système vestibulaire de la larve de poisson zèbre, une option
 
 \subsection{Description du montage}
 
+\subsubsection{Unité d'illumination}
+
 Un microscope à feuille de lumière par balayage est généralement constitué de deux bras optiques formant un téléscope de manière à placer le miroir rotatif galvanométrique de balayage dans le plan congugé de l'échantillon. Ainsi, son mouvement de rotation est transformé en une pure translation du faisceau au niveau de l'échantillon. Ce montage est volumineux et inadapté à un microscope rotatif. Il a donc fallu le miniaturiser et garantir sa stabilité. Nous avons remplacé les téléscopes par des objectifs de microscope. Le plan de Fourier n'étant pas accessible à cause de la distance frontale arrière, le miroir galvanométrique est légèrement hors du plan conjugué, ce qui introduit une rotation du faisceau dans l'échantillon en plus de la translation. Cette rotation reste cependant faible (<0.4°), et compatible avec une feuille de lumière par balayage.  
+L'unité d'illumination est composée d'un connecteur de fibre monté sur un positionneur piézoélectrique et de deux objectifs en montage confocal de part et d'autre d'un miroir galvanométrique. 
 
 \begin{figure}
 \centering
@@ -20,8 +23,40 @@ Un microscope à feuille de lumière par balayage est généralement constitué 
 }
 \end{figure}
 
-L'unité d'illumination est composée d'un connecteur de fibre monté sur un positionneur piézoélectrique et de deux objectifs en montage confocal de part et d'autre d'un miroir galvanométrique. L'unité de détection est composée d'un objectif à immersion monté sur un positionneur piézoélectrique, d'une lentille de tube, d'un filtre coupe-bande, d'un filtre GFP, et d'une caméra.  
-Le tout pèse environ 2 kg (?) et tient sur une plaque de 50 cm de côté fixée à un moteur à grand couple et grande précision. Lors de la rotation du microscope, l'instabilité de l'imagerie reste inférieure à 500 nm dans la direction verticale et 2 µm dans la direction latérale (cette dernière peut être corrigée lors de l'analyse).
+\subsubsection{Unité de détection}
+
+L'enjeu pour une unité de détection rapide est de permettre l'enregistrement avec une durée d'exposition la plus courte possible tout en maintenant un rapport signal à bruit suffisant. Pour collecter beaucoup de lumière, il faut une grande ouverture numérique, et donc une distance de travail faible. Cependant, pour une imagerie à champ large, il faut un grandissement faible. La solution que nous avons retenue est un objectif Olympus d'ouverture numérique 1 et de grandissement x20. Le grandissement est donné pour une lentille de tube de 180 mm, mais j'ai utilisé une lentille de tube de 150 mm, ce qui donne donc un grandissement de x16.667. Un pixel de la caméra mesure 6.5 µm, ce qui donne un pixel objet de 0.39 µm. Le capteur CMOS est un carré de 2048 pixels de côté, ce qui donne un champ objet de 0.8 mm. Le champ objet correspond à la longueur du cerveau, mais le pixel objet est très petit par rapport à un neurone. Pour limiter la quantité de données à enregistrer et augmenter le rapport signal à bruit, on peut combiner par les pixels de la caméra, opération appellée \emph{binning}. Cela donne un pixel objet de 0.78 µm.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{./files/detection_unit.svg.png}
+\caption{Schéma du filtrage spectral dans le bras de détection. Le filtre GFP réduit la luminosité ambiante sur une fenêtre correspondant à la protéine et le filtre notch (\emph{encoche}) élimine la longueur d'onde du laser.}
+\end{figure}
+
+
+Pour obtenir un bon rapport signal à bruit, il faut réduire la lumière parasite. Une source puissante est le laser d'illumination, nous utilisons donc un filtre coup bande très étroit à sa longueur d'onde. Bien que les expériences soient réalisées dans le noir, un filtre GFP (passe-bande à la longueur d'onde de la GFP) permet de filtrer les résidus de luminosité ambiante comme les écrans ou les voyants lumineux. Après ce filtrage, les bruits restants sont le bruit de photon et le bruit numérique. Le bruit numérique pourrait être réduit avec un système de refroidissement prévu sur la caméra, mais celui-ci est trop encombrant pour le microscope rotatif, et a donc été retiré. Le bruit de photon ne peut être réduit qu'avec des meilleures sondes calciques ou en exposant plus longtemps, mais il est négligeable devant le bruit numérique d'une caméra non refroidie. Le bruit numérique présente une structure liée à la consitution interne du capteur et qui fait apparaître des raies de pixel et la ligne médiale de l'obturateur déroulant.
+
+
+% L'unité de détection est composée d'un objectif à immersion (le poisson est dans l'eau) monté sur un positionneur piézoélectrique, d'une lentille de tube, d'un filtre coupe-bande, d'un filtre GFP, et d'une caméra.
+
+\subsubsection{Stabilité mécanique}
+
+Le tout pèse environ 2 kg (?) et tient sur une plaque de 50 cm de côté fixée à un moteur à grand couple et grande précision. Le moteur dispose d'un grand rotor permettant une large zone de fixation qui minimise les déformations mécaniques de la plaque qui soutient le microscope. Nous avons caractérisé précisément l'instabilité liée à la rotation du microscope à l'aide de billes micrométriques fluorescentes.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{./files/bead_position.svg.png}
+\caption{Schéma des étapes pour estimer avec précision la position d'une bille fluorescente.\\
+a. Image d'une bille dans le plan focal de l'objectif (a1)\\
+b. Image d'une bille hors du plan focal de l'objectif (a2)\\
+c. Établissement du profil radial par moyennage autour du centre de gravité de l'image\\
+d. Profil cylindrique de la figure de diffraction constitué du profil radial pour plusieurs positions de l'objectif espacées de 20 nm. Les traits pointillés correspondent aux plans (a) et (b). La corrélation verticale du profil cylindrique pour plusieurs positions du microscope donne avec précision le déplacement de la bille.}
+\end{figure}
+
+Une bille fluorescente de 1 µm est éclairée transversalement par le laser d'excitation, qui coincide avec le plan focal de l'objectif de détection. Elle est imagée pour plusieurs positions hors focus de l'objectif, ce qui fait apparaître des franges d'interférence. Un profil cylindrique de ces franges est réalisé pour plusieurs positions du microscope et à plusieurs intervalles de temps ce qui permet de mettre en évidence le déplacement latéral et vertical de la bille au cours du temps et en fonction de la position du microscope.
+
+Lors de la rotation du microscope, l'instabilité de l'imagerie reste inférieure à 500 nm dans la direction verticale et 2 µm dans la direction latérale (cette dernière peut être corrigée lors de l'analyse).
+
 
 \subsection{Nappe laser par balayage}
 
@@ -42,6 +77,8 @@ Un waist trop petit est trop divergeant, et donc trop large sur les bords, mais 
 \includegraphics[width=0.8\textwidth]{./files/possible-waist_1P.png}
 \caption{On voit ici le profil gaussien à 488 nm dans l'eau pour différentes valeurs du waist. Le trait épais marque la position optimale pour un faisceau de 400 µm de long.}
 \end{figure}
+% TODO neuron size limit
+% TODO precise "optimal" criteria 
 
 Une valeur de waist possible pour un échantillon de 400 µm est de 3 µm à 488 nm et de 5 µm à 915 nm. Pour ces valeurs, la largeur du faisceau à 488 nm vaut 3 µm au centre et 10 µm sur les bords du cerveau. À 915 nm c'est 5 µm au centre et 14 µm sur les bords mais il faut aussi prendre en compte l'effet deux photons. En pratique, la plupart des neurones sont situés entre -150 µm et +150 µm, la largeur du faisceau aux extrémités n'est donc pas critique.
 
@@ -54,11 +91,7 @@ Pour un temps d'exposition par couche de 10 ms en mode d'acquisition continu, on
 % \subsubsection{Ordres de grandeur}
 % Partie microscope
 
-% taille du pixel objet
-% pixel caméra = 0.4 µm ?
-% grandissement avec LT 180mm = x20
-% -> avec 150mm -> 
-% Olympus TL = 180mm
+
 
 
 
