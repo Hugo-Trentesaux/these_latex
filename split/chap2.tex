@@ -53,10 +53,7 @@ c. Établissement du profil radial par moyennage autour du centre de gravité de
 d. Profil cylindrique de la figure de diffraction constitué du profil radial pour plusieurs positions de l'objectif espacées de 20 nm. Les traits pointillés correspondent aux plans (a) et (b). La corrélation verticale du profil cylindrique pour plusieurs positions du microscope donne avec précision le déplacement de la bille.}
 \end{figure}
 
-Une bille fluorescente de 1 µm est éclairée transversalement par le laser d'excitation, qui coincide avec le plan focal de l'objectif de détection. Elle est imagée pour plusieurs positions hors focus de l'objectif, ce qui fait apparaître des franges d'interférence. Un profil cylindrique de ces franges est réalisé pour plusieurs positions du microscope et à plusieurs intervalles de temps ce qui permet de mettre en évidence le déplacement latéral et vertical de la bille au cours du temps et en fonction de la position du microscope.
-
-Lors de la rotation du microscope, l'instabilité de l'imagerie reste inférieure à 500 nm dans la direction verticale et 2 µm dans la direction latérale (cette dernière peut être corrigée lors de l'analyse).
-
+Une bille fluorescente de 1 µm est éclairée transversalement par le laser d'excitation, qui coincide avec le plan focal de l'objectif de détection. Elle est imagée pour plusieurs positions hors focus de l'objectif, ce qui fait apparaître des franges d'interférence. Un profil cylindrique de ces franges est réalisé pour plusieurs positions du microscope et à plusieurs intervalles de temps ce qui permet de mettre en évidence le déplacement latéral et vertical de la bille au cours du temps et en fonction de la position du microscope. Cette technique a l'avantage d'être précise (de l'ordre de 100 nm) et robuste aux variations liées au photoblanchiment. Elle a permis de montrer que lors de la rotation du microscope, le déplacement reste inférieur à 500 nm dans la direction verticale et 2 µm dans la direction latérale (cette dernière peut être corrigée lors de l'analyse comme on le voit plus tard).
 
 \subsection{Nappe laser par balayage}
 
@@ -89,15 +86,13 @@ Pour effectuer le balayage, on déplace le faisceau horizontalement. Pour que l'
 Pour un temps d'exposition par couche de 10 ms en mode d'acquisition continu, on peut par exemple réaliser un scan du cerveau à 2,5 Hz en 30 couches espacées de 8µm. Cela permet d'imager la majeure partie du cerveau du poisson. Les couches les plus profondes sont moins nettes car le signal traverse plus de tissus avant d'atteindre l'objectif, et la zone située entre les yeux reste dans l'ombre si on n'utilise qu'un laser. Mais chaque neurone visible est imagé à une fréquence de 2.5 Hz.
 
 % \subsubsection{Ordres de grandeur}
-% Partie microscope
+% -> Partie microscope
 
 
 
 
 
-\subsection{Caractérisation}
-
-% TODO
+% \subsection{Caractérisation}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -209,11 +204,30 @@ La taille des données brutes pourrait être largement réduite, ce qui accélé
 Jusque là, une grande partie des données sont analysée en langage Matlab. Ce langage n'est pas très adapté à la gestion de données de ce type et souffre de plusieurs lacunes. Matlab est généralement lent, ce qui est handicapant. Matlab n'accepte de données que sur 8, 16, 32, ou 64 bits, ce qui interdit l' amélioration consistant à encoder les données sur 12 bits. Matlab est mauvais pour réaliser un système modulaire, ce qui augmente dramatiquement les efforts pour maintenir un programme. Matlab est fermé, opaque, et sous licence propriétaire, ce qui diminue les possibilités d'utilisation du code.
 Des recherches et tests m'ont conduit à penser que le langage Julia serait bien plus adapté pour produire une base de code saine pour une évolution à court, moyen et long terme.
 
+% nrrd et ses limites
+% 3Dslicer vs cmtk vs ants...
+% dette technique sur les pipelines
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Résultats}
+
+% Adaptation en tilt, illumination par derrière ?
+
+\subsection{Carte de réponse en roulis et en tangage}
+
+% TODO décrire
+
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth]{./files/tilt_roll.svg.png}
+\caption{Cartes de réponses obtenues pour une stimulation de rotation sinusoidale selon l'axe de roulis (a) et de tangage (b). On remarque que la carte est antisymétrique dans le cas du roulis et symétrique dans le cas du tangage.
+}
+\end{figure}
+    
+
 
 % TODO
 
