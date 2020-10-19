@@ -1,5 +1,48 @@
 \chapter{Microscope à feuille de lumière deux photons rotatif}
 
+% VolkerComment
+% You have to extend significantly this introduction and link it to the previous chapters. Your aim was to perform the multisensory virtual reality experiments that you described in in Chapter 1 while recording whole brain activity. Two further developments of Geoffrey's setup where necessary. 1. You needed a system that allows to stimulate the tilt direction. 2. You needed a two-photon system to gain high control over the visual stimulus. Start with the description to the tilt setup that you developed with Thomas Panier. You can first present it as a one-photon system, talk about the differences in the optical path, the different motor, your control software, the mechanical stability characterization and finish with recordings in one-photon mode. Use the figures of the schematic of the setup and of the one-photon tilt phase maps from the Brighton poster. Then you talk about the transformation of the system into a two-photon setup and the challenge of fiber coupling the two photon laser ... . Here you have to introduce the demands on the fiber coupling properties necessary to develop successfully a 2PRLS. : (i) High power transmission and damage threshold (ii) low dispersion (iii) polarization maintenance (iv) low bending loss (v) single mode maintenance during bending
+
+% reference and formula missing. How does multiphoton excitation depends on pulse width => see Maioli .... Supatto 2020 Fast in vivo multiphoton light-sheet microscopy with optimal pulse frequency
+
+% What are the limits => power, as nonlinear pulse widening starts to be significant for P > 10mW. What was achieved. Who did it first in the context of multiphoton functional imaging => Denk
+
+% How does it work. What was the best correction achieved and at which output power?
+
+% Discuss the paper from Marcatili & Schmetzer 1964
+
+% You go to fast here. You have also to introduce photonic bandgap fibers Cregan et al., 1999). In addition, these fibers are insensitive to deformations !
+
+% Kagome fibers are of interest to to the broad transmission bands.
+
+% I do not see this natural link. Everything was based on the not obvious discovery by Février et al 2020 who demonstrated that light-guidance in such fibers depends only on the geometry of the core wall adding additional parameters for fiber design to control light leakage (Ding and Wang, 2014). The breakthrough was the discovery of optimized light-guidance by a hypocycloid-shape in the core-surrounding of a Kagome fiber by Wang et al in 2011 (Wang et al., 2011) leading to the introduction of hollow core negative curvature fibers (HC-NCF) based on an inverted curvature of the core wall and also known as anti-resonant fibers.
+
+%  In collaboration with GLO we tested several different fiber types. Go through all of them !
+
+% General remark: Everything that I discussed about the fibers in my first version of the manuscript has to be discussed in your thesis. And you have to extend this and go beyond this and not give less details and less citations.
+
+% Show the image of the cross section of this fiber and give all details of the fiber geometry: core diameter, total diameter, number of cladding tubes, tube wall thickness, cladding tube diameter, NA, mode field diameter (1/e2), curvature parameter (For b definition, see Opt. Exp. 21, no. 23, 28597, 2013)...
+
+% show a photo of this configuration and explain the alignment procedure with a schema
+
+% Give the damaging threshold of the fiber as a reference
+
+% This is true for the hypocycloid fibers but does not apply to my knowledge to the Kagome fiber lattice that you discussed just before. Explain why there is a dependence of the gain on curvature. And explain the waveguidance mechanism in the hypocycloid fibers (anitresonance effect ... )
+
+% pourqui c'est le pire des cas ? Dans quelle context? I do not understand your argument. What is the range of curvature change in your experimental configuration?
+
+%  You start this paragraph totally out of context. So far you talked about the fiber properties. Here you talk about detected signal in the light sheet configuration. You have to introduce this properly and develop the transition.
+
+% Again what is the expected curvature variation in your experimental configuration. What is the expected signal variation.
+
+% You have also to add the measured intensity change in the case if you would work with linear polarized light. In addition you have to make a measurement with GFP fish to see how much the real collected fluorescence depends on polarization and ellipticity.
+
+% Show an image. Is this really an issue. The infrared light interacts less with the tissue compared to the 488nm laser. How do both configurations compare? I do not see uneven fluorescence signal across the fish in two photon recordings.
+
+% You need to introduce better this part. In the previous sections you characterized hollow core fibers and identified a fiber that fulfills the stringent requirements to build a fiber coupled 2P-RLS. You should finish this part with the demonstration of successful 2P whole-brain imaging with single cell resolution in static mode. Then you discuss the next challenge to record during dynamic microscope rotation. The challenge arises as you observed large intensity fluctuations during microscope rotation that are independent of fiber properties. Then you discuss that this instability is related to water movements as you can induce it by moving the water in the chamber while keeping the microscope static. You discovered that this instability results from a thermal lens effect ....
+
+% Explain this paper more in detail and show the schematic that explains the calculations and the approximation.
+
 Pour étudier à la fois le système visuel et le système vestibulaire du poisson zèbre, une possibilité est de combiner les deux innovations précédemment citées en un seul microscope : un microscope à feuille de lumière deux photons rotatif. C'est la voie que j'ai explorée, qui a révélé plusieurs défis techniques. Le premier et de guider le laser deux photons vers le module light-sheet en restant stable lors de la rotation du microscope. Le second est de mitiger l'effet de lentille thermique lié à la propagation d'un faisceau haute puissance dans l'eau. Après avoir exploré en détail ces aspects techniques, je montrerai comment le microscope a permis de réaliser l'acquisition du cerveau de la larve sans environnement visuel parasite.
 
 \section{Fibre optique, principe et état de l'art}
@@ -39,9 +82,62 @@ e. Fibre à courbure négative (image extraite de Yu 2016 \cite{yu_negative_2016
 
 Le processus de fabrication de ces fibres à réseau trihexagonal a très naturellement donné lieu à des fibres à "réseaux de tubes" qui ont révélé avoir de bonnes performances. L'analyse numérique de leur fonctionnement a révélé que la première couche du réseau de tube jouait un rôle important dans leurs propriétés \cite{vincetti_waveguiding_2010}, ce qui a permis l'apparition des fibres à "courbure négative", avec une géométrie très simple et de très bonnes caractéristiques. C'est cette configuration qui nous intéresse ici. Nous l'avons retenue pour sa large bande de transmission qui couvre à la fois le visible à 488 nm et l'infrarouge à 915 nm, son bon gain de ~100 dB/km, son couplage monomode dans l'infrarouge et sa relative stabilité par rapport aux déformations.
 
-\subsection{TODO Utilisation des fibres optiques en microscopie embarquée}
+\subsection{Utilisation des fibres optiques en microscopie embarquée}
 
-- review rongeur
+% TODO rédiger
+
+Les propriétés de guidage de la lumière d'une fibre optique lui permettent d'alléger considérablement ou de déporter certaines parties des microscopes pour les rendre compatibles avec l'imagerie embarquée. Un microscope est en effet composé d'un axe d'illumination, d'un échantillon, et d'un axe de détection. Les axes peuvent être séparés dans différents bras ou réunis sur une portion du montage optique et sont généralement composés d'éléments optiques rigides passifs tels que des objectifs, miroirs, filtres... Ces différentes parties parfois très volumineuses peuvent être remplacées ou déportées à l'aide de fibres optique. Nous allons voir par la suite plusieurs types de microscopes embarqués utilisant une fibre optique.
+
+
+\begin{figure}
+\centering
+\includegraphics[width=0.9\textwidth]{./files/fiber_functional_imaging.svg.png}
+\caption{Différentes techniques de microscopie en imagerie neuronale fonctionnelle chez le rongeur.\\
+a. Un microscope deux photons statique réalise l'imagerie du cerveau d'une souris lors d'une expérience en réalité virtuelle \cite{dombeck_functional_2010}.\\
+b. Un microscope deux photons est fixé sur la boite cranienne d'un rat. Le laser est guidé à travers une fibre à coeur de verre dont la dispersion est précompensée. L'unité de détection est intégrée au microscope \cite{helmchen_miniature_2001}.\\
+c. Un microscope deux photon est fixé sur le crane d'un rat, mais l'unité de détection est externe, la lumière étant collectée par une fibre \cite{sawinski_visually_2009}. \\
+d. Un fibroscope deux photons utilise des fibres à gradient d'indice comme lentilles pour réduire l'encombrement. Le laser est guidé au moyen d'une fibre à cristaux photoniques et la lumière est collectée par une fibre à large cœur \cite{engelbrecht_ultra-compact_2008}. \\
+e. Un endoscope sans optique permet de réduire considérablement l'encombrement et d'atteindre des régions plus profondes du cerveau, mais nécessite une calibration préalable \cite{turtaev_high-fidelity_2018}.
+}
+\end{figure}
+
+
+% Functional imaging in freely moving animals (review)
+% Advances in Light Microscopy for Neuroscience (review)
+
+% 1P vs 2P
+% Fiber optic in vivo imaging in the mammalian nervous system
+
+\subsubsection{Imagerie sur rongeur à tête fixée}
+
+Une méthode répandue en imagerie cérébrale sur rongeur est de fixer un animal sous un microscope classique immobile. Le cerveau est rendu accessible par une opération chirurgicale pendant laquelle le crane est retiré localement et remplacé par une vitre. Le fait d'immobiliser la tête pendant l'imagerie peut limiter le répertoire comportemental et constituer une gène pour l'animal. Une solution est un système où le rat se positionne volontairement sous le microscope \cite{scott_cellular_2013}, une autre est le système en réalité virtuelle. Dans cette deuxième solution, le rongeur marche sur une boule en polystyrène sur coussins d'air alors qu'un environnement visuel est projeté sur un écran autour de lui \cite{dombeck_functional_2010}. Le microscope est ici entièrement statique et rigide. La réalité virtuelle a également été utilisée avec des enregistrement en électrophysiologie \cite{aronov_engagement_2014}\cite{whitlock_navigating_2014}.
+
+
+% \subsubsection{Microscope embarqué}
+% An implantable and fully integrated complementary metal–oxide semiconductor device for in vivo neural imaging and electrical interfacing with the mouse hippocampus \cite{ng_implantable_2008}
+
+\subsubsection{Déportation de l'illumination}
+
+Une pièce particulièrement volumineuse dans les microscopes multiphotons utilisée pour l'imagerie neuronale est le laser pulsé. En effet, ces systèmes dépendent de beaucoup d'éléments optiques et d'une stabilité thermique et mécanique poussée. Pour construire des microscopes embarqués, il est donc nécessaire de guider le laser depuis la source jusqu'à l'échantillon, ce qui est réalisé à l'aide de fibre optique. Il est possible d'utiliser une fibre optique monomode à cœur de verre \cite{helmchen_miniature_2001} mais également des fibres à cœur creux \cite{piyawattanametha_vivo_2009} \cite{klioutchnikov_three-photon_2020}. Dans le cas de fibre à cœur de verre, il est nécessaire de précompenser la dispersion pour conserver une impulsion suffisamment courte pour produire l'effet non linéaire recherché, ce qui est réalisé avec une paire de réseaux de diffraction.
+La partie de détection est quant à elle également embarquée. On peut avoir un simple photomultiplicateur/photodiode pour l'imagerie par balayage \cite{helmchen_miniature_2001} ou un capteur CMOS pour une imagerie en champ plein \cite{scott_imaging_2018}.
+
+
+\subsubsection{Déportation de l'illumination et de la détection}
+
+Dans les exemples précédents, le laser est amené par une fibre, mais le capteur est sur place, le signal repartant sous forme de signal électrique. Il est également possible de déporter le système de détection en collectant la lumière par fibre optique. Certains utilisent pour cela une fibre multimode \cite{piyawattanametha_vivo_2009} \cite{sawinski_visually_2009}, d'autres une "fibre plastique" \cite{klioutchnikov_three-photon_2020}, d'autres encore un faisceau de fibres \cite{zong_fast_2017}. Dans ce cas, la lumière collectée est mesurée en sortie de fibre à l'aide d'un système optique adapté sans limite d'encombrement. On peut ainsi utiliser des sytèmes régulés en température ou munis d'une électronique complexe.
+
+\subsubsection{Lentilles à gradient d'indice}
+
+Malgré la déportation de l'illumination et de la détection, les systèmes optiques restent encore assez volumineux du fait des composants utilisés et des éléments mécanique nécessaires. Une possibilité pour pousser la miniaturisation encore plus loin est d'utiliser des fibres à gradient d'indice (\emph{GRIN lens, GRadient INdex lens}). Ces fibres sont constituées d'un milieu à gradient d'indice qui leur donne des propriétés similaires à des lentilles mais sont plus fines et ne nécessitent pas d'éléments mécaniques. Cela permet d'obtenir des microscopes ultra-compacts portables et de poids très réduit \cite{flusberg_vivo_2005}\cite{engelbrecht_ultra-compact_2008}.
+
+\subsubsection{Microendoscopes}
+
+D'autres techniques d'imagerie neuronale se passent même d'optique et sont uniquement consitués d'une fibre insérée dans l'échantillon. On parle alors plutôt de microendoscope. L'idée générale est d'utiliser la même fibre pour éclairer l'échantillon et collecter la lumière. Des éléments actifs peuvent être utilisés pour moduler le front d'onde, et plusieurs techniques reposent sur une phase de calibration préalable \cite{papadopoulos_high-resolution_2013}\cite{ohayon_minimally_2018}\cite{turtaev_high-fidelity_2018}. Ces techniques utilisent des fibres optiques multimodes classiques. L'avantage de l'endoscopie est que les tissus sont traversés par la fibre, et pas directement par la lumière, ce qui contourne le phénomène de dispersion. Il existe également des systèmes plus sophistiqués qui combinent plusieurs fibres en une seule de manière à profiter de propriétés différentes pour l'émission et collection de lumière \cite{andresen_two-photon_2013}\cite{kudlinski_double_2020}\cite{lombardini_high-resolution_2018}.
+
+\subsubsection{Conclusion}
+
+Les fibres servent à plein de choses...
+% TODO rédiger
 
 \section{Caractérisation et utilisation de la fibre PMC-C-9005 B2}
 
@@ -116,6 +212,8 @@ et vaut donc 28 nm. Pour une impulsion de 100 fs à 915 nm, cela donne un élarg
 En mesurant la durée de l'impulsion en sortie de fibre à l'aide d'un autocorrélateur, on confirme que la précompensation permet de retrouver une impulsion de 100 fs dans l'échantillon.
 
 \subsection{Gain de courbure}
+
+% TODOcite Analytical formulation for the bend loss in single-ring hollow-core photonic crystal fibers
 
 Un des facteurs qui peut affecter la transmissission de la fibre est sa courbure. Certaines fibres comme les fibres à cristaux photoniques Kagome sont très sensibles à la courbure. La première fibre que j'ai testée voyait ainsi varier sa transmission d'un facteur un à cinq en fonction de sa courbure. Puisque la rotation du microscope engendre des déformations de la fibre, on se retrouve avec un éclairage incident corrélé à la stimulation, ce qui crée un signal parasite. Si ce signal parasite dépasse environ 1\%, le rapport signal à bruit devient trop faible, et les données ne sont plus analysables. Pour caractériser les pertes de transmission liées à la courbure, il suffit de placer un puissance-mètre en sortie de fibre et de faire varier la courbure.
 
