@@ -45,27 +45,64 @@
 
 Pour étudier à la fois le système visuel et le système vestibulaire du poisson zèbre, une possibilité est de combiner les deux innovations précédemment citées en un seul microscope : un microscope à feuille de lumière deux photons rotatif. C'est la voie que j'ai explorée, qui a révélé plusieurs défis techniques. Le premier et de guider le laser deux photons vers le module light-sheet en restant stable lors de la rotation du microscope. Le second est de mitiger l'effet de lentille thermique lié à la propagation d'un faisceau haute puissance dans l'eau. Après avoir exploré en détail ces aspects techniques, je montrerai comment le microscope a permis de réaliser l'acquisition du cerveau de la larve sans environnement visuel parasite.
 
+
+
+
+
+
+\section{Effet deux photons}
+
+% TODO améliorer cette section
+
+\subsection{Principe}
+
+L'absorption deux photons est un phénomène non linéaire d'absorption simultanée de deux photons par une molécule ou un atome. Cet effet est proportionnel au carré de l'intensité lumineuse incidente et est lié au caractère anharmonique du dipôle oscillant. Pour cette raison, il est négligeable aux petites énergies mais devient important pour une intensité lumineuse élevée. On peut l'observer en concentrant fortement un faisceau puissant. La concentration peut être à la fois spatiale par focalisation et temporelle par impulsion temporelle.
+
+\subsection{Concentration spatiale}
+
+Un système optique peut concentrer la lumière localement, ce qui produit un point de plus grande intensité, le point focal. Comme l'effet deux photons est proportionnel au carré de l'intensité, la zone concernée est d'autant plus restreinte. Cette propriété est utilisée en microscopie multiphoton pour produire une illumination ponctuelle qui permet le sectionnement optique dans la direction de propagation. En microscopie à feuille de lumière, au contraire, une illumination linéaire est recherchée. La focalisation est donc bien moindre et l'effet deux photons contribue à affiner la zone d'excitation (cf Fig. \ref{2P-intensity-profile}).
+
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{./files/profile-intensity.png}
+\caption{Effet deux-photons en microscpie à feuille de lumière. Comparaison du profil d'intensité (haut) et de son carré (bas). On voit que la zone concernée par l'effet deux photons et restreinte. (paramètres : indice optique 1.33, longueur d'onde 915 nm, waist 6.5 µm)
+}
+\label{2P-intensity-profile}
+\end{figure}
+
+\subsection{Concentration temporelle}
+
+Une autre manière de concentrer la lumière est la concentration temporelle. Dans le cas d'un laser continu, la puissance est répartie sur toute la longueur de propagation du faisceau. En utilisant un laser pulsé, la puissance est concentrée en paquets beaucoup plus courts (cf Fig. \ref{pulsed-laser}). Par exemple, pour des impulsions de 100 fs, malgré la vitesse élevée de la lumière, la longueur de ces paquets est de 30 mm. Si de plus le taux de répétition du laser est de 80 MHz, la puissance moyenne d'une impulsion est 125 fois plus élevée qu'un laser continu de même puissance moyenne (1/(100fs x 80MHz)). L'effet deux photons étant proportionnel au carré de la puissance instantanée, on a intérêt à choisir les impulsions les plus courtes possibles (petit $\tau$) et le taux de répétition le plus faible possible (grand T) pour un laser de puissance moyenne fixée. Une étude sur les photoperturbations en microscopie à feuille de lumière multiphoton TODOcite maioli-fast-2020 montre que l'on peut pousser l'énergie par impulsion jusqu'à une centaine de nanojoules avant d'obtenir des effets indésirables liés à la phototoxicité. On ne peut alors plus réduire la durée de l'impulsion sans se heurter au phénomène d'automodulation de phase par effet Kerr. En effet, une impulsion ultra-courte induit une biréfringence du milieu traversé, ce qui élargit l'impulsion. Les conditions optimales en microscopie par fluorescence à nappe laser deux photons sont donc autour de f=1MHz, $\tau$=100fs, P=100mW.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{./files/pulsed_laser.svg.png}
+\caption{Profil temporel de puissance d'un laser pulsé. Chaque impulsion a une durée $\tau$, elles sont espacées d'une durée T=1/f. À puissance moyenne constante, plus $\tau$ est petit, et plus T est grand, plus $P_\text{max}$ est grand. L'effet deux photons est proportionnel au carré de $P_\text{max}$.
+}
+\label{pulsed-laser}
+\end{figure}
+
+
+
+
 \section{Fibre optique, principe et état de l'art}
 
 Dans un microscope statique, la source laser peut être guidée jusqu'à l'échantillon par des miroirs, mais dans un microscope mobile il faut soit embarquer la source laser directement sur le microscope, soit la guider de manière flexible quelque soient les mouvements. Dans le cas d'une source laser deux photons très volumineuse, il est impossible de l'embarquer, la solution adoptée est donc une fibre optique adaptée. De telles fibres optiques capables de guider un laser deux photons sont complexes à produire. Avant de nous intéresser aux microscopes à fibre couramment utilisés dans la recherche sur le rongeur, introduisons les caractéristiques d'un guide d'onde. 
 
 \subsection{Guide d'onde}
 
-Un guide d'onde est un objet contraignant l'onde à se propager dans une seule dimension. Pour les ondes électromagnétiques dans les fréquences radio, cela peut être réalisé avec des parois métalliques. Dans le cas de la lumière visible, on utilise généralement une âme d'indice optique supérieur à l'indice du milieu environnant. Le phénomène de réflexion totale sur le dioptre permet alors le guidage de l'onde. De telles fibres optiques sont réalisées avec un fin fil de verre et servent en télécommunication, en éclairage, en imagerie...
+Un guide d'onde est un objet contraignant l'onde à se propager dans une seule dimension. Pour les ondes électromagnétiques dans les fréquences radio, cela peut être réalisé avec des parois métalliques TODOcite packard-origin-1984. Dans le cas de la lumière visible, on utilise généralement une âme d'indice optique supérieur à l'indice du milieu environnant. Le phénomène de réflexion totale sur le dioptre permet alors le guidage de l'onde. De telles fibres optiques sont réalisées avec un fin fil de verre et servent en télécommunication, en éclairage, en imagerie TODOcite wikipedia-fibre-optique...
 
-Nous disposons notamment de fibres monomodes qui permettent de transmettre le mode fondamental d'un laser d'un bout à l'autre sans dénaturer le profil gaussien. Nous utilisons ce genre de fibre pour guider le laser dans la version un photon du microscope à feuille de lumière rotatif.
+% TODO reformuler
+On dispose notamment de fibres monomodes qui permettent de transmettre le mode fondamental d'un laser d'un bout à l'autre sans dénaturer le profil gaussien TODOcite ankiewicz-generalized-1992. Nous utilisons ce genre de fibre pour guider le laser dans la version un photon du microscope à feuille de lumière rotatif.
 
-Dans le cas d'un laser pulsé utilisé en microscopie deux photons, les fibres à milieu d'indice fonctionnent également mais ont un inconvénient majeur qui les rend inutilisables telles quelles pour cette application dû au phénomène de dispersion. Un laser pulsé a contient d'autant plus de longueurs d'ondes que son pic est étroit.
-
-$$
-\Delta \lambda_t = \frac{\lambda^2}{c}\Delta\nu_t
-$$
-
-Dans un milieu dispersif, ces différentes longueurs d'onde se propagent à une vitesse différente, ce qui donne lieu à un élargissement de l'impulsion. L'effet deux photons étant lié quadratiquement à la puissance instantanée, il chute de manière critique avec la dispersion. Une solution est de précompenser cette dispersion via des éléments optique positionnés avant l'injection dans la fibre comme une suite de prismes. Cette solution permet de réduire la largeur temporelle du pic en sortie de fibre pour des puissances relativement faibles, mais pas pour de fortes puissances, pour lesquelles l'automodulation de phase liée à l'effet Kerr optique devient dominant. C'est pourquoi il vaut mieux un guide d'onde non dispersif.
+Dans le cas d'un laser pulsé utilisé en microscopie deux photons, les fibres à milieu d'indice fonctionnent également mais ont un inconvénient majeur qui les rend inutilisables telles quelles pour cette application dû au phénomène de dispersion TODOcite gloge-dispersion-1971. Un laser pulsé contient d'autant plus de longueurs d'ondes que son pic est étroit. Dans un milieu dispersif, ces différentes longueurs d'onde se propagent à une vitesse différente, ce qui donne lieu à un élargissement de l'impulsion TODOillustration. L'effet deux photons étant lié quadratiquement à la puissance instantanée, il chute de manière critique avec la dispersion. Une solution est de précompenser cette dispersion via des éléments optique positionnés avant l'injection dans la fibre comme une suite de prismes ou de réseaux de diffraction TODOcite fork-negative-1984. Cette solution permet de réduire la largeur temporelle du pic en sortie de fibre pour des puissances relativement faibles, mais pas pour de fortes puissances, pour lesquelles l'automodulation de phase liée à l'effet Kerr optique devient dominant. C'est pourquoi un guide d'onde non dispersif est préférable.
 
 \subsection{Fibre à âme creuse}
 
-Un milieu non dispersif commun est le vide, d'où l'idée de construire un guide d'onde à cœur creux. L'effet de réflexion totale sur le dioptre ne peut plus être utilisé, car il faudrait un milieu d'indice plus petit que 1, c'est à dire dans lequel la lumière se propage plus vite que dans le vide, ce qui n'est pas possible. Une idée consiste donc à utiliser un phénomène de réflexion par interférences comme le miroir de Bragg. Un tel miroir est constitué d'une succession périodique de couches d'indice différents et permet d'obtenir une réflexion quasi totale à la longueur d'onde du motif. On trouve ce genre de réseau dans des fibres microstructurées \cite{argyros_hollow-core_2006}.
+Un milieu non dispersif commun est le vide, d'où l'idée de construire un guide d'onde à cœur creux. L'effet de réflexion totale sur le dioptre ne peut plus être utilisé, car il faudrait un milieu d'indice plus petit que 1, c'est à dire dans lequel la lumière se propage plus vite que dans le vide, ce qui n'est pas possible. Une idée consiste donc à utiliser un phénomène de réflexion par interférences comme le miroir de Bragg. Un tel miroir est constitué d'une succession périodique de couches d'indice différents et permet d'obtenir une réflexion quasi totale à la longueur d'onde du motif. On trouve ce genre de réseau pour la première fois en 1999 TODOcite cregan-single-1999.
+
+% dans des fibres microstructurées \cite{argyros_hollow-core_2006}.
 
 Cette idée a également donné lieu aux fibres à réseau trihexagonal, ou "Kagomé". De telles fibres ont été construites pour la première fois en 2002 sous le nom de fibre à cristaux photoniques en étirant un réseau de capillaires. Le gain était alors de l'ordre de 2 dB/m \cite{benabid_stimulated_2002}. En 2011, un gain de 180 dB/km a été obtenu avec de telles fibres \cite{wang_low_2011}. Un des problèmes des fibres à structure géométrique est la sensibilité aux déformations. Puisque le guidage est lié à la géométrie de la fibre, les déformations qui changent cette géométrie altèrent le guidage. Cela peut prendre la forme de perte de transmission, de couplage entre les modes, d'incidence sur la polarisation. Mais cette sensibilité aux déformations dépendant de la géométrie de la fibre, certaines configurations donnent des résultats très satisfaisants.
 
@@ -118,7 +155,7 @@ Une méthode répandue en imagerie cérébrale sur rongeur est de fixer un anima
 
 \subsubsection{Déportation de l'illumination}
 
-Une pièce particulièrement volumineuse dans les microscopes multiphotons utilisée pour l'imagerie neuronale est le laser pulsé. En effet, ces systèmes dépendent de beaucoup d'éléments optiques et d'une stabilité thermique et mécanique poussée. Pour construire des microscopes embarqués, il est donc nécessaire de guider le laser depuis la source jusqu'à l'échantillon, ce qui est réalisé à l'aide de fibre optique. Il est possible d'utiliser une fibre optique monomode à cœur de verre \cite{helmchen_miniature_2001} mais également des fibres à cœur creux \cite{piyawattanametha_vivo_2009} \cite{klioutchnikov_three-photon_2020}. Dans le cas de fibre à cœur de verre, il est nécessaire de précompenser la dispersion pour conserver une impulsion suffisamment courte pour produire l'effet non linéaire recherché, ce qui est réalisé avec une paire de réseaux de diffraction.
+Une pièce particulièrement volumineuse dans les microscopes multiphotons utilisée pour l'imagerie neuronale est le laser pulsé. En effet, ces systèmes dépendent de beaucoup d'éléments optiques et d'une stabilité thermique et mécanique poussée. Pour construire des microscopes embarqués, il est donc nécessaire de guider le laser depuis la source jusqu'à l'échantillon, ce qui est réalisé à l'aide de fibre optique. Il est possible d'utiliser une fibre optique monomode à cœur de verre \cite{helmchen_miniature_2001} mais également des fibres à cœur creux TODOcite tai-two-2004 TODOcite choi-improving-2014 \cite{piyawattanametha_vivo_2009} \cite{klioutchnikov_three-photon_2020}. Dans le cas de fibre à cœur de verre, il est nécessaire de précompenser la dispersion pour conserver une impulsion suffisamment courte pour produire l'effet non linéaire recherché, ce qui est réalisé avec une paire de réseaux de diffraction.
 La partie de détection est quant à elle également embarquée. On peut avoir un simple photomultiplicateur/photodiode pour l'imagerie par balayage \cite{helmchen_miniature_2001} ou un capteur CMOS pour une imagerie en champ plein \cite{scott_imaging_2018}.
 
 
@@ -269,30 +306,6 @@ Pour tester les variations d'intensité dues aux déformations de la fibre en co
 \end{figure}
 
 Finalement, tous les effets liés à la position de la fibre engendrent des variations de l'intensité détectée inférieurs à 1.2\% dans les conditions des expériences. Les effets parasites sont donc connus et mineurs, ce qui est à prendre en compte lors de l'analyse des données.
-
-\section{Effet deux photons}
-
-L'absorption à deux photons est un phénomène non linéaire qui est négligeable aux petites énergies mais devient important pour une intensité lumineuse élevée. Elle peut se produire entre deux ondes de fréquence différente, mais on s'intéresse au cas particulier de deux ondes fréquences égales. Cet effet est proportionnel au carré de l'intensité lumineuse et est lié au caractère anharmonique du dipôle oscillant.
-
-\begin{figure}
-\centering
-\includegraphics[width=0.8\textwidth]{./files/profile-intensity.png}
-\caption{
-comparaison du profil d'intensité (haut) et de son carré (bas). On voit que la zone concernée par l'effet deux photons et restreinte. (paramètres : indice optique 1.33, longueur d'onde 915 nm, waist 6.5 $\mu m$)
-}
-\end{figure}
-
-La zone concernée par l'effet deux photons est donc restreinte. C'est un avantage dans la direction verticale, car cela permet un meilleur sectionnement optique (en particulier au bord, où la largeur du faisceau est supérieure à la taille d'un neurone), mais c'est également un inconvénient dans la direction de propagation, car la baisse d'intensité de part et d'autre du waist est plus importante (on le verra sur les images).
-
-Une grande intensité étant nécessaire pour produire l'effet deux photons, la focalisation décrite ci-dessus ne suffit pas, il faut également concentrer le faisceau dans la direction de propagation. Pour réaliser cette concentration, il faut produire des impulsions les plus courtes possibles. En effet, au lieu d'être répartie sur toute la longueur de propagation, la puissance d'un laser pulsé à 100 fs sera concentrée par petit paquets de 30 mm. Avec un taux de répétition de 80 MHz, la puissance moyenne d'une impulsion est alors multipliée par 125 (1/(100fs x 80MHz)). Si l'on considère une impulsion à enveloppe gaussienne, la puissance crête vaut cette puissance moyenne multipliée par 
-
-$$
-2\sqrt{\frac{\ln(2)}{2\pi}} \ \simeq \ 0.939
-$$
-
-soit 117,4 W. À puissance moyenne constante, diviser par deux le taux de répétition multiplie par deux l'énergie d'une impulsion et par quatre l'effet deux photons. À énergie constante, diviser par deux la durée de l'impulsion multiplie par deux sa puissance, et par quatre l'effet deux photons. On voit donc qu'il est important de disposer d'un laser adapté et de conserver la durée de l'impulsion aussi courte que possible.
-
-L'effet deux photons, et plus généralement multiphoton, donne lieu à une méthode de sectionnement optique verticale alternative à la microscopie confocale. Un faisceau laser focalisé excite la fluorescence en un point, ensuite balayé sur le volume observé. La zone d'excitation est plus petite en microscopie deux et trois photons qu'en microscopie un photon car la chute de puissance hors du point de focalisation est proportionnelle respectivement au carré et au cube de l'intensité. Cela permet d'obtenir une zone d'excitation plus petit malgré une longueur d'onde plus élevée.
 
 \section{Effet de lentille thermique}
 
