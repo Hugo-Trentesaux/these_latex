@@ -7,25 +7,38 @@ Pour lire la version actuelle, c'est ici :
 
 ## Installation
 
-paquet ArchLinux:
-- texlive-core
-- texlive-fontsextra
-- tllocalmgr ou fix pour tlmgr
+### ArchLinux
 
-paquets CTAN via tlmgr
-- bbm
-- upgreek (via was)
-- datetime
-- fmtcount
-- slantsc
-- titlesec
-- blindtext
-- changebar
-- versions
-- adjustbox
-- xstring
-- csquotes
+```
+pacman -S texlive-core texlive-fontsextra
+```
+
+et pour la gesiton des paquets, installer `tllocalmgr` ou réparer tlmgr
+
+### Debian
+
+```
+apt install texlive-base texlive-fonts-extra xzdec
+```
+
+ou préférer un installation manuelle, plus à jour [https://www.tug.org/texlive/acquire-netinstall.html](https://www.tug.org/texlive/acquire-netinstall.html)
+
+### Dépendances
+
+```
+tlmgr install bbm was datetime fmtcount slantsc titlesec blindtext changebar versions adjustbox xstring csquotes
+ xcolor mathtools eso-pic collectbox babel-french lm
+texhash
+```
+
+### IDE
+
+Plugin [Latex Workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop) sur vscode(ium)
+
+```
+ext install latex-workshop # after Ctrl+P
+```
 
 ## Bibliographie
 
-Échapper manuellement les `%` en les remplaçant par des `\%`.
+Échapper les `%` en les remplaçant par des `\%`.
