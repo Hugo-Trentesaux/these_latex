@@ -3,17 +3,6 @@
 % VolkerComment
 % You have to extent significantly the first paragraph and link it to the previous chapter. For the following subsections you have to seperated Geoffrey's development from your developments. When you started your PhD the one-photon system was already developed by Geoffrey. You have to review this development in all details to prepare the chapter where you present the two-photon RLS and your developments. Especially, you have to talk about the fiber delivery of the laser onto the rotating platform. Do not mix this presentation with any developments that yo did later for the 2PRLS. Your contribution comes when you talk about the challenges posed by treating the recorded large data sets and the necessity of the development of an analysis pipeline. Introduce well the analysis challenges and the requirement that a good analysis pipeline should fulfill. Then you write an entire chapter to detail your easyRLS development. This routine became the bases for the data analysis in the paper and is our work horse in the group until today. This development gave you a first publication.
 
-% VolkerComment
-% You have to extend significantly this introduction and link it to the previous chapters. Your aim was to perform the multisensory virtual reality experiments that you described in in Chapter 1 while recording whole brain activity. Two further developments of Geoffrey's setup where necessary
-% 1. You needed a system that allows to stimulate the tilt direction.
-% 2. You needed a two-photon system to gain high control over the visual stimulus.
-% Start with the description to the tilt setup that you developed with Thomas Panier. You can first present it as a one-photon system, talk about the differences in the optical path, the different motor, your control software, the mechanical stability characterization and finish with recordings in one-photon mode. Use the figures of the schematic of the setup and of the one-photon tilt phase maps from the Brighton poster. Then you talk about the transformation of the system into a two-photon setup and the challenge of fiber coupling the two photon laser ... . Here you have to introduce the demands on the fiber coupling properties necessary to develop successfully a 2PRLS. :
-% (i) High power transmission and damage threshold
-% (ii) low dispersion
-% (iii) polarization maintenance
-% (iv) low bending loss
-% (v) single mode maintenance during bending
-
 
 % TODO Papier Current Biology
 
@@ -28,16 +17,14 @@ Dans le chapitre précédent, je montre comment tester le comportement d'intégr
 Pour stimuler le système vestibulaire tout en gardant le poisson fixe par rapport à l'objectif, une option est d'agir directement sur l'organe vestibulaire sans bouger la larve. C'est la solution adoptée par Favre Bulle \emph{et al} dans un article publié en 2017 \cite{favre-bulle_optical_2017}. Les auteurs ont utilisé des pinces optiques pour stimuler directement les otolithes. Cette solution est limitée car il n'est pas possible de calibrer la force appliquée, la concentration du laser produit un échauffement qui limite la durée maximale de la stimulation, et la gamme de force applicable est restreinte.
 
 Au Laboratoire Jean Perrin, Geoffrey Migault et Volker Bormuth se sont tourné vers une autre option : tourner réellement le poisson pour que la gravité bouge ses otolithes.
-
 % Papi Jean est mort. Je m'arrête un moment.
-
-Cette deuxième solution est plus performante, car elle reproduit réellement la stimulation vestibulaire sans les limitations dues au pinces optiques (manque de calibration, problème d'échauffement...) mais nécessite des développements techniques avancés pour être appliquée sous microscope. En effet, pour conserver le microscope fixe par rapport à un poisson mobile, il faut construire un microscope rotatif, tout en gardant les conditions de stabilité nécessaires à l'imagerie. Nous avons donc développé un microscope à feuille de lumière rotatif capable de mesurer l'activité du cerveau pendant une stimulation vestibulaire réelle \cite{migault_whole-brain_2018}.
+Cette deuxième solution est plus performante, car elle reproduit réellement la stimulation vestibulaire sans les limitations dues au pinces optiques, mais elle nécessite des développements techniques avancés pour être appliquée sous microscope. En effet, pour conserver le microscope fixe par rapport à un poisson mobile, il faut construire un microscope rotatif, tout en gardant les conditions de stabilité nécessaires à l'imagerie. Un microscope à feuille de lumière rotatif capable de mesurer l'activité du cerveau pendant une stimulation vestibulaire réelle a donc été développé \cite{migault_whole-brain_2018}.
 
 \subsection{Description du montage}
 
 \subsubsection{Unité d'illumination}
 
-Un microscope à feuille de lumière par balayage est généralement constitué de deux bras optiques formant un téléscope de manière à placer le miroir rotatif galvanométrique de balayage dans le plan congugé de l'échantillon. Ainsi, son mouvement de rotation est transformé en une pure translation du faisceau au niveau de l'échantillon. Ce montage est volumineux et inadapté à un microscope rotatif. Il a donc fallu le miniaturiser et garantir sa stabilité. Nous avons remplacé les téléscopes par des objectifs de microscope. Le plan de Fourier n'étant pas accessible à cause de la distance frontale arrière, le miroir galvanométrique est légèrement hors du plan conjugué, ce qui introduit une rotation du faisceau dans l'échantillon en plus de la translation. Cette rotation reste cependant faible (<0.4°), et compatible avec une feuille de lumière par balayage.  
+Un microscope à feuille de lumière par balayage est généralement constitué de deux bras optiques formant un téléscope de manière à placer le miroir rotatif galvanométrique de balayage dans le plan congugé de l'échantillon. Ainsi, son mouvement de rotation est transformé en une pure translation du faisceau au niveau de l'échantillon. Ce montage est volumineux et inadapté à un microscope rotatif. Il a donc fallu le miniaturiser et garantir sa stabilité. Les téléscopes ont été remplacés par des objectifs de microscope. Le plan de Fourier n'étant pas accessible à cause de la distance frontale arrière, le miroir galvanométrique est légèrement hors du plan conjugué, ce qui introduit une rotation du faisceau dans l'échantillon en plus de la translation. Cette rotation reste cependant faible (<0.4°), et compatible avec une feuille de lumière par balayage.  
 L'unité d'illumination est composée d'un connecteur de fibre monté sur un positionneur piézoélectrique et de deux objectifs en montage confocal de part et d'autre d'un miroir galvanométrique. 
 
 \begin{figure}
@@ -49,19 +36,21 @@ L'unité d'illumination est composée d'un connecteur de fibre monté sur un pos
 
 \subsubsection{Unité de détection}
 
-L'enjeu pour une unité de détection rapide est de permettre l'enregistrement avec une durée d'exposition la plus courte possible tout en maintenant un rapport signal à bruit suffisant. Pour collecter beaucoup de lumière, il faut une grande ouverture numérique, et donc une distance de travail faible. Cependant, pour une imagerie à champ large, il faut un grandissement faible. La solution que nous avons retenue est un objectif Olympus d'ouverture numérique 1 et de grandissement x20. Le grandissement est donné pour une lentille de tube de 180 mm, mais j'ai utilisé une lentille de tube de 150 mm, ce qui donne donc un grandissement de x16.667. Un pixel de la caméra mesure 6.5 µm, ce qui donne un pixel objet de 0.39 µm. Le capteur CMOS est un carré de 2048 pixels de côté, ce qui donne un champ objet de 0.8 mm. Le champ objet correspond à la longueur du cerveau, mais le pixel objet est très petit par rapport à un neurone. Pour limiter la quantité de données à enregistrer et augmenter le rapport signal à bruit, on peut combiner par les pixels de la caméra, opération appellée \emph{binning}. Cela donne un pixel objet de 0.78 µm.
+L'enjeu pour une unité de détection rapide est de permettre l'enregistrement avec une durée d'exposition la plus courte possible tout en maintenant un rapport signal à bruit suffisant. Pour collecter beaucoup de lumière, il faut une grande ouverture numérique, et donc une distance de travail faible. Cependant, pour une imagerie à champ large, il faut un grandissement faible. La solution retenue est un objectif Olympus d'ouverture numérique 1 et de grandissement x20. Le grandissement est donné pour une lentille de tube de 180 mm, mais une lentille de tube de 150 mm a été utilisée, ce qui donne donc un grandissement de x16.667. Un pixel de la caméra mesure 6.5 µm, ce qui donne un pixel objet de 0.39 µm. Le capteur CMOS est un carré de 2048 pixels de côté, ce qui donne un champ objet de 0.8 mm. Le champ objet correspond à la longueur du cerveau, mais le pixel objet est très petit par rapport à un neurone. Pour limiter la quantité de données à enregistrer et augmenter le rapport signal à bruit, on peut combiner par les pixels de la caméra, opération appellée \emph{binning}. Cela donne un pixel objet de 0.78 µm.
 
 \begin{figure}
 \centering
 \includegraphics[width=0.8\textwidth]{./files/detection_unit.svg.png}
-\caption{Schéma du filtrage spectral dans le bras de détection. Le filtre GFP réduit la luminosité ambiante sur une fenêtre correspondant à la protéine et le filtre notch (\emph{encoche}) élimine la longueur d'onde du laser.}
+\caption{Schéma du filtrage spectral dans le bras de détection. Le filtre notch (\emph{encoche}) est très étroit et rejette la longueur d'onde du laser (488 nm). Le filtre GFP et plus large et transmet seulement une bande autour de la fréquence de la GFP (525 nm).}
+% 1e-5 à 488 nm pour GFP
+% 1e-6 à 488 nm pour Notch
 \end{figure}
 
 % VolkerComment
 % Originally, we did the experiments only with the notch filter. All photons emitted by the fluorophore were then collected which maximizes the signal. The GFP filter helps to block some additionally excited autofluorescence in the tissue. With the GFP filter the notch filter is not really anymore necessary. You can keep your figure but show the real GFP filter transmission spectrum in this case !
 
 
-Pour obtenir un bon rapport signal à bruit, il faut réduire la lumière parasite. Une source puissante est le laser d'illumination, nous utilisons donc un filtre coup bande très étroit à sa longueur d'onde. Bien que les expériences soient réalisées dans le noir, un filtre GFP (passe-bande à la longueur d'onde de la GFP) permet de filtrer les résidus de luminosité ambiante comme les écrans ou les voyants lumineux. Après ce filtrage, les bruits restants sont le bruit de photon et le bruit numérique. Le bruit numérique pourrait être réduit avec un système de refroidissement prévu sur la caméra, mais celui-ci est trop encombrant pour le microscope rotatif, et a donc été retiré. Le bruit de photon ne peut être réduit qu'avec des meilleures sondes calciques ou en exposant plus longtemps, mais il est négligeable devant le bruit numérique d'une caméra non refroidie. Le bruit numérique présente une structure liée à la consitution interne du capteur et qui fait apparaître des raies de pixel et la ligne médiale de l'obturateur déroulant.
+Pour obtenir un bon rapport signal à bruit, il faut réduire la lumière parasite. Une source puissante est le laser d'illumination, elle peut être bloquée spécifiquement avec un filtre coup bande très étroit à sa longueur d'onde. Un filtre GFP (passe-bande à la longueur d'onde de la GFP) permet de filtrer davantage l'autofluorescence des tissus. Après ce filtrage, les bruits restants sont le bruit de photon et le bruit numérique. Le bruit numérique pourrait être réduit avec un système de refroidissement prévu sur la caméra, mais celui-ci est trop encombrant pour le microscope rotatif, et a donc été retiré. Le bruit de photon ne peut être réduit qu'avec des meilleures sondes calciques ou en exposant plus longtemps, mais il est négligeable devant le bruit numérique d'une caméra non refroidie. Le bruit numérique présente une structure liée à la constitution interne du capteur et qui fait apparaître des raies de pixel et la ligne médiale de l'obturateur déroulant.
 
 % VolkerComment
 % No! We do not filter out light from light sources in the room! The systems are shielded such that this light does not enter the detection path . The GFP filter filters additional excited autofluorescence.
@@ -90,7 +79,7 @@ Une bille fluorescente de 1 µm est éclairée transversalement par le laser d'e
 
 Le volume d'un cerveau de larve de poisson zèbre mesure 400 µm de largeur × 800 µm de longueur × 300 µm de hauteur et est situé sur le dessus de la larve. Afin de minimiser l'épaisseur de tissus traversée, on place donc l'objectif de détection sur la partie supérieure. Le laser peut donc être placé sur le côté. Les yeux sont très pigmentés et la lumière ne passe pas à travers, ce qui crée une zone d'ombre entre les yeux. Certains laboratoires qui sont intéressés par ces régions appartenant au télencéphale et au diencéphale peuvent donc ajouter un deuxième laser à l'avant pour éclairer cette région.
 
-Pour produire un faisceau laser le plus fin possible sur une longueur de 400 µm, il faut minimiser la largeur après 200 µm de propagation avec comme variable le waist w0 placé au milieu de l'échantillon :
+Pour produire un faisceau laser le plus fin possible sur une longueur de 400 µm, il faut minimiser la largeur après 200 µm de propagation avec comme variable le waist $w_0$ placé au milieu de l'échantillon :
 
 $$
 w(z) = w_0 \, \sqrt{ 1+ {\left( \frac{z}{z_\mathrm{R}} \right)}^2 } \qquad z_\mathrm{R} = \frac{n \pi w_0^2 }{\lambda}
@@ -99,7 +88,7 @@ $$
 \begin{figure}
 \centering
 \includegraphics[width=0.8\textwidth]{./files/possible-waist_1P.png}
-\caption{On voit ici la demi largeur du profil gaussien à 488 nm dans l'eau pour différentes valeurs du waist. Le trait en pointillé montre le rayon d'un neurone. On cherche à minimiser l'épaisseur du faisceau entre -100 µm à 100 µm. Le trait épais marque la position optimale pour ce critère (les autres profils sont tous plus larges à 100 µm).}
+\caption{On voit ici la demi largeur du profil gaussien à 488 nm dans l'eau pour différentes valeurs du waist. Le trait en pointillé montre le rayon d'un neurone. On cherche à minimiser l'épaisseur du faisceau entre -100 µm à 100 µm. Le trait épais marque la position optimale pour ce critère (les autres profils sont tous plus larges à 100 µm du centre). L'ouverture numérique associée vaut $ \mathrm{NA} = n\sin(\lambda/\pi n w_0) $.}
 \end{figure}
 
 % VolkerComment
@@ -139,7 +128,7 @@ Pour un temps d'exposition par couche de 10 ms en mode d'acquisition continu, on
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Analyse des données}
 
-L'analyse des données produites par le microscope est en enjeu en lui même. En effet, avec des images de 1024x600 pixels, 20 couches et 25 minutes d'enregistrement à 2 volumes par seconde, on obtient 60000 images. Pour des pixels stockés sur 16 bits, cela donne près de 60 Go de données brutes. Dans ce chapitre, je m'intéresse aux stratégies pour traiter ces données. Les chiffres donnés ci-dessus sont ceux utilisés pour les calculs en ordre de grandeur par la suite.
+L'analyse des données produites par le microscope est en enjeu en lui même. En effet, avec des images de 1024$\times$600 pixels, 20 couches et 25 minutes d'enregistrement à 2 volumes par seconde, on obtient 60000 images. Pour des pixels stockés sur 16 bits, cela donne près de 60 Go de données brutes. Dans ce chapitre, je m'intéresse aux stratégies pour traiter ces données. Les chiffres donnés ci-dessus sont ceux utilisés pour les calculs en ordre de grandeur par la suite.
 
 \subsection{Logiciels existants}
 
@@ -160,7 +149,7 @@ Plusieurs laboratoires travaillant en microscopie à feuille de lumière analyse
 % VolkerComment
 % You have to describe your development of easyRLS a routine in form of a collection of functions that allows in a modular manner to analyze the whole-brain data. Go more in detail.
 
-Aucun logiciel adapté à nos données n'étant disponible à l'époque, nous avons développé nos propres méthodes adaptées à l'imagerie sur plateforme rotative. Je décris ici les étapes principales de l'analyse, les enjeux techniques, et les pistes d'amélioration que j'ai identifié.
+Aucun logiciel adapté à nos données n'étant disponible à l'époque, nous avons développé nos propres méthodes adaptées à l'imagerie sur plateforme rotative. Les spécifications étant très mouvantes, nous avons adopté une structure modulaire dans laquelle une collection de fonctions peuvent être appliquées optionnellement dans un ordre adapté à chaque jeu de données. Je décris ici les étapes principales de l'analyse, les enjeux techniques, et les pistes d'amélioration.
 
 \subsubsection{Étapes principales de l'analyse de données}
 
@@ -168,10 +157,14 @@ Aucun logiciel adapté à nos données n'étant disponible à l'époque, nous av
 
 Dans la suite de cette section, j'appellerai de manière équivalente (x,y,z,t) les cooordonnées d'un point et les axes dans le repère du poisson. Ces coordonnées sont données dans l'espace de référence RAST (\emph{Right Anterior Superior Time}), c'est-à-dire que l'axe x est orienté vers la droite de la larve, l'axe y vers l'avant, l'axe z vers le haut, et le temps dans le sens naturel.
 
+\begin{figure}
+\centering
+\includegraphics[width=0.6\textwidth]{./files/RAST.svg.png}
+\caption{Illustration de la convention d'orientation RAS (a.) et comparaison avec les systèmes de coordonnées naturels de ImageJ (b. coordonnées des pixels d'un écran) et Matlab (c. coordonnées des éléments d'une matrice).}
+\end{figure}
+
 % VolkerComment
 % Add a figure illustrating the RAST definition and add your wiki page with the corresponding figures about the different coordinate systems used in Matlab, Fiji, cmtk
-
-% TODO illustration RAST
 
 \paragraph{Alignement temporel}
 
@@ -192,10 +185,11 @@ Après avoir obtenu une matrice 4D alignée temporellement, il est trivial de r�
 
 % VolkerComment
 % Add a figure of a typical PSD and show visually how you extract the data
+% (PSD = DSP)
 
-Il est intéressant de réaliser certaines analyses directement sur les pixels de l'image. Cela permet d'obtenir des figures avec une bonne résolution et contourne le problème de la segmentation des neurones tout en profitant au mieux de l'échantillonage permis par la caméra. Cependant, cette approche est couteuse en calcul car elle opère sur un grand nombre d'éléments. Nous l'avons principalement réservée à l'analyse de Fourier pour une stimulation périodique.
+Il est intéressant de réaliser certaines analyses directement sur les pixels de l'image. Cela permet d'obtenir des figures avec une bonne résolution et contourne le problème de la segmentation des neurones tout en profitant au mieux de l'échantillonnage permis par la caméra. Cependant, cette approche est coûteuse en calcul car elle opère sur un grand nombre d'éléments. Nous l'avons principalement réservée à l'analyse de Fourier pour une stimulation périodique.
 Pour chaque pixel dans la région d'intérêt, on applique la transformée de Fourier discrète sur son profil temporel. Cela donne un pic en amplitude à la fréquence de stimulation et du bruit en dehors. On calcule un rapport signal à bruit comme le rapport de l'amplitude du signal sur l'amplitude du bruit moyennée sur une fenêtre autour du pic de largeur arbitraire. On considère également la phase du pic, qui représente le déphasage dus signal de fluorescence avec le stimulus.
-Ces valeurs pour chaque pixels sont ensuite utilisées pour représenter une couleur dans l'espace HSV (\emph{Hue, Saturation, Value}, Teinte, Saturation, Valeur). La teinte représente le déphasage, la saturation et réglée à 1, et la valeur représente le rapport signal à bruit. 
+Ces valeurs pour chaque pixels sont ensuite utilisées pour représenter une couleur dans l'espace HSV (\emph{Hue, Saturation, Value} soit Teinte, Saturation, Valeur). La teinte représente le déphasage, la saturation et réglée à 1, et la valeur représente le rapport signal à bruit. 
 
 \paragraph{Segmentation et analyse par neurone}
 
@@ -233,7 +227,9 @@ Il n'est pas envisageable de charger un jeu de données de plus de 60 Go en mém
 Le memory mapping peut être combiné à l'allocation de mémoire disque pour être utilisé au moment de l'écriture. Cela facilite la manipulation des données par rapport à une écriture séquentielle dans un fichier binaire, et permet la modification d'une partie du fichier et la parallélisation de l'écriture. Pour cela, j'ai utilisé la fonction système \verb|fallocate| qui alloue de l'espace sur un disque formaté en \verb|ext4|.
 
 \paragraph{Calcul du quantile glissant}
-Une définition courante de la valeur de référence d'un signal calcique repose sur le calcul d'un quantile glissant (généralement le huitième centile). L'algorithme naïf est inefficace, j'ai donc cherché une implémentation astucieuse et ai trouvé la fonction \verb|runquantile| de la bibliothèque \verb|caTools|, qui a apporté un gain en vitesse par rapport à l'implémentation précédente.
+Une définition courante de la valeur de référence d'un signal calcique repose sur le calcul d'un quantile glissant (le huitième centile 
+% TODO \cite{dombeck_imaging_2007}
+). L'algorithme naïf qui consiste à calculer le quantile sur chaque fenêtre est inefficace ($\mathcal{O}(n^2)$), j'ai donc cherché une implémentation astucieuse et ai trouvé la fonction \verb|runquantile| de la bibliothèque \verb|caTools|, qui a apporté un gain en vitesse par rapport à l'implémentation précédente. Cette implémentation repose sur le tri par insertion mais retient le tri effectué sur la fenêtre précédente, ce qui lui permet d'atteindre une complexité en $\mathcal{O}(n\times k)$, où $n$ est le nombre de valeurs et $k$ la taille de la fenêtre.
 
 % VolkerComment
 % Explain the algorithm used by caTools and explain why it is faster => running quantile calculation. What is the speed gain when analyzing our data
@@ -255,9 +251,9 @@ La taille des données brutes pourrait être largement réduite, ce qui accélé
 
 % TODO estimer la taille de la ROI sur plusieurs runs
 
-\paragraph{Langage adapté}
+\paragraph{Langage adapté} % TODO reformuler ce paragraphe
 Jusque là, une grande partie des données sont analysée en langage Matlab. Ce langage n'est pas très adapté à la gestion de données de ce type et souffre de plusieurs lacunes. Matlab est généralement lent, ce qui est handicapant. Matlab n'accepte de données que sur 8, 16, 32, ou 64 bits, ce qui interdit l' amélioration consistant à encoder les données sur 12 bits. Matlab est mauvais pour réaliser un système modulaire, ce qui augmente dramatiquement les efforts pour maintenir un programme. Matlab est fermé, opaque, et sous licence propriétaire, ce qui diminue les possibilités d'utilisation du code.
-Des recherches et tests m'ont conduit à penser que le langage Julia serait bien plus adapté pour produire une base de code saine pour une évolution à court, moyen et long terme.
+J'ai réalisé un prototype rapide détaillé en annexe pour évaluer l'intérêt de traiter des données en langage Julia. Le principe d'interface, et spécifiquement des \verb|AbstractArray| (\href{https://docs.julialang.org/en/v1/manual/interfaces/#man-interface-array-1}{doc}) est particulièrement adapté à la manipulation de données matricielles en memory mapping, bien plus que le \verb|memmapfile| de Matlab (\href{https://fr.mathworks.com/help/matlab/ref/memmapfile.html}{doc}) car il permet un traitement plus bas niveau tout en fournissant des abstraction plus haut niveau. Ces considérations m'ont conduit à penser que pour produire et maintenir une base de code saine et efficace pour l'analyse, il était indispensable de s'éloigner du langage Matlab, que le langage Python était une alternative possible, mais que le langage Julia était préférable. Ceci aussi bien pour une évolution à court, moyen et long terme.
 
 % nrrd et ses limites
 % 3Dslicer vs cmtk vs ants...

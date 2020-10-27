@@ -26,7 +26,7 @@ ou préférer un installation manuelle, plus à jour [https://www.tug.org/texliv
 ### Dépendances
 
 ```
-tlmgr install bbm was datetime fmtcount slantsc titlesec blindtext changebar versions adjustbox xstring csquotes
+tlmgr install bbm was datetime fmtcount slantsc titlesec blindtext changebar versions adjustbox xstring csquotes listings
  xcolor mathtools eso-pic collectbox babel-french lm
 texhash
 ```

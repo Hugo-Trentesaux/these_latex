@@ -1,3 +1,107 @@
+
+
+\definecolor{mygreen}{RGB}{28,172,0}
+\definecolor{mylilas}{RGB}{170,55,241}
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepgreen}{rgb}{0,0.5,0}
+\definecolor{lightgray}{rgb}{0.6,0.6,0.6}
+
+
+\lstset{%
+    breaklines=true, %
+    showstringspaces=false,%
+    % numbers=left, %
+    % numberstyle={\tiny \color{black}},%
+    frame=leftline,%
+}
+% MATLAB
+\newcommand\matlabstyle{\lstset{language=Matlab,%
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{blue},%
+    stringstyle=\color{mylilas},%
+    commentstyle=\color{mygreen},%
+    numberstyle={\small \color{black}},%
+    numbersep=10pt, % 
+    emph=[1]{classdef, for,end,break},emphstyle=[1]\color{red},%
+}}
+% PYTHON
+\newcommand\pythonstyle{\lstset{language=Python,%
+    basicstyle=\ttfamily\small,%
+    keywordstyle=\color{deepblue},%
+    stringstyle=\color{deepgreen},%
+    commentstyle=\color{lightgray},%
+    otherkeywords={self},
+}}
+
+
+% http://wiki.ljp.upmc.fr/zebrain/
+% analyse en Julia
+
+
+
+
 \chapter{Appendice}
 
-Fourni en appendice.
+
+\section{Langage de programmation adapté}
+
+\subsection{Memory mapping}
+
+Du fait du volume des données traitées, notre processus d'analyse repose largement sur le \verb|memory mapping| comme solution de gestion des données brutes. Cela permet de gérer une portion de mémoire disque comme une portion de mémoire vive et ainsi de n'appliquer les opérations de chargement de données en mémoire vive qu'au moment de leur utilisation et de ne pas écrire systématiquement les opérations de lecture et d'écriture. Je compare ici les interfaces fournies dans les langages de programmation Matlab, Python, et Julia.
+
+\subsubsection{Matlab}
+
+La langage Matlab fournit la fonction \verb|memmapfile| (\href{https://fr.mathworks.com/help/matlab/ref/memmapfile.html}{doc}) qui permet de cartographier une zone mémoire contenant des données de type \verb|int8|, \verb|int16|, \verb|int32|, \verb|int64|, \verb|uint8|, \verb|uint16|, \verb|uint32|, \verb|uint64|, \verb|single|, ou \verb|double|.
+J'ai implémenté plusieurs surcouches de la classe Matlab \verb|memmapfile| qui permettent de gérer l'accès à des données stockées sous différents formats comme le \verb|dcimg|, d'autre orientations que celle par défaut, et en utilisant l'indexation linéaire suivant (xy) en une seule ligne. Ces classes ont grandement facilité l'écriture de code pour la manipulation des données brutes et aux différentes étapes de traitement, ainsi que des interfaces graphiques rudimentaires utilisées pour les visualiser. 
+Cependant, une gestion manuelle de la mémoire et des abstractions sur les tableaux de données manquent au langage pour la réutilisabilité de ces structures, ce qui conduit inévitablement à de la duplication de code. Ci-dessous on peut voir la structure adoptée pour ces classes, qui surchargent les méthodes intégrées au langage \verb|subsref| et \verb|subsasgn|.
+
+
+\matlabstyle
+\begin{lstlisting}
+classdef Mmap < handle
+% the class Mmap is used to load a mmap of a binary file
+% and redefine layers index when called as subscript
+% subscript can be 4D or 3D
+
+% [...] properties, contructor, and other methods definition
+
+function out = subsref(self, S)        
+    switch S(1).type
+        case '()'
+            new_S = self.subStruct(S);
+            % [...] subscript manipulation
+            out = subsref(self.mmap.Data.bit, new_S);
+            % [...] returned data manipulation
+            end
+        case '.'
+            out = builtin('subsref', self, S);
+        otherwise
+            error('subsref other than () or . not implemented')
+    end        
+end
+
+end
+\end{lstlisting}
+
+\subsubsection{Python}
+
+Le langage Python offre également une classe \verb|mmap| (\href{https://docs.python.org/3.8/library/mmap.html}{doc}) ainsi que sa bibliothèque Numpy avec la classe \verb|memmap| (\href{https://numpy.org/devdocs/reference/generated/numpy.memmap.html}{doc}). CaImAn implémente également une surcouche fine sur cette classe pour gérer ses conventions d'organisation de fichiers. J'en montre ci-dessous un extrait.
+
+\pythonstyle
+\begin{lstlisting}
+def load_memmap(filename: str, mode: str = 'r') ->
+    Tuple[Any, Tuple, int]:
+    # [...]
+    Yr = np.memmap(
+        file_to_load,
+        mode=mode,
+        shape=prepare_shape((d1 * d2 * d3, T)),
+        dtype=np.float32,
+        order=order
+        )
+    if d3 == 1:
+        return (Yr, (d1, d2), T)
+    else:
+        return (Yr, (d1, d2, d3), T)
+\end{lstlisting}
