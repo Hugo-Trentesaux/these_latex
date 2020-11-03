@@ -1,5 +1,5 @@
 
-
+% colors for code highlighting
 \definecolor{mygreen}{RGB}{28,172,0}
 \definecolor{mylilas}{RGB}{170,55,241}
 \definecolor{deepblue}{rgb}{0,0,0.5}
@@ -7,17 +7,33 @@
 \definecolor{deepgreen}{rgb}{0,0.5,0}
 \definecolor{lightgray}{rgb}{0.6,0.6,0.6}
 
+% julia langage definition
+\lstdefinelanguage{Julia}%
+  {morekeywords={abstract,break,case,catch,const,continue,do,else,elseif,%
+      end,export,false,for,function,immutable,import,importall,if,in,%
+      macro,module,otherwise,quote,return,struct,switch,true,try,type,typealias,%
+      using,while},%
+   sensitive=true,%
+   alsoother={\$,<:,::},%
+   morecomment=[l]\#,%
+   morecomment=[n]{\#=}{=\#},%
+   morestring=[s]{"}{"},%
+   morestring=[m]{'}{'},%
+}[keywords,comments,strings]%
 
+% general parameters for listings
 \lstset{%
-    breaklines=true, %
-    showstringspaces=false,%
+    breaklines          = true, %
+    showstringspaces    = false,%
+    basicstyle          = \ttfamily\small,
     % numbers=left, %
     % numberstyle={\tiny \color{black}},%
-    frame=leftline,%
+    frame               = leftline,%
+    basewidth           = 0.45em,%
 }
 % MATLAB
-\newcommand\matlabstyle{\lstset{language=Matlab,%
-    basicstyle=\ttfamily\small,
+\newcommand\matlabstyle{\lstset{%
+    language=Matlab,%
     keywordstyle=\color{blue},%
     stringstyle=\color{mylilas},%
     commentstyle=\color{mygreen},%
@@ -26,13 +42,21 @@
     emph=[1]{classdef, for,end,break},emphstyle=[1]\color{red},%
 }}
 % PYTHON
-\newcommand\pythonstyle{\lstset{language=Python,%
-    basicstyle=\ttfamily\small,%
+\newcommand\pythonstyle{\lstset{%
+    language=Python,%
     keywordstyle=\color{deepblue},%
     stringstyle=\color{deepgreen},%
     commentstyle=\color{lightgray},%
     otherkeywords={self},
 }}
+% JULIA
+\newcommand\juliastyle{\lstset{%
+    language         = Julia,
+    keywordstyle     = \bfseries\color{blue},
+    stringstyle      = \color{magenta},
+    commentstyle     = \color{ForestGreen},
+}}
+
 
 
 % http://wiki.ljp.upmc.fr/zebrain/
@@ -48,13 +72,13 @@
 
 \subsection{Memory mapping}
 
-Du fait du volume des données traitées, notre processus d'analyse repose largement sur le \verb|memory mapping| comme solution de gestion des données brutes. Cela permet de gérer une portion de mémoire disque comme une portion de mémoire vive et ainsi de n'appliquer les opérations de chargement de données en mémoire vive qu'au moment de leur utilisation et de ne pas écrire systématiquement les opérations de lecture et d'écriture. Je compare ici les interfaces fournies dans les langages de programmation Matlab, Python, et Julia.
+Du fait du volume des données traitées, notre processus d'analyse repose largement sur le \verb|memory mapping| comme solution de gestion des données brutes. Cela permet de traiter une portion de mémoire disque comme une portion de mémoire vive et ainsi de n'appliquer les opérations de chargement de données en mémoire vive qu'au moment de leur utilisation et de ne pas écrire systématiquement les opérations de lecture et d'écriture. Je compare ici les interfaces fournies dans les langages de programmation Matlab, Python, et Julia ainsi que la manière dont elles peuvent être étendues par des classes ou structures.
 
 \subsubsection{Matlab}
 
 La langage Matlab fournit la fonction \verb|memmapfile| (\href{https://fr.mathworks.com/help/matlab/ref/memmapfile.html}{doc}) qui permet de cartographier une zone mémoire contenant des données de type \verb|int8|, \verb|int16|, \verb|int32|, \verb|int64|, \verb|uint8|, \verb|uint16|, \verb|uint32|, \verb|uint64|, \verb|single|, ou \verb|double|.
-J'ai implémenté plusieurs surcouches de la classe Matlab \verb|memmapfile| qui permettent de gérer l'accès à des données stockées sous différents formats comme le \verb|dcimg|, d'autre orientations que celle par défaut, et en utilisant l'indexation linéaire suivant (xy) en une seule ligne. Ces classes ont grandement facilité l'écriture de code pour la manipulation des données brutes et aux différentes étapes de traitement, ainsi que des interfaces graphiques rudimentaires utilisées pour les visualiser. 
-Cependant, une gestion manuelle de la mémoire et des abstractions sur les tableaux de données manquent au langage pour la réutilisabilité de ces structures, ce qui conduit inévitablement à de la duplication de code. Ci-dessous on peut voir la structure adoptée pour ces classes, qui surchargent les méthodes intégrées au langage \verb|subsref| et \verb|subsasgn|.
+J'ai implémenté plusieurs surcouches de la classe Matlab \verb|memmapfile| qui permettent de gérer l'accès à des données stockées sous différents formats comme le \verb|dcimg|, d'autre orientations que celle par défaut, et en utilisant l'indexation linéaire suivant (xy) en une seule ligne. Ces classes ont facilité l'écriture de code pour la manipulation des données brutes et aux différentes étapes de traitement, ainsi que des interfaces graphiques rudimentaires utilisées pour les visualiser mais ne permettent pas de profiter des optimisations de Matlab sur la vectorisation du calcul.
+De plus, une gestion manuelle de la mémoire et des abstractions sur les tableaux de données manquent au langage pour que ces classes soit facilement réutilisables, ce qui conduit à de la duplication de code. Ci-dessous on peut voir la structure adoptée pour ces classes, qui surchargent les méthodes intégrées au langage \verb|subsref| et \verb|subsasgn|.
 
 
 \matlabstyle
@@ -86,7 +110,7 @@ end
 
 \subsubsection{Python}
 
-Le langage Python offre également une classe \verb|mmap| (\href{https://docs.python.org/3.8/library/mmap.html}{doc}) ainsi que sa bibliothèque Numpy avec la classe \verb|memmap| (\href{https://numpy.org/devdocs/reference/generated/numpy.memmap.html}{doc}). CaImAn implémente également une surcouche fine sur cette classe pour gérer ses conventions d'organisation de fichiers. J'en montre ci-dessous un extrait.
+Le langage Python offre également une classe \verb|mmap| (\href{https://docs.python.org/3.8/library/mmap.html}{doc}) ainsi que sa bibliothèque Numpy avec la classe \verb|memmap| (\href{https://numpy.org/devdocs/reference/generated/numpy.memmap.html}{doc}). Une option \verb|order| permet de préciser l'ordre des données en mémoire, et donc d'adapter simplement la manière dont les données sont stockées à la manière donc elles seront utilisées. CaImAn implémente également une surcouche fine sur cette classe pour gérer ses conventions d'organisation de fichiers, où de nombreuses informations sont contenues dans le nom de fichier. J'en montre ci-dessous un extrait.
 
 \pythonstyle
 \begin{lstlisting}
@@ -105,3 +129,41 @@ def load_memmap(filename: str, mode: str = 'r') ->
     else:
         return (Yr, (d1, d2, d3), T)
 \end{lstlisting}
+
+
+\subsubsection{Julia}
+
+Le langage Julia intègre un module dédié au \verb|memory mapping| (\href{https://docs.julialang.org/en/v1/stdlib/Mmap/index.html#Mmap.mmap}{doc}) qui permet d'accéder aux données par un objet qui se comporte de manière identique à un tableau Julia. Via le concept d'interfaces (\href{https://docs.julialang.org/en/v1/manual/interfaces/#man-interface-array-1}{doc}), en particulier l'interface de tableau, il est facile d'écrire une surcouche immédiatement compatible avec n'importe quelle fonction prenant en argument un tableau Julia. Cela est très différent de Matlab où il faut écrire des fonctions spécifiques et légèrement différent de Python où l'écriture de classes intermédiaires génère un surcoût important par rapport à Numpy. Je montre ici un exemple de surcouche mince sur la structure Julia \verb|mmap|.
+Il est extrêmement facile de surcharger une telle classe Julia pour l'adapter à des usages différents sans avoir à en modifier le comportement. Par exemple, il suffit d'une dizaine de lignes pour rendre une telle structure compatible avec les données stockées sous le format de CaImAn tout en conservant la compatibilité avec d'autres formats, et pour un coût nul à l'exécution.
+% Grâces aux interfaces, à la surcharge de méthodes, au filtrage par motif (\emph{pattern matching}, il est extrêmement facile de surcharger les méthodes d'un classe Julia pour l'adapter à des usages différents sans avoir à en modifier le comportement. Cela offre une souplesse précieuse lors du prototypage de même qu'en production dans des environnements différents. Par exemple, il suffit d'une dizaine de lignes pour rendre une telle structure compatible avec les données stockées sous le format de CaImAn tout en conservant la compatibilité avec d'autres formats, et pour un coût nul à l'exécution.
+
+\juliastyle
+\begin{lstlisting}
+using Mmap
+
+# ===== structure definition =====
+struct Stack{T,N} <: AbstractArray{T,N}
+    file::String        # path plus filename of raw raster file
+    dims::NTuple{N,Int} # N integers correspondig to dimension sizes
+    space::String       # e.g. RAST
+    m::Array{T,N}       # memory mapped array
+    # core constructor
+    Stack(file::String, T::DataType, dims::NTuple, space::String) =
+      new{T,length(dims)}(file, dims, space,
+        Mmap.mmap(open(file), Array{T, length(dims)}, dims))
+end
+
+# [...] more methods like constructor overload
+
+# ===== interface implementation =====
+# following functions allows to access Stack like an Array
+Base.size(S::Stack) = S.dims
+# linear indexing
+Base.getindex(S::Stack, i::Int) = S.m[i] 
+# cartesian indexing
+Base.getindex(S::Stack{T,N}, I::Vararg{Int, N}) where {T,N} = S.m[I...]
+\end{lstlisting}
+
+
+% \subsection{Vitesse d'exécution}
+% \subsection{Gestion et maintenance du code}

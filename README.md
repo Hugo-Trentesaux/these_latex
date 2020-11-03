@@ -41,4 +41,4 @@ ext install latex-workshop # after Ctrl+P
 
 ## Bibliographie
 
-Échapper les `%` en les remplaçant par des `\%`.
+Échapper les `%` en les remplaçant par des `\%`. (mais laisser les `\%` existants tels quels)

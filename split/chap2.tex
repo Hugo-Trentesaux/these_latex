@@ -1,4 +1,4 @@
-\chapter{Imagerie fonctionnelle sous stimulation vestibulaire}
+\chapter{Imagerie fonctionnelle sous stimulation vestibulaire}\label{chapIII}
 
 % VolkerComment
 % You have to extent significantly the first paragraph and link it to the previous chapter. For the following subsections you have to seperated Geoffrey's development from your developments. When you started your PhD the one-photon system was already developed by Geoffrey. You have to review this development in all details to prepare the chapter where you present the two-photon RLS and your developments. Especially, you have to talk about the fiber delivery of the laser onto the rotating platform. Do not mix this presentation with any developments that yo did later for the 2PRLS. Your contribution comes when you talk about the challenges posed by treating the recorded large data sets and the necessity of the development of an analysis pipeline. Introduce well the analysis challenges and the requirement that a good analysis pipeline should fulfill. Then you write an entire chapter to detail your easyRLS development. This routine became the bases for the data analysis in the paper and is our work horse in the group until today. This development gave you a first publication.
@@ -138,11 +138,11 @@ De nombreux laboratoires de biologie réalisent leur analyse d'image avec Fiji (
 
 \subsubsection{Suite2P}
 
-Les laboratoires réalisant de l'imagerie deux photons sur le cerveau de rongeur ont des données de petit volume, mais nécessitant des algorithmes sophistiqués avant d'être exploitables. Le logiciel \href{https://www.suite2p.org/}{suite2p} TODOcite suite2P, doté d'une interface graphique intuitive expose une routine puissante pour la correction de mouvement et la détection de cellules par leur activité. Quelques essais sur nos jeux de données ont montré que le logiciel était fonctionnel mais excessivement lent, ce qui rend l'analyse systématique impossible.
+Les laboratoires réalisant de l'imagerie deux photons sur le cerveau de rongeur ont des données de petit volume, mais nécessitant des algorithmes sophistiqués avant d'être exploitables. Le logiciel \href{https://www.suite2p.org/}{suite2p} \cite{pachitariu_suite2p_2016}, doté d'une interface graphique intuitive expose une routine puissante pour la correction de mouvement et la détection de cellules par leur activité. Quelques essais sur nos jeux de données ont montré que le logiciel était fonctionnel mais excessivement lent, ce qui rend l'analyse systématique impossible.
 
 \subsubsection{CaImAn}
 
-Plusieurs laboratoires travaillant en microscopie à feuille de lumière analysent leurs données à l'aide de \href{https://github.com/flatironinstitute/CaImAn}{CaImAn} (pour \emph{Calcium Image Analysis}) TODOcite CaImAn. Ce programme est décliné en deux versions, la version \emph{online} pour l'analyse de données en temps réel sur une expérience en cours, et la version \emph{batch} pour l'analyse de données \emph{a posteriori}. La première nécessite des machines très puissantes pour atteindre le taux d'images par secondes requis alors que la seconde peut être exécutée sur des machines modestes. Le logiciel a été publié en 2019, je l'ai essayé sur nos jeux de données avec des résultats satisfaisants en terme de qualité, quoiqu'un peu lents.
+Plusieurs laboratoires travaillant en microscopie à feuille de lumière analysent leurs données à l'aide de \href{https://github.com/flatironinstitute/CaImAn}{CaImAn} (pour \emph{Calcium Image Analysis}) \cite{giovannucci_caiman_2019}. Ce programme est décliné en deux versions, la version \emph{online} pour l'analyse de données en temps réel sur une expérience en cours, et la version \emph{batch} pour l'analyse de données \emph{a posteriori}. La première nécessite des machines très puissantes pour atteindre le taux d'images par secondes requis alors que la seconde peut être exécutée sur des machines modestes. Le logiciel a été publié en 2019, je l'ai essayé sur nos jeux de données avec des résultats satisfaisants en terme de qualité, quoiqu'un peu lents.
 
 \subsection{Solution utilisée pour l'analyse de nos données}
 
@@ -227,9 +227,7 @@ Il n'est pas envisageable de charger un jeu de données de plus de 60 Go en mém
 Le memory mapping peut être combiné à l'allocation de mémoire disque pour être utilisé au moment de l'écriture. Cela facilite la manipulation des données par rapport à une écriture séquentielle dans un fichier binaire, et permet la modification d'une partie du fichier et la parallélisation de l'écriture. Pour cela, j'ai utilisé la fonction système \verb|fallocate| qui alloue de l'espace sur un disque formaté en \verb|ext4|.
 
 \paragraph{Calcul du quantile glissant}
-Une définition courante de la valeur de référence d'un signal calcique repose sur le calcul d'un quantile glissant (le huitième centile 
-% TODO \cite{dombeck_imaging_2007}
-). L'algorithme naïf qui consiste à calculer le quantile sur chaque fenêtre est inefficace ($\mathcal{O}(n^2)$), j'ai donc cherché une implémentation astucieuse et ai trouvé la fonction \verb|runquantile| de la bibliothèque \verb|caTools|, qui a apporté un gain en vitesse par rapport à l'implémentation précédente. Cette implémentation repose sur le tri par insertion mais retient le tri effectué sur la fenêtre précédente, ce qui lui permet d'atteindre une complexité en $\mathcal{O}(n\times k)$, où $n$ est le nombre de valeurs et $k$ la taille de la fenêtre.
+Une définition courante de la valeur de référence d'un signal calcique repose sur le calcul d'un quantile glissant (le huitième centile  \cite{dombeck_imaging_2007}). L'algorithme naïf qui consiste à calculer le quantile sur chaque fenêtre est inefficace ($\mathcal{O}(n^2)$), j'ai donc cherché une implémentation astucieuse et ai trouvé la fonction \verb|runquantile| de la bibliothèque \verb|caTools|, qui a apporté un gain en vitesse par rapport à l'implémentation précédente. Cette implémentation repose sur le tri par insertion mais retient le tri effectué sur la fenêtre précédente, ce qui lui permet d'atteindre une complexité en $\mathcal{O}(n\times k)$, où $n$ est le nombre de valeurs et $k$ la taille de la fenêtre.
 
 % VolkerComment
 % Explain the algorithm used by caTools and explain why it is faster => running quantile calculation. What is the speed gain when analyzing our data
@@ -280,20 +278,3 @@ J'ai réalisé un prototype rapide détaillé en annexe pour évaluer l'intérê
 }
 \end{figure}
     
-
-
-% TODO
-
-
-
-
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \section{Feuille de lumière deux photons}
-
-% TODO récupérer ça
-
-% Pour étudier le système visuel de la larve, il faut contrôler précisément son environnement visuel. Or un microscope à feuille de lumière classique utilise un laser bleu pour stimuler la fluorescence, et cette longueur d'onde réside dans le domaine visible de la larve de poisson zèbre, ce qui peut l'éblouir et perturber son système visuel. Pour cette raison, Ahrens \emph{et al}, pour l'étude de l'OMR, ont utilisé un microscope à deux photons classique [11]. Cela permet d'illuminer dans l'infrarouge, une longueur d'onde invisible pour le poisson. Cependant ils ne bénéficiaient donc pas des avantages d'un microscope à feuille de lumière et étaient contraints par le balayage point par point à réaliser l'acquisition du cerveau une région après l'autre afin de reconstruire *a prosteriori* l'image du cerveau entier. À peu près en même temps, Truong \emph{et al} publiaient un microscope à feuille de lumière deux photons permettant d'allier les avantages de la microscopie deux photons et de la microscopie à feuille de lumière [17].
-
-% Plus tard, Vladimirov \emph{et al} [18] ont montré que l'étude de l'OMR était également possible en microscopie à feuille de lumière un photon, à condition de ne pas éclairer directement l'oeil du poisson. Ils ont utilisé deux feuilles de lumière, l'une éclairant le cerveau par le côté et l'autre par l'avant, entre les deux yeux. Cependant, l'OMR est un réflexe robuste qui ne recourt pas aux fonctions avancées de la vision, et la perturbation due à l'illumination des autres processus visuels n'est pas contrôlée. C'est pourquoi Wolf \emph{et al} ont appliqué la technique mise au point par Truong à l'étude du système visuel de la larve de poisson zèbre [10]. Ils ont construit un microscope à feuille de lumière deux photons et réalisé l'acquisition du cerveau entier lors de stimulations visuelles.
