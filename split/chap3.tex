@@ -181,21 +181,32 @@ Malgré la déportation de l'illumination et de la détection, les systèmes opt
 
 D'autres techniques d'imagerie neuronale se passent même d'optique et sont uniquement consitués d'une fibre insérée dans l'échantillon. On parle alors plutôt de microendoscope. L'idée générale est d'utiliser la même fibre pour éclairer l'échantillon et collecter la lumière. Des éléments actifs peuvent être utilisés pour moduler le front d'onde, et plusieurs techniques reposent sur une phase de calibration préalable \cite{papadopoulos_high-resolution_2013}\cite{ohayon_minimally_2018}\cite{turtaev_high-fidelity_2018}. Ces techniques utilisent des fibres optiques multimodes classiques. L'avantage de l'endoscopie est que les tissus sont traversés par la fibre, et pas directement par la lumière, ce qui contourne le phénomène de dispersion. Il existe également des systèmes plus sophistiqués qui combinent plusieurs fibres en une seule de manière à profiter de propriétés différentes pour l'émission et collection de lumière \cite{andresen_two-photon_2013}\cite{kudlinski_double_2020}\cite{lombardini_high-resolution_2018}.
 
-
-
 \section{Caractérisation et utilisation de fibres à âme vide}
 
 Nous avons vu dans la partie précédente qu'une fibre optique permet de guider la lumière, que ce soit pour éclairer l'échantillon ou collecter le signal. Les fibres de verre conviennent bien aux applications classiques, mais posent des problèmes d'interaction lumière-matière lors de la transmission d'impulsions à haute énergie pour la microscopie multiphoton et nécessitent une précompensation de la dispersion. Les fibres à âme vide permettent de contourner ces problèmes et ont déjà été largement utilisées dans des microscopes embarqués sur rongeur \cite{tai_two-photon_2004} \cite{flusberg_vivo_2005} \cite{engelbrecht_ultra-compact_2008} \cite{piyawattanametha_vivo_2009} \cite{choi_improving_2014} \cite{klioutchnikov_three-photon_2020}. C'est donc vers celles-ci que nous nous sommes tournés. Aucune fibre optique répondant à nos besoins n'étant disponible commercialement, nous nous sommes tournés vers l'entreprise \href{http://www.glophotonics.fr/}{Glophotonics} et avons testé plusieurs modèles.
 
-\subsection{Utilisation d'une fibre}
+\subsection{Comparaison de fibres}
 
-% TODOVolker (motivation 1P)
-% Add a motivation
-% (alignement, imagerie...) 
+% OK TODOVolker (GLO all fibers)
+% In collaboration with GLO we tested several different fiber types. Go through all of them ! Show the image of the cross section of this fiber and give all details of the fiber geometry: core diameter, total diameter, number of cladding tubes, tube wall thickness, cladding tube diameter, NA, mode field diameter (1/e2), curvature parameter (For b definition, see Opt. Exp. 21, no. 23, 28597, 2013)... .
+
+Au début, nous avons utilisé des fibres ayant une bande de transmission uniquement dans l'infrarouge. Ces fibres ont permis de réaliser l'acquisition deux photons de l'activité neuronale lors de stimulation vestibulaire. Ensuite, nous avons cherché à permettre à la fois la transmission d'un laser 1P et 2P, d'où l'utilisation de fibres avec plusieurs bandes de transmission. Parmi ces fibres, nous avons retenu le modèle PMC-C-9005 B2 qui permet une bonne transmission (97\% à 930 nm sur 1,5 m de fibre contre 70\% pour PMC-C-1C-R\&D2). J'utilise ce modèle comme référence par la suite.
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{./files/glofibers.svg.png}
+\caption{Comparaison de plusieurs fibres fournies par Glophotonics. Les schémas représentent la largeur du coeur (en noir) et la largeur du mode propre (en rouge). Dans le spectre de transmission, on s'intéresse à la valeur à 930 nm et à 488 nm si possible. La valeur de la dispersion est toujours la même, environ à 1 ps/nm.km. Les trois premières fibres on un motif de Kagomé, alors que la dernière n'est composée que d'une couche de capillaires. Seule la troisième fibre a un coeur hexagonal, les autres on un coeur hypocycloïde. La valeur du paramètre de courbure est notée b, comme défini dans Debord \emph{et al}.  % TODOcite \cite{debord_hypocycloid_2013}
+}
+\end{figure}
+
+
+\subsection{Injection d'un laser dans une fibre}
+
+% OK TODOVolker Add a motivation (for 1P)
 
 Une fibre capable de guider à la fois un laser 1P et un laser 2P permettrait de réaliser l'acquisition du cerveau en changeant facilement la longueur d'onde d'excitation. Cela permettrait de mettre en évidence les différences dans l'activité neuronale causées par l'environnement visuel. Je décris ici le processus d'injection dans une fibre et le montage que j'ai mis en place pour passer du laser 1P au laser 2P à l'aide d'un miroir amovible. 
 
-\subsubsection{Injection d'un laser dans une fibre}
+\subsubsection{Principe}
 
 Pour injecter le laser dans la fibre, il faut aligner tous les éléments dans l'axe optique et régler finement les degrés de liberté en translation et en rotation. De plus, comme on souhaite un couplage monomode, il faut faire coincider le mode laser d'entrée de fibre avec le mode propre de la fibre. Le laser ayant un largeur initiale de D, il faut le ramener à une largeur de fibre $w$ (23 µm ± 1 µm d'après la documentation). Pour cela, il faut utiliser une lentille de focale f et satisfaire l'équation suivante :
 
@@ -203,59 +214,40 @@ $$
 f = D\frac{\pi w}{4\lambda}
 $$
 
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{./files/injection.svg.png}
+\caption{schéma de l'injection à deux lasers dans la fibre. Le miroir M2 est amovible et permet de basculer entre l'injection 1P et 2P. (BEX = \emph{Beam Expander}, IL = \emph{Injection Lens}, NCF = \emph{Negative Curvature Fiber})
+\\ Pour la première étape, on injecte un laser visible par l'autre extrémité de la fibre et l'on joue sur les miroirs M1 et M2 pour pointer vers la sortie du laser 2P.
+\label{FIGinjection}}
+\end{figure}
+
 \subsubsection{Injection 2P}
 
-Le laser "Mai-Tai" que j'ai utilisé délivre un faisceau quasiment gaussien (M²<1.1) et son waist ($w_0$) est large d'environ 1 mm. Ces valeurs sont données par la documentation pour une utilisation à 800 nm, mais elles peuvent évoluer légèrement en accordant la longueur d'onde de fonctionnement.
-
-La largeur d'un faisceau gaussien est définie par la fonction :
+Le laser "Mai-Tai" que j'ai utilisé délivre un faisceau quasiment gaussien (M²<1.1) et son waist ($w_0$) est large d'environ 1 mm. Ces valeurs sont données par la documentation pour une utilisation à 800 nm, mais elles peuvent évoluer légèrement en accordant la longueur d'onde de fonctionnement. La largeur d'un faisceau gaussien au long de sa propagation ($z$) est définie par :
 
 $$
 w(z) = w_0 \, \sqrt{ 1+ {\left( \frac{z}{z_\mathrm{R}} \right)}^2 } \qquad \text{avec} \qquad
 z_\mathrm{R} = \frac{\pi w_0^2 }{\lambda}
 $$
 
-La largeur du laser est donc d'environ 2 mm après un mètre de propagation. En prenant D = 2 mm, $\omega$ = 23 µm, et à $\lambda$ = 915 nm, on trouve donc f = 40 mm, c'est pourquoi j'ai utilisé une lentille de focale 40 mm (référence Thorlabs AC254-040-B-ML). Cette lentille dispose également d'un traitement de surface pour optimiser la transmission dans l'infrarouge.
+Le diamètre du laser est donc d'environ 2 mm après un mètre de propagation. En prenant D = 2 mm, $\omega$ = 23 µm, et à $\lambda$ = 915 nm, on trouve donc f = 40 mm, c'est pourquoi j'ai utilisé une lentille de focale 40 mm (référence Thorlabs AC254-040-B-ML). Cette lentille dispose également d'un traitement de surface pour optimiser la transmission dans l'infrarouge.
 
-
-% TODO ref to figure
+% OK TODOVolker (ref + fig)
+% ref to figure
 % show a photo of this configuration and explain the alignment procedure with a schema
+% Give the damaging threshold of the fiber as a reference -> I do not know
 
-% Give the damaging threshold of the fiber as a reference
+J'ai fixé une extrémité de la fibre sur une platine de translation xyz à 40 mm de la lentille (Fig. \ref{FIGinjection}). Pour faciliter l'alignement, j'ai tout d'abord injecté un laser visible grâce à un connecteur fibre à fibre dans l'autre extrémité. Cela m'a permis de pré-aligner deux miroirs sur support rotatifs en visant l'orifice du laser parallèlement à l'axe optique. En allumant le laser à faible puissance pour ne pas endommager la fibre, on obtient alors facilement une transmission suffisante pour pouvoir mesurer la puissance en sortie de fibre. À partir de cette étape, il suffit d'optimiser la puissance transmise en jouant sur les réglages. Dans un premier temps, les deux degrés de rotations de chacun des deux miroirs, et dans un deuxième temps, les deux degrés de rotation du second miroir et les trois degrés de translation de la platine. Cette technique permet d'obtenir en un temps raisonnable ($\sim$1h) une transmission optimale ($\sim$96\%).
 
-J'ai fixé une extrémité de la fibre sur une platine de translation xyz à 40 mm de la lentille. Pour faciliter l'alignement, j'ai tout d'abord injecté un laser visible grâce à un connecteur fibre à fibre dans l'autre extrémité. Cela m'a permis de pré-aligner deux miroirs sur support rotatifs en visant l'orifice du laser parallèlement à l'axe optique. En allumant le laser à faible puissance pour ne pas endommager la fibre, j'ai donc obtenu facilement une transmission suffisante pour pouvoir mesurer la puissance en sortie de fibre. À partir de cette étape, il suffit d'optimiser la puissance transmise en jouant sur les réglages. Dans un premier temps, les deux degrés de rotations de chacun des deux miroirs, et dans un deuxième temps, les deux degrés de rotation du second miroir et les trois degrés de translation de la platine. Cette technique permet d'obtenir en un temps raisonnable ($\sim$1h) une transmission optimale ($\sim$96\%).
+\subsubsection{Injection combinée 2P + 1P}
 
-\begin{figure}
-\centering
-\includegraphics[width=0.8\textwidth]{./files/injection.svg.png}
-\caption{schéma de l'injection à deux lasers dans la fibre. Le miroir M2 est amovible et permet de basculer entre l'injection 1P et 2P}
-\end{figure}
+Pour injecter un deuxième laser, il faut à nouveau faire coïncider le mode de la fibre avec celui du laser, mais en conservant la même lentille d'injection et sans utiliser la platine de translation. Il faut donc adapter la largeur du faisceau à l'aide d'un télescope ou \emph{beam expander} (BEX). En remplaçant 915 nm par 488 nm, on obtient D = 1 mm. La lentille étant optimisée pour l'infrarouge, sa transmission dans le bleu n'est que de 50\%, mais la puissance du laser bleu est suffisante pour compenser cette perte. Par contre, la fibre n'est pas tout à fait monomode à cette longueur d'onde, et l'on distingue clairement en sortie le mode TEM11 ou les modes TEM10 / TEM01 en fonction de la position de la fibre. La meilleure transmission obtenue est de l'ordre de 50\%, mais cela est suffisant pour l'imagerie statique (fibre immobile).
 
-\subsubsection{Injection 1P}
 
-Pour injecter un deuxième laser, il faut à nouveau faire coïncider le mode de la fibre avec celui du laser, mais en conservant la même lentille d'injection et sans utiliser la platine de translation. Il faut donc adapter la largeur du faisceau à l'aide d'un télescope ou beam expander (BEX). En remplaçant 915 nm par 488 nm, on obtient D = 1 mm. La lentille étant optimisée pour l'infrarouge, sa transmission dans le bleu n'est que de 50\%, mais la puissance du laser bleu est suffisante pour compenser cette perte. Par contre, la fibre n'est pas tout à fait monomode à cette longueur d'onde, et l'on distingue clairement en sortie le mode TEM11 ou les modes TEM10 / TEM01 en fonction de la position de la fibre. La meilleure transmission obtenue est de l'ordre de 50\%, mais cela est suffisant pour l'imagerie statique (fibre immobile).
+\subsection{Propriétés}
 
-\subsection{Modèle PMC-C-1C-R\&D2}
-
-\subsection{Modèle PMC-C-9005 B2}
-
-% TODOVolker (GLO all fibers)
-% In collaboration with GLO we tested several different fiber types. Go through all of them !
-% Show the image of the cross section of this fiber and give all details of the fiber geometry: core diameter, total diameter, number of cladding tubes, tube wall thickness, cladding tube diameter, NA, mode field diameter (1/e2), curvature parameter (For b definition, see Opt. Exp. 21, no. 23, 28597, 2013)... .
-%  Hugo: Add also the measurement of the fiber output profile as a function of bending diameter to your thesis. Your measurement shows that at 915nm the profile does and thus the mode does not change. 
-
-La fibre que j'ai utilisé pour coupler le laser femtoseconde dans notre microscope est un modèle de recherche et développement réalisé par l'entreprise \href{http://www.glophotonics.fr/}{Glophotonics}. Nous l'avons retenue pour sa large bande de transmission qui couvre à la fois le visible à 488 nm et l'infrarouge à 915 nm, son bon gain de ~100 dB/km, son couplage monomode dans l'infrarouge et sa stabilité par rapport aux déformations. Je commente ici certaines caractérisation fournies par le constructeur et y apporte des éléments supplémentaires relativement à la polarisation.
-
-Une des particularités de cette fibre est sa large bande passante qui lui permet de transmettre à la fois de la lumière visible et de la lumière infrarouge. Dans mon cas, je l'utilise à la fois à 488 nm pour l'imagerie un photon et à 915 nm pour l'imagerie deux photons.
-
-\begin{figure}
-\centering
-\includegraphics[width=0.8\textwidth]{./files/glofibers.svg.png}
-\caption{Comparaison d'une fibre à courbure négative et d'une fibre à motif Kagomé.\\
-a. PMC-C-9005 B2, spectre de transmission, dispersion\\
-b. PMC-C-1C-R\&D2, spectre de transmission\\
-c. Photo des deux fibres.}
-\end{figure}
-% Ce spectre de transmission de la fibre PMC-C-9005 B2 a été réalisé en lumière blanche. Il montre deux zones de transmission, l'une autour de 500nm, l'autre entre 800 nm et 1200 nm. Le gain y est autour de 100 dB/km, soit une transmission d'environ 97\% à travers un mètre de fibre.
+% TODO introduire
 
 \subsubsection{Dispersion et pré-compensation}
 
@@ -267,44 +259,47 @@ $$
 
 et vaut donc 28 nm. Pour une impulsion de 100 fs à 915 nm, cela donne un élargissement de l'ordre de 28 fs au bout d'un mètre de propagation dans la fibre, soit une perte de concentration de 30\% et donc une perte d'effet deux photons de 50\%. Heureusement, il est possible de pré-compenser cette dispersion à l'aide d'un système optique placé en amont de la fibre. Le laser "Mai-Tai" est justement accompagné d'un élément "Deepsee" qui permet une telle précompensation réglable de -8 900 à -24 500 fs² d'après la documentation.
 
-% citation documentation
+% (citation documentation)
 % > The amount of dispersion, or GVD compensation, provided for each wavelength depends on the position of the DeepSee motor that moves optical material on a stage within the beam path.
 
 En mesurant la durée de l'impulsion en sortie de fibre à l'aide d'un autocorrélateur, on confirme que la précompensation permet de retrouver une impulsion de 100 fs dans l'échantillon.
 
 \subsubsection{Gain de courbure}
 
-% TODOcite Analytical formulation for the bend loss in single-ring hollow-core photonic crystal fibers
-
-% TODOVolker show the data and give all fiber details
-
-Un des facteurs qui peut affecter la transmission de la fibre est sa courbure. Certaines fibres comme les fibres à cristaux photoniques Kagome sont très sensibles à la courbure. La première fibre que j'ai testée voyait ainsi varier sa transmission d'un facteur un à cinq en fonction de sa courbure. Puisque la rotation du microscope engendre des déformations de la fibre, on se retrouve avec un éclairage incident corrélé à la stimulation, ce qui crée un signal parasite. Si ce signal parasite dépasse environ 1\%, le rapport signal à bruit devient trop faible, et les données ne sont plus analysables. Pour caractériser les pertes de transmission liées à la courbure, il suffit de placer un puissance-mètre en sortie de fibre et de faire varier la courbure.
-
+% TODOVolker show the data and give all fiber details (fiber bending loss)
 % TODOVolker (kagome bending loss)
 % This is true for the hypocycloid fibers but does not apply to my knowledge to the Kagome fiber lattice that you discussed just before. Explain why there is a dependence of the gain on curvature. And explain the waveguidance mechanism in the hypocycloid fibers (anitresonance effect ... )
 
-Des modèles numériques \cite{yu_negative_2016} \cite{setti_flexible_2013} et des applications pratiques suggèrent que le gain évolue de manière inversement proportionelle au carré du rayon de courbure. J'ai observé la même tendance sur notre fibre.
+Les propriétés de transmission de la fibre peuvent varier avec la courbure de celle-ci. La transmission est généralement optimale pour une fibre droite et peut se déteriorer suivant le rayon de courbure avec des pertes mesurées en dB. Une fibre PCNC-FC-K13-001 que je ne présente pas ici donnait des variations de transmission de l'ordre de 20\% pour un rayon de courbure de 5 cm.
+Lors d'une expérience, la rotation du microscope engendre des déformations de la fibre, et donc des variations de transmission. L'éclairage incident se retrouve corrélé à la stimulation, ce qui crée un signal parasite. Un signal parasite supérieur à 1\% déteriore trop le rapport signal à bruit et empêche l'analse des données. On cherche donc à caractériser les pertes de transmission liées à la courbure. Pour cela, il suffit de placer un puissance-mètre en sortie de fibre et de faire varier la courbure.
+
+Des modèles numériques \cite{setti_flexible_2013} \cite{yu_negative_2016} \cite{frosz_analytical_2017} suggèrent que le gain évolue de manière inversement proportionelle au carré du rayon de courbure. Cette relation est également observée sur notre fibre.
+Les pertes par mètre de fibre courbée restent cependant petites même pour un rayon assez court. Elles valent 0.1 dB ($\sim$2\%) pour un rayon de courbure de 7 cm.
+
+En conditions réelles, ont peut s'arranger pour limiter la courbure. Par exemple, la fibre peut être placée le long d'une tige de rigidité plus élevée
+
+% TODOVolker (fiber curvature real conditions)
+% pourqui c'est le pire des cas ? Dans quelle context? I do not understand your argument. What is the range of curvature change in your experimental configuration?
 
 \begin{figure}
 \centering
 \includegraphics[width=0.8\textwidth]{./files/fiber_bending.png}
-\caption{A. schéma du setup de catactérisation
+\includegraphics[width=0.6\textwidth]{./files/beam_profile.png}
+\caption{Propriétés de la fibre lors d'une courbure.
+\\ A. schéma du setup de catactérisation
 \\ B. gain en fonction de la courbure
 \\ C. ellipticité en fonction de la courbure (quasi circulaire)
-\\ D. angle de polarisation en fonction de la courbure (quasi linéaire)}
+\\ D. angle de polarisation en fonction de la courbure (quasi linéaire)
+\\ Au dessous figure le profil en sortie de fibre pour différentes courbures. Il n'est pas affecté.}
 \end{figure}
-
-
-
-On constate que le gain lié à la courbure est bien similaire au modèle théorique. Les pertes par mètre de fibre courbée restent cependant petites car autour de 0.1 dB (~2\%) même pour un rayon assez court de 7 cm. De plus, un rayon de courbure si court est rarement atteint sur une longue section de fibre. Dans le pire des cas la fibre peut effectuer un 'U' de 5 cm de rayon sur une longueur de $\pi$ × 5 cm soit 16 cm maximum, ce qui correspond à une perte inférieure à 5\%, mais il est facile d'éviter cette situation en positionnant la fibre correctement. 
-
-% TODOVolker (fiber curvature real conditions)
-% pourqui c'est le pire des cas ? Dans quelle context? I do not understand your argument. What is the range of curvature change in your experimental configuration?
 
 \subsubsection{Polarisation}
 
 % TODOVolker (context for polarization -> de Vito)
 % You start this paragraph totally out of context. So far you talked about the fiber properties. Here you talk about detected signal in the light sheet configuration. You have to introduce this properly and develop the transition.
+
+% TODOVolker output profile
+% (via rocketchat) Add also the measurement of the fiber output profile as a function of bending diameter to your thesis. Your measurement shows that at 915nm the profile does and thus the mode does not change. 
 
 Quand l'axe d'excitation est dans la même direction que l'axe d'observation, la polarisation incidente importe peu car le dipôle (l'échantillon, en l'occurence le fluorophore) oscille dans le plan orthogonal. Mais quand les deux sont perpandiculaires, tourner la polarisation peut faire varier la lumière collectée de 0 à 100\%.
 
