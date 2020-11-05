@@ -270,13 +270,13 @@ En mesurant la durée de l'impulsion en sortie de fibre à l'aide d'un autocorr�
 % TODOVolker (kagome bending loss)
 % This is true for the hypocycloid fibers but does not apply to my knowledge to the Kagome fiber lattice that you discussed just before. Explain why there is a dependence of the gain on curvature. And explain the waveguidance mechanism in the hypocycloid fibers (anitresonance effect ... )
 
-Les propriétés de transmission de la fibre peuvent varier avec la courbure de celle-ci. La transmission est généralement optimale pour une fibre droite et peut se déteriorer suivant le rayon de courbure avec des pertes mesurées en dB. Une fibre PCNC-FC-K13-001 que je ne présente pas ici donnait des variations de transmission de l'ordre de 20\% pour un rayon de courbure de 5 cm.
+Les propriétés de transmission de la fibre peuvent varier avec la courbure de celle-ci. La transmission est généralement optimale pour une fibre droite et se déteriore suivant le rayon de courbure avec des pertes mesurées en dB. Une fibre PCNC-FC-K13-001 que je ne présente pas ici donnait des variations de transmission de l'ordre de 20\% pour un rayon de courbure de 5 cm.
 Lors d'une expérience, la rotation du microscope engendre des déformations de la fibre, et donc des variations de transmission. L'éclairage incident se retrouve corrélé à la stimulation, ce qui crée un signal parasite. Un signal parasite supérieur à 1\% déteriore trop le rapport signal à bruit et empêche l'analse des données. On cherche donc à caractériser les pertes de transmission liées à la courbure. Pour cela, il suffit de placer un puissance-mètre en sortie de fibre et de faire varier la courbure.
 
 Des modèles numériques \cite{setti_flexible_2013} \cite{yu_negative_2016} \cite{frosz_analytical_2017} suggèrent que le gain évolue de manière inversement proportionelle au carré du rayon de courbure. Cette relation est également observée sur notre fibre.
 Les pertes par mètre de fibre courbée restent cependant petites même pour un rayon assez court. Elles valent 0.1 dB ($\sim$2\%) pour un rayon de courbure de 7 cm.
 
-En conditions réelles, ont peut s'arranger pour limiter la courbure. Par exemple, la fibre peut être placée le long d'une tige de rigidité plus élevée
+En conditions réelles, ont peut s'arranger pour limiter la courbure et répartir les déformations sur l'ensemble de la fibre. Par exemple, la fibre peut être placée le long d'une tige de rigidité plus élevée. Lors du déplacement d'une extrémité, une portion droite de 1 m de fibre se trouve courbée avec un rayon de 20 cm, ce qui donne des pertes de 0.01 dB, soit 0.2\%.
 
 % TODOVolker (fiber curvature real conditions)
 % pourqui c'est le pire des cas ? Dans quelle context? I do not understand your argument. What is the range of curvature change in your experimental configuration?
@@ -293,29 +293,45 @@ En conditions réelles, ont peut s'arranger pour limiter la courbure. Par exempl
 \\ Au dessous figure le profil en sortie de fibre pour différentes courbures. Il n'est pas affecté.}
 \end{figure}
 
+% OK TODOVolker output profile
+% (via rocketchat) Add also the measurement of the fiber output profile as a function of bending diameter to your thesis. Your measurement shows that at 915nm the profile does and thus the mode does not change. 
+
 \subsubsection{Polarisation}
 
 % TODOVolker (context for polarization -> de Vito)
 % You start this paragraph totally out of context. So far you talked about the fiber properties. Here you talk about detected signal in the light sheet configuration. You have to introduce this properly and develop the transition.
 
-% TODOVolker output profile
-% (via rocketchat) Add also the measurement of the fiber output profile as a function of bending diameter to your thesis. Your measurement shows that at 915nm the profile does and thus the mode does not change. 
+On voit dans la section précédente que la courbure a un effet sur la transmission négligeable dans le contexte de l'imagerie. Cependant, un autre aspect peut influencer la quantité de lumière détectée : la polarisation. La sensibilité à la polarisation dépend de la configuration d'éclairage (parallèle ou orthogonale), du type d'absorption (un ou deux photons), et du comportement de la fibre en réponse à une courbure.
 
-Quand l'axe d'excitation est dans la même direction que l'axe d'observation, la polarisation incidente importe peu car le dipôle (l'échantillon, en l'occurence le fluorophore) oscille dans le plan orthogonal. Mais quand les deux sont perpandiculaires, tourner la polarisation peut faire varier la lumière collectée de 0 à 100\%.
+\paragraph{Direction d'illumination}
+
+Un fluorophore peut être modélisé par un dipole électrostatique. La fluorescence consiste en l'absorption d'un photon incident et la ré-émission d'un photon de fluorescence selon les lois du rayonnement dipolaire électrique. Ce phénomène est anisotrope, il dépend de l'angle entre le vecteur de polarisation et le moment dipolaire. Quand l'axe d'excitation est parallèle à l'axe d'observation (par exemple en microscopie confocale ou deux photons classique), le plan de polarisation est orthogonal aux deux, un photon absorbé est donc réémis dans la même direction quelle que soit la polarisation (cf Fig \ref{FIGpolarisation} a.). Au contraire, quand l'axe d'excitation est orthogonal à l'axe d'observation (par exemple en microscopie à feuille de lumière), l'angle de polarisation influe sur la direction d'émission (cf Fig \ref{FIGpolarisation} b.). Pour une polarisation linéaire orthogonale à l'axe d'observation ($\alpha$=0), on se retrouve dans un cas similaire au précédent, mais pour une polarisation linéaire qui contient l'axe d'observation ($\alpha$=90°), on obtient une diminution du signal de fluorescence dans l'axe d'observation.
+On confirme ceci à l'aide d'un lame $\lambda$/2. En tournant une polarisation linéaire et en observant la fluorescence du cerveau, on passe d'une intensité détectée maximale (100\%) à une intensité minimale (50\%) \cite{de_vito_effects_2020}.
+
+% TODO faire des calculs compliqués pour remplacer ces calculs faux
+% Cette valeur de l'intensité minimale s'explique ainsi : pour une polarisation orthogonale à l'axe d'observation ($\alpha$=90°), un dipole faisant un angle $\theta$ avec la polarisation (et donc $\frac{\pi}{2}-\theta$ avec la détection) est excité proportionnellement à $\cos\theta$ et détecté proportionnellement à $\cos(\frac{\pi}{2}-\theta) = \sin\theta$. Pour une répartition égale des dipoles pour tout ange $\theta$, la fluorescence détectée est donc de :
+% $$
+% \int_0^\frac{\pi}{2} \sin(\theta)\cos(\theta) \mathrm{d}\theta = \left[ \frac{1}{2}\sin^2(\theta) \right]_0^\frac{\pi}{2} = \frac{1}{2}
+% $$
 
 \begin{figure}
 \centering
-\includegraphics[width=0.8\textwidth]{./files/polarization_plane.svg.png}
+\includegraphics[width=0.6\textwidth]{./files/polarization_plane.svg.png}
 \caption{a. Comme dans un microscope deux photons classique, la direction d'émission et de détection sont alignées, et la polarisation est dans le plan orthogonal. Quelle que soit la polarisation, la lumière détectée est toujours la même.
-\\ b. Dans un microscope à feuille de lumière, la direction d'émission est dans le plan orthogonal à la détection. La direction de polarisation fait alors un angle $\alpha$ avec la direction de détection. Pour $\alpha$ = 90°, la lumière détectée est maximale, mais pour $\alpha$ = 0°, elle est nulle.}
+\\ b. Dans un microscope à feuille de lumière, la direction d'émission est dans le plan orthogonal à la détection. La direction de polarisation fait alors un angle $\alpha$ avec la direction de détection. Pour $\alpha$ = 90°, la lumière détectée est maximale, mais pour $\alpha$ = 0°, elle est nulle.
+\label{FIGpolarisation}}
 \end{figure}
 
+\paragraph{Absorption deux photons}
 
-Il est donc important de caractériser le comportement de la fibre par rapport à la polarisation. Deux cas sont donc à envisager : une rotation de la polarisation et un changement d'ellipticité. En mesurant l'orientation de la polarisation en sortie de fibre, j'ai montré que celle-ci pouvait tourner largement en fonction de la courbure de la fibre. Par exemple, entre un rayon de courbure de 15 cm et 25 cm, une polarisation linéaire peut tourner de 10°. À cause de l'anisotropie du rayonnement dipôlaire, une polarisation tournée de 90° fait chuter le signal de 100\%. Une rotation de 10° fait chuter le signal de 17\%. En pratique, il est difficile de mainenir la fibre parfaitement droite, et donc de minimiser la rotation de la polarisation, c'est pourquoi j'ai cherché à obtenir une polarisation invariante par rotation, c'est-à-dire une polarisation circulaire.
+En excitation deux photons, l'état de polarisation influe sur l'efficacité d'absorption. Un faisceau polarisé linéairement a un taux d'absorption deux photons plus élevé qu'un faisceau polarisé circulairement. Cependant, un faisceau polarisé circulairement conduit à une excitation plus homogène du fluorophore \cite{de_vito_effects_2020}. Le résultat est qu'une polarisation circulaire conduit à un signal détecté deux fois plus faible qu'une polarisation linéaire optimale, et de l'ordre d'une polarisation linéaire à 90°.
+
+% TODO faire les mêmes calculs compliqués mais avec ^4 au lieu de ^2
+
+Il est donc important de caractériser également le comportement de la fibre par rapport à la polarisation. Deux cas sont donc à envisager : une rotation de la polarisation et un changement d'ellipticité. En mesurant l'orientation de la polarisation en sortie de fibre, j'ai montré que celle-ci pouvait tourner largement en fonction de la courbure de la fibre. Par exemple, entre un rayon de courbure de 15 cm et 25 cm, une polarisation linéaire peut tourner de 10°. À cause de l'anisotropie du rayonnement dipolaire, une polarisation tournée de 90° fait chuter le signal de 100\%. Une rotation de 10° fait chuter le signal de 17\%. En pratique, il est difficile de mainenir la fibre parfaitement droite, et donc de minimiser la rotation de la polarisation, c'est pourquoi j'ai cherché à obtenir une polarisation invariante par rotation, c'est-à-dire une polarisation circulaire.
 
 % TODOVolker (real condition curvature)
 % Again what is the expected curvature variation in your experimental configuration. What is the expected signal variation.
-% préciser les courbures
 
 En polarisation circulaire, la rotation n'est plus un problème, mais la fibre peut toujours transformer la polarisation circulaire en une polarisation elliptique, qui perd sa symétrie et devient donc sensible à la rotation. J'ai donc caractérisé la variation d'ellipticité dans le cas d'une polarisation circulaire. Pour cela, j'ai positionné deux puissance-mètre sur les bras d'un cube polariseur en sortie de fibre. Pour chaque courbure de fibre, je mesurais l'intensité minimale et l'intensité orthogonale, ce qui permet de déduire le grand axe (a) et le petit axe (b) de l'ellipse, et donc l'ellipticité ($\theta$) définie par
 
