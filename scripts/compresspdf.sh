@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 # Clean, sanitize and compress a list of PDF files
 for fullfile in "$@"
 do

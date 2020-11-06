@@ -85,7 +85,7 @@ Une autre manière de concentrer la lumière est la concentration temporelle. Da
 
 \begin{figure}
 \centering
-\includegraphics[width=1\textwidth]{./files/fibers.svg.png}
+\includegraphics[width=0.9\textwidth]{./files/fibers.svg.png}
 \caption{Illustration de différents types de fibres évoquées.\\
 a1. Fibre Kagomé (image extraite de Wang 2011 \cite{wang_low_2011}), schéma du motif en a2.\\
 b1. Fibre à réseaux de tube (image extraite de Cregan 1999 \cite{cregan_single-mode_1999}), schéma du réseau tubulaire comme dans Vincetti 2010 \cite{vincetti_waveguiding_2010} en b2.\\
@@ -139,7 +139,7 @@ Les propriétés de guidage de la lumière d'une fibre optique lui permettent d'
 
 \begin{figure}
 \centering
-\includegraphics[width=0.9\textwidth]{./files/fiber_functional_imaging.svg.png}
+\includegraphics[width=\textwidth]{./files/fiber_functional_imaging.svg.png}
 \caption{Différentes techniques de microscopie en imagerie neuronale fonctionnelle chez le rongeur.\\
 a. Un microscope deux photons statique réalise l'imagerie du cerveau d'une souris lors d'une expérience en réalité virtuelle \cite{dombeck_functional_2010}.\\
 b. Un microscope deux photons est fixé sur la boite cranienne d'un rat. Le laser est guidé à travers une fibre à coeur de verre dont la dispersion est précompensée. L'unité de détection est intégrée au microscope \cite{helmchen_miniature_2001}.\\
@@ -216,7 +216,7 @@ $$
 
 \begin{figure}
 \centering
-\includegraphics[width=0.8\textwidth]{./files/injection.svg.png}
+\includegraphics[width=0.7\textwidth]{./files/injection.svg.png}
 \caption{schéma de l'injection à deux lasers dans la fibre. Le miroir M2 est amovible et permet de basculer entre l'injection 1P et 2P. (BEX = \emph{Beam Expander}, IL = \emph{Injection Lens}, NCF = \emph{Negative Curvature Fiber})
 \\ Pour la première étape, on injecte un laser visible par l'autre extrémité de la fibre et l'on joue sur les miroirs M1 et M2 pour pointer vers la sortie du laser 2P.
 \label{FIGinjection}}
@@ -290,7 +290,8 @@ En conditions réelles, ont peut s'arranger pour limiter la courbure et réparti
 \\ B. gain en fonction de la courbure
 \\ C. ellipticité en fonction de la courbure (quasi circulaire)
 \\ D. angle de polarisation en fonction de la courbure (quasi linéaire)
-\\ Au dessous figure le profil en sortie de fibre pour différentes courbures. Il n'est pas affecté.}
+\\ Au dessous figure le profil en sortie de fibre pour différentes courbures. Il n'est pas affecté.
+\label{FIGfibercarac}}
 \end{figure}
 
 % OK TODOVolker output profile
@@ -324,35 +325,37 @@ On confirme ceci à l'aide d'un lame $\lambda$/2. En tournant une polarisation l
 
 \paragraph{Absorption deux photons}
 
-En excitation deux photons, l'état de polarisation influe sur l'efficacité d'absorption. Un faisceau polarisé linéairement a un taux d'absorption deux photons plus élevé qu'un faisceau polarisé circulairement. Cependant, un faisceau polarisé circulairement conduit à une excitation plus homogène du fluorophore \cite{de_vito_effects_2020}. Le résultat est qu'une polarisation circulaire conduit à un signal détecté deux fois plus faible qu'une polarisation linéaire optimale, et de l'ordre d'une polarisation linéaire à 90°.
+En excitation deux photons, l'état de polarisation influe sur l'efficacité d'absorption. Un faisceau polarisé linéairement a un taux d'absorption deux photons plus élevé qu'un faisceau polarisé circulairement. Cependant, un faisceau polarisé circulairement conduit à une excitation plus homogène du fluorophore \cite{de_vito_effects_2020}. Le résultat est qu'une polarisation circulaire conduit à un signal détecté deux fois plus faible qu'une polarisation linéaire optimale, et de l'ordre d'une polarisation linéaire à 90°. Idéalement, la polarisation en sortie de fibre doit donc rester linéaire et horizontale quelle que soit sa déformation. J'ai donc cherché à caractériser les modifications de polarisation induites par une déformation de la fibre.
 
 % TODO faire les mêmes calculs compliqués mais avec ^4 au lieu de ^2
 
-Il est donc important de caractériser également le comportement de la fibre par rapport à la polarisation. Deux cas sont donc à envisager : une rotation de la polarisation et un changement d'ellipticité. En mesurant l'orientation de la polarisation en sortie de fibre, j'ai montré que celle-ci pouvait tourner largement en fonction de la courbure de la fibre. Par exemple, entre un rayon de courbure de 15 cm et 25 cm, une polarisation linéaire peut tourner de 10°. À cause de l'anisotropie du rayonnement dipolaire, une polarisation tournée de 90° fait chuter le signal de 100\%. Une rotation de 10° fait chuter le signal de 17\%. En pratique, il est difficile de mainenir la fibre parfaitement droite, et donc de minimiser la rotation de la polarisation, c'est pourquoi j'ai cherché à obtenir une polarisation invariante par rotation, c'est-à-dire une polarisation circulaire.
+\paragraph{Caractérisation des effets sur la polarisation}
+
+Une déformation de la fibre peut entrainer deux modifications sur la polarisation : une rotation et un changement d'ellipticité. Pour les mesurer, j'ai placé un cube polariseur en sortie de fibre équipé d'un puissance-mètre sur chaque bras. Pour chaque position de la fibre, j'ai tourné le cube de manière à minimiser la puissance mesurée sur un bras (et donc maximiser la puissance sur l'autre bras). Cela permet de déduire l'orientation de la polarisation (angle du cube) et son ellipticité (valeur du grand axe et petit axe). L'ellipticité ($\theta$) est définie par $\tan(\theta)=\frac{b}{a}$ où (a) est le grand axe et (b) le petit axe de l'ellipse. J'ai positionné la fibre en forme de U et ai réalisé des mesures pour des diamètres allant de 5 cm à 40 cm (cf Fig. \ref{FIGfibercarac}).
+
+\paragraph{Rotation de la polarisation}
+
+J'ai montré que la polarisation tournait largement en fonction de la courbure de la fibre. Par exemple, entre un rayon de courbure de 15 cm et 25 cm, une polarisation linéaire peut tourner de 10° (variation du signal de $\sim$5\%). Ces valeurs de courbure sont celles qu'on peut attendre dans de bonnes conditions expérimentales, c'est pourquoi j'ai cherché à obtenir une polarisation invariante par rotation, c'est-à-dire une polarisation circulaire.
 
 % TODOVolker (real condition curvature)
 % Again what is the expected curvature variation in your experimental configuration. What is the expected signal variation.
 
-En polarisation circulaire, la rotation n'est plus un problème, mais la fibre peut toujours transformer la polarisation circulaire en une polarisation elliptique, qui perd sa symétrie et devient donc sensible à la rotation. J'ai donc caractérisé la variation d'ellipticité dans le cas d'une polarisation circulaire. Pour cela, j'ai positionné deux puissance-mètre sur les bras d'un cube polariseur en sortie de fibre. Pour chaque courbure de fibre, je mesurais l'intensité minimale et l'intensité orthogonale, ce qui permet de déduire le grand axe (a) et le petit axe (b) de l'ellipse, et donc l'ellipticité ($\theta$) définie par
+\paragraph{Changement d'ellipticité}
 
-$$
-\tan(\theta)=\frac{b}{a} 
-$$
-
-Je montre que l'ellipticité peut varier de 5° entre deux courbures extrêmes. Pour une polarisation elliptique à 40°, la différence entre grand axe et petit axe est de 16\%. Une rotation de 90° en polarisation elliptique avec cette ellipticité donnerait alors lieu à une variation de détection de 16\%, ce qui est beaucoup mieux que 100\%. Il est cependant nécessaire d'effectuer des tests en conditions réelles afin de vérifier que ce pire cas n'est pas atteint.
+En polarisation circulaire ($\theta$ = 45°), la rotation n'est plus un problème, mais la fibre peut toujours transformer la polarisation circulaire en une polarisation elliptique, qui perd sa symétrie et devient donc sensible à la rotation. J'ai caractérisé la variation d'ellipticité dans le cas d'une polarisation circulaire. Les plus grandes variations d'ellipticité enregistrées sont de l'ordre de 5°. Pour vérifier comment ces différents éléments entrent en jeu, j'ai réalisé des tests en conditions réelles.
 
 \subsubsection{Test en conditions réelles}
 
-Pour tester les variations d'intensité dues aux déformations de la fibre en conditions réelles, j'ai monté un cube polariseur et un puissance-mètre à la place de l'échantillon et ai soumis l'ensemble à des stimulations périodiques guidées par un moteur.
+Pour tester les variations d'intensité dues aux déformations de la fibre en conditions réelles, j'ai monté un cube polariseur et un puissance-mètre à la place de l'échantillon et ai soumis l'ensemble à des stimulations périodiques guidées par un moteur (cf Fig. \ref{FIGrealconditionsfiber}).
 
 \begin{figure}
 \centering
-\includegraphics[width=0.8\textwidth]{./files/real-condition_intensity-variation.png}
+\includegraphics[width=0.7\textwidth]{./files/real-condition_intensity-variation.png}
 \caption{
 \\ a. Setup de test en condition réelle
 \\ b. Réponse à une stimulation sinusoïdale périodique de 10°. On constate que les variations de puissance ne dépassent pas 0.6\% et que ces variations combinées aux changement de la polarisation (ellipticité et rotation) n'excèdent pas 1.2\%.
 \\ c. Réponse à une stimulation périodique en marches de 20°. Les variations combinées n'excèdent pas 1.2\%. On remarque que l'intensité maximale est atteinte pour un angle du moteur de 0°, soit la position de repos de la fibre.
-}
+\label{FIGrealconditionsfiber}}
 \end{figure}
 
 Finalement, tous les effets liés à la position de la fibre engendrent des variations de l'intensité détectée inférieurs à 1.2\% dans les conditions des expériences. Les effets parasites sont donc connus et mineurs, ce qui est à prendre en compte lors de l'analyse des données.
@@ -460,7 +463,7 @@ On peut mesurer expérimentalement la position de cette largeur minimum du faisc
 
 \begin{figure}
 \centering
-\includegraphics[width=0.8\textwidth]{./files/thermal-shift.svg.png}
+\includegraphics[width=0.6\textwidth]{./files/thermal-shift.svg.png}
 \caption{
 On voit ici une feuille de lumière imagée dans la fluorescéine pour plusieurs puissances laser différentes. La position du maximum d'intensité, et donc de la largeur minimale, est marquée par un trait en pointillé
 }

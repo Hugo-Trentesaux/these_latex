@@ -18,7 +18,7 @@ et pour la gesiton des paquets, installer `tllocalmgr` ou réparer tlmgr
 ### Debian
 
 ```
-apt install texlive-base texlive-fonts-extra xzdec
+apt install texlive-base texlive-fonts-extra xzdec 
 ```
 
 ou préférer un installation manuelle, plus à jour [https://www.tug.org/texlive/acquire-netinstall.html](https://www.tug.org/texlive/acquire-netinstall.html)
@@ -37,6 +37,14 @@ Plugin [Latex Workshop](https://marketplace.visualstudio.com/items?itemName=Jame
 
 ```
 ext install latex-workshop # after Ctrl+P
+```
+
+### Script
+
+Dépendance optionelle `pdftk` pour le script `compresspdf`.
+
+```
+snap install pdftk # Ubuntu
 ```
 
 ## Bibliographie
