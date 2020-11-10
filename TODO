@@ -1,0 +1,27 @@
+TODO
+
+mieux détailler les comportements d'abandon du poisson
+    (Glia Accumulate Evidence that Actions Are Futile and Suppress Unsuccessful Behavior)
+
+effet thermique dynamique et solutions
+    (réduction intensité moyenne...)
+
+illustrer analyse comme dans le wiki
+    (taille du neurone en pixels, moyennage)
+
+M² value fibre
+
+expliquer papier effet thermique
+
+dynamique temporelle kymographe
+
+phasemap expliquer papier
+
+ajouter schéma setup 2P
+    - la fibre tourne autour de l'axe
+    - permet la direction tilt
+
+    intégrer Brighton
+
+montrer instabilité 2P
+    stepshot

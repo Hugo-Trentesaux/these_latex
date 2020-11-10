@@ -371,7 +371,16 @@ Finalement, tous les effets liés à la position de la fibre engendrent des vari
 % - demonstrate static 2P fiber coupled imaging
 % - then discuss the dynamic mode challenges
 
-Un des problèmes auxquels j'ai été confronté est l'effet de lentille thermique (thermal lens effect). Lorsqu'un faisceau traverse un milieu absorbant, ce milieu chauffe sur la trajectoire du faisceau, ce qui change son indice optique. Le gradient d'indice ainsi formé dévie les rayons, formant une lentille à gradient d'indice (GRIN lens). Pour l'eau, à 915 nm, le changement d'indice est de l'ordre de -1e-4 par degré. La température étant plus élevée au centre du faisceau, l'indice optique est plus faible, et donc la lentille équivalente est divergente. Cet effet peut être utile, par exemple pour mesurer le coefficient d'absorption d'un liquide \cite{whinnery_laser_1974}, mais il a deux conséquences gênantes dans mon cas. D'une part un effet statique lié à la perte de focalisation du faisceau altère l'effet deux-photons, d'autre part un effet dynamique lié à la réponse du système à une perturbation de la température d'équilibre dévie le faisceau lors des mouvements du microscope.
+On a vu que la fibre avait de bonnes propriétés en conditions réelles, pourtant en essayant d'imager un poisson en deux photons tout en bougeant le microscope, on observe des fluctuations d'intensité de grande amplitude (Fig. \ref{FIGwaterinstability}). En regardant attentivement à l'oeil, on s'aperçoit que ces fluctuations sont liées à un déplacement de la zone la plus lumineuse le long de la direction de propagation du faisceau qui rend toute exploitation des données impossible. Cette observation a pu être expliquée par l'effet de lentille thermique (\emph{thermal lens effect}) modulé par un déplacement des masses d'eau de températures différentes.
+
+Lorsqu'un faisceau traverse un milieu absorbant, ce milieu chauffe sur la trajectoire du faisceau, ce qui change son indice optique. Le gradient d'indice ainsi formé dévie les rayons, formant une lentille à gradient d'indice (GRIN lens). Pour l'eau, à 915 nm, le changement d'indice est de l'ordre de $-10^{-4}$ par degré. La température étant plus élevée au centre du faisceau, l'indice optique est plus faible, et donc la lentille équivalente est divergente. Cet effet peut être utile, par exemple pour mesurer le coefficient d'absorption d'un liquide \cite{whinnery_laser_1974}, mais il a deux conséquences gênantes dans mon cas. D'une part un effet statique lié à la perte de focalisation du faisceau altère l'effet deux-photons, d'autre part un effet dynamique lié à la réponse du système à une perturbation de la température d'équilibre dévie le faisceau lors des mouvements du microscope.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth]{./files/water_instability.svg.png}
+\caption{Images extraites d'un film montrant les changements d'intensité liés à l'effet thermique. On y voit la distribution d'intensité lumineuse se déplacer de gauche à droite (direction de propagation du faisceau) au rythme des mouvements du moteur.
+\label{FIGwaterinstability}}
+\end{figure}
 
 % -1e-4 par degré
 % https://en.wikipedia.org/wiki/Optical_properties_of_water_and_ice
@@ -382,21 +391,30 @@ Un des problèmes auxquels j'ai été confronté est l'effet de lentille thermiq
 % TODOVolker (thermal lens effect)
 %  Explain this paper more in detail and show the schematic that explains the calculations and the approximation.
 
-Le phénomène et a été décrit théoriquement en 1965 par Gordon \emph{et al} \cite{gordon_longtransient_1965} et en 1974 par Whinnery \emph{et al} \cite{whinnery_laser_1974} pour une fine cellule de liquide et dans le cadre de l'approximation parabolique. En 1982, Sheldon \emph{et al} \cite{sheldon_laser-induced_1982} étend cette description hors de l'approximation parabolique pour prendre en compte les aberration induites. Dans notre cas, il ne s'agit pas d'une cellule fine, car le laser traverse plusieurs centimètres d'eau avant d'atteindre l'échantillon, créant un gradient d'indice sur sa trajectoire. Je suis donc allé m'inspirer du livre *Gradient-Index Optics* (2002) \cite{gomez-reino_gradient-index_2002}, dans lequel les auteurs s'intéressent à la propagation d'un faisceau dans un milieu d'indice : (équation 1.63 du livre)
+Le phénomène de lentille thermique a été décrit théoriquement en 1965 par Gordon \emph{et al} \cite{gordon_longtransient_1965} et en 1974 par Whinnery \emph{et al} \cite{whinnery_laser_1974} pour une fine cellule de liquide et dans le cadre de l'approximation parabolique (partie \ref{cellulefine}). En 1982, Sheldon \emph{et al} \cite{sheldon_laser-induced_1982} étend cette description hors de l'approximation parabolique pour prendre en compte les aberration induites. Dans notre cas, il ne s'agit pas d'une cellule fine, car le laser traverse plusieurs centimètres d'eau avant d'atteindre l'échantillon, créant un gradient d'indice sur sa trajectoire. Je me suis donc inspiré du livre \emph{Gradient-Index Optics} \cite{gomez-reino_gradient-index_2002}, dans lequel les auteurs s'intéressent à la propagation d'un faisceau dans un milieu d'indice : (équation 1.63 du livre)
+
+\begin{figure}
+\centering
+\includegraphics[width=0.6\textwidth]{./files/gordon_lens.png}
+\caption{Lentille équivalente pour une cellule de largeur $l$ d'indice parabolique dans laquelle un rayon lumineux se propage en arc de cercle. Extrait de Gordon \emph{et al} \cite{gordon_longtransient_1965}.
+\label{FIGgordonlens}}
+\end{figure}
 
 $$
 n(r,z) = n_0(z) \left( 1 \pm \frac{g^2(z)}{2}r^2\right)
 $$
 
-Dans le cas d'un signe négatif (lentille convergente), les calculs sont largement détaillés et aboutissent à une solution oscillante. Malheureusement le cas d'un signe positif (lentille divergente) n'est pas exploré. Pour obtenir un résultat en ordre de grandeur, nous avons donc opté pour un approche discrète numérique en appliquant à chaque tranche de liquide d'épaisseur *l* les résultats obtenus pour une cellule fine \cite{gordon_longtransient_1965}\cite{whinnery_laser_1974}. Cette approximation ignore la diffusion thermique le long de l'axe et considère l'absorption négligeable.
+Dans le cas d'un signe négatif (lentille convergente), les calculs sont largement détaillés et aboutissent à une solution oscillante. Malheureusement le cas d'un signe positif (lentille divergente) n'est pas exploré. Pour obtenir un résultat en ordre de grandeur, nous avons donc opté pour une approche discrète numérique en appliquant à chaque tranche de liquide d'épaisseur $l$ les résultats obtenus pour une cellule fine (partie \ref{simulationthermallens}). Cette approximation ignore la diffusion thermique le long de l'axe et considère l'absorption négligeable.
 
-Le différentiel de température par rapport à l'équilibre $\Delta T(r,t)$ est décrit par l'équation de diffusion :
+\subsubsection{Cas d'une cellule fine}\label{cellulefine}
+
+Dans cette partie, j'explique le résultat des papiers de Gordon et Whinnery que j'utilise par la suite dans la simulation numérique. Dans une cellule fine traversée par un faisceau, le différentiel de température par rapport à l'équilibre $\Delta T(r,t)$ est décrit par l'équation de diffusion :
 
 $$
 c\rho\frac{\partial}{\partial t}[\Delta T(r,t)] = \dot{q}(r) + k \nabla^2[\Delta T(r,t)]
 $$
 
-Le terme source de l'équation lié à l'absorption du faisceau de puissance *P* par le milieu de coefficient d'absorption $\alpha$ vaut :
+Le terme source de l'équation lié à l'absorption du faisceau de puissance $P$ par le milieu de coefficient d'absorption $\alpha$ vaut :
 
 $$
 \dot{q}(r) = \frac{\alpha P}{\pi w^2_z}\exp \left(\frac{-2r^2}{w^2_z} \right)
@@ -406,8 +424,8 @@ Ce qui donne une solution de la forme :
 
 $$
 \Delta T(r,t) = \frac{\alpha P}{4\pi k} \int_0^t \left( \frac{1}{1+2t'/t_c} \right) \exp \left( \frac{-2r^2/w_z^2}{1+2t'/t_c} \right) \mathrm{d}t'
-\\
-\text{où} \ t_c = \frac{w_z^2}{4D}
+\quad \text{où} \quad
+t_c = \frac{w_z^2}{4D}
 $$
 
 Dans notre cas, on se contentera de l'approximation au premier ordre de cette solution :
@@ -416,23 +434,21 @@ $$
 \Delta T(r,t) \simeq \frac{\alpha P}{4\pi k} \left[ \ln\left( 1+\frac{2t}{t_c} \right) - \frac{2(r^2/w_z^2)}{1+t_c/2t} \right]
 $$
 
-Le premier terme est indépendant de *r* et correspond au réchauffement progressif global de la tranche de liquide. De plus, il est de plus en plus lent à mesure que l'on s'éloigne du waist et se retrouve dominé par les conditions aux limites et par la diffusion le long de l'axe ici non exprimées. On peut donc l'ignorer pour simplifier le calcul sans altérer le résultat. On a donc :
+Le premier terme est indépendant de $r$ et correspond au réchauffement progressif global de la tranche de liquide. De plus, il est de plus en plus lent à mesure que l'on s'éloigne du waist et se retrouve dominé par les conditions aux limites et par la diffusion le long de l'axe ici non exprimées. On peut donc l'ignorer pour simplifier le calcul sans altérer le résultat. On a donc :
 
 $$
 \Delta T(r,t) = \Delta T_\infty \frac{1}{1+t_c/2t}
-\\
-\text{où} \ \Delta T_\infty = \Delta T(r,t_\infty) = -\frac{\alpha P}{2\pi k}\frac{r^2}{w_z^2}
+\quad \text{où} \quad
+\Delta T_\infty = \Delta T(r,t_\infty) = -\frac{\alpha P}{2\pi k}\frac{r^2}{w_z^2}
 $$
 
 
-Si l'on suppose constant le coefficient de variation de l'indice optique (*dn/dT*), on a donc un profil d'indice quadratique en *r* :
+Si l'on suppose constant le coefficient de variation de l'indice optique ($\mathrm{d}n/\mathrm{d}T$), on a donc un profil d'indice quadratique en $r$ :
 
 $$
-n(r,z) = n_0 + \frac{\mathrm{d}n}{\mathrm{d}T}\Delta T
-\\
-n(r,z) = n_0 \left( 1+ \delta (r/w_z)^2 \right)
-\\
-\text{où} \ \delta = - \frac{\mathrm{d}n}{\mathrm{d}T} \frac{\alpha P}{2\pi kn_0} \frac{2}{1+t_c/2t}
+n(r,z) = n_0 + \frac{\mathrm{d}n}{\mathrm{d}T}\Delta T = n_0 \left( 1+ \delta (r/w_z)^2 \right)
+\quad \text{où} \quad
+\delta = - \frac{\mathrm{d}n}{\mathrm{d}T} \frac{\alpha P}{2\pi kn_0} \frac{2}{1+t_c/2t}
 $$
 
 Pour un profil d'indice quadratique tel que celui-ci et dans l'approximation des lentilles minces, on peut définir la distance focale équivalente :
@@ -441,41 +457,34 @@ $$
 f' = -\frac{w^2_z}{2ln_0\delta}
 $$
 
-Cela permet d'établir la valeur de la focale *F* au cours du temps :
+Cela permet d'établir la valeur de la focale $F$ au cours du temps :
 
 $$
-f'(t) = f'_\infty \left( 1 + \frac{t_c}{2t} \right)
-\\
-\text{où} \ f'_\infty = \frac{\pi k w_z^2}{\alpha Pl(\mathrm{d}n/\mathrm{d}T)}
+f'(t) = f'_\infty \left( 1 + \frac{t_c}{2t} \right) \quad
+\text{où} \quad f'_\infty = \frac{\pi k w_z^2}{\alpha Pl(\mathrm{d}n/\mathrm{d}T)}
 $$
 
-On part du principe que le faisceau reste gaussien tout au long du parcours, il peut donc être entièrement décrit pour chaque *z* par la position et la largeur de son waist. Pour chaque tranche de liquide d'épaisseur l, on peut donc écrire la formule des lentilles gaussiennes pour trouver le déplacement du waist et son élargissement.
+On a donc une valeur de la focale $f'$ d'une tranche de liquide d'épaisseur $l$. Dans un premier temps, intéressons-nous au régime stationnaire à $t_\infty$.
 
 \begin{figure}
 \centering
-\includegraphics[width=0.8\textwidth]{./files/grinlensplots_profile.png}
-\caption{
-On voit ici le résultat de la simulation pour plusieurs puissances de laser. Comme attendu, plus la puissance est élevée, plus l'effet divergent est fort, et donc plus le waist est éloigné et large.
+\includegraphics[width=\textwidth]{./files/thermal_shift_model.svg.png}
+\caption{Effet de lentille thermique pour la propagation dans l'eau.
+\\a. Résultat de la simulation pour plusieurs puissances de laser. Comme attendu, plus la puissance est élevée, plus l'effet divergent est fort, et donc plus le waist est éloigné et large.
+\\b. Feuille de lumière imagée dans la fluorescéine pour plusieurs puissances laser différentes. La position du maximum d'intensité est marquée par un trait en pointillé.
+\\c. Comparaison des prévisions du modèle et des données expérimentales.
+\label{FIGthermalfluorescine}
 }
 \end{figure}
 
-On peut mesurer expérimentalement la position de cette largeur minimum du faisceau dans la fluorescine.
+\subsubsection{Simulation numérique}\label{simulationthermallens}
 
-\begin{figure}
-\centering
-\includegraphics[width=0.6\textwidth]{./files/thermal-shift.svg.png}
-\caption{
-On voit ici une feuille de lumière imagée dans la fluorescéine pour plusieurs puissances laser différentes. La position du maximum d'intensité, et donc de la largeur minimale, est marquée par un trait en pointillé
-}
-\end{figure}
+Pour décrire la propagation du faisceau à travers un milieu épais, on le divise en éléments fins.
+On part du principe que le faisceau reste gaussien tout au long du parcours, il peut donc être entièrement décrit pour chaque $z$ par la position et la largeur de son waist. Pour chaque tranche de liquide d'épaisseur $l$, on applique l'effet de la lentille équivalente dont la focale est définie suivant la partie précédente pour trouver le déplacement du waist et son élargissement. Le code de cette simulation numérique est publié à l'adresse \href{https://github.com/Hugo-Trentesaux/these}{https://github.com/Hugo-Trentesaux/these}. La figure \ref{FIGthermalfluorescine} montre le résultat de cette simulation comparé à une mesure expérimentale.
 
-\begin{figure}
-\centering
-\includegraphics[width=0.8\textwidth]{./files/grinlensplots_model.png}
-\caption{
-voici la comparaison entre les données numériques et expérimentales
-}
-\end{figure}
+\subsection{Effet dynamique}
 
-
-\subsection{TODO analyse temporelle}
+L'effet de lentille thermique a une composante dynamique liée au temps d'établissement de l'équilibre de température. Cet effet a un temps caractéristique $t_c = \frac{w_z^2}{4D}$ qui dépend uniquement de la largeur du faisceau (on considère constante $D = 1.43\times 10^{-7} m^2/s$ la diffusivité thermique de l'eau). Au début de la propagation dans la cuve, le faisceau est large (1 mm), ce qui donne un temps caractéristique de l'ordre de plusieurs secondes. Près du waist, au contraire, ce temps est très court, de l'ordre de la microseconde. Il faut donc réaliser une simulation pour estimer la dynamique du système complet. 
+% TODO modèle Tom
+En pratique, on constate un temps d'établissement de l'ordre de la seconde.
+% TODO mesures établissement
