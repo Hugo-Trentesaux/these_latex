@@ -128,7 +128,7 @@ Pour un temps d'exposition par couche de 10 ms en mode d'acquisition continu, on
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Analyse des données}
 
-L'analyse des données produites par le microscope est en enjeu en lui même. En effet, avec des images de 1024$\times$600 pixels, 20 couches et 25 minutes d'enregistrement à 2 volumes par seconde, on obtient 60000 images. Pour des pixels stockés sur 16 bits, cela donne près de 60 Go de données brutes. Dans ce chapitre, je m'intéresse aux stratégies pour traiter ces données. Les chiffres donnés ci-dessus sont ceux utilisés pour les calculs en ordre de grandeur par la suite.
+L'analyse des données produites par le microscope est en enjeu en lui même. En effet, avec des images de 1024$\times$600 pixels, 20 couches et 25 minutes d'enregistrement à 2 volumes par seconde (3000 pas de temps), on obtient 60000 images. Pour des pixels stockés sur 16 bits, cela donne près de 60 Go de données brutes. Dans ce chapitre, je m'intéresse aux stratégies pour traiter ces données. Les chiffres donnés ci-dessus sont ceux utilisés pour les calculs en ordre de grandeur par la suite.
 
 \subsection{Logiciels existants}
 
@@ -163,7 +163,7 @@ Dans la suite de cette section, j'appellerai de manière équivalente (x,y,z,t) 
 \caption{Illustration de la convention d'orientation RAS (a.) et comparaison avec les systèmes de coordonnées naturels de ImageJ (b. coordonnées des pixels d'un écran) et Matlab (c. coordonnées des éléments d'une matrice).}
 \end{figure}
 
-% VolkerComment
+% VolkerComment OK
 % Add a figure illustrating the RAST definition and add your wiki page with the corresponding figures about the different coordinate systems used in Matlab, Fiji, cmtk
 
 \paragraph{Alignement temporel}
@@ -179,27 +179,43 @@ Cette étape nécessite donc une supervision rapide à l'œil humain mais foncti
 
 \paragraph{Alignement sur un cerveau de référence}
 
-Après avoir obtenu une matrice 4D alignée temporellement, il est trivial de réaliser une moyenne temporelle qui permet d'obtenir une image avec un bon rapport signal à bruit et moins dépendante de l'activité des neurones. Ce volume moyenné suivant le temps peut être aligné sur un volume de référence à l'aide de \href{https://www.nitrc.org/projects/cmtk}{CMTK} (\emph{Computational Morphometry Toolkit}). Cela permet d'une part de reporter après analyse les résultats de différents enregistrements sur le même cerveau de référence afin de les comparer et d'autre part d'obtenir un contour du cerveau définissant la région d'intérêt. Cette région d'intérêt peut alternativement être précisée à la main. À partir de ce moment deux voies d'analyse sont possible : par pixel ou par neurone après segmentation.
+Après avoir obtenu une matrice 4D alignée temporellement, il est trivial de réaliser une moyenne temporelle qui permet d'obtenir une image avec un bon rapport signal à bruit et moins dépendante de l'activité des neurones. Le volume moyenné suivant le temps peut être aligné sur un volume de référence. Des logiciels comme \href{https://www.nitrc.org/projects/cmtk}{CMTK} (\emph{Computational Morphometry Toolkit}) ou \href{https://stnava.github.io/ANTs/}{ANTs} (\emph{Advanced Normalization Tools}) permettent de réaliser cet alignement automatiquement. Quand le volume diffère trop du volume de référence pour un alignement automatique, le logiciel \href{https://www.slicer.org/}{3DSlicer} permet de réaliser l'opération à la main en placant des points de repère.
+Aligner le volume sur un cerveau de référence permet d'une part de comparer plusieurs analyses entre elles dans un espace commun et d'autre part d'obtenir un contour du cerveau définissant la région d'intérêt. La région d'intérêt peut alternativement être précisée manuellement en traçant le contour de la zone d'intérêt pour chaque couche. 
+
+% À partir de ce moment deux voies d'analyse sont possible : par pixel ou par neurone après segmentation.
+
+% TODO je discute de ces outils en annexe CMTK/3DSlicer
 
 \paragraph{Analyse de Fourier par pixel}
 
-% VolkerComment
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth]{./files/analysis_illustration.svg.png}
+\caption{Illustration de différentes étapes de l'analyse.
+\\a. Segmentation par l'algorithme \emph{watershed} affichée par dessus une image moyenne.
+\\b. Détail de la segmentation. Un extrait du signal du neurone en vert est affiché dessous. Chaque trait léger correspond à un pixel du neurone, le trait épais correspond à la moyenne de tous les pixels pour ce neurone. L'histogramme montre la répartition des tailles des régions pour cette couche. La plupart des segments contiennent entre 20 et 50 pixels.
+\\c. Valeur de signal pour un pixel (le pixel en magenta sur le neurone vert) tout au long de l'enregistrement (le niveau de bruit de la caméra est à 400). Un détail sur la partie encadrée met en évidence son activité périodique.
+\\d. Détail de l'amplitude de la transformée de Fourier discrète du signal précédent. On voit un large pic à la fréquence de stimulation, largement au dessus du bruit évalué sur une fenêtre avoisinante.
+\label{FIGfourier}}
+\end{figure}    
+
+% VolkerComment OK
 % Add a figure of a typical PSD and show visually how you extract the data
 % (PSD = DSP)
 
 Il est intéressant de réaliser certaines analyses directement sur les pixels de l'image. Cela permet d'obtenir des figures avec une bonne résolution et contourne le problème de la segmentation des neurones tout en profitant au mieux de l'échantillonnage permis par la caméra. Cependant, cette approche est coûteuse en calcul car elle opère sur un grand nombre d'éléments. Nous l'avons principalement réservée à l'analyse de Fourier pour une stimulation périodique.
-Pour chaque pixel dans la région d'intérêt, on applique la transformée de Fourier discrète sur son profil temporel. Cela donne un pic en amplitude à la fréquence de stimulation et du bruit en dehors. On calcule un rapport signal à bruit comme le rapport de l'amplitude du signal sur l'amplitude du bruit moyennée sur une fenêtre autour du pic de largeur arbitraire. On considère également la phase du pic, qui représente le déphasage dus signal de fluorescence avec le stimulus.
+Pour chaque pixel dans la région d'intérêt, on applique la transformée de Fourier discrète sur son profil temporel (cf Fig. \ref{FIGfourier} c.). Cela donne un pic en amplitude à la fréquence de stimulation et du bruit en dehors (cf Fig. \ref{FIGfourier} d.). On calcule un rapport signal à bruit comme le rapport de l'amplitude du signal sur l'amplitude du bruit moyennée sur une fenêtre autour du pic de largeur arbitraire. On considère également la phase du pic, qui représente le déphasage dus signal de fluorescence avec le stimulus.
 Ces valeurs pour chaque pixels sont ensuite utilisées pour représenter une couleur dans l'espace HSV (\emph{Hue, Saturation, Value} soit Teinte, Saturation, Valeur). La teinte représente le déphasage, la saturation et réglée à 1, et la valeur représente le rapport signal à bruit. 
 
 \paragraph{Segmentation et analyse par neurone}
 
-L'analyse par pixel est pertinante pour des études préliminaires simples car elle est gourmande en calcul, chaque section de neurone (environ 6 µm de diamètre) étant imagée sur environ 40 pixels (pixel objet de 0.8 µm de côté). En regroupant les pixels appartenant au même neurone, on peut réduire le volume de données à traiter tout en conservant leur qualité. Il existe de nombreux algorithmes de segmentation, certains faisant appel aux données temporelles pour tirer profit de l'activité des neurones, d'autre opérant sur l'image moyenne. Nous nous avons pour l'instant uniquement utilisé l'algorithme de ligne de partage des eaux (\emph{watershed}) pour sa simplicité, sa rapidité et ses résultats satisfaisants.
+L'analyse par pixel est pertinante pour des études préliminaires simples car elle est gourmande en calcul, chaque section de neurone (environ 6 µm de diamètre) étant imagée sur environ 30 pixels (pixel objet de 0.8 µm de côté) (cf histogramme Fig. \ref{FIGfourier} b.). En regroupant les pixels appartenant au même neurone, on peut réduire le volume de données à traiter tout en conservant leur qualité (cf Fig. \ref{FIGfourier} b.). Il existe de nombreux algorithmes de segmentation, certains faisant appel aux données temporelles pour tirer profit de l'activité des neurones, d'autre opérant sur l'image moyenne. Nous nous avons pour l'instant uniquement utilisé l'algorithme de ligne de partage des eaux (\emph{watershed}) combiné à une égalisation locale de contraste. Cela donne des résultats satisfaisants comme on le voit en figure \ref{FIGfourier} (a.).
 
-% TODO illustrer pixellation du neurone
-% TODO vérifier taille neurone en pixel
+% OK illustrer pixellation du neurone
+% OK vérifier taille neurone en pixel
 % TODO regarder taille de la ROI moyenne par rapport au volume total (somme du masque)
 
-Après segmentation, on définit la valeur d'un neurone comme la moyenne des valeurs des pixels qui le constituent. Chaque segment peut représenter une partie d'un neurone, plusieurs neurones, ou même une zone de l'image sans neurones, mais beaucoup de segments représentent un neurone. Pour environ 200 000 segments, cela réduit l'échantillon à 500 Mo, ce qui permet d'appliquer des algorithmes plus gourmands en ressources en un temps raisonnable.
+Après segmentation, on définit la valeur d'un neurone comme la moyenne des valeurs des pixels qui le constituent. Chaque segment peut représenter une partie d'un neurone, plusieurs neurones, ou même une zone de l'image sans neurones, mais beaucoup de segments représentent un neurone. Pour environ 80 000 segments, cela réduit l'échantillon à 500 Mo, ce qui permet d'appliquer des algorithmes plus gourmands en ressources en un temps raisonnable.
 
 % TODO vérifier nombre de segments
 % TODO baseline, df/f, régression...
@@ -231,11 +247,11 @@ Une définition courante de la valeur de référence d'un signal calcique repose
 
 % VolkerComment
 % Explain the algorithm used by caTools and explain why it is faster => running quantile calculation. What is the speed gain when analyzing our data
+% TOOD comparaison runquantile
 
 % TODO temps de conversion HCImage dcimg -> tiff
 % TODO temps de transfert réseau dcimg / tiff
 % TODO temps de copie SSD -> SSD, HDD -> HDD
-% TOOD comparaison runquantile
 
 \subsubsection{Pistes d'améliorations}
 
@@ -278,3 +294,8 @@ J'ai réalisé un prototype rapide détaillé en annexe pour évaluer l'intérê
 }
 \end{figure}
     
+
+
+% Volker addition on overleaf
+
+% Tilt Microscope

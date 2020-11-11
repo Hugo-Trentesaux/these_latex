@@ -40,12 +40,30 @@
 Pour réaliser l'imagerie du cerveau lors du contrôle postural tel que présenté au chapitre \ref{chapII}, il faut contrôler à la fois l'environnement visuel et l'environnement vestibulaire.
 Dans le chapitre \ref{chapIII}, je présente un microscope rotatif capable d'imager le fonctionnement du cerveau lors d'une stimulation vestibulaire réelle, ce qui répond en partie au problème. Dans ce chapitre, je m'intéresse à l'autre partie : comment réaliser l'imagerie tout en contrôlant l'environnement visuel, et cela en même temps qu'une stimulation vestibulaire.
 
+% VolkerComment2
+% Change the structure: Talk first about the solution by Vladimirov and then introduce the alternative approach of 2P imaging. In this way you can explain the two photon part step by step from standard 2P scanning microscopy (here you explain the principle) to 2P light-sheet microscopy (here you have to introduce the high laser power required for fast functional 2P light-sheet imaging). Then discuss the challenge of fiber coupling a two photon laser necessary for the development of a rotating 2P microscope (dispersion, non-linear effects at laser powers > 10mW ..., fiber damage). Then write that the field of imaging in freely moving rats with head mounted fiber scopes faces the same challenge. Now introduce fiber light guides in general and then introduce step by the different solutions found in the literature : 1. Precompensation, 2. hollowcore fibers (i. photonic bandgap fibers). Discuss directly in each subsection the applications and the limitations of the solutions (low laser power transmission, single wavelength and not at 930nm ...) . Then finish with a statement that states that broadband fiber coupling with >90% transmission would be desirable. Start a new chapter and present your work with Kagome and NCF fibers. (1) start with the history and the general properties of these fibers. (2) Explain why you selected the fiber that we use now and show the characterization provided by GLO (3) Then continue with you fiber coupling part, (4) introduce the necessity of the NA expander and how you implemented it, (5) discuss your M2 value characterization at the fiber output and the measured beam profile, (6) show that your system can perform high resolution anatomical brain scans in one- and two-photon mode (this figure is currently missing in your manuscript). Now start a new section and discuss the atifact when you rotate the system. Now you describe step by step how you optimized the system to reduce all artifacts (1) bending loss (2) circular polarization (3) average laser power ....
+
 Un microscope à feuille de lumière classique utilise un laser bleu pour stimuler la fluorescence, et cette longueur d'onde réside dans le domaine visible de la larve de poisson zèbre, ce qui peut l'éblouir et perturber son système visuel. Pour cette raison, Ahrens \emph{et al}, pour l'étude de l'OMR, ont utilisé un microscope à deux photons classique \cite{ahrens_brain-wide_2012}. Cela permet d'illuminer dans l'infrarouge, une longueur d'onde invisible pour le poisson. Cependant ils ne bénéficiaient pas des avantages d'un microscope à feuille de lumière et étaient contraints par le balayage point par point à réaliser l'acquisition du cerveau une région après l'autre afin de reconstruire \emph{a prosteriori} l'image du cerveau entier. À peu près en même temps, Truong \emph{et al} publiaient un microscope à feuille de lumière deux photons permettant d'allier les avantages de la microscopie deux photons et de la microscopie à feuille de lumière \cite{truong_deep_2011}.
+
+% VolkerComment2
+% "avantages" -> specify the advantages again here.
+% Truong:
+% Their main focus was to increase penetration depth in not fully transparent samples as a Drosophila larva in the context of volumetric live imaging during development. Compared to functional whole-brain imaging in zebrafish larvae they do very slow imaging. They demonstrated that two-photon light sheet microscopy is possible. And that the high laser power required does not burn the sample. As a major result they demonstrate that they can penetrate two time more the sample due to less scattering of IR laser, 2P effect reduces fluorescent excitation by scattered light, reduced autofluorescence at IR wavelength. FYI: here also the patent with interesting discussions https://patents.google.com/patent/US8441633B2/en
+
+% VolkerComment2
+% Vladimirov
+% Show the figure that demonstrates the configuration of the two light-sheets
 
 Plus tard, Vladimirov \emph{et al} \cite{vladimirov_light-sheet_2014} ont montré que l'étude de l'OMR était également possible en microscopie à feuille de lumière un photon, à condition de ne pas éclairer directement l'oeil du poisson. Ils ont utilisé deux feuilles de lumière, l'une éclairant le cerveau par le côté et l'autre par l'avant, entre les deux yeux. Cependant, l'OMR est un réflexe robuste qui ne recourt pas aux fonctions avancées de la vision, et la perturbation due à l'illumination des autres processus visuels n'est pas contrôlée. C'est pourquoi Wolf \emph{et al} ont appliqué la technique mise au point par Truong à l'étude du système visuel de la larve de poisson zèbre \cite{wolf_whole-brain_2015}. Ils ont construit un microscope à feuille de lumière deux photons et réalisé l'acquisition du cerveau entier lors de stimulations visuelles.
 
+% VolkerComment2
+% Discuss the paper: They demonstrated lower visual response threshold in 2P LSM compared to 1P LSM. Show the figure 1b of Wolf et al. Discuss also that one cannot image through the eyes as this will burn the fish.
+
 Pour étudier le cerveau lors du contrôle postural, il est donc nécessaire de réaliser un microscope rotatif deux photons, ce qui soulève plusieurs enjeux techniques. D'une part, pour guider le laser deux photons vers une plateforme mobile, il faut disposer d'une fibre adaptée (transmission de grandes puissances, faible dispersion, maintient de la polarisation, faible gain de courbure), d'autre part il faut minimiser les effets dus à la propagation d'un faisceau intense dans un fluide mobile. Ce chapitre débute sur les fibres optiques adaptées à la transmission d'un laser deux photons et leur utilisation en microscopie embarquée, et poursuit sur la construction d'un microscope deux photons rotatif fibré.
 
+% VolkerComment2
+% grande puissance
+% You have to introduce and discuss the high laser power requirement for 2P LSM in you intro.
 
 \section{Effet deux photons}
 
@@ -59,17 +77,24 @@ L'absorption deux photons est un phénomène non linéaire d'absorption simultan
 
 Un système optique peut concentrer la lumière localement, ce qui produit un point de plus grande intensité, le point focal. Comme l'effet deux photons est proportionnel au carré de l'intensité, la zone concernée est d'autant plus restreinte. Cette propriété est utilisée en microscopie multiphoton pour produire une illumination ponctuelle qui permet le sectionnement optique dans la direction de propagation. En microscopie à feuille de lumière, au contraire, une illumination linéaire est recherchée. La focalisation est donc bien moindre et l'effet deux photons contribue à affiner la zone d'excitation (cf Fig. \ref{2P-intensity-profile}).
 
+% VolkerComment2
+% You have to make a figure. Show the Jablonski diagram and e.g. this https://www.researchgate.net/figure/Two-photon-fluorescence-vs-normal-fluorescence-The-blue-scanning-laser-in-the-left_fig11_326583720. Discuss that via the two photon effect you can excite the same fluorophore (GCaMP) with an IR laser of double the wavelength compared to the one photon case. In this configuration you laser is outside the sensitive spectrum of the fish retina.
+% Is linear the correct word? An extended focus is needed to create the light-sheet
+
 \begin{figure}
 \centering
 \includegraphics[width=0.8\textwidth]{./files/profile-intensity.png}
-\caption{Effet deux-photons en microscpie à feuille de lumière. Comparaison du profil d'intensité (haut) et de son carré (bas). On voit que la zone concernée par l'effet deux photons et restreinte. (paramètres : indice optique 1.33, longueur d'onde 915 nm, waist 6.5 µm)
+\caption{Effet deux-photons en microscopie à feuille de lumière. Comparaison du profil d'intensité (haut) et de son carré (bas). On voit que la zone concernée par l'effet deux photons et restreinte. (paramètres : indice optique 1.33, longueur d'onde 915 nm, waist 6.5 µm)
 }
 \label{2P-intensity-profile}
 \end{figure}
 
-\subsection{Concentration temporelle}
+\subsection{Concentration temporelle}\ref{SECTIONconcentrationtemporelle}
 
-Une autre manière de concentrer la lumière est la concentration temporelle. Dans le cas d'un laser continu, la puissance est répartie sur toute la longueur de propagation du faisceau. En utilisant un laser pulsé, la puissance est concentrée en paquets beaucoup plus courts (cf Fig. \ref{pulsed-laser}). Par exemple, pour des impulsions de 100 fs, malgré la vitesse élevée de la lumière, la longueur de ces paquets est de 30 mm. Si de plus le taux de répétition du laser est de 80 MHz, la puissance moyenne d'une impulsion est 125 fois plus élevée qu'un laser continu de même puissance moyenne (1/(100fs x 80MHz)). L'effet deux photons étant proportionnel au carré de la puissance instantanée, on a intérêt à choisir les impulsions les plus courtes possibles (petit $\tau$) et le taux de répétition le plus faible possible (grand T) pour un laser de puissance moyenne fixée \cite{maioli_fast_2020}. Cette tendance est limitée par les photoperturbations induites, qui deviennent importantes au delà d'une centaines de nanojoules par impulsion. Les conditions optimales en microscopie par fluorescence à nappe laser deux photons sont donc autour de f = 1 MHz, $\tau$ = 100 fs, P = 100 mW.
+Une autre manière de concentrer la lumière est la concentration temporelle. Dans le cas d'un laser continu, la puissance est répartie sur toute la longueur de propagation du faisceau. En utilisant un laser pulsé, la puissance est concentrée en paquets beaucoup plus courts (cf Fig. \ref{pulsed-laser}). Par exemple, pour des impulsions de 100 fs, malgré la vitesse élevée de la lumière, la longueur de ces paquets est de 30 mm. Si de plus le taux de répétition du laser est de 80 MHz, la puissance d'une impulsion est 125 fois plus élevée qu'un laser continu de même puissance moyenne (1/(100fs x 80MHz)). L'effet deux photons étant proportionnel au carré de la puissance instantanée, on a intérêt à choisir les impulsions les plus courtes possibles (petit $\tau$) et le taux de répétition le plus faible possible (grand T) pour un laser de puissance moyenne fixée \cite{maioli_fast_2020}. Cette tendance est limitée par les photoperturbations induites, qui deviennent importantes au delà d'une centaines de nanojoules par impulsion. Les conditions optimales en microscopie par fluorescence à nappe laser deux photons sont donc autour de f = 1 MHz, $\tau$ = 100 fs, P = 100 mW.
+
+% VolkerComment2
+% Move this to the discussion. Also from where do you get the numbers? citation is missing. Willy Supatto shows in his 2020 paper that 10MHz is the optimal repetition rate.
 
 \begin{figure}
 \centering
@@ -128,6 +153,9 @@ Cependant, en 2010, Février \emph{et al} montrent par analyse numérique que le
 
 Les idées de fibre à réseau de tubes unique et de fibres à coeur hypocycloide se rejoingent dans un même concept : les fibres à courbures négatives. En 2016, Yu et Knight publient une revue sur l'histoire de ces fibres et leurs mécanismes \cite{yu_negative_2016}. Ils commentent entre autres l'atténuation, les bandes de transmission et le gain de courbure. Ces critères rendent cette famille de fibres particulièrement adaptée à notre application. En effet, les larges bandes de transmission permettent de guider plusieurs longueurs d'onde, aussi bien pour l'imagerie un photon que deux photons, la faible atténuation permet de conserver la puissance du laser nécessaire à l'effet deux photons, et le faible gain de courbure permet de conserver une illumination stable pendant la rotation du microscope.
 
+% VolkerComment2
+% You have to make the effort and write all this in your thesis. It is not sufficient to just refer to the review. Explain the light guidance mechanism, show figures, ... .
+
 % \cite{belardi_effect_2013}
 
 
@@ -160,6 +188,9 @@ e. Un endoscope sans optique permet de réduire considérablement l'encombrement
 
 Une méthode répandue en imagerie cérébrale sur rongeur est de fixer un animal sous un microscope classique immobile. Le cerveau est rendu accessible par une opération chirurgicale pendant laquelle le crane est retiré localement et remplacé par une vitre. Le fait d'immobiliser la tête pendant l'imagerie peut limiter le répertoire comportemental et constituer une gène pour l'animal. Une solution est un système où le rat se positionne volontairement sous le microscope \cite{scott_cellular_2013}, une autre est le système en réalité virtuelle. Dans cette deuxième solution, le rongeur marche sur une boule en polystyrène sur coussins d'air alors qu'un environnement visuel est projeté sur un écran autour de lui \cite{dombeck_functional_2010}. Le microscope est ici entièrement statique et rigide. La réalité virtuelle a également été utilisée avec des enregistrement en électrophysiologie \cite{aronov_engagement_2014}\cite{whitlock_navigating_2014}.
 
+% VolkerComment2
+% You have to write all this from the point of view of the fiber application. Go straight to the challenge to record in freely moving animals and the development of portable fiber scopes ...
+
 
 % \subsubsection{Microscope embarqué}
 % An implantable and fully integrated complementary metal–oxide semiconductor device for in vivo neural imaging and electrical interfacing with the mouse hippocampus \cite{ng_implantable_2008}
@@ -179,16 +210,25 @@ Malgré la déportation de l'illumination et de la détection, les systèmes opt
 
 \subsubsection{Microendoscopes}
 
-D'autres techniques d'imagerie neuronale se passent même d'optique et sont uniquement consitués d'une fibre insérée dans l'échantillon. On parle alors plutôt de microendoscope. L'idée générale est d'utiliser la même fibre pour éclairer l'échantillon et collecter la lumière. Des éléments actifs peuvent être utilisés pour moduler le front d'onde, et plusieurs techniques reposent sur une phase de calibration préalable \cite{papadopoulos_high-resolution_2013}\cite{ohayon_minimally_2018}\cite{turtaev_high-fidelity_2018}. Ces techniques utilisent des fibres optiques multimodes classiques. L'avantage de l'endoscopie est que les tissus sont traversés par la fibre, et pas directement par la lumière, ce qui contourne le phénomène de dispersion. Il existe également des systèmes plus sophistiqués qui combinent plusieurs fibres en une seule de manière à profiter de propriétés différentes pour l'émission et collection de lumière \cite{andresen_two-photon_2013}\cite{kudlinski_double_2020}\cite{lombardini_high-resolution_2018}.
+% VolkerComment2
+% Why do you describe this. Where is the link to your work? You can use this in the discussion and propose that your fiber can be also used to collect the fluorescent light. With the small mode field diameter this would create a confocal like configuration.
+
+D'autres techniques d'imagerie neuronale se passent même d'optique et sont uniquement constitués d'une fibre insérée dans l'échantillon. On parle alors plutôt de microendoscope. L'idée générale est d'utiliser la même fibre pour éclairer l'échantillon et collecter la lumière. Des éléments actifs peuvent être utilisés pour moduler le front d'onde, et plusieurs techniques reposent sur une phase de calibration préalable \cite{papadopoulos_high-resolution_2013}\cite{ohayon_minimally_2018}\cite{turtaev_high-fidelity_2018}. Ces techniques utilisent des fibres optiques multimodes classiques. L'avantage de l'endoscopie est que les tissus sont traversés par la fibre, et pas directement par la lumière, ce qui contourne le phénomène de dispersion. Il existe également des systèmes plus sophistiqués qui combinent plusieurs fibres en une seule de manière à profiter de propriétés différentes pour l'émission et collection de lumière \cite{andresen_two-photon_2013}\cite{kudlinski_double_2020}\cite{lombardini_high-resolution_2018}.
 
 \section{Caractérisation et utilisation de fibres à âme vide}
 
 Nous avons vu dans la partie précédente qu'une fibre optique permet de guider la lumière, que ce soit pour éclairer l'échantillon ou collecter le signal. Les fibres de verre conviennent bien aux applications classiques, mais posent des problèmes d'interaction lumière-matière lors de la transmission d'impulsions à haute énergie pour la microscopie multiphoton et nécessitent une précompensation de la dispersion. Les fibres à âme vide permettent de contourner ces problèmes et ont déjà été largement utilisées dans des microscopes embarqués sur rongeur \cite{tai_two-photon_2004} \cite{flusberg_vivo_2005} \cite{engelbrecht_ultra-compact_2008} \cite{piyawattanametha_vivo_2009} \cite{choi_improving_2014} \cite{klioutchnikov_three-photon_2020}. C'est donc vers celles-ci que nous nous sommes tournés. Aucune fibre optique répondant à nos besoins n'étant disponible commercialement, nous nous sommes tournés vers l'entreprise \href{http://www.glophotonics.fr/}{Glophotonics} et avons testé plusieurs modèles.
 
+% VolkerComment2
+% What are our requirements ? Detail this ...
+
 \subsection{Comparaison de fibres}
 
 % OK TODOVolker (GLO all fibers)
 % In collaboration with GLO we tested several different fiber types. Go through all of them ! Show the image of the cross section of this fiber and give all details of the fiber geometry: core diameter, total diameter, number of cladding tubes, tube wall thickness, cladding tube diameter, NA, mode field diameter (1/e2), curvature parameter (For b definition, see Opt. Exp. 21, no. 23, 28597, 2013)... .
+
+% VolkerComment2
+% No, we did not record with these fibers. The mode field diameter was to large and the instabilities to bending were to large. Or do you have successful recordings with these fibers? The Brighton experiments were done with the fiber PMC-C-1C-R&D2
 
 Au début, nous avons utilisé des fibres ayant une bande de transmission uniquement dans l'infrarouge. Ces fibres ont permis de réaliser l'acquisition deux photons de l'activité neuronale lors de stimulation vestibulaire. Ensuite, nous avons cherché à permettre à la fois la transmission d'un laser 1P et 2P, d'où l'utilisation de fibres avec plusieurs bandes de transmission. Parmi ces fibres, nous avons retenu le modèle PMC-C-9005 B2 qui permet une bonne transmission (97\% à 930 nm sur 1,5 m de fibre contre 70\% pour PMC-C-1C-R\&D2). J'utilise ce modèle comme référence par la suite.
 
@@ -294,6 +334,9 @@ En conditions réelles, ont peut s'arranger pour limiter la courbure et réparti
 \label{FIGfibercarac}}
 \end{figure}
 
+% VolkerComment2
+% You have to write the figure legend ! You have to describe every panel and give the meaning of the appreciations.
+
 % OK TODOVolker output profile
 % (via rocketchat) Add also the measurement of the fiber output profile as a function of bending diameter to your thesis. Your measurement shows that at 915nm the profile does and thus the mode does not change. 
 
@@ -323,6 +366,9 @@ On confirme ceci à l'aide d'un lame $\lambda$/2. En tournant une polarisation l
 \label{FIGpolarisation}}
 \end{figure}
 
+% VolkerComment2
+% Work over the figure legend. Each panel needs a to be introduced in the legend with a subtitle. The blue arrow indicates the excitation and not the emission.
+
 \paragraph{Absorption deux photons}
 
 En excitation deux photons, l'état de polarisation influe sur l'efficacité d'absorption. Un faisceau polarisé linéairement a un taux d'absorption deux photons plus élevé qu'un faisceau polarisé circulairement. Cependant, un faisceau polarisé circulairement conduit à une excitation plus homogène du fluorophore \cite{de_vito_effects_2020}. Le résultat est qu'une polarisation circulaire conduit à un signal détecté deux fois plus faible qu'une polarisation linéaire optimale, et de l'ordre d'une polarisation linéaire à 90°. Idéalement, la polarisation en sortie de fibre doit donc rester linéaire et horizontale quelle que soit sa déformation. J'ai donc cherché à caractériser les modifications de polarisation induites par une déformation de la fibre.
@@ -345,6 +391,9 @@ J'ai montré que la polarisation tournait largement en fonction de la courbure d
 En polarisation circulaire ($\theta$ = 45°), la rotation n'est plus un problème, mais la fibre peut toujours transformer la polarisation circulaire en une polarisation elliptique, qui perd sa symétrie et devient donc sensible à la rotation. J'ai caractérisé la variation d'ellipticité dans le cas d'une polarisation circulaire. Les plus grandes variations d'ellipticité enregistrées sont de l'ordre de 5°. Pour vérifier comment ces différents éléments entrent en jeu, j'ai réalisé des tests en conditions réelles.
 
 \subsubsection{Test en conditions réelles}
+
+% VolkerComment2
+% You have to introduce the NA expander and show a schematic of the experiment
 
 Pour tester les variations d'intensité dues aux déformations de la fibre en conditions réelles, j'ai monté un cube polariseur et un puissance-mètre à la place de l'échantillon et ai soumis l'ensemble à des stimulations périodiques guidées par un moteur (cf Fig. \ref{FIGrealconditionsfiber}).
 
@@ -373,7 +422,14 @@ Finalement, tous les effets liés à la position de la fibre engendrent des vari
 
 On a vu que la fibre avait de bonnes propriétés en conditions réelles, pourtant en essayant d'imager un poisson en deux photons tout en bougeant le microscope, on observe des fluctuations d'intensité de grande amplitude (Fig. \ref{FIGwaterinstability}). En regardant attentivement à l'oeil, on s'aperçoit que ces fluctuations sont liées à un déplacement de la zone la plus lumineuse le long de la direction de propagation du faisceau qui rend toute exploitation des données impossible. Cette observation a pu être expliquée par l'effet de lentille thermique (\emph{thermal lens effect}) modulé par un déplacement des masses d'eau de températures différentes.
 
+% VolkerComment2
+% You have to describe in detail all the observations that led to the hypothesis that the thermal lens effect is the reason for the instability. 1. The instability increased with rotation frequency. At 0.01Hz sinusoidal stimulation at 10degree amplitude we had stable calcium imaging recordings. This showed that it is a dynamic effect. We hypothesized that the instability is related to water movements. You made two controls to demonstrate this: 1. Under static microscope conditions you could introduce laser focus movements by moving the water in the tank. 2. Recordings in agarose were stable. Show these results. Next, you made the observation that once opening the two-photon laser shutter that the light-sheet waist moves relative to its initial position by ~100μm along the laser axis. It takes several hundred of milliseconds before the laser focus equilibrates to a stable position. Show the corresponding kymographs. You hypothesized that the high-power infrared laser is absorbed by the water and modifies the refractive index of water along the laser path by local heating which changes the effective focal distance of the illumination objective. Once all temperature gradients are equilibrated the effective focal distance is stable. Rotating the microscope leads to water movements in the experimental chamber relative to the optical system due to inertia effects. Cold water comes into the laser path and changes transiently the effective focal distance. This mixing effect and thus the imaging artefact increases with increasing microscope acceleration. To test this hypothesis you performed (1) experiments in agarose to immobilize the water. Under these conditions no artifact was observed (show the data!). (2) You calculated the effect and compared your measurements with the theoretical description ... . Next you explain that initially you thought that the focal shift is caused mainly by the laser heating in the focus. Interestingly, the calculations show that every element along the laser path contribute equally to the focal shift. Show the calculation, plot a figure that demonstrates this effect and give an intuitive explanation. Now you can discuss the solutions to the problem: 1) You solution with the shutter 2) Reducing the laser path through the water!
+
 Lorsqu'un faisceau traverse un milieu absorbant, ce milieu chauffe sur la trajectoire du faisceau, ce qui change son indice optique. Le gradient d'indice ainsi formé dévie les rayons, formant une lentille à gradient d'indice (GRIN lens). Pour l'eau, à 915 nm, le changement d'indice est de l'ordre de $-10^{-4}$ par degré. La température étant plus élevée au centre du faisceau, l'indice optique est plus faible, et donc la lentille équivalente est divergente. Cet effet peut être utile, par exemple pour mesurer le coefficient d'absorption d'un liquide \cite{whinnery_laser_1974}, mais il a deux conséquences gênantes dans mon cas. D'une part un effet statique lié à la perte de focalisation du faisceau altère l'effet deux-photons, d'autre part un effet dynamique lié à la réponse du système à une perturbation de la température d'équilibre dévie le faisceau lors des mouvements du microscope.
+
+% VolkerComment2
+% (température plus élevée au centre du faisceau) Make a nice schematic to illustrate what you describe here
+% (conséquences gênantes) Incomprehensible ... . Explain this more in detail.
 
 \begin{figure}
 \centering
@@ -381,6 +437,9 @@ Lorsqu'un faisceau traverse un milieu absorbant, ce milieu chauffe sur la trajec
 \caption{Images extraites d'un film montrant les changements d'intensité liés à l'effet thermique. On y voit la distribution d'intensité lumineuse se déplacer de gauche à droite (direction de propagation du faisceau) au rythme des mouvements du moteur.
 \label{FIGwaterinstability}}
 \end{figure}
+
+% VolkerComment2
+% Add a scale bar. Indicate the microscope rotation angle corresponding to each image. Indicate the time points and show the stimulation. I guess it is a sinus .. . Draw two ROIs mirror symmetric to the midplane and show the average intensity over time.
 
 % -1e-4 par degré
 % https://en.wikipedia.org/wiki/Optical_properties_of_water_and_ice
@@ -482,9 +541,29 @@ On a donc une valeur de la focale $f'$ d'une tranche de liquide d'épaisseur $l$
 Pour décrire la propagation du faisceau à travers un milieu épais, on le divise en éléments fins.
 On part du principe que le faisceau reste gaussien tout au long du parcours, il peut donc être entièrement décrit pour chaque $z$ par la position et la largeur de son waist. Pour chaque tranche de liquide d'épaisseur $l$, on applique l'effet de la lentille équivalente dont la focale est définie suivant la partie précédente pour trouver le déplacement du waist et son élargissement. Le code de cette simulation numérique est publié à l'adresse \href{https://github.com/Hugo-Trentesaux/these}{https://github.com/Hugo-Trentesaux/these}. La figure \ref{FIGthermalfluorescine} montre le résultat de cette simulation comparé à une mesure expérimentale.
 
+% VolkerComment2
+% Make a plot that shows the contribution of every lens element as a function of the distance to the focal point.
+
 \subsection{Effet dynamique}
+
+\subsubsection{Temps caractéristique}
 
 L'effet de lentille thermique a une composante dynamique liée au temps d'établissement de l'équilibre de température. Cet effet a un temps caractéristique $t_c = \frac{w_z^2}{4D}$ qui dépend uniquement de la largeur du faisceau (on considère constante $D = 1.43\times 10^{-7} m^2/s$ la diffusivité thermique de l'eau). Au début de la propagation dans la cuve, le faisceau est large (1 mm), ce qui donne un temps caractéristique de l'ordre de plusieurs secondes. Près du waist, au contraire, ce temps est très court, de l'ordre de la microseconde. Il faut donc réaliser une simulation pour estimer la dynamique du système complet. 
 % TODO modèle Tom
 En pratique, on constate un temps d'établissement de l'ordre de la seconde.
 % TODO mesures établissement
+
+\subsubsection{Solutions}
+
+Lorsque l'eau bouge dans la cuve, l'équilibre thermique est rompu et il faut attendre quelques temps caractéristiques avant de retrouver l'équilibre. Pendant ce temps, le waist du laser se déplace et change l'illumination de l'échantillon. C'est le phénomène dont les effets ont empêché les premières acquisitions. Une première solution consiste à moins chauffer le milieu pour minimiser l'effet de lentille thermique. Pour cela, j'ai mis en place un obturateur piloté pour éteindre le laser en dehors des périodes d'acquisition. En illuminant pendant 10 ms d'exposition et en coupant pendant 90 ms de pause, on diminue ainsi par dix la puissance moyenne, et donc l'échauffement. Cela impose une contrainte forte sur la fréquence d'acquisisiton, mais m'a permis de réaliser des enregistrements.
+Une deuxième solution est de concevoir une cuve dans laquelle l'épaisseur d'eau traversée est plus fine, ce qui diminue l'effet de lentille thermique. Je n'ai pas testé cette solution.
+Une troisième solution est de changer le taux de répétition du laser, comme indiqué en partie \ref{SECTIONconcentrationtemporelle}. Cette solution nécessite un autre laser, je ne l'ai pas explorée.
+
+\section{Réalisation pratique}
+
+% TODO réalisation microscope deux photons
+
+
+% Volker addition on overleaf
+
+% Brighton Phasemaps and Discussion
