@@ -50,3 +50,4 @@ snap install pdftk # Ubuntu
 ## Bibliographie
 
 Échapper les `%` en les remplaçant par des `\%`. (mais laisser les `\%` existants tels quels)
+
