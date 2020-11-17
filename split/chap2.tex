@@ -66,7 +66,8 @@ Le tout pèse environ 2 kg (?) et tient sur une plaque de 50 cm de côté fixée
 a. Image d'une bille dans le plan focal de l'objectif (a1)\\
 b. Image d'une bille hors du plan focal de l'objectif (a2)\\
 c. Établissement du profil radial par moyennage autour du centre de gravité de l'image\\
-d. Profil cylindrique de la figure de diffraction constitué du profil radial pour plusieurs positions de l'objectif espacées de 20 nm. Les traits pointillés correspondent aux plans (a) et (b). La corrélation verticale du profil cylindrique pour plusieurs positions du microscope donne avec précision le déplacement de la bille.}
+d. Profil cylindrique de la figure de diffraction constitué du profil radial pour plusieurs positions de l'objectif espacées de 20 nm. Les traits pointillés correspondent aux plans (a) et (b). La corrélation verticale du profil cylindrique pour plusieurs positions du microscope donne avec précision le déplacement de la bille.
+\label{FIGbeadstability}}
 \end{figure}
 
 Une bille fluorescente de 1 µm est éclairée transversalement par le laser d'excitation, qui coincide avec le plan focal de l'objectif de détection. Elle est imagée pour plusieurs positions hors focus de l'objectif, ce qui fait apparaître des franges d'interférence. Un profil cylindrique de ces franges est réalisé pour plusieurs positions du microscope et à plusieurs intervalles de temps ce qui permet de mettre en évidence le déplacement latéral et vertical de la bille au cours du temps et en fonction de la position du microscope. Cette technique a l'avantage d'être précise (de l'ordre de 100 nm) et robuste aux variations liées au photoblanchiment. Elle a permis de montrer que lors de la rotation du microscope, le déplacement reste inférieur à 500 nm dans la direction verticale et 2 µm dans la direction latérale (cette dernière peut être corrigée lors de l'analyse comme on le voit plus tard).
@@ -301,12 +302,30 @@ On trouve des neurones à toutes les valeurs de déphasage possible, mais la plu
 qui a estimé un temps de déclin de $\tau_\text{H2B-GCaMP6s-Nuclear} = 3.5 \pm 0.7 s$. Avec cette valeur de $\tau$ on approche le noyau du rapporteur calcique par :
 
 $$
-K(t) = \frac{1}{\tau}\exp{-\frac{t}{\tau}}H(t)
+K(t) = \frac{1}{\tau}\exp\left(-\frac{t}{\tau}\right)H(t)
 $$
 
-Le signal de fluorescence est obtenu comme le produit de convolution entre la concentration de calcium intracellulaire et le noyau de convolution.
+Le signal de fluorescence est obtenu comme le produit de convolution entre la concentration de calcium intracellulaire et le noyau de convolution. 
 
+% TODO pourquoi avec la transformée de Laplace je ne trouve pas le même résultat ?
 
+Je n'arrive pas à reproduire le calcul du papier pour le décalage induit par le rapporteur calcique. Quand je prends le transformée de Laplace du produit de convolution entre un sinus et le kernel je trouve un truc de la forme : 
+$$ \frac{\omega}{s^2+\omega^2} \frac{1}{s+\alpha} $$
+mais quand je prends la transformée de Laplace d'un sinus déphasé de phi, je trouve : 
+$$ \frac{s\sin\varphi+\omega\cos\varphi}{s^2+\omega^2} $$
+Ce qui est assez différent.
+
+Bref, admettons ce qui est affirmé dans le papier :
+
+$$
+F(t) = -\frac{\omega\tau}{1+(\omega\tau)^2}\cos(\omega t) + \frac{1}{1+(\omega\tau)^2}\sin(\omega t) = A\sin(\omega t + \varphi_\text{GCaMP})
+$$
+
+avec $\varphi_\text{GCaMP} = \arctan(-\omega\tau)$.
+
+Pour retrouver l'activité des neurones à partir du signal de fluorescence, on doit donc appliquer un déphasage de $ -\varphi_\text{GCaMP} = atan(-0.2 \times 3.5) = -0.61\ \mathrm{rad}$ sur le résultat de la phasemap.
+
+% TODO pourquoi est-ce que je ne retrouve pas la valeur 1.35 ?
 
 \begin{figure}
 \centering
@@ -316,84 +335,9 @@ montrant la réponse à un train de potentiels d'action pour le rapporteur calci
 \label{FIGcalciumkernel}} 
 \end{figure}
 
-% We found a continuum
-% of phase shifts in the response, but the largest response ampli-
-% tude was found predominantly for phase shifts of either 7/8p
-% or 15/8p (Figure 4A, top). Notice that these phase shifts were
-% directly computed from the fluorescence signals, and thus
-% need to be offset by D4 GCaMP = 1.35 rad to account for the cal-
-% cium reporter delayed response in order to capture the actual
-% spike rate dynamics (see STAR Methods). Taking into account
-% this correction, these two predominant populations appear to
-% display a maximum response for intermediate values of the rota-
-% tional angle and velocity, i.e., when either both are positive (7/8p
-%  D4 GCaMP ) or negative (15/8p  D4 GCaMP ) (Figure 4A, bottom,
-% magenta and pale green arrows, respectively). These neurons
-% can thus be described as mixed angle-and-velocity tuned.
-% From the pixel-wise phase-shift measurement, we computed
-% a 3D phase map (Figures 4B and 4C; Video S4, part I). This
-% map revealed that neurons displaying similar phase shifts tend
-% to spatially organize into well-defined clusters that are mirror
-% symmetric with respect to the mid-sagittal plane. Figure 4B
-% shows ten selected layers of this example phase map after regis-
-% tration on the Z-Brain atlas [22] (see STAR Methods).
+\subsubsection{Discussion}
 
-
-% In order to characterize this functional organization more
-% precisely, we split the phase map into four non-overlapping
-% phase-shift intervals (Figure 4D). The first phase interval (i) corre-
-% sponds to velocity-tuned neurons; they are mainly located in the
-% cerebellum and around the ear. The second phase interval (ii)
-% comprises mixed angle-and-velocity tuned neurons that respond
-% to angular position and velocity with opposite signs. They are
-% located in the cerebellum and lateral rhombomere 6 as well as
-% in the medial parts of rhombomeres 2–5. Neurons of the third
-% phase interval (iii) are tuned to the angular position. They are
-% distributed over the entire brain, notably in the habenula, optic
-% tectum, lateral tegmentum, cerebellum, and the most medial
-% part of the hindbrain. The largest responsive neuronal population
-% is found in the fourth phase interval (iv), which corresponds to
-% mixed angle-and-velocity tuned neurons, responsive to both
-% the angular position and velocity of identical signs. This cluster
-% includes neurons in the torus longitudinalis, habenula, optic
-% tectum, tegmentum—including the nMLF, oculomotor nucleus,
-% and trochlear nucleus—cerebellum, vestibular nucleus, vestib-
-% ular spinal neurons, inferior olive, and neurons in rhombomere
-% 7 but no neurons in the medial hindbrain from rhombomeres 3–6.
-% To investigate how this phase map is conserved across
-% different fish, we computed an average phase map from eight an-
-% imals (Figure 4F, left; Video S4, part II; individual phase maps in
-% Figure S2). The fractions of responsive neurons for selected brain
-% areas are shown in Figure 4E. The intensity of the phase map
-% was largely reduced upon averaging in the habenula, torus
-% longitudinalis, and tectum, which indicates that the functional
-% organization with respect to the phase response is not stereo-
-% typic in these areas. In contrast, the tegmentum, cerebellum,
-% and hindbrain all displayed strong averaged responses reflecting
-% a more stereotypic functional organization. Figure S4A shows
-% the average phase map split into the four phase intervals as
-% previously defined in Figure 4A. To fully exclude the possibility
-% that some of the measured activity might be evoked by residual
-% visual inputs, we repeated the experiments in 9 bi-enucleated
-% fish (STAR Methods). The corresponding average phase map is
-% shown in Figure 4F (right) and in Figure S4B split into the four
-% phase intervals. The brain-scale organization of the average
-% phase maps obtained in paralyzed fish with and without eyes is
-% comparable and thus represents the brain response to pure
-% vestibular rolling stimulation. In particular, the individual phase
-% maps of the bi-enucleated paralyzed fish also show a response
-% in the optic tectum that must consequently be activated via
-% the vestibular pathway. The individual phase maps obtained
-% with bi-enucleated fish (Figure S3), however, display larger vari-
-% ability across animals as compared to similar recordings per-
-% formed in intact fish (Figure S2). The lack of visual feedback
-% over several days, which might be necessary for fine-tuning the
-% vestibular control circuit, could explain this larger variability.
-% Even in behaving (non-paralyzed) animals, the same large-scale
-% organization in the average phase map was observed (Fig-
-% ure S4C), with the two predominant phase clusters encompass-
-% ing neurons in the tegmentum, cerebellum, vestibular nucleus,
-% and rhombomere 7.
+Des expériences de stimulation vestibulaire sinusoidale en roulis permettent de cartographier l'activité du cerveau en réponse à ce stimulus. Les cartes présentent une antisymétrie bilatérale et des groupes de neurones ayant une réponse temporelle et un emplacement proche. On retrouve notamment les neurones des circuits vestibulaires connus liés à la stimulation des utricules et aux réflexes liés. Cette analyse constitue un échantillon de la réponse fréquentielle à une fréquence déterminée (0.2 Hz), elle pourrait être poursuivie pour d'autres fréquence. Une autre piste est d'explorer la réponse impulsionelle avec une stimulation en escalier. Cette stimulation est également présentée dans le papier accompagnée d'une analyse par régression, mais je ne la détaille pas ici. Je m'intéresserai plutôt à reproduire une carte similaire, mais adressée à la réponse en tangage.
 
 \begin{figure}
 \centering
@@ -415,31 +359,21 @@ Figure extraite du papier de Migault \emph{et al} \cite{migault_whole-brain_2018
 \\\emph{Régions}  \textbf{Hab} habenula, \textbf{IO} inferior olive, \textbf{TL} torus longitudinalis, \textbf{Teg} tegmentum, \textbf{nMLF} nuclear medial fasciculus, \textbf{nIII} oculomotor nucleus, \textbf{nIV} trochlear nucleus, \textbf{Cer} cerebellum, \textbf{Rh} rhombomere
 }
 \end{figure}
-
- 
- 
-
-
-% \subsection{Carte de réponse en roulis et en tangage} % non -> développement ultérieur 
-
-% % TODO décrire
-
-% \begin{figure}
-% \centering
-% \includegraphics[width=\textwidth]{./files/tilt_roll.svg.png}
-% \caption{Cartes de réponses obtenues pour une stimulation de rotation sinusoidale selon l'axe de roulis (a) et de tangage (b). On remarque que la carte est antisymétrique dans le cas du roulis et symétrique dans le cas du tangage.
-% }
-% \end{figure}
     
 
 \section{Stimulation en tangage}
 % Adaptation en tilt, illumination par derrière ?
 
-Ce premier microscope permet une stimulation en roulis. Pour la stimulation en tangage et en prévision de la version deux photons, une deuxième version a été développée, c'est celle sur laquelle j'ai travaillé.
+Nous avons vu dans la section précédente la réponse à une stimulation en roulis pour ce premier microscope. Dans l'objectif de comprendre les mécanismes neuronaux responsables du contrôle postural en tangage, et en prévision de l'étude en deux photons, une deuxième version a été développée, c'est celle sur laquelle j'ai travaillé. Je présente dans cette section les cartes de réponse pour une stimulation sinusoidale en tangage et les compare avec les cartes précédentes obtenues en roulis, mais avant ça, le montage qui les a permises.
 
 \subsection{Description du montage}
 
-La fibre a été placée le long de l'axe de rotation pour minimiser ses déformations. Le module de balayage a été adapté avec un miroir fixe pour que la direction d'entrée et de sortie soient parallèles. Un système bielle manivelle permet de tourner la plateforme (cf Fig. \ref{FIGtiltlightsheet}). L'axe moteur est constitué d'un moteur pas à pas et d'un réducteur.
+Pour une stimulation en tangage, le poisson doit être placé perpandiculairement à l'axe de rotation, avec les deux oreilles internes sur l'axe. Le laser devant arriver par le côté, le module de balayage a été adapté avec un miroir fixe pour que la direction d'entrée et de sortie soient parallèles. Ainsi, la fibre peut être placée le long de l'axe de rotation, ce qui minimise ses déformations.
+
+Pour tourner la plateforme, un moteur pas à pas actionne à travers un réducteur un système bielle manivelle fixé à la plaque optique sur laquelle est fixée les différents éléments du microscope (cf Fig. \ref{FIGtiltlightsheet}). La stabilité du système a été caractérisée par la méthode détaillée en figure \ref{FIGbeadstability} et présente les mêmes caractéristiques (excellente stabilité en z, stabilité horizontale raisonnable pouvant être facilement corrigée \emph{a posteriori}).
+
+L'entrée de fibre se fait au moyen d'un connecteur FC/PC (\emph{Fiber Connector with Physical Contact}) qui permet de changer facilement de fibre tout en conservant l'alignement. Pour les fibres ayant une ouverture numérique faible, une lentille placée en sortie de fibre permet d'adapter l'ouverture numérique du faisceau et ainsi de couvrir l'ensemble de la pupille d'entrée de l'objectif d'entrée du module de balayage.
+
 
 \begin{figure}
 \centering
@@ -447,8 +381,21 @@ La fibre a été placée le long de l'axe de rotation pour minimiser ses déform
 \caption{Microscope rotatif conçu pour la stimulation en tangage.
 \\a. Module de balayage adapté avec un miroir fixe. La fibre arrive dans la même direction que l'axe de rotation.
 \\b. Schéma du montage. L'unité d'illumination est fixée sur un plaque optique qu'elle traverse. La fibre arrive par derrière la nappe laser ressort par devant, du coté de l'échantillon. Le module de détection est fixé par dessus l'échantillon.
-\\c. Un système bielle-manivelle entraîne la plaque optique fixée à un roulement annulaire. La position de l'axe moteur (O) est réglable et permet une oscillation sinusoidale (au niveau de B, la longueur OA permet de régler l'amplitude) ou un mouvement circulaire (au niveau de C, avec une manivelle de longueur BC).
+\\c. Un système bielle-manivelle entraîne la plaque optique fixée à un roulement annulaire. La position de l'axe moteur (O) est réglable et permet une oscillation sinusoidale (au niveau de B, la longueur OA permet de régler l'amplitude) ou un mouvement circulaire (au niveau de C, avec une manivelle de longueur BC). La stabilité du système en fonction de l'angle est indiquée en encart.
 \label{FIGtiltlightsheet}}
+\end{figure}
+
+\subsection{Carte de réponse comparée}
+
+
+
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{./files/tilt_roll.svg.png}
+\caption{Cartes de réponses obtenues pour une stimulation de rotation sinusoidale selon l'axe de roulis (a, premier microscope) et de tangage (b, second microscope). On remarque que la carte est antisymétrique dans le cas du roulis et symétrique dans le cas du tangage.
+Pour le roulis, la vue de côté est réalisée sur la moitié gauche du volume seulement.
+}
 \end{figure}
 
 
