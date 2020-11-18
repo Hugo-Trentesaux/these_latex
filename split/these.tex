@@ -1,7 +1,7 @@
 %%% Modèle de thèse électronique pour les sciences Jean Hare 2017
 %%% Version modifiée par Hugo Trentesaux 2020
 
-\documentclass[a4paper,11pt]{book} %ADD diffusion OR archiv for final versions
+\documentclass[a4paper,12pt]{book} %ADD diffusion OR archiv for final versions
 \usepackage[margin=28mm,includeheadfoot,bindingoffset=5mm]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -10,6 +10,8 @@
 \usepackage{listings}
 \usepackage{lmodern}
 \usepackage{tgheros}
+\usepackage{setspace}
+\setstretch{1.2} % interligne
 
 \input{./preamb/preamb-graph.tex}
 \input{./preamb/preamb-math.tex}
@@ -42,6 +44,7 @@ bookmarksnumbered=true,bookmarksopen=true}
 % \includeonly{chap1}
 % \includeonly{chap2}
 % \includeonly{chap3}
+% \includeonly{chap4}
 % \includeonly{appA}
 %%%
 
@@ -55,6 +58,7 @@ bookmarksnumbered=true,bookmarksopen=true}
 \include{chap1}
 \include{chap2}
 \include{chap3}
+\include{chap4}
 \appendix
 \include{appA}
 \backmatter

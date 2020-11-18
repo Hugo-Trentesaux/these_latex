@@ -65,6 +65,8 @@ Pour étudier le cerveau lors du contrôle postural, il est donc nécessaire de 
 % grande puissance
 % You have to introduce and discuss the high laser power requirement for 2P LSM in you intro.
 
+
+
 \section{Effet deux photons}
 
 % TODO améliorer cette section
@@ -91,7 +93,7 @@ Un système optique peut concentrer la lumière localement, ce qui produit un po
 
 \subsection{Concentration temporelle}\label{SECTIONconcentrationtemporelle}
 
-Une autre manière de concentrer la lumière est la concentration temporelle. Dans le cas d'un laser continu, la puissance est répartie sur toute la longueur de propagation du faisceau. En utilisant un laser pulsé, la puissance est concentrée en paquets beaucoup plus courts (cf Fig. \ref{pulsed-laser}). Par exemple, pour des impulsions de 100 fs, malgré la vitesse élevée de la lumière, la longueur de ces paquets est de 30 mm. Si de plus le taux de répétition du laser est de 80 MHz, la puissance d'une impulsion est 125 fois plus élevée qu'un laser continu de même puissance moyenne (1/(100fs x 80MHz)). L'effet deux photons étant proportionnel au carré de la puissance instantanée, on a intérêt à choisir les impulsions les plus courtes possibles (petit $\tau$) et le taux de répétition le plus faible possible (grand T) pour un laser de puissance moyenne fixée \cite{maioli_fast_2020}. Cette tendance est limitée par les photoperturbations induites, qui deviennent importantes au delà d'une centaines de nanojoules par impulsion. Les conditions optimales en microscopie par fluorescence à nappe laser deux photons sont donc autour de f = 1 MHz, $\tau$ = 100 fs, P = 100 mW.
+Une autre manière de concentrer la lumière est la concentration temporelle. Dans le cas d'un laser continu, la puissance est répartie sur toute la longueur de propagation du faisceau. En utilisant un laser pulsé, la puissance est concentrée en paquets beaucoup plus courts (cf Fig. \ref{pulsed-laser}). Par exemple, pour des impulsions de 100 fs, malgré la vitesse élevée de la lumière, la longueur de ces paquets est de 30 mm. Si de plus le taux de répétition du laser est de 80 MHz, la puissance d'une impulsion est 125 fois plus élevée qu'un laser continu de même puissance moyenne (1/(100fs x 80MHz)). L'effet deux photons étant proportionnel au carré de la puissance instantanée, on a intérêt à choisir les impulsions les plus courtes possibles (petit $\tau$) et le taux de répétition le plus faible possible (grand T) pour un laser de puissance moyenne fixée \cite{maioli_fast_2020}. Cette tendance est limitée par les photoperturbations induites, qui deviennent importantes au delà d'une centaines de nanojoules par impulsion. Les conditions optimales en microscopie par fluorescence à nappe laser deux photons sont donc autour de f = 1 MHz, $\tau$ = 100 fs, P = 100 mW. % ce que confirme Gasparoli TODOcite \cite{gasparoli_laser_2020}
 
 % VolkerComment2
 % Move this to the discussion. Also from where do you get the numbers? citation is missing. Willy Supatto shows in his 2020 paper that 10MHz is the optimal repetition rate.
@@ -105,8 +107,8 @@ Une autre manière de concentrer la lumière est la concentration temporelle. Da
 \end{figure}
 
 
-\section{Fibre optique, principe et état de l'art}
 
+\section{Fibre optique, principe et état de l'art}
 
 \begin{figure}
 \centering
@@ -214,6 +216,8 @@ Malgré la déportation de l'illumination et de la détection, les systèmes opt
 % Why do you describe this. Where is the link to your work? You can use this in the discussion and propose that your fiber can be also used to collect the fluorescent light. With the small mode field diameter this would create a confocal like configuration.
 
 D'autres techniques d'imagerie neuronale se passent même d'optique et sont uniquement constitués d'une fibre insérée dans l'échantillon. On parle alors plutôt de microendoscope. L'idée générale est d'utiliser la même fibre pour éclairer l'échantillon et collecter la lumière. Des éléments actifs peuvent être utilisés pour moduler le front d'onde, et plusieurs techniques reposent sur une phase de calibration préalable \cite{papadopoulos_high-resolution_2013}\cite{ohayon_minimally_2018}\cite{turtaev_high-fidelity_2018}. Ces techniques utilisent des fibres optiques multimodes classiques. L'avantage de l'endoscopie est que les tissus sont traversés par la fibre, et pas directement par la lumière, ce qui contourne le phénomène de dispersion. Il existe également des systèmes plus sophistiqués qui combinent plusieurs fibres en une seule de manière à profiter de propriétés différentes pour l'émission et collection de lumière \cite{andresen_two-photon_2013}\cite{kudlinski_double_2020}\cite{lombardini_high-resolution_2018}.
+
+
 
 \section{Caractérisation et utilisation de fibres à âme vide}
 
@@ -412,6 +416,8 @@ Finalement, tous les effets liés à la position de la fibre engendrent des vari
 % TODOVolker (intensity change due to polarization)
 % You have also to add the measured intensity change in the case if you would work with linear polarized light. In addition you have to make a measurement with GFP fish to see how much the real collected fluorescence depends on polarization and ellipticity.
 
+
+
 \section{Effet de lentille thermique}
 
 % VolkerComment (introduce thermal lens effect)
@@ -532,8 +538,7 @@ On a donc une valeur de la focale $f'$ d'une tranche de liquide d'épaisseur $l$
 \\a. Résultat de la simulation pour plusieurs puissances de laser. Comme attendu, plus la puissance est élevée, plus l'effet divergent est fort, et donc plus le waist est éloigné et large.
 \\b. Feuille de lumière imagée dans la fluorescéine pour plusieurs puissances laser différentes. La position du maximum d'intensité est marquée par un trait en pointillé.
 \\c. Comparaison des prévisions du modèle et des données expérimentales.
-\label{FIGthermalfluorescine}
-}
+\label{FIGthermalfluorescine}}
 \end{figure}
 
 \subsubsection{Simulation numérique}\label{simulationthermallens}
@@ -553,17 +558,63 @@ L'effet de lentille thermique a une composante dynamique liée au temps d'établ
 En pratique, on constate un temps d'établissement de l'ordre de la seconde.
 % TODO mesures établissement
 
-\subsubsection{Solutions}
+\subsubsection{Solutions}\label{solutionseffetthermique}
 
 Lorsque l'eau bouge dans la cuve, l'équilibre thermique est rompu et il faut attendre quelques temps caractéristiques avant de retrouver l'équilibre. Pendant ce temps, le waist du laser se déplace et change l'illumination de l'échantillon. C'est le phénomène dont les effets ont empêché les premières acquisitions. Une première solution consiste à moins chauffer le milieu pour minimiser l'effet de lentille thermique. Pour cela, j'ai mis en place un obturateur piloté pour éteindre le laser en dehors des périodes d'acquisition. En illuminant pendant 10 ms d'exposition et en coupant pendant 90 ms de pause, on diminue ainsi par dix la puissance moyenne, et donc l'échauffement. Cela impose une contrainte forte sur la fréquence d'acquisisiton, mais m'a permis de réaliser des enregistrements.
 Une deuxième solution est de concevoir une cuve dans laquelle l'épaisseur d'eau traversée est plus fine, ce qui diminue l'effet de lentille thermique. Je n'ai pas testé cette solution.
 Une troisième solution est de changer le taux de répétition du laser, comme indiqué en partie \ref{SECTIONconcentrationtemporelle}. Cette solution nécessite un autre laser, je ne l'ai pas explorée.
 
-\section{Réalisation pratique}
-
-% TODO réalisation microscope deux photons
 
 
-% Volker addition on overleaf
+\section{Feuille de lumière deux photons lors d'une stimulation en tangage}
 
-% Brighton Phasemaps and Discussion
+En section \ref{SECTIONtiltmicroscope1P}, je présente un microscope adapté à une stimulation vestibulaire en tangage. Avec la fibre présentée précédemment, j'ai pu utiliser ce montage pour une imagerie deux photons. Je présente ici les résultats.
+
+\subsection{Difficultés supplémentaires rencontrées}
+
+Outre les défis techniques cités précédemment concernant la fibre optique et l'effet thermique, les acquisitions deux photons ont révélé certaines difficultés supplémentaires avant de reproduire les résultats obtenus en un photon.
+
+\subsubsection{Phototoxicité}
+
+\paragraph{Photoblanchiment et saturation du rapporteur calcique}
+Je n'ai observé aucune limite liée au photoblanchiment du rapporteur calcique ni à la saturation. Ces phénomènes apparaissent en un photon quand l'intensité absorbée par le fluorophore dépasse un certain seuil. Ce seuil n'a pas été atteint dans mon expérience.
+
+\paragraph{Éviter les yeux}
+Quand la feuille de lumière un photon éclaire le poisson par le côté, elle illumine à la fois des zones transparentes comme le cerveau et des zones opaques comme les yeux ou les pigments. Outre le fait qu'elle constitue une source de lumière forte (1-10 mW) et mouvante éclairant directement l'oeil gauche de la larve, et qu'une zone d'ombre soit générée entre les yeux, cela n'empêche pas le déroulement de l'expérience. Il en va autrement avec un laser pulsé qui met en jeu des puissances moyennes élevées (100-1000 mW) pour atteindre l'intensité instantanée nécessaire à l'effet deux photons. À ces niveaux de puissance, la moindre absorption génère un échauffement intense qui détruit instantanément les tissus biologiques. C'est notamment le cas des yeux qui carbonisent immédiatement si le laser les touche. De même, si une zone présente un niveau d'absorption légèrement plus élevé, elle accumule de la chaleur jusqu'à générer un phénomène de cavitation. Une bulle de gaz se forme alors et grossit en déformant tous les tissus alentour. Si l'on augmente l'énergie crête de l'impulsion en diminuant la fréquence de répétition, on voit ce phénomène apparaître de plus en plus souvent, suggérant qu'à puissance moyenne constante, le degré de phototoxicité augmente avec l'énergie portée par une impulsion. Pour réaliser des enregistrements du volume entier, il a donc fallu procéder en plusieurs étapes : d'abord la partie supérieur entière, puis la partie inférieur en excluant les yeux. 
+
+\subsubsection{Rapport signal à bruit}
+
+Le niveau de signal obtenu dans les enregistrements deux-photons est bien plus faible que dans les enregistrements un-photon. Avec les paramètres finaux (exposition, binning, puissance laser, lignées transgéniques...) la valeur d'un pixel de caméra correspondant à un neurone est de l'ordre de 2000 en un-photon et 800 en deux-photons, pour un nivau de bruit de 400 (4 pixels à 100). Un pixel correspondant à l'autofluorescence des tissus est autour de 600 en un-photon et tombe sous le niveau de bruit en deux-photons. Un rapport signal à bruit si faible pose plusieurs problèmes.
+\paragraph{Alignement sur le cerveau de référence}
+Un cervau imagé en deux photons apparaît assez différent d'un cerveau en un photon. J'ai donc réalisé un cerveau de référence en deux photons dans l'espace de référence du laboratoire. Malgré cela, pour un rapport signal à bruit trop faible, l'alignement automatique sur le cerveau de référence est impossible. J'ai donc dû faire la plupart des alignements à la main en utilisant le logiciel 3DSlicer.
+\paragraph{Moyennage des cartes de phase}
+Pour réaliser une carte de phase moyenne, on moyenne séparément la partie réelle et la partie imaginaire du nombre imaginaire obtenu au pic de la transformée de Fourier. Cependant, pour un niveau de signal faible, le rapport signal à bruit peut largement varier d'une expérience à l'autre. On doit donc appliquer une égalisation de contraste dépendant du module du nombre complexe.
+% TODO écrire le programme pour faire une égalisation de contraste permettant de moyenner
+
+\subsubsection{Enregistrements en plusieurs étapes}
+Comme on l'a vu en partie \ref{solutionseffetthermique}, la solution adoptée en attente de mieux est de faire des pauses entre deux expositions pour diminuer l'intensité moyenne absorbée. Cela contraint la fréquence d'acquisition des images. Pour conserver une fréquence de 2.5 Hz pour chaque couche, j'ai donc dû réduire le nombre de couches à 4. Chaque volume est donc enregistré non pas en une fois mais en plusieurs. Si à un moment le laser touche un oeil, le poisson est détruit et les enregistrements ultérieurs sont compromis. J'ai donc finalement réalisé assez peu d'acquisitions valides.
+% 11 ms exposition
+% 89 ms pause
+% ×4 = 400 ms
+
+\subsection{Imagerie statique comparée}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.6\textwidth]{./files/graystack_1P-2P.svg.png}
+\caption{Comparaison entre un volume imagé en deux photons (2P) et en un photon (1P). Le volume deux photons est imagé en deux parties pour éviter d'illuminer les yeux (on voit nettement l'ombre de l'oeil sur la coupe sagittale en un photon). Le pas est de 1 µm par couche.
+\label{FIG1P2Pgraystack}}
+\end{figure}
+
+Sur la figure \ref{FIG1P2Pgraystack}, je compare la qualité d'imagerie sur le même poisson en utilisant le laser un photon ou deux photons. On voit que le volume deux photons est imagé en deux parties de manière à ne pas illuminer les yeux. Sur la coupe transversale, on voit que la partie gauche (côté par lequel arrive le faisceau) est plus lumineuse que la partie droite.
+
+\subsection{Imagerie dynamique comparée}
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{./files/1P-2P_tilt.svg.png}
+\caption{Comparaison entre les cartes de réponse à une stimulation sinusoidale en tangage en un photon (a.) et en deux photons (b, c.).
+\label{FIG1P2Ptilt}}
+\end{figure}
+
+Sur la figure \ref{FIG1P2Ptilt}, je compare une carte de phase obtenue en un photon et en deux photons. Globalement on trouve la même réponse même si c'est difficile de faire l'acquisition du cerveau entier.
