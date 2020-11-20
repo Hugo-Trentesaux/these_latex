@@ -335,27 +335,7 @@ $$
 K(t) = \frac{1}{\tau}\exp\left(-\frac{t}{\tau}\right)H(t)
 $$
 
-Le signal de fluorescence est obtenu comme le produit de convolution entre la concentration de calcium intracellulaire et le noyau de convolution. 
-
-% TODO pourquoi avec la transformée de Laplace je ne trouve pas le même résultat ?
-
-Je n'arrive pas à reproduire le calcul du papier pour le décalage induit par le rapporteur calcique. Quand je prends le transformée de Laplace du produit de convolution entre un sinus et le kernel je trouve un truc de la forme : 
-$$ \frac{\omega}{s^2+\omega^2} \frac{1}{s+\alpha} $$
-mais quand je prends la transformée de Laplace d'un sinus déphasé de phi, je trouve : 
-$$ \frac{s\sin\varphi+\omega\cos\varphi}{s^2+\omega^2} $$
-Ce qui est assez différent.
-
-Bref, admettons ce qui est affirmé dans le papier :
-
-$$
-F(t) = -\frac{\omega\tau}{1+(\omega\tau)^2}\cos(\omega t) + \frac{1}{1+(\omega\tau)^2}\sin(\omega t) = A\sin(\omega t + \varphi_\text{GCaMP})
-$$
-
-avec $\varphi_\text{GCaMP} = \arctan(-\omega\tau)$.
-
-Pour retrouver l'activité des neurones à partir du signal de fluorescence, on doit donc appliquer un déphasage de $ -\varphi_\text{GCaMP} = atan(-0.2 \times 3.5) = -0.61\ \mathrm{rad}$ sur le résultat de la phasemap.
-
-% TODO pourquoi est-ce que je ne retrouve pas la valeur 1.35 ?
+Le signal de fluorescence $F(t)$ est obtenu comme le produit de convolution entre la concentration de calcium intracellulaire et le noyau de convolution. Comme détaillé en annexe \ref{calculdetail}, on trouve un décalage entre l'activité du neurone et le signal de fluorescence $\varphi_\text{GCaMP} = \arctan(-\omega\tau)$. Pour retrouver l'activité des neurones à partir du signal de fluorescence, on doit donc appliquer un déphasage de $ -\varphi_\text{GCaMP} = -\mathrm{atan}(-2\pi 0.2 \mathrm{Hz} \times 3.5 \mathrm{s}) = +1.35\ \mathrm{rad}$ sur le résultat de la phasemap.
 
 \subsubsection{Discussion}
 

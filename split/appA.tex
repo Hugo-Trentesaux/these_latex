@@ -1,7 +1,3 @@
-\chapter{Appendice}\label{AppA}
-
-
-
 % colors for code highlighting
 \definecolor{mygreen}{RGB}{28,172,0}
 \definecolor{mylilas}{RGB}{170,55,241}
@@ -68,7 +64,7 @@
 
 
 
-
+\chapter{Outils informatiques}\label{AppA}
 
 \section{Langage de programmation adapté}
 
@@ -174,4 +170,215 @@ Base.getindex(S::Stack{T,N}, I::Vararg{Int, N}) where {T,N} = S.m[I...]
 
 \subsection{Function broadcasting}
 
-% TODO
+Pour traiter des données matricielles, certaines fonctionnalités des langages peuvent être extrêmement utiles en réduisant considérablement le nombre de lignes à écrire. 
+
+\subsubsection{Matlab}
+
+Si la plupart des fonctions Matlab acceptent des matrices en entrée, cela ne s'applique pas aux matrices stockées par \verb|memory mapping|. De plus, adapter une fonction scalaire en fonction matricielle peut nécessiter une ré-écriture et aboutir à des erreurs difficiles à identifier.
+
+% https://fr.mathworks.com/help/coder/ug/what-are-column-major-and-row-major-representation-1.html
+
+\matlabstyle
+\begin{lstlisting}
+% define a scalar function
+f = @(x) x^2 + 1;
+% call it on a scalar (should not call it on a matrix)
+f(2) % returns 5
+% define an equivalent matrix function using dot operator
+F = @(X) X.^2 + 1;
+% call it on a matrix
+A = [ 1 2 3 ; 2 6 7 ];
+F(A) % returns [2 5 10 ; 5 37 50]
+
+% write A to a binary file and use memmapfile to map it
+fid = fopen("A.raw", "w"); write(fid, A, "double"); fclose(fid);
+m = memmapfile("A.raw", "Format", {"double", [2 3], "bit"});
+% can not apply F on it, forced to load data then apply it
+F(m) % ERROR Operator '.^' is not supported for operands of type 'memmapfile'.
+% must load entirely the matrix which defeats the point of memory mapping
+A = m.Data.bit; % copies all values in memory
+F(A) % returns the good result
+
+% an other function example not designed for matrix usage
+substract_mean_add_first = @(X) X - mean(X) + X(1);
+% if we want to transform each row with the "substract_mean_add_first" function
+% without rewriting it or changing it, we have to iterate manually
+% (here it is not optimal since Matlab has "column-major layout by default")
+for i = 1:size(A,1)
+    A(i,:) = substract_mean_add_first(A(i,:));
+end
+% A = [0 1 2; -1 3 4]
+\end{lstlisting}
+
+\subsubsection{Python}
+
+En Python, Numpy pratique le \verb|broadcasting| sur les opérateurs élémentaires. Une fonction utilisant ces opérateurs élémentaires peut donc être appliquée sur un \verb|array| Numpy. Cela fonctionne également sur une matrice en \verb|memory mapping|.
+
+\pythonstyle
+\begin{lstlisting}
+import numpy
+
+# define function
+f = lambda x: x**2 +1
+f(2) # f can be called on a scalar
+A = numpy.array([[1,2,3],[2,6,7]])
+f(A) # f can be called on a numpy array
+
+# create memory map
+m = numpy.memmap("A.raw", dtype='float64', mode='w+', shape=(2,3), order='F')
+m[:] = A[:] # fills it with values of A
+m.flush()	# flush to write to disk
+f(m) # f can be called on memory map, it returns:
+# array([[ 2.,  5., 10.],
+#        [17., 26., 50.]])
+
+# example of function applying onto vector
+substract_mean_add_first = lambda X: X - numpy.mean(X) + X[0]
+# a version of this function that performs in-place modification
+def substract_mean_add_first_modif(vector):
+	vector[:] = substract_mean_add_first(vector)
+	vector.flush() # only for memory mapping
+# we can iterate automatically on m to transform its rows
+# (order was set to 'F' = row major, which is optimal in this case)
+map(substract_mean_add_first_modif, m)
+# now m equals :
+# memmap([[ 0.,  1.,  2.],
+#         [-1.,  3.,  4.]])
+\end{lstlisting}
+
+\subsubsection{Julia}
+
+En Julia, le \verb|broadcasting| peut être réalisé sur n'importe quelle fonction ou opérateur en utilisant l'opérateur \verb|dot|. Ainsi, on peut écrire une fonction acceptant une matrice entière en utilisant les opérateurs élément par élément, mais on peut aussi écrire une fonction n'acceptant qu'un scalaire et l'appliquer sur une matrice en utilisant l'opérateur \verb|dot|. C'est une fonctionnalité clé du langage et les performances dépassent systématiquement les autres langages (\href{https://julialang.org/benchmarks/}{benchmarks}).
+
+\juliastyle
+\begin{lstlisting}
+using Mmap # for memory mapping
+using Statistics # for mean
+
+# define function that can only be called on a scalar
+f(x::Number) = x^2 + 1
+f(2) # f can be called on a scalar
+A = [1 2 3; 2 6 7]
+f.(A) # f can be called on each element of A thanks to dot broadcasting
+# alternatively, we can define a vector matrix version of the function
+F(X::Matrix) = X.^2 .+ 1 # it uses the dot operators internally
+
+# create memory mapped file for A
+file = open("A.raw", "w+")
+m = Mmap.mmap(file, Matrix{Float64}, (2,3)
+m[:] = A[:]
+f.(m) # f can be broadcasted to m as well
+
+# other function example
+substract_mean_add_first(v::AbstractVector) = v .- mean(v) .+ v[1]
+# in-place version of this function (julia convention is to end with '!')
+function substract_mean_add_first!(v::AbstractVector)
+	v[:] = substract_mean_add_first(v)
+end
+# iterate on each row
+map(substract_mean_add_first!, eachrow(m))
+# now m equals
+# 2x3 Array{Float64,2}:
+#   0.0  1.0  2.0
+#  -1.0  3.0  4.0
+\end{lstlisting}
+
+
+
+\section{Atlas interactifs}
+
+Plusieurs outils ont été développés pour explorer le cerveau de poisson zèbre directement dans le navigateur. Je décris rapidement les principaux et en introduis un nouveau que j'ai réalisé pour répondre à certains besoins.
+
+% TODOcite Randlett Tabor Kunst
+
+\subsection{ZBrainAtlas}
+
+Le \href{https://engertlab.fas.harvard.edu/Z-Brain/home/}{Z Brain Atlas} permet de visualiser dans un même espace de référence les tranches horizontales de cerveaux marqués avec des anticorps différents et de superposer les contours de régions anatomiques. Cela permet de parcourir rapidement les différents types de neurones présents dans une certaine zone.
+
+\subsection{MapZebrain}
+
+Le \href{https://fishatlas.neuro.mpg.de/}{Max Planck Zebrafish Brain Atlas} propose trois outils très riches en fonctionnalités pour explorer le cerveau à travers une vue tridimensionnelle. Cette vue peut être en 3D réelle avec perspective avec un angle de vue réglable, en tranche suivant trois plans (sagittal, frontal, transverse), ou en projection isométrique autour de l'axe rostro-caudal.
+L'un permet de visualiser les régions anatomiques du cerveau sélectionnées dans une arborescence, ce qui permet de se représenter leur structure tridimensionnelle et leur positions relatives.
+Un autre permet de sélectionner la structure tridimensionelle de neurones uniques filtrés suivant la position du soma, les régions traversées, ou leur position terminale. Un troisième permet de superposer dans plusieurs canaux de couleur les images matricielles correspondant à des cerveaux marqués pour différents cibles.
+
+\subsection{FishExplorer}
+
+Le \href{https://zebrafishatlas.zib.de/}{Fish Explorer} tente de présenter les mêmes données à travers une autre interface. Il n'apporte rien de nouveau pour l'instant.
+
+\subsection{LJPzebrain}
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{./files/LJPzebrain_screenshot.png}
+\caption{Annotated screenshot showing all the features of the LJP zebrain viewer.}
+\end{figure}
+
+Les outils évoqués ci-dessus permettent d'explorer une grande variété de données mises en commun mais sont assez complexes et nécessitent une bonne connaissance préalable de l'anatomie du cerveau. Ils sont difficiles à prendre en main et ne permettent pas de travailler avec des données locales. J'ai donc conçu un prototype à ambition pédagogique destiné aux débutants en imagerie de cerveau de larve de poisson zèbre ou pour dégrossir rapidement des données locales.
+
+Le \href{https://github.com/LJPZebra/zebrain}{LJP zebrain} permet de charger une liste d'images locales correspondant au cerveau transformé dans l'espace de référence ZBrain et d'explorer les régions par un simple survol de souris. Cela facilite notamment l'exploration des cartes de phase.
+
+
+
+
+
+% outils généralistes
+% 3DSlicer
+% CMTK
+% Ants
+% ImageJ
+
+
+
+% outils de productivité
+% Zotero
+% Inkscape
+% GIMP
+% git
+
+
+\chapter{Détail de calcul}\label{calculdetail}
+
+Détail du calcul pour le déphasage d'un sinus après convolution par une exponentielle décroissante. L'idée consiste à effectuer deux fois une intégration par partie.
+
+$$
+\text{(intégration par partie)} \quad \int_a^buv' = \Big[uv\Big]_a^b - \int_a^b u'v
+$$
+
+$$ A(t) = \sin(\omega t) $$
+$$ K(t) = \frac{1}{\tau}\exp\left(-\frac{t}{\tau}\right)H(t) $$
+$$ F(t) = (A\circledast K)(t) $$ 
+$$
+F(t) = \int_{-\infty}^\infty\sin(\omega(t-t'))\frac{1}{\tau}\exp\left(-\frac{t'}{\tau}\right)H(t')\mathrm{d}t'
+$$
+$$
+F(t) = \int_{0}^\infty\underbrace{\sin\bigg(\omega(t-t')\bigg)}_u\underbrace{\frac{1}{\tau}\exp\left(-\frac{t'}{\tau}\right)}_{v'}\mathrm{d}t'
+$$
+\begin{multline}
+F(t) = \left[\sin(\omega(t-t'))\left(-\exp\left(-\frac{t'}{\tau}\right)\right)\right]_0^\infty \\ -
+\int_{0}^\infty\underbrace{-\omega\cos\bigg(\omega(t-t')\bigg)}_u\underbrace{\left(-\exp\left(-\frac{t'}{\tau}\right)\right)}_{v'}\mathrm{d}t'
+\end{multline}
+\begin{multline}
+F(t) = \sin(\omega t) -
+\Bigg(\left[\omega\cos(\omega(t-t'))\left(-\tau\exp\left(-\frac{t'}{\tau}\right)\right)\right]_0^\infty \\ -
+\int_0^\infty\omega^2\sin(\omega(t-t'))\left(-\tau\exp\left(-\frac{t'}{\tau}\right)\right)\mathrm{d}t' \Bigg)
+\end{multline}
+$$
+F(t) = \sin(\omega t) - \omega\tau\cos(\omega t) - \omega^2\tau^2\int_0^\infty\sin(\omega(t-t')) \frac{1}{\tau}\exp\left(-\frac{t'}{\tau}\right)\mathrm{d}t'
+$$
+Donc
+$$
+(1+\omega^2\tau^2)\int_0^\infty\sin(\omega(t-t')) \frac{1}{\tau}\exp\left(-\frac{t'}{\tau}\right)\mathrm{d}t' = \sin(\omega t) - \omega\tau\cos(\omega t)
+$$
+Soit
+$$
+F(t) = \frac{\sin(\omega t)}{1+\omega^2\tau^2} - \frac{\omega\tau\cos(\omega t)}{1+\omega^2\tau^2}
+$$
+$$ \text{(sinus d'une somme)}  \quad  \sin(a+b) = \sin a\cos b + \cos a\sin b $$
+$$
+\sin(\omega t+\varphi) = \sin(\omega t)\underbrace{\frac{1}{1+\omega^2\tau^2}}_{\cos\varphi} + \cos(\omega t)\underbrace{\frac{-\omega\tau}{1+\omega^2\tau^2}}_{\sin\varphi}
+$$
+$$ \tan\varphi = \frac{\sin\varphi}{\cos\varphi} = -\omega\tau $$
+$$ \varphi = \mathrm{atan}(-\omega\tau) $$
+$$ F(t) = \sin(\omega t + \varphi) $$
+
+Donc la convolution d'un sinus de pulsation $\omega$ par un noyau en exponentielle décroissante de temps caractéristique $\tau$ résulte en un déphasage négatif (retard temporel) de $ \varphi = \mathrm{atan}(-\omega\tau) $.
