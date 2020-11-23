@@ -26,7 +26,7 @@ Le contrôle postural en tangage est donc le résultat d'une boucle de rétroact
 \\
 a. Le centre de gravité et de flottaison de la larve sont décalés, ce qui cause un déséquilibre dans l'axe de tangage.
 \\
-b. La larve nage de manière discrète (non continue), à une fréquence de ~1 Hz. Entre deux événements, la larve inactive est entraînée par son déséquilibre, nez vers le bas à une vitesse de ~6°/sec. Lors des événements de nage (pic de vitesse), l'angle est corrigé de ~6°.
+b. La larve nage de manière discrète (non continue), à une fréquence de $\sim$1 Hz. Entre deux événements, la larve inactive est entraînée par son déséquilibre, nez vers le bas à une vitesse de $\sim$6°/sec. Lors des événements de nage (pic de vitesse), l'angle est corrigé de $\sim$6°.
 \\
 c. En remplaçant l'eau de la vessie natatoire par de l'huile, ce qui augmente le déséquilibre, les auteurs ont constaté une augmentation de la fréquence (diminution de l'IEI, intervalle inter-événement), ce qu'ils attribuent au contrôle de la posture via l'information vestibulaire.
 \\
@@ -48,17 +48,19 @@ Pour reproduire la boucle de rétroaction du contrôle postural, il faut soumett
 \end{figure}
 
 \subsubsection{Stimulation vestibulaire}
-Le but de la cuve rotative est de soumettre le poisson à un stimulus vestibulaire contrôlé, et de pouvoir agir rapidement sur la commande (position angulaire, vitesse angulaire). Le moteur que j'ai utilisé pour entraîner la plateforme est le modèle DMAC17 de l'entreprise [midi-ingéniérie](http://www.midi-ingenierie.com/). Le modèle était assez ancien et ne disposait que d'une interface rudimentaire, j'ai donc dû réimplémenter une commande série pour communiquer avec le microcontrôleur de la commande moteur. Finalement, la communication introduit une latence de quelques dizaines de millisecondes et impose un délai entre deux instructions. Cela semble cependant suffisant pour garantir une bonne impression de réalité virtuelle, puisque chez l'humain, les effets liés à la latence commencent à se faire sentir à partir de 75 ms \cite{waltemate_impact_2016}. Un problème que j'ai rencontré au début était les mouvements de l'eau dans la cuve. Le poisson y est très sensible via sa ligne latérale postérieure, ce qui faussait les expériences. En modifiant légèrement la cuve, j'ai pu maintenir l'eau de la cuve pratiquement immobile.
+Le but de la cuve rotative est de soumettre le poisson à un stimulus vestibulaire contrôlé, et de pouvoir agir rapidement sur la commande (position angulaire, vitesse angulaire). Le moteur que j'ai utilisé pour entraîner la plateforme est le modèle DMAC17 de l'entreprise \href{http://www.midi-ingenierie.com/}{midi-ingéniérie}. Le modèle était assez ancien et ne disposait que d'une interface rudimentaire, j'ai donc dû réimplémenter une commande série pour communiquer avec le microcontrôleur de la commande moteur. Finalement, la communication introduit une latence de quelques dizaines de millisecondes et impose un délai entre deux instructions. Cela semble cependant suffisant pour garantir une bonne impression de réalité virtuelle, puisque chez l'humain, les effets liés à la latence commencent à se faire sentir à partir de 75 ms \cite{waltemate_impact_2016}. Un problème que j'ai rencontré au début était les mouvements de l'eau dans la cuve. Le poisson y est très sensible via sa ligne latérale postérieure, ce qui faussait les expériences. En modifiant légèrement la cuve, j'ai pu maintenir l'eau de la cuve pratiquement immobile.
 
 \subsubsection{Imagerie et analyse}
 Pour détecter de manière fiable les mouvements de queue du poisson, j'ai mis au point un système d'imagerie adapté. Le système doit être léger et compact, afin de limiter le couple lors de la rotation de la plateforme et être insensible aux vibrations. Le poisson est éclairé par une lampe infrarouge à travers un diffuseur et une fenêtre située en haut de la cuve. En bas de la cuve, une autre fenêtre étanche laisse passer la lumière vers un miroir sur lequel pointe une caméra équipée d'un objectif grossissant et d'un filtre infrarouge. L'utilisation de la lumière infrarouge, invisible pour le poisson, permet de conserver la même qualité d'image quel que soit l'environnement visible pour le poisson. Les fenêtres sont les plus petites possible et situées dans l'extrémité du champ de vision du poisson afin de contrôler au mieux son environnement visuel. Le miroir permet de conserver la caméra et l'objectif proche de l'axe de rotation de la plateforme, pour limiter le bras de levier.
 L'objectif du système d'imagerie est choisi pour que le poisson soit imagé sur un nombre réduit de pixels de la caméra. Ainsi, le transfert de donnée depuis la caméra vers l'ordinateur et le traitement de l'image sont rapides, ce qui permet de ne pas ralentir la rétroaction. Le traitement de l'image est simpliste mais fonctionnel. Il consiste à appliquer les fonctions suivantes :
 
-- filtre de Sobel (fonction `edge` de Matlab, option `sobel`)
-- dilatation (fonction `imdilate`)
-- remplissage (fonction `imfill`)
-- ouverture (fonction `bwareaopen`)
-- ellipse équivalente (fonction `regionprops`, option `Orientation` )
+\begin{enumerate} \itemsep0em
+    \item filtre de Sobel (fonction \verb|edge| de Matlab, option \verb|sobel|)
+    \item dilatation (fonction \verb|imdilate|)
+    \item remplissage (fonction \verb|imfill|)
+    \item ouverture (fonction \verb|bwareaopen|)
+    \item ellipse équivalente (fonction \verb|regionprops|, option \verb|Orientation| )
+\end{enumerate}
 
 Ce qui permet de trouver l'angle du poisson de manière reproductible d'une image sur l'autre, afin de détecter les mouvements de queue.
 
@@ -184,6 +186,6 @@ Une piste d'évolution importante serait de limiter ces comportements d'échappe
 % - Imaging escape and avoidance behavior in zebrafish larvae
 Ceux-ci diminuent largement l'échantillon statistique en inhibant l'activité du poisson pendant de longues périodes, ce qui rend l'analyse difficile. Cette amélioration pourrait être obtenue en modifiant la manière dont le poisson est retenu immobile et en ajustant les paramètres de rétroaction en fonction des poissons. 
 
-\subsection{Conclusion}
+% \subsection{Conclusion}
 
 % TODO Volker Perspective and interpretation of the results is still to develop. 

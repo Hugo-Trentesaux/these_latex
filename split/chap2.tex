@@ -1,6 +1,6 @@
 \chapter{Imagerie fonctionnelle sous stimulation vestibulaire}\label{chapIII}
 
-% VolkerComment
+% TODO VolkerComment
 % You have to extent significantly the first paragraph and link it to the previous chapter. For the following subsections you have to seperated Geoffrey's development from your developments. When you started your PhD the one-photon system was already developed by Geoffrey. You have to review this development in all details to prepare the chapter where you present the two-photon RLS and your developments. Especially, you have to talk about the fiber delivery of the laser onto the rotating platform. Do not mix this presentation with any developments that yo did later for the 2PRLS. Your contribution comes when you talk about the challenges posed by treating the recorded large data sets and the necessity of the development of an analysis pipeline. Introduce well the analysis challenges and the requirement that a good analysis pipeline should fulfill. Then you write an entire chapter to detail your easyRLS development. This routine became the bases for the data analysis in the paper and is our work horse in the group until today. This development gave you a first publication.
 
 
@@ -41,13 +41,12 @@ L'enjeu pour une unité de détection rapide est de permettre l'enregistrement a
 % 1e-6 à 488 nm pour Notch
 \end{figure}
 
-% VolkerComment
+% OK VolkerComment
 % Originally, we did the experiments only with the notch filter. All photons emitted by the fluorophore were then collected which maximizes the signal. The GFP filter helps to block some additionally excited autofluorescence in the tissue. With the GFP filter the notch filter is not really anymore necessary. You can keep your figure but show the real GFP filter transmission spectrum in this case !
-
 
 Pour obtenir un bon rapport signal à bruit, il faut réduire la lumière parasite. Une source puissante est le laser d'illumination, elle peut être bloquée spécifiquement avec un filtre coup bande très étroit à sa longueur d'onde. Un filtre GFP (passe-bande à la longueur d'onde de la GFP) permet de filtrer davantage l'autofluorescence des tissus. Après ce filtrage, les bruits restants sont le bruit de photon et le bruit numérique. Le bruit numérique pourrait être réduit avec un système de refroidissement prévu sur la caméra, mais celui-ci est trop encombrant pour le microscope rotatif, et a donc été retiré. Le bruit de photon ne peut être réduit qu'avec des meilleures sondes calciques ou en exposant plus longtemps, mais il est négligeable devant le bruit numérique d'une caméra non refroidie. Le bruit numérique présente une structure liée à la constitution interne du capteur et qui fait apparaître des raies de pixel et la ligne médiale de l'obturateur déroulant.
 
-% VolkerComment
+% OK VolkerComment
 % No! We do not filter out light from light sources in the room! The systems are shielded such that this light does not enter the detection path . The GFP filter filters additional excited autofluorescence.
 
 % L'unité de détection est composée d'un objectif à immersion (le poisson est dans l'eau) monté sur un positionneur piézoélectrique, d'une lentille de tube, d'un filtre coupe-bande, d'un filtre GFP, et d'une caméra.
@@ -87,7 +86,7 @@ $$
 \caption{On voit ici la demie largeur du profil gaussien à 488 nm dans l'eau pour différentes valeurs du waist. Le trait en pointillé montre le rayon d'un neurone. On cherche à minimiser l'épaisseur du faisceau entre -100 µm à 100 µm. Le trait épais marque la position optimale pour ce critère (les autres profils sont tous plus larges à 100 µm du centre). L'ouverture numérique associée vaut $ \mathrm{NA} = n\sin(\lambda/\pi n w_0) $.}
 \end{figure}
 
-% VolkerComment
+% OK VolkerComment
 % Indicate the NA used for the different curves.
 
 Un waist trop petit est trop divergeant, et donc trop large sur les bords, mais un waist trop large limite la résolution. Il faut donc trouver un optimum. La taille d'un neurone étant de 8 µm environ, des valeurs inférieures sont souhaitables.
@@ -140,7 +139,7 @@ Plusieurs laboratoires travaillant en microscopie à feuille de lumière analyse
 
 \subsection{Solution utilisée pour l'analyse de nos données}
 
-% VolkerComment
+% OK VolkerComment
 % You have to describe your development of easyRLS a routine in form of a collection of functions that allows in a modular manner to analyze the whole-brain data. Go more in detail.
 
 Aucun logiciel adapté à nos données n'étant disponible à l'époque, nous avons développé nos propres méthodes adaptées à l'imagerie sur plateforme rotative. Les spécifications étant très mouvantes, nous avons adopté une structure modulaire dans laquelle une collection de fonctions peuvent être appliquées optionnellement dans un ordre adapté à chaque jeu de données. Je décris ici les étapes principales de l'analyse, les enjeux techniques, et les pistes d'amélioration.
@@ -157,12 +156,12 @@ Dans la suite de cette section, j'appellerai de manière équivalente (x,y,z,t) 
 \caption{Illustration de la convention d'orientation RAS (a.) et comparaison avec les systèmes de coordonnées naturels de ImageJ (b. coordonnées des pixels d'un écran) et Matlab (c. coordonnées des éléments d'une matrice).}
 \end{figure}
 
-% VolkerComment OK
+% OK VolkerComment
 % Add a figure illustrating the RAST definition and add your wiki page with the corresponding figures about the different coordinate systems used in Matlab, Fiji, cmtk
 
 \paragraph{Alignement temporel}
 
-% VolkerComment
+% OK VolkerComment
 % Start introducing the problem. We have two main problems. Slow thermal drift and fast stimulus induced movements. In addition we have to scope with tissue deformation but normally we discard these runs. Then discuss the different approaches that you developed. Autocorrelation with the first image, autocorrelation with an average image, treatment of all layers independently, estimating the drift per stack based on one layer with good contrast or selecting high contrast landmarks to calculated the drift. Discuss that you developed different approaches: 1. Estimating the fast and slow movements together, 2. Estimating and correcting slow and fast drift sequentially. 3. Correcting the sinusoïdal stimulus induced fast component by hand by applying a sinusoïdal drift correction with user defined amplitude and phase. Make a figure that illustrates the different approaches
 
 Pour des données à quatre dimensions (x,y,z,t), il est impératif qu'un pixel (x,y,z) représente toujours le même espace objet dans le cerveau. Une première étape consiste donc à aligner toutes les images entre elles. Dans un cas totalement général, le tissu imagé peut connaître des déformations au cours de l'expérience, et il faut estimer et appliquer la transformation inverse. Suite2P et CaImAn fournissent tous les deux des algorithmes de déformation non rigide, mais ces algorithmes sont couteux en temps et il est difficile d'estimer numériquement leur performance. De plus, sur des expériences de vingt minutes, les déformations sont généralement trop faibles pour que cette étape soit réellement nécessaire, nous avons donc opté pour une transformation rigide. Cette transformation rigide peut avoir plusieurs degrés de liberté en translation et rotation. Comme précisé dans la partie sur la conception de la plateforme rotative, nous avons obtenu une excellente stabilité en z, les translations restantes sont donc uniquement selon (x,y), et les rotations sont également négligeables. 
@@ -193,7 +192,7 @@ Aligner le volume sur un cerveau de référence permet d'une part de comparer pl
 \label{FIGfourier}}
 \end{figure}    
 
-% VolkerComment OK
+% OK VolkerComment
 % Add a figure of a typical PSD and show visually how you extract the data
 % (PSD = DSP)
 
@@ -239,7 +238,7 @@ Le memory mapping peut être combiné à l'allocation de mémoire disque pour ê
 \paragraph{Calcul du quantile glissant}
 Une définition courante de la valeur de référence d'un signal calcique repose sur le calcul d'un quantile glissant (le huitième centile  \cite{dombeck_imaging_2007}). L'algorithme naïf qui consiste à calculer le quantile sur chaque fenêtre est inefficace ($\mathcal{O}(n^2)$), j'ai donc cherché une implémentation astucieuse et ai trouvé la fonction \verb|runquantile| de la bibliothèque \verb|caTools|, qui a apporté un gain en vitesse par rapport à l'implémentation précédente. Cette implémentation repose sur le tri par insertion mais retient le tri effectué sur la fenêtre précédente, ce qui lui permet d'atteindre une complexité en $\mathcal{O}(n\times k)$, où $n$ est le nombre de valeurs et $k$ la taille de la fenêtre.
 
-% VolkerComment
+% OK VolkerComment
 % Explain the algorithm used by caTools and explain why it is faster => running quantile calculation. What is the speed gain when analyzing our data
 % TOOD comparaison runquantile
 
@@ -267,7 +266,7 @@ J'ai réalisé un prototype rapide détaillé en annexe pour évaluer l'intérê
 % 3Dslicer vs cmtk vs ants...
 % dette technique sur les pipelines
 
-% VolkerComment
+% TODO VolkerComment
 % SHow your test results. Be quantitative
 
 

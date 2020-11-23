@@ -1,32 +1,25 @@
 \chapter{Introduction}\label{chapI}
 
-
 \section{Introduction générale}
 
-\subsection{L'intégration de l'environnement sensoriel, une fonction complexe}
-
+% \subsection{L'intégration de l'environnement sensoriel, une fonction complexe}
 De nombreux animaux sont capables de se repérer et de se déplacer dans leur environnement, une fonction complexe qui nécessite de traiter des entrées sensorielles multiples et de produire une réponse motrice adaptée. Le système nerveux, constitué d'un réseau de neurones capables de guider l'information depuis les organes sensoriels vers le cerveau, et depuis le cerveau vers les organes moteurs répond bien à ce problème. Ce traitement centralisé de l'information permet d'atteindre un grand niveau de complexité. On compte par exemple dans le cerveau humain plusieurs dizaines de milliards de neurones.
 
-\subsection{Des techniques d'imagerie trop locales ou trop globales}
-
+% \subsection{Des techniques d'imagerie trop locales ou trop globales}
 On dispose aujourd'hui d'outils pour appréhender cette complexité comme l'imagerie par résonance magnétique fonctionnelle (IRMf), qui mesure un rapporteur de l'oxygénation du sang, et donc de l'activité locale des tissus cérébraux. Cette technique est cependant limitée à une résolution spatiale de l'ordre du millimètre cube, soit une centaine de milliers de neurones et à une résolution temporelle de l'ordre du Hertz \cite{goense_fmri_2016}. À l'opposé, les techniques d'électrophysiologie comme patch-clamp permettent d'enregistrer l'activité électrique du neurone unique avec une résolution temporelle de l'ordre de la milliseconde mais sont invasives et limitées à une centaine de neurones simultanément \cite{berdondini_active_2009}.
 
-\subsection{L'échelle intermédiaire, neurones en réseaux sur le cerveau entier}
-
-Ces techniques ont engendré beaucoup de découvertes sur le fonctionnement global et local du cerveau, mais peinent à décrire des phénomènes qui concernent l'échelle intermédiaire : un faible nombre de neurones répartis sur l'entièreté du cerveau. C'est précisément à cette échelle que se situe l'intégration multisensorielle, c'est-à-dire la manière dont le cerveau combine l'information liée à plusieurs modalités sensorielles pour produire une réponse motrice unique \cite{stein_multisensory_2008}. Ce phénomène fait appel à la fois aux noyaux sensoriels, à des circuits intégrateurs et aux neurones moteurs, autrement dit une petite centaine de neurones répartis sur le cerveau entier. Pour répondre à ces questions, il a fallu appliquer une nouvelle technique d'imagerie à un nouvel animal modèle.
-
+% \subsection{L'échelle intermédiaire, neurones en réseaux sur le cerveau entier}
+Ces techniques ont permis beaucoup de découvertes sur le fonctionnement global et local du cerveau, mais peinent à décrire des phénomènes qui concernent l'échelle intermédiaire : un faible nombre de neurones répartis sur l'entièreté du cerveau. C'est précisément à cette échelle que se situe l'intégration multisensorielle, c'est-à-dire la manière dont le cerveau combine l'information liée à plusieurs modalités sensorielles pour produire une représentation cohérente et une réponse motrice unique \cite{stein_multisensory_2008}. Ce phénomène fait appel à la fois aux noyaux sensoriels, à des circuits intégrateurs et aux neurones moteurs, autrement dit une petite centaine de neurones répartis sur le cerveau entier. Pour répondre à ces questions, il a fallu appliquer une nouvelle technique d'imagerie à un nouvel animal modèle.
+% VolkerComment
 % There are many more neurons implicated especially in the human brain. In the vestibular nucleus almost every neuron responses also to visual stimuli humans ans primats. 
 
-\subsection{La larve de poisson zèbre, un organisme modèle en neurosciences}
+% \subsection{La larve de poisson zèbre, un organisme modèle en neurosciences}
+La larve de poisson zèbre, déjà largement utilisée en biologie du développement s'est trouvée bien adaptée à ces questions. Six jours après fertilisation de l’œuf, elle possède déjà un système sensoriel fonctionnel (systèmes visuel, vestibulaire, tactile, auditif...) et un répertoire de comportements riche et complexe (nage, chasse, fuite...). Son cerveau est encore de petite taille (cent mille neurones), mais comporte quasiment toutes les régions anatomiques d'un cerveau de vertébré adulte. On dispose d'une grande variété de lignées notamment des mutants dépigmentés transparents et des lignées transgéniques incluant un rapporteur calcique. Ces lignées permettent une imagerie fonctionnelle par fluorescence pour suivre l'activité des neurones.
 
-La larve de poisson zèbre, déjà largement utilisée en biologie du développement s'est trouvée bien adaptée à ces questions. À l'age de six jours après fertilisation de l’œuf, elle possède déjà un système sensoriel fonctionnel (systèmes visuel, vestibulaire, tactile, auditif...) et un répertoire de comportements riche et complexe (nage, chasse, fuite...). Son cerveau est encore de petite taille (cent mille neurones), mais comporte quasiment toutes les régions anatomiques d'un cerveau de vertébré adulte. On dispose d'une grande variété de lignées notamment des mutants dépigmentés transparents et des lignées transgéniques incluant un rapporteur calcique. Ces lignées permettent une imagerie fonctionnelle par fluorescence pour suivre l'activité des neurones.
-
-\subsection{La microscopie à feuille de lumière, un scanner 3D rapide}
-
+% \subsection{La microscopie à feuille de lumière, un scanner 3D rapide}
 La technique d'imagerie la plus utilisée en biologie est certainement la microscopie confocale à fluorescence. Il s'agit d'illuminer point par point l'échantillon avec un faisceau laser et de ne collecter que la fluorescence émise par ce point. Cela permet d'atteindre une très bonne résolution spatiale en échange de résolution temporelle. Pour l'imagerie fonctionnelle neuronale du cerveau entier, la microscopie par feuille de lumière est plus adaptée car elle utilise une illumination plan par plan de l'échantillon par une nappe laser. La résolution temporelle est donc largement augmentée tout en conservant une résolution spatiale suffisante, inférieure à la taille d'un neurone. 
 
-\subsection{La réalité virtuelle pour l'interaction dans un environnement sensoriel riche }
-
+% \subsection{La réalité virtuelle pour l'interaction dans un environnement sensoriel riche }
 Pour étudier le fonctionnement du cerveau, on fixe donc la larve de poisson zèbre transgénique sous un microscope à feuille de lumière. Il est possible d'étudier l'activité spontanée des neurones, mais pour explorer la réponse du cerveau à une stimulation sensorielle, il faut créer ces stimuli. La manière la plus aboutie de recréer cette stimulation sensorielle est la réalité virtuelle, c'est-à-dire un environnement sensoriel qui réagit aux actions motrices comme si le sujet n'était pas fixé.
 
 
@@ -34,13 +27,13 @@ Pour étudier le fonctionnement du cerveau, on fixe donc la larve de poisson zè
 
 \subsection{Définition}
 
-L'intégration multisensorielle est le processus par lequel le cerveau combine les informations perçues pour produire une représentation interne de l'environnement extérieur. La prise d'information peut passer par plusieurs modalités sensorielles comme les systèmes visuel, vestibulaire, tactile, auditif, olfactif, proprioceptif, ou encore somesthésique. Ces différentes modalités peuvent donner des informations cohérentes qui se complètent pour améliorer la perception mais également des informations contradictoires qui peuvent entrainer des illusions sensorielles.
-
 \begin{figure}
-\centering
-\includegraphics[width=0.5\textwidth]{./files/Kathryn-Hunter_Peter-Brook_valley-of-astonishement.jpg}
-\caption{Kathryn Hunter, dans la pièce de théâtre \emph{The Valley of Astonishment}, mise en scène par Peter Brook. Le personnage est synesthète, et associe dans sa mémoire plusieurs modalités sensorielles.}
-\end{figure}
+  \centering
+  \includegraphics[width=0.5\textwidth]{./files/Kathryn-Hunter_Peter-Brook_valley-of-astonishement.jpg}
+  \caption{Kathryn Hunter, dans la pièce de théâtre \emph{The Valley of Astonishment}, mise en scène par Peter Brook. Le personnage est synesthète, et associe dans sa mémoire plusieurs modalités sensorielles.}
+  \end{figure}
+
+L'intégration multisensorielle est le processus par lequel le cerveau combine les informations perçues pour produire une représentation interne de l'environnement extérieur. La prise d'information peut passer par plusieurs modalités sensorielles comme les systèmes visuel, vestibulaire, tactile, auditif, olfactif, proprioceptif, ou encore somesthésique. Ces différentes modalités peuvent donner des informations cohérentes qui se complètent pour améliorer la perception mais également des informations contradictoires qui peuvent entrainer des illusions sensorielles.
 
 \subsection{Exemples et illusions}
 
@@ -109,33 +102,32 @@ Les cerveaux de mammifères sont composés de milliards de neurones ce qui les r
 
 \section{Imagerie fonctionnelle par microscopie à feuille de lumière}
 
-\subsection{Comment enregistrer le cerveau entier ?}
-
+% \subsection{Comment enregistrer le cerveau entier ?}
 Comme nous l'avons vu, les techniques d'acquisition de l'activité neuronale comme l'électrophysiologie et l'imagerie par résonance magnétique ne sont pas adaptées pour réaliser l'imagerie du cerveau entier à l'échelle du neurone unique. Il est donc nécessaire d'utiliser une technique d'acquisition non invasive capable de telles performances. Travailler sur un animal transparent comme la larve de poisson zèbre facilite l'acquisition utilisant la lumière visible, c'est-à-dire l'imagerie optique. Celle-ci est très développée en biologie et peut assurer à la fois une bonne résolution et un champ large. Cependant, plusieurs innovations importantes à la fois en optique, en ingénierie moléculaire, et en génétique ont dû être combinées pour arriver à un tel résultat. Nous l'introduisons ici.
 
 \subsection{Imagerie fonctionnelle calcique}
 
 \subsubsection{Architecture et fonctionnement du neurone}
 
-Le neurone est une cellule fortement présente dans le cerveau et caractérisée par son prolongement axonal capable de transmettre un influx nerveux. Il est toujours accompagné par des cellules gliales comme les astrocytes ou les oligodendrocytes qui assurent en grande partie les fonctions métaboliques. Il est aujourd'hui considéré comme principal responsable des processus cognitifs bien que de nombreuses recherches montrent l'importance des cellules gliales dans des phénomènes tels que l'intégration du signal calcique et l'établissement de connexions synaptiques \cite{verkhratsky_calcium_1996} \cite{pfrieger_synaptic_1997}.
-
 \begin{figure}
-\centering
-\includegraphics[width=0.8\textwidth]{./files/neurone.svg.png}
-\caption{Schéma d'un neurone accompagné de cellules gliales. Astrocytes (en vert), oligodendrocytes (en bleu). Le neurone dispose d'un long prolongement appelé axone qui le connecte à d'autres neurones via des boutons synaptiques.}
-\end{figure}
+  \centering
+  \includegraphics[width=0.8\textwidth]{./files/neurone.svg.png}
+  \caption{Schéma d'un neurone accompagné de cellules gliales. Astrocytes (en vert), oligodendrocytes (en bleu). Le neurone dispose d'un long prolongement appelé axone qui le connecte à d'autres neurones via des boutons synaptiques.}
+  \end{figure}
+
+Le neurone est une cellule fortement présente dans le cerveau et caractérisée par son prolongement axonal capable de transmettre un influx nerveux. Il est toujours accompagné par des cellules gliales comme les astrocytes ou les oligodendrocytes qui assurent en grande partie les fonctions métaboliques. Il est aujourd'hui considéré comme principal responsable des processus cognitifs bien que de nombreuses recherches montrent l'importance des cellules gliales dans des phénomènes tels que l'intégration du signal calcique et l'établissement de connexions synaptiques \cite{verkhratsky_calcium_1996} \cite{pfrieger_synaptic_1997}.
 
 Le neurone est doté d'une longue projection nommée axone, qui lui permet de se connecter et transmettre un signal à d'autres neurones éloignés de lui. Comme la plupart des cellules, des protéines transmembranaires lui permettent d'atteindre une différence de potentiel avec l'extérieur de -70 mV au repos et comme d'autres cellules dites excitables, cela lui permet de transmettre un signal électrique par ouverture et fermeture de canaux ioniques.
 
 \subsubsection{Le calcium dans le neurone}
 
-Le neurone est équipé de pompes et canaux ioniques sur sa membrane qui lui permettent de se polariser en faisant varier la concentration d'ions intracellulaires par rapport au milieu extracellulaire. Ce potentiel électrochimique transmembranaire varie brusquement lors d'événements de dépolarisation qui permettent la propagation d'un message le long des projections axonales vers d'autres neurones. Lors de ces événements, des flux d'ions traversent la paroi cellulaire, ce qui modifie largement leur concentration intracellulaire. Par exemple, l'ion calcium ($Ca^{2+}$) passe d'une concentration de 0.1 µmol/L à 10 µmol/L soit un facteur 100 \cite{grienberger_imaging_2012}, la concentration extracellulaire étant de 1 mmol/L, encore cent fois plus. La durée des potentiels d'actions est de l'ordre de la milliseconde, et la concentration de calcium évolue sur des échelles de temps similaires, de l'ordre de la dizaine de millisecondes [?].
-
 \begin{figure}
-\centering
-\includegraphics[width=0.8\textwidth]{./files/membrane.svg.png}
-\caption{Des protéines transmembranaires permettent à la cellule de se polariser et de se dépolariser. Les pompes ioniques consomment de l'énergie sous forme d'ATP pour forcer le passage d'ions. Des transporteurs ioniques actifs (symport, antiport) et passifs (uniport) permettent un transport dirigé d'ions. Des canaux sélectifs et non sélectifs permettent un transport rapide.}
-\end{figure}
+  \centering
+  \includegraphics[width=0.8\textwidth]{./files/membrane.svg.png}
+  \caption{Des protéines transmembranaires permettent à la cellule de se polariser et de se dépolariser. Les pompes ioniques consomment de l'énergie sous forme d'ATP pour forcer le passage d'ions. Des transporteurs ioniques actifs (symport, antiport) et passifs (uniport) permettent un transport dirigé d'ions. Des canaux sélectifs et non sélectifs permettent un transport rapide.}
+  \end{figure}
+
+Le neurone est équipé de pompes et canaux ioniques sur sa membrane qui lui permettent de se polariser en faisant varier la concentration d'ions intracellulaires par rapport au milieu extracellulaire. Ce potentiel électrochimique transmembranaire varie brusquement lors d'événements de dépolarisation qui permettent la propagation d'un message le long des projections axonales vers d'autres neurones. Lors de ces événements, des flux d'ions traversent la paroi cellulaire, ce qui modifie largement leur concentration intracellulaire. Par exemple, l'ion calcium ($Ca^{2+}$) passe d'une concentration de 0.1 µmol/L à 10 µmol/L soit un facteur 100 \cite{grienberger_imaging_2012}, la concentration extracellulaire étant de 1 mmol/L, encore cent fois plus. La durée des potentiels d'actions est de l'ordre de la milliseconde, et la concentration de calcium évolue sur des échelles de temps similaires, de l'ordre de la dizaine de millisecondes. % [?] échelle de temps de la concentration de calcium
 
 \subsubsection{GCaMP, rapporteur calcique}
 
