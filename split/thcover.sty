@@ -80,77 +80,50 @@
 \settoheight{\th@skip}{\large A}
 \def\thskip{\vspace*{\th@skip}}
 
-    
 \long\def\frontcover{%
     \begingroup 
     \newgeometry{left=12mm,right=12mm,top=10mm,bottom=15mm}
     \setlength{\th@skip}{10mm plus 5mm minus 5mm}
-    \pagestyle{empty}%
+    \pagestyle{empty}
     \setcounter{page}{-1}
-    \flushbottom%
-    \begin{center}%
+    \flushbottom
+    \begin{center}
     \strut
-    \ifdefempty{\@head}{\par}{\large\bfseries\@head\par}%
-    \ifdefempty{\@logoone}{\par}{\centerline{%
-        \rlap{\includegraphics[height=2cm]{\@logoone}}\hfill%
-        \ifdefempty{\@logotwo}{\hfill\textcl@p{ }\hfill}{%
-        		\hfill\textcl@p{\includegraphics[height=2cm]{\@logotwo}}\hfill}%
-        \ifdefempty{\@logothree}{\relax}{%
-             \hfill\llap{\includegraphics[height=2cm]{\@logothree}}}%
-        }%
-    }%
-    \vfil% 
-    \bfseries% 
-    {\Large\MakeUppercase{\@thesisname}\\ \MakeUppercase{\@univ} \par}%
-    \vfil%
-    \vfil%
-    \vfil%
-    \ifdefempty{\@specialite}{\thskip}{{\Large Spécialité~: \@specialite\par}}%
-    \medskip%
-    \ifdefempty{\@ecoledoct}{\thskip}{{\large\bfseries École doctorale~nº\@ecoledoctnum : \@ecoledoct\par}}%
-    \vfil%
-    \vfil%
-    \vfil%
-    \ifdefempty{\@lab}{\thskip}{%
-    	réalisée\par \medskip {\Large\@atlab\par}}%
-    \vfil%
-    sous la direction de \@advisor
-    \vfil%
-    \vfil%
-    \vfil%
-    présentée par\par
-    \medskip{\huge\@author\par}
-    \vfil%
-    \vfil%
-    \vfil%
-    pour obtenir le grade de~:\par
-    \bigskip
-    {\large\MakeUppercase{\@gradename} \@univ\par}%
-    \vfil%
-    \vfil%
-   	Sujet de la thèse~:\par 
-   	\medskip
-   	{\LARGE\@title\par}%
-    \vfil%
-    \vfil%
-    \vfil%
-%    sous la direction de \@advisor
-%    \vfil%
-%    \vfil%
-%    \vfil%
-    {\Large soutenue le \@date\par}%
-    \vfil%
-    devant le jury composé de~:\par%
-    \vfil%
-    \begin{large}%
-    \begin{tabular}{p{0.3in}lll}%
-        \@jury%
-    \end{tabular}%
-    \end{large}%
-  \end{center}%
+    \ifdefempty{\@head}{\par}{\large\bfseries\@head\par}
+
+    \centerline{
+        \includegraphics[height=1.5cm]{\@logoone} \hfill
+        \includegraphics[height=1.5cm]{\@logotwo}
+    }
+
+    \vfil 
+
+    \bfseries
+     
+    {\Large\MakeUppercase{\@thesisname}\par}
+    {\Large\MakeUppercase{\@univ} \par}
+    \vfil
+    {\large École doctorale~nº\@ecoledoctnum~: \@ecoledoct\par}
+    \vfil
+    {\Large\mdseries réalisée au {\bfseries\@atlab\par}}
+    \vfil
+    {\Large\mdseries par {\LARGE\bfseries\@author\par}}
+    \vfil
+   	{\Large\@title\par}
+    \vfil
+    {\Large\mdseries soutenue le {\bfseries\@date\par}}
+    \vfil
+    {\Large\mdseries devant le {\bfseries Jury} composé de\par}
+    \vfil
+    \begin{large}
+    \begin{tabular}{p{0.3in}lll}
+        \@jury
+    \end{tabular}
+    \end{large}
+  \end{center}
   \par
-    \vfil%
-    \vfil%
+    \vfil
+    \vfil
   \restoregeometry
   \cleardoublepage
   \endgroup

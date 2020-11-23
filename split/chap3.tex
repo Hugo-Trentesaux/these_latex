@@ -34,7 +34,7 @@
 % Pour étudier à la fois le système visuel et le système vestibulaire du poisson zèbre, une possibilité est de combiner les deux innovations précédemment citées en un seul microscope : un microscope à feuille de lumière deux photons rotatif. C'est la voie que j'ai explorée, qui a révélé plusieurs défis techniques. Le premier et de guider le laser deux photons vers le module light-sheet en restant stable lors de la rotation du microscope. Le second est de mitiger l'effet de lentille thermique lié à la propagation d'un faisceau haute puissance dans l'eau. Après avoir exploré en détail ces aspects techniques, je montrerai comment le microscope a permis de réaliser l'acquisition du cerveau de la larve sans environnement visuel parasite.
 
 
-% TODOVolker (à propos de la décroissance de l'intensité dans la direction de propagation)
+% TODO Volker (à propos de la décroissance de l'intensité dans la direction de propagation)
 % Show an image. Is this really an issue. The infrared light interacts less with the tissue compared to the 488nm laser. How do both configurations compare? I do not see uneven fluorescence signal across the fish in two photon recordings.
 
 Pour réaliser l'imagerie du cerveau lors du contrôle postural tel que présenté au chapitre \ref{chapII}, il faut contrôler à la fois l'environnement visuel et l'environnement vestibulaire.
@@ -54,7 +54,7 @@ Un microscope à feuille de lumière classique utilise un laser bleu pour stimul
 % Vladimirov
 % Show the figure that demonstrates the configuration of the two light-sheets
 
-Plus tard, Vladimirov \emph{et al} \cite{vladimirov_light-sheet_2014} ont montré que l'étude de l'OMR était également possible en microscopie à feuille de lumière un photon, à condition de ne pas éclairer directement l'oeil du poisson. Ils ont utilisé deux feuilles de lumière, l'une éclairant le cerveau par le côté et l'autre par l'avant, entre les deux yeux. Cependant, l'OMR est un réflexe robuste qui ne recourt pas aux fonctions avancées de la vision, et la perturbation due à l'illumination des autres processus visuels n'est pas contrôlée. C'est pourquoi Wolf \emph{et al} ont appliqué la technique mise au point par Truong à l'étude du système visuel de la larve de poisson zèbre \cite{wolf_whole-brain_2015}. Ils ont construit un microscope à feuille de lumière deux photons et réalisé l'acquisition du cerveau entier lors de stimulations visuelles.
+Plus tard, Vladimirov \emph{et al} \cite{vladimirov_light-sheet_2014} ont montré que l'étude de l'OMR était également possible en microscopie à feuille de lumière un photon, à condition de ne pas éclairer directement l'œil du poisson. Ils ont utilisé deux feuilles de lumière, l'une éclairant le cerveau par le côté et l'autre par l'avant, entre les deux yeux. Cependant, l'OMR est un réflexe robuste qui ne recourt pas aux fonctions avancées de la vision, et la perturbation due à l'illumination des autres processus visuels n'est pas contrôlée. C'est pourquoi Wolf \emph{et al} ont appliqué la technique mise au point par Truong à l'étude du système visuel de la larve de poisson zèbre \cite{wolf_whole-brain_2015}. Ils ont construit un microscope à feuille de lumière deux photons et réalisé l'acquisition du cerveau entier lors de stimulations visuelles.
 
 % VolkerComment2
 % Discuss the paper: They demonstrated lower visual response threshold in 2P LSM compared to 1P LSM. Show the figure 1b of Wolf et al. Discuss also that one cannot image through the eyes as this will burn the fish.
@@ -68,8 +68,6 @@ Pour étudier le cerveau lors du contrôle postural, il est donc nécessaire de 
 
 
 \section{Effet deux photons}
-
-% TODO améliorer cette section
 
 \subsection{Principe}
 
@@ -93,7 +91,7 @@ Un système optique peut concentrer la lumière localement, ce qui produit un po
 
 \subsection{Concentration temporelle}\label{SECTIONconcentrationtemporelle}
 
-Une autre manière de concentrer la lumière est la concentration temporelle. Dans le cas d'un laser continu, la puissance est répartie sur toute la longueur de propagation du faisceau. En utilisant un laser pulsé, la puissance est concentrée en paquets beaucoup plus courts (cf Fig. \ref{pulsed-laser}). Par exemple, pour des impulsions de 100 fs, malgré la vitesse élevée de la lumière, la longueur de ces paquets est de 30 mm. Si de plus le taux de répétition du laser est de 80 MHz, la puissance d'une impulsion est 125 fois plus élevée qu'un laser continu de même puissance moyenne (1/(100fs x 80MHz)). L'effet deux photons étant proportionnel au carré de la puissance instantanée, on a intérêt à choisir les impulsions les plus courtes possibles (petit $\tau$) et le taux de répétition le plus faible possible (grand T) pour un laser de puissance moyenne fixée \cite{maioli_fast_2020}. Cette tendance est limitée par les photoperturbations induites, qui deviennent importantes au delà d'une centaines de nanojoules par impulsion. Les conditions optimales en microscopie par fluorescence à nappe laser deux photons sont donc autour de f = 1 MHz, $\tau$ = 100 fs, P = 100 mW, ce que confirme Gasparoli \emph{et al} \cite{gasparoli_is_2020}. % TODO préciser
+Une autre manière de concentrer la lumière est la concentration temporelle. Dans le cas d'un laser continu, la puissance est répartie sur toute la longueur de propagation du faisceau. En utilisant un laser pulsé, la puissance est concentrée en paquets beaucoup plus courts (cf Fig. \ref{pulsed-laser}). Par exemple, pour des impulsions de 100 fs, malgré la vitesse élevée de la lumière, la longueur de ces paquets est de 30 mm. Si de plus le taux de répétition du laser est de 80 MHz, la puissance d'une impulsion est 125 fois plus élevée qu'un laser continu de même puissance moyenne (1/(100fs x 80MHz)). L'effet deux photons étant proportionnel au carré de la puissance instantanée, on a intérêt à choisir les impulsions les plus courtes possibles (petit $\tau$) et le taux de répétition le plus faible possible (grand T) pour un laser de puissance moyenne fixée \cite{maioli_fast_2020}. Cette tendance est limitée par les photoperturbations induites, qui deviennent importantes au-delà d'une centaine de nanojoules par impulsion. Les conditions optimales en microscopie par fluorescence à nappe laser deux photons sont donc autour de f = 1 MHz, $\tau$ = 100 fs, P = 100 mW, ce que confirme Gasparoli \emph{et al} \cite{gasparoli_is_2020}. % TODO préciser
 
 % VolkerComment2
 % Move this to the discussion. Also from where do you get the numbers? citation is missing. Willy Supatto shows in his 2020 paper that 10MHz is the optimal repetition rate.
@@ -122,7 +120,7 @@ c1. Fibre à courbure négative (image extraite de Yu 2016 \cite{yu_negative_201
 \subsection{Guide d'onde}
 
 Dans un cadre général, un guide d'onde est un objet qui contraint la propagation d'une onde par ses propriétés physiques. Dans le domaine des ondes électromagnétiques aux fréquences radio, par exemple, un tuyau en métal permet de confiner l'onde et de contraindre une propagation unidimensionnelle sur de longues distances \cite{miller_low-loss_1953}, mais également un milieu diélectrique \cite{unger_circular_1957}. On peut lire une revue sur l'histoire de ces découvertes \cite{packard_origin_1984}.
-Dans le domaine des fréquences optiques, les guides d'ondes à saut d'indice sont une famille dans laquelle on trouve un grand nombre des fibres optiques utilisée en télécommunications \cite{maurer_glass_1973}. Ces fibres sont constituées d'un coeur de verre entouré d'une gaine d'indice optique plus petit. Dans le cadre de l'optique géométrique, on décrit le guidage par le phénomène de réflexion totale sur le dioptre pour une réfraction en dessus de l'angle limite. Dans le cadre de l'optique ondulatoire, on peut définir les modes propres de la cavité optique. Une fibre est dite monomode si seul le mode fondamental peut se s'y propager.
+Dans le domaine des fréquences optiques, les guides d'ondes à saut d'indice sont une famille dans laquelle on trouve un grand nombre des fibres optiques utilisée en télécommunications \cite{maurer_glass_1973}. Ces fibres sont constituées d'un cœur de verre entouré d'une gaine d'indice optique plus petit. Dans le cadre de l'optique géométrique, on décrit le guidage par le phénomène de réflexion totale sur le dioptre pour une réfraction en dessous de l'angle limite. Dans le cadre de l'optique ondulatoire, on peut définir les modes propres de la cavité optique. Une fibre est dite monomode si seul le mode fondamental peut s'y propager.
 
 \subsection{Fibre optique monomode à saut d'indice} % et précompensation de la dispersion
 
@@ -132,7 +130,7 @@ Une solution consiste à précompenser cette dispersion via des éléments optiq
 
 \subsection{Fibre à âme vide}
 
-Les phénomènes de dispersion et de non-linéarité sont dus à l'interaction avec la matière. Pour les contourner, il faut donc que les impulsions à haute énergie se propagent dans le vide. L'effet de réflexion totale sur le dioptre coeur/enveloppe ne peut plus être utilisé, car il faudrait un milieu d'indice plus petit que 1, c'est à dire dans lequel la lumière se propage plus vite que dans le vide, ce qui n'est pas possible. Intéressons-nous au guide d'ondes creux.
+Les phénomènes de dispersion et de non-linéarité sont dus à l'interaction avec la matière. Pour les contourner, il faut donc que les impulsions à haute énergie se propagent dans le vide. L'effet de réflexion totale sur le dioptre cœur/enveloppe ne peut plus être utilisé, car il faudrait un milieu d'indice plus petit que 1, c’est-à-dire dans lequel la lumière se propage plus vite que dans le vide, ce qui n'est pas possible. Intéressons-nous au guide d'ondes creux.
 
 \subsubsection{Guide d'onde métallique ou diélectrique}
 
@@ -147,13 +145,13 @@ On trouve ce genre de réseau pour la première fois en 1999 sous forme de fibre
 
 \paragraph{Fibres à motif Kagomé}
 L'idée du réseau de diffraction a également donné lieu aux fibres à réseau trihexagonal, ou "Kagomé". De telles fibres ont été construites pour la première fois en 2002 sous le nom de fibre à cristaux photoniques. Le gain était alors de l'ordre de 2 dB/m \cite{benabid_stimulated_2002}. En 2011, un gain de 180 dB/km a été obtenu avec de telles fibres \cite{wang_low_2011}.
-Cependant, en 2010, Février \emph{et al} montrent par analyse numérique que les propriétés de ces fibres ne reposent pas tant vers le motif périodique que sur la forme du coeur \cite{fevrier_understanding_2010}, ce qui ouvre la voie vers les fibres à coeur hypocycloide. 
+Cependant, en 2010, Février \emph{et al} montrent par analyse numérique que les propriétés de ces fibres ne reposent pas tant vers le motif périodique que sur la forme du cœur \cite{fevrier_understanding_2010}, ce qui ouvre la voie vers les fibres à cœur hypocycloide. 
 
 % Un des problèmes des fibres à structure géométrique est la sensibilité aux déformations. Puisque le guidage est lié à la géométrie de la fibre, les déformations qui changent cette géométrie altèrent le guidage. Cela peut prendre la forme de perte de transmission, de couplage entre les modes, d'incidence sur la polarisation. Mais cette sensibilité aux déformations dépendant de la géométrie de la fibre, certaines configurations donnent des résultats très satisfaisants.
 
 \subsubsection{Fibres à courbure négative}
 
-Les idées de fibre à réseau de tubes unique et de fibres à coeur hypocycloide se rejoingent dans un même concept : les fibres à courbures négatives. En 2016, Yu et Knight publient une revue sur l'histoire de ces fibres et leurs mécanismes \cite{yu_negative_2016}. Ils commentent entre autres l'atténuation, les bandes de transmission et le gain de courbure. Ces critères rendent cette famille de fibres particulièrement adaptée à notre application. En effet, les larges bandes de transmission permettent de guider plusieurs longueurs d'onde, aussi bien pour l'imagerie un photon que deux photons, la faible atténuation permet de conserver la puissance du laser nécessaire à l'effet deux photons, et le faible gain de courbure permet de conserver une illumination stable pendant la rotation du microscope.
+Les idées de fibre à réseau de tubes unique et de fibres à cœur hypocycloide se rejoingent dans un même concept : les fibres à courbures négatives. En 2016, Yu et Knight publient une revue sur l'histoire de ces fibres et leurs mécanismes \cite{yu_negative_2016}. Ils commentent entre autres l'atténuation, les bandes de transmission et le gain de courbure. Ces critères rendent cette famille de fibres particulièrement adaptée à notre application. En effet, les larges bandes de transmission permettent de guider plusieurs longueurs d'onde, aussi bien pour l'imagerie un photon que deux photons, la faible atténuation permet de conserver la puissance du laser nécessaire à l'effet deux photons, et le faible gain de courbure permet de conserver une illumination stable pendant la rotation du microscope.
 
 % VolkerComment2
 % You have to make the effort and write all this in your thesis. It is not sufficient to just refer to the review. Explain the light guidance mechanism, show figures, ... .
@@ -163,7 +161,7 @@ Les idées de fibre à réseau de tubes unique et de fibres à coeur hypocycloid
 
 \subsection{Utilisation des fibres optiques en microscopie embarquée}
 
-% Dans un microscope statique, la source laser peut être guidée jusqu'à l'échantillon par des miroirs, mais dans un microscope mobile il faut soit embarquer la source laser directement sur le microscope, soit la guider de manière flexible quelque soient les mouvements. Dans le cas d'une source laser deux photons très volumineuse, il est impossible de l'embarquer, la solution adoptée est donc une fibre optique adaptée. De telles fibres optiques capables de guider un laser deux photons sont complexes à produire. Avant de nous intéresser aux microscopes à fibre couramment utilisés dans la recherche sur le rongeur, introduisons les caractéristiques d'un guide d'onde. 
+% Dans un microscope statique, la source laser peut être guidée jusqu'à l'échantillon par des miroirs, mais dans un microscope mobile il faut soit embarquer la source laser directement sur le microscope, soit la guider de manière flexible quelques soient les mouvements. Dans le cas d'une source laser deux photons très volumineuse, il est impossible de l'embarquer, la solution adoptée est donc une fibre optique adaptée. De telles fibres optiques capables de guider un laser deux photons sont complexes à produire. Avant de nous intéresser aux microscopes à fibre couramment utilisés dans la recherche sur le rongeur, introduisons les caractéristiques d'un guide d'onde. 
 
 Les propriétés de guidage de la lumière d'une fibre optique lui permettent d'alléger considérablement ou de déporter certaines parties des microscopes pour les rendre compatibles avec l'imagerie embarquée. Un microscope est en effet composé d'un axe d'illumination, d'un échantillon, et d'un axe de détection. Les axes peuvent être séparés dans différents bras ou réunis sur une portion du montage optique et sont généralement composés d'éléments optiques rigides passifs tels que des objectifs, miroirs, filtres... Ces différentes parties parfois très volumineuses peuvent être remplacées ou déportées à l'aide de fibres optique. Nous allons voir par la suite plusieurs types de microscopes embarqués utilisant une fibre optique.
 
@@ -172,7 +170,7 @@ Les propriétés de guidage de la lumière d'une fibre optique lui permettent d'
 \includegraphics[width=\textwidth]{./files/fiber_functional_imaging.svg.png}
 \caption{Différentes techniques de microscopie en imagerie neuronale fonctionnelle chez le rongeur.\\
 a. Un microscope deux photons statique réalise l'imagerie du cerveau d'une souris lors d'une expérience en réalité virtuelle \cite{dombeck_functional_2010}.\\
-b. Un microscope deux photons est fixé sur la boite cranienne d'un rat. Le laser est guidé à travers une fibre à coeur de verre dont la dispersion est précompensée. L'unité de détection est intégrée au microscope \cite{helmchen_miniature_2001}.\\
+b. Un microscope deux photons est fixé sur la boite cranienne d'un rat. Le laser est guidé à travers une fibre à cœur de verre dont la dispersion est précompensée. L'unité de détection est intégrée au microscope \cite{helmchen_miniature_2001}.\\
 c. Un microscope deux photon est fixé sur le crane d'un rat, mais l'unité de détection est externe, la lumière étant collectée par une fibre \cite{sawinski_visually_2009}. \\
 d. Un fibroscope deux photons utilise des fibres à gradient d'indice comme lentilles pour réduire l'encombrement. Le laser est guidé au moyen d'une fibre à cristaux photoniques et la lumière est collectée par une fibre à large cœur \cite{engelbrecht_ultra-compact_2008}. \\
 e. Un endoscope sans optique permet de réduire considérablement l'encombrement et d'atteindre des régions plus profondes du cerveau, mais nécessite une calibration préalable \cite{turtaev_high-fidelity_2018}.
@@ -188,7 +186,7 @@ e. Un endoscope sans optique permet de réduire considérablement l'encombrement
 
 \subsubsection{Imagerie sur rongeur à tête fixée}
 
-Une méthode répandue en imagerie cérébrale sur rongeur est de fixer un animal sous un microscope classique immobile. Le cerveau est rendu accessible par une opération chirurgicale pendant laquelle le crane est retiré localement et remplacé par une vitre. Le fait d'immobiliser la tête pendant l'imagerie peut limiter le répertoire comportemental et constituer une gène pour l'animal. Une solution est un système où le rat se positionne volontairement sous le microscope \cite{scott_cellular_2013}, une autre est le système en réalité virtuelle. Dans cette deuxième solution, le rongeur marche sur une boule en polystyrène sur coussins d'air alors qu'un environnement visuel est projeté sur un écran autour de lui \cite{dombeck_functional_2010}. Le microscope est ici entièrement statique et rigide. La réalité virtuelle a également été utilisée avec des enregistrement en électrophysiologie \cite{aronov_engagement_2014}\cite{whitlock_navigating_2014}.
+Une méthode répandue en imagerie cérébrale sur rongeur est de fixer un animal sous un microscope classique immobile. Le cerveau est rendu accessible par une opération chirurgicale pendant laquelle le crane est retiré localement et remplacé par une vitre. Le fait d'immobiliser la tête pendant l'imagerie peut limiter le répertoire comportemental et constituer une gêne pour l'animal. Une solution est un système où le rat se positionne volontairement sous le microscope \cite{scott_cellular_2013}, une autre est le système en réalité virtuelle. Dans cette deuxième solution, le rongeur marche sur une boule en polystyrène sur coussins d'air alors qu'un environnement visuel est projeté sur un écran autour de lui \cite{dombeck_functional_2010}. Le microscope est ici entièrement statique et rigide. La réalité virtuelle a également été utilisée avec des enregistrements en électrophysiologie \cite{aronov_engagement_2014}\cite{whitlock_navigating_2014}.
 
 % VolkerComment2
 % You have to write all this from the point of view of the fiber application. Go straight to the challenge to record in freely moving animals and the development of portable fiber scopes ...
@@ -228,7 +226,7 @@ Nous avons vu dans la partie précédente qu'une fibre optique permet de guider 
 
 \subsection{Comparaison de fibres}
 
-% OK TODOVolker (GLO all fibers)
+% OK Volker (GLO all fibers)
 % In collaboration with GLO we tested several different fiber types. Go through all of them ! Show the image of the cross section of this fiber and give all details of the fiber geometry: core diameter, total diameter, number of cladding tubes, tube wall thickness, cladding tube diameter, NA, mode field diameter (1/e2), curvature parameter (For b definition, see Opt. Exp. 21, no. 23, 28597, 2013)... .
 
 % VolkerComment2
@@ -239,20 +237,20 @@ Au début, nous avons utilisé des fibres ayant une bande de transmission unique
 \begin{figure}
 \centering
 \includegraphics[width=\textwidth]{./files/glofibers.svg.png}
-\caption{Comparaison de plusieurs fibres fournies par Glophotonics. Les schémas représentent la largeur du coeur (en noir) et la largeur du mode propre (en rouge). Dans le spectre de transmission, on s'intéresse à la valeur à 930 nm et à 488 nm si possible. La valeur de la dispersion est toujours la même, environ à 1 ps/nm.km. Les trois premières fibres on un motif de Kagomé, alors que la dernière n'est composée que d'une couche de capillaires. Seule la troisième fibre a un coeur hexagonal, les autres on un coeur hypocycloïde. La valeur du paramètre de courbure est notée b, comme défini dans Debord \emph{et al} \cite{debord_hypocycloid-shaped_2013}.
+\caption{Comparaison de plusieurs fibres fournies par Glophotonics. Les schémas représentent la largeur du cœur (en noir) et la largeur du mode propre (en rouge). Dans le spectre de transmission, on s'intéresse à la valeur à 930 nm et à 488 nm si possible. La valeur de la dispersion est toujours la même, environ à 1 ps/nm.km. Les trois premières fibres ont un motif de Kagomé, alors que la dernière n'est composée que d'une couche de capillaires. Seule la troisième fibre a un cœur hexagonal, les autres ont un cœur hypocycloïde. La valeur du paramètre de courbure est notée b, comme défini dans Debord \emph{et al} \cite{debord_hypocycloid-shaped_2013}.
 }
 \end{figure}
 
 
 \subsection{Injection d'un laser dans une fibre}
 
-% OK TODOVolker Add a motivation (for 1P)
+% OK Volker Add a motivation (for 1P)
 
 Une fibre capable de guider à la fois un laser 1P et un laser 2P permettrait de réaliser l'acquisition du cerveau en changeant facilement la longueur d'onde d'excitation. Cela permettrait de mettre en évidence les différences dans l'activité neuronale causées par l'environnement visuel. Je décris ici le processus d'injection dans une fibre et le montage que j'ai mis en place pour passer du laser 1P au laser 2P à l'aide d'un miroir amovible. 
 
 \subsubsection{Principe}
 
-Pour injecter le laser dans la fibre, il faut aligner tous les éléments dans l'axe optique et régler finement les degrés de liberté en translation et en rotation. De plus, comme on souhaite un couplage monomode, il faut faire coincider le mode laser d'entrée de fibre avec le mode propre de la fibre. Le laser ayant un largeur initiale de D, il faut le ramener à une largeur de fibre $w$ (23 µm ± 1 µm d'après la documentation). Pour cela, il faut utiliser une lentille de focale f et satisfaire l'équation suivante :
+Pour injecter le laser dans la fibre, il faut aligner tous les éléments dans l'axe optique et régler finement les degrés de liberté en translation et en rotation. De plus, comme on souhaite un couplage monomode, il faut faire coincider le mode laser d'entrée de fibre avec le mode propre de la fibre. Le laser ayant une largeur initiale de D, il faut le ramener à une largeur de fibre $w$ (23 µm ± 1 µm d'après la documentation). Pour cela, il faut utiliser une lentille de focale f et satisfaire l'équation suivante :
 
 $$
 f = D\frac{\pi w}{4\lambda}
@@ -277,12 +275,11 @@ $$
 
 Le diamètre du laser est donc d'environ 2 mm après un mètre de propagation. En prenant D = 2 mm, $\omega$ = 23 µm, et à $\lambda$ = 915 nm, on trouve donc f = 40 mm, c'est pourquoi j'ai utilisé une lentille de focale 40 mm (référence Thorlabs AC254-040-B-ML). Cette lentille dispose également d'un traitement de surface pour optimiser la transmission dans l'infrarouge.
 
-% OK TODOVolker (ref + fig)
-% ref to figure
+% TODO Volker (fig alignment)
 % show a photo of this configuration and explain the alignment procedure with a schema
 % Give the damaging threshold of the fiber as a reference -> I do not know
 
-J'ai fixé une extrémité de la fibre sur une platine de translation xyz à 40 mm de la lentille (Fig. \ref{FIGinjection}). Pour faciliter l'alignement, j'ai tout d'abord injecté un laser visible grâce à un connecteur fibre à fibre dans l'autre extrémité. Cela m'a permis de pré-aligner deux miroirs sur support rotatifs en visant l'orifice du laser parallèlement à l'axe optique. En allumant le laser à faible puissance pour ne pas endommager la fibre, on obtient alors facilement une transmission suffisante pour pouvoir mesurer la puissance en sortie de fibre. À partir de cette étape, il suffit d'optimiser la puissance transmise en jouant sur les réglages. Dans un premier temps, les deux degrés de rotations de chacun des deux miroirs, et dans un deuxième temps, les deux degrés de rotation du second miroir et les trois degrés de translation de la platine. Cette technique permet d'obtenir en un temps raisonnable ($\sim$1h) une transmission optimale ($\sim$96\%).
+J'ai fixé une extrémité de la fibre sur une platine de translation $xyz$ à 40 mm de la lentille (Fig. \ref{FIGinjection}). Pour faciliter l'alignement, j'ai tout d'abord injecté un laser visible grâce à un connecteur fibre à fibre dans l'autre extrémité. Cela m'a permis de pré-aligner deux miroirs sur support rotatifs en visant l'orifice du laser parallèlement à l'axe optique. En allumant le laser à faible puissance pour ne pas endommager la fibre, on obtient alors facilement une transmission suffisante pour pouvoir mesurer la puissance en sortie de fibre. À partir de cette étape, il suffit d'optimiser la puissance transmise en jouant sur les réglages. Dans un premier temps, les deux degrés de rotations de chacun des deux miroirs, et dans un deuxième temps, les deux degrés de rotation du second miroir et les trois degrés de translation de la platine. Cette technique permet d'obtenir en un temps raisonnable ($\sim$1h) une transmission optimale ($\sim$96\%).
 
 \subsubsection{Injection combinée 2P + 1P}
 
@@ -295,7 +292,7 @@ Pour injecter un deuxième laser, il faut à nouveau faire coïncider le mode de
 
 \subsubsection{Dispersion et pré-compensation}
 
-Un paramètre important pour la transmission d'un laser pulsé est la dispersion. C'est celui qui nous force à utiliser des fibre à cœur creux et qui permet de conserver une impulsion aussi courte que possible. Mais la dispersion d'une fibre à cœur creux n'est pas nulle, elle est de l'ordre de 1 ps/nm/km (élargissement temporel / largeur spectrale / distance parcourue) comme on peut le voir sur la courbe. La largeur spectrale d'une impulsion est donnée par
+Un paramètre important pour la transmission d'un laser pulsé est la dispersion. C'est celui qui nous force à utiliser des fibres à cœur creux et qui permet de conserver une impulsion aussi courte que possible. Mais la dispersion d'une fibre à cœur creux n'est pas nulle, elle est de l'ordre de 1 ps/nm/km (élargissement temporel / largeur spectrale / distance parcourue) comme on peut le voir sur la courbe. La largeur spectrale d'une impulsion est donnée par
 
 $$
 \Delta \lambda_t = \frac{\lambda^2}{c\Delta t}
@@ -310,19 +307,19 @@ En mesurant la durée de l'impulsion en sortie de fibre à l'aide d'un autocorr�
 
 \subsubsection{Gain de courbure}
 
-% TODOVolker show the data and give all fiber details (fiber bending loss)
-% TODOVolker (kagome bending loss)
+% OK Volker show the data and give all fiber details (fiber bending loss)
+% TODO Volker (kagome bending loss)
 % This is true for the hypocycloid fibers but does not apply to my knowledge to the Kagome fiber lattice that you discussed just before. Explain why there is a dependence of the gain on curvature. And explain the waveguidance mechanism in the hypocycloid fibers (anitresonance effect ... )
 
-Les propriétés de transmission de la fibre peuvent varier avec la courbure de celle-ci. La transmission est généralement optimale pour une fibre droite et se déteriore suivant le rayon de courbure avec des pertes mesurées en dB. Une fibre PCNC-FC-K13-001 que je ne présente pas ici donnait des variations de transmission de l'ordre de 20\% pour un rayon de courbure de 5 cm.
-Lors d'une expérience, la rotation du microscope engendre des déformations de la fibre, et donc des variations de transmission. L'éclairage incident se retrouve corrélé à la stimulation, ce qui crée un signal parasite. Un signal parasite supérieur à 1\% déteriore trop le rapport signal à bruit et empêche l'analse des données. On cherche donc à caractériser les pertes de transmission liées à la courbure. Pour cela, il suffit de placer un puissance-mètre en sortie de fibre et de faire varier la courbure.
+Les propriétés de transmission de la fibre peuvent varier avec la courbure de celle-ci. La transmission est généralement optimale pour une fibre droite et se détériore suivant le rayon de courbure avec des pertes mesurées en dB. Une fibre PCNC-FC-K13-001 que je ne présente pas ici donnait des variations de transmission de l'ordre de 20\% pour un rayon de courbure de 5 cm.
+Lors d'une expérience, la rotation du microscope engendre des déformations de la fibre, et donc des variations de transmission. L'éclairage incident se retrouve corrélé à la stimulation, ce qui crée un signal parasite. Un signal parasite supérieur à 1\% détériore trop le rapport signal à bruit et empêche l'analyse des données. On cherche donc à caractériser les pertes de transmission liées à la courbure. Pour cela, il suffit de placer un puissance-mètre en sortie de fibre et de faire varier la courbure.
 
 Des modèles numériques \cite{setti_flexible_2013} \cite{yu_negative_2016} \cite{frosz_analytical_2017} suggèrent que le gain évolue de manière inversement proportionelle au carré du rayon de courbure. Cette relation est également observée sur notre fibre.
 Les pertes par mètre de fibre courbée restent cependant petites même pour un rayon assez court. Elles valent 0.1 dB ($\sim$2\%) pour un rayon de courbure de 7 cm.
 
-En conditions réelles, ont peut s'arranger pour limiter la courbure et répartir les déformations sur l'ensemble de la fibre. Par exemple, la fibre peut être placée le long d'une tige de rigidité plus élevée. Lors du déplacement d'une extrémité, une portion droite de 1 m de fibre se trouve courbée avec un rayon de 20 cm, ce qui donne des pertes de 0.01 dB, soit 0.2\%.
+En conditions réelles, on peut s'arranger pour limiter la courbure et répartir les déformations sur l'ensemble de la fibre. Par exemple, la fibre peut être placée le long d'une tige de rigidité plus élevée. Lors du déplacement d'une extrémité, une portion droite de 1 m de fibre se trouve courbée avec un rayon de 20 cm, ce qui donne des pertes de 0.01 dB, soit 0.2\%.
 
-% TODOVolker (fiber curvature real conditions)
+% OK Volker (fiber curvature real conditions)
 % pourqui c'est le pire des cas ? Dans quelle context? I do not understand your argument. What is the range of curvature change in your experimental configuration?
 
 \begin{figure}
@@ -334,30 +331,30 @@ En conditions réelles, ont peut s'arranger pour limiter la courbure et réparti
 \\ B. gain en fonction de la courbure
 \\ C. ellipticité en fonction de la courbure (quasi circulaire)
 \\ D. angle de polarisation en fonction de la courbure (quasi linéaire)
-\\ Au dessous figure le profil en sortie de fibre pour différentes courbures. Il n'est pas affecté.
+\\ Au-dessous figure le profil en sortie de fibre pour différentes courbures. Il n'est pas affecté.
 \label{FIGfibercarac}}
 \end{figure}
 
 % VolkerComment2
 % You have to write the figure legend ! You have to describe every panel and give the meaning of the appreciations.
 
-% OK TODOVolker output profile
+% OK Volker output profile
 % (via rocketchat) Add also the measurement of the fiber output profile as a function of bending diameter to your thesis. Your measurement shows that at 915nm the profile does and thus the mode does not change. 
 
 \subsubsection{Polarisation}
 
-% TODOVolker (context for polarization -> de Vito)
+% OK Volker (context for polarization -> de Vito)
 % You start this paragraph totally out of context. So far you talked about the fiber properties. Here you talk about detected signal in the light sheet configuration. You have to introduce this properly and develop the transition.
 
 On voit dans la section précédente que la courbure a un effet sur la transmission négligeable dans le contexte de l'imagerie. Cependant, un autre aspect peut influencer la quantité de lumière détectée : la polarisation. La sensibilité à la polarisation dépend de la configuration d'éclairage (parallèle ou orthogonale), du type d'absorption (un ou deux photons), et du comportement de la fibre en réponse à une courbure.
 
 \paragraph{Direction d'illumination}
 
-Un fluorophore peut être modélisé par un dipole électrostatique. La fluorescence consiste en l'absorption d'un photon incident et la ré-émission d'un photon de fluorescence selon les lois du rayonnement dipolaire électrique. Ce phénomène est anisotrope, il dépend de l'angle entre le vecteur de polarisation et le moment dipolaire. Quand l'axe d'excitation est parallèle à l'axe d'observation (par exemple en microscopie confocale ou deux photons classique), le plan de polarisation est orthogonal aux deux, un photon absorbé est donc réémis dans la même direction quelle que soit la polarisation (cf Fig \ref{FIGpolarisation} a.). Au contraire, quand l'axe d'excitation est orthogonal à l'axe d'observation (par exemple en microscopie à feuille de lumière), l'angle de polarisation influe sur la direction d'émission (cf Fig \ref{FIGpolarisation} b.). Pour une polarisation linéaire orthogonale à l'axe d'observation ($\alpha$=0), on se retrouve dans un cas similaire au précédent, mais pour une polarisation linéaire qui contient l'axe d'observation ($\alpha$=90°), on obtient une diminution du signal de fluorescence dans l'axe d'observation.
-On confirme ceci à l'aide d'un lame $\lambda$/2. En tournant une polarisation linéaire et en observant la fluorescence du cerveau, on passe d'une intensité détectée maximale (100\%) à une intensité minimale (50\%) \cite{de_vito_effects_2020}.
+Un fluorophore peut être modélisé par un dipôle électrostatique. La fluorescence consiste en l'absorption d'un photon incident et la ré-émission d'un photon de fluorescence selon les lois du rayonnement dipolaire électrique. Ce phénomène est anisotrope, il dépend de l'angle entre le vecteur de polarisation et le moment dipolaire. Quand l'axe d'excitation est parallèle à l'axe d'observation (par exemple en microscopie confocale ou deux photons classique), le plan de polarisation est orthogonal aux deux, un photon absorbé est donc réémis dans la même direction quelle que soit la polarisation (cf Fig \ref{FIGpolarisation} a.). Au contraire, quand l'axe d'excitation est orthogonal à l'axe d'observation (par exemple en microscopie à feuille de lumière), l'angle de polarisation influe sur la direction d'émission (cf Fig \ref{FIGpolarisation} b.). Pour une polarisation linéaire orthogonale à l'axe d'observation ($\alpha$=0), on se retrouve dans un cas similaire au précédent, mais pour une polarisation linéaire qui contient l'axe d'observation ($\alpha$=90°), on obtient une diminution du signal de fluorescence dans l'axe d'observation.
+On confirme ceci à l'aide d'une lame $\lambda$/2. En tournant une polarisation linéaire et en observant la fluorescence du cerveau, on passe d'une intensité détectée maximale (100\%) à une intensité minimale (50\%) \cite{de_vito_effects_2020}.
 
 % TODO faire des calculs compliqués pour remplacer ces calculs faux
-% Cette valeur de l'intensité minimale s'explique ainsi : pour une polarisation orthogonale à l'axe d'observation ($\alpha$=90°), un dipole faisant un angle $\theta$ avec la polarisation (et donc $\frac{\pi}{2}-\theta$ avec la détection) est excité proportionnellement à $\cos\theta$ et détecté proportionnellement à $\cos(\frac{\pi}{2}-\theta) = \sin\theta$. Pour une répartition égale des dipoles pour tout ange $\theta$, la fluorescence détectée est donc de :
+% Cette valeur de l'intensité minimale s'explique ainsi : pour une polarisation orthogonale à l'axe d'observation ($\alpha$=90°), un dipôle faisant un angle $\theta$ avec la polarisation (et donc $\frac{\pi}{2}-\theta$ avec la détection) est excité proportionnellement à $\cos\theta$ et détecté proportionnellement à $\cos(\frac{\pi}{2}-\theta) = \sin\theta$. Pour une répartition égale des dipôles pour tout ange $\theta$, la fluorescence détectée est donc de :
 % $$
 % \int_0^\frac{\pi}{2} \sin(\theta)\cos(\theta) \mathrm{d}\theta = \left[ \frac{1}{2}\sin^2(\theta) \right]_0^\frac{\pi}{2} = \frac{1}{2}
 % $$
@@ -387,7 +384,7 @@ Une déformation de la fibre peut entrainer deux modifications sur la polarisati
 
 J'ai montré que la polarisation tournait largement en fonction de la courbure de la fibre. Par exemple, entre un rayon de courbure de 15 cm et 25 cm, une polarisation linéaire peut tourner de 10° (variation du signal de $\sim$5\%). Ces valeurs de courbure sont celles qu'on peut attendre dans de bonnes conditions expérimentales, c'est pourquoi j'ai cherché à obtenir une polarisation invariante par rotation, c'est-à-dire une polarisation circulaire.
 
-% TODOVolker (real condition curvature)
+% TODO Volker (real condition curvature)
 % Again what is the expected curvature variation in your experimental configuration. What is the expected signal variation.
 
 \paragraph{Changement d'ellipticité}
@@ -406,14 +403,14 @@ Pour tester les variations d'intensité dues aux déformations de la fibre en co
 \includegraphics[width=0.7\textwidth]{./files/real-condition_intensity-variation.png}
 \caption{
 \\ a. Setup de test en condition réelle
-\\ b. Réponse à une stimulation sinusoïdale périodique de 10°. On constate que les variations de puissance ne dépassent pas 0.6\% et que ces variations combinées aux changement de la polarisation (ellipticité et rotation) n'excèdent pas 1.2\%.
+\\ b. Réponse à une stimulation sinusoïdale périodique de 10°. On constate que les variations de puissance ne dépassent pas 0.6\% et que ces variations combinées aux changements de la polarisation (ellipticité et rotation) n'excèdent pas 1.2\%.
 \\ c. Réponse à une stimulation périodique en marches de 20°. Les variations combinées n'excèdent pas 1.2\%. On remarque que l'intensité maximale est atteinte pour un angle du moteur de 0°, soit la position de repos de la fibre.
 \label{FIGrealconditionsfiber}}
 \end{figure}
 
-Finalement, tous les effets liés à la position de la fibre engendrent des variations de l'intensité détectée inférieurs à 1.2\% dans les conditions des expériences. Les effets parasites sont donc connus et mineurs, ce qui est à prendre en compte lors de l'analyse des données.
+Finalement, tous les effets liés à la position de la fibre engendrent des variations de l'intensité détectée inférieures à 1.2\% dans les conditions des expériences. Les effets parasites sont donc connus et mineurs, ce qui est à prendre en compte lors de l'analyse des données.
 
-% TODOVolker (intensity change due to polarization)
+% TODO Volker (intensity change due to polarization)
 % You have also to add the measured intensity change in the case if you would work with linear polarized light. In addition you have to make a measurement with GFP fish to see how much the real collected fluorescence depends on polarization and ellipticity.
 
 
@@ -426,7 +423,7 @@ Finalement, tous les effets liés à la position de la fibre engendrent des vari
 % - demonstrate static 2P fiber coupled imaging
 % - then discuss the dynamic mode challenges
 
-On a vu que la fibre avait de bonnes propriétés en conditions réelles, pourtant en essayant d'imager un poisson en deux photons tout en bougeant le microscope, on observe des fluctuations d'intensité de grande amplitude (Fig. \ref{FIGwaterinstability}). En regardant attentivement à l'oeil, on s'aperçoit que ces fluctuations sont liées à un déplacement de la zone la plus lumineuse le long de la direction de propagation du faisceau qui rend toute exploitation des données impossible. Cette observation a pu être expliquée par l'effet de lentille thermique (\emph{thermal lens effect}) modulé par un déplacement des masses d'eau de températures différentes.
+On a vu que la fibre avait de bonnes propriétés en conditions réelles, pourtant en essayant d'imager un poisson en deux photons tout en bougeant le microscope, on observe des fluctuations d'intensité de grande amplitude (Fig. \ref{FIGwaterinstability}). En regardant attentivement à l'œil, on s'aperçoit que ces fluctuations sont liées à un déplacement de la zone la plus lumineuse le long de la direction de propagation du faisceau qui rend toute exploitation des données impossible. Cette observation a pu être expliquée par l'effet de lentille thermique (\emph{thermal lens effect}) modulé par un déplacement des masses d'eau de températures différentes.
 
 % VolkerComment2
 % You have to describe in detail all the observations that led to the hypothesis that the thermal lens effect is the reason for the instability. 1. The instability increased with rotation frequency. At 0.01Hz sinusoidal stimulation at 10degree amplitude we had stable calcium imaging recordings. This showed that it is a dynamic effect. We hypothesized that the instability is related to water movements. You made two controls to demonstrate this: 1. Under static microscope conditions you could introduce laser focus movements by moving the water in the tank. 2. Recordings in agarose were stable. Show these results. Next, you made the observation that once opening the two-photon laser shutter that the light-sheet waist moves relative to its initial position by ~100μm along the laser axis. It takes several hundred of milliseconds before the laser focus equilibrates to a stable position. Show the corresponding kymographs. You hypothesized that the high-power infrared laser is absorbed by the water and modifies the refractive index of water along the laser path by local heating which changes the effective focal distance of the illumination objective. Once all temperature gradients are equilibrated the effective focal distance is stable. Rotating the microscope leads to water movements in the experimental chamber relative to the optical system due to inertia effects. Cold water comes into the laser path and changes transiently the effective focal distance. This mixing effect and thus the imaging artefact increases with increasing microscope acceleration. To test this hypothesis you performed (1) experiments in agarose to immobilize the water. Under these conditions no artifact was observed (show the data!). (2) You calculated the effect and compared your measurements with the theoretical description ... . Next you explain that initially you thought that the focal shift is caused mainly by the laser heating in the focus. Interestingly, the calculations show that every element along the laser path contribute equally to the focal shift. Show the calculation, plot a figure that demonstrates this effect and give an intuitive explanation. Now you can discuss the solutions to the problem: 1) You solution with the shutter 2) Reducing the laser path through the water!
@@ -453,10 +450,10 @@ Lorsqu'un faisceau traverse un milieu absorbant, ce milieu chauffe sur la trajec
 
 \subsection{Effet statique}
 
-% TODOVolker (thermal lens effect)
+% TODO Volker (thermal lens effect)
 %  Explain this paper more in detail and show the schematic that explains the calculations and the approximation.
 
-Le phénomène de lentille thermique a été décrit théoriquement en 1965 par Gordon \emph{et al} \cite{gordon_longtransient_1965} et en 1974 par Whinnery \emph{et al} \cite{whinnery_laser_1974} pour une fine cellule de liquide et dans le cadre de l'approximation parabolique (partie \ref{cellulefine}). En 1982, Sheldon \emph{et al} \cite{sheldon_laser-induced_1982} étend cette description hors de l'approximation parabolique pour prendre en compte les aberration induites. Dans notre cas, il ne s'agit pas d'une cellule fine, car le laser traverse plusieurs centimètres d'eau avant d'atteindre l'échantillon, créant un gradient d'indice sur sa trajectoire. Je me suis donc inspiré du livre \emph{Gradient-Index Optics} \cite{gomez-reino_gradient-index_2002}, dans lequel les auteurs s'intéressent à la propagation d'un faisceau dans un milieu d'indice : (équation 1.63 du livre)
+Le phénomène de lentille thermique a été décrit théoriquement en 1965 par Gordon \emph{et al} \cite{gordon_longtransient_1965} et en 1974 par Whinnery \emph{et al} \cite{whinnery_laser_1974} pour une fine cellule de liquide et dans le cadre de l'approximation parabolique (partie \ref{cellulefine}). En 1982, Sheldon \emph{et al} \cite{sheldon_laser-induced_1982} étend cette description hors de l'approximation parabolique pour prendre en compte les aberrations induites. Dans notre cas, il ne s'agit pas d'une cellule fine, car le laser traverse plusieurs centimètres d'eau avant d'atteindre l'échantillon, créant un gradient d'indice sur sa trajectoire. Je me suis donc inspiré du livre \emph{Gradient-Index Optics} \cite{gomez-reino_gradient-index_2002}, dans lequel les auteurs s'intéressent à la propagation d'un faisceau dans un milieu d'indice : (équation 1.63 du livre)
 
 \begin{figure}
 \centering
@@ -560,7 +557,7 @@ En pratique, on constate un temps d'établissement de l'ordre de la seconde.
 
 \subsubsection{Solutions}\label{solutionseffetthermique}
 
-Lorsque l'eau bouge dans la cuve, l'équilibre thermique est rompu et il faut attendre quelques temps caractéristiques avant de retrouver l'équilibre. Pendant ce temps, le waist du laser se déplace et change l'illumination de l'échantillon. C'est le phénomène dont les effets ont empêché les premières acquisitions. Une première solution consiste à moins chauffer le milieu pour minimiser l'effet de lentille thermique. Pour cela, j'ai mis en place un obturateur piloté pour éteindre le laser en dehors des périodes d'acquisition. En illuminant pendant 10 ms d'exposition et en coupant pendant 90 ms de pause, on diminue ainsi par dix la puissance moyenne, et donc l'échauffement. Cela impose une contrainte forte sur la fréquence d'acquisisiton, mais m'a permis de réaliser des enregistrements.
+Lorsque l'eau bouge dans la cuve, l'équilibre thermique est rompu et il faut attendre quelque temps caractéristiques avant de retrouver l'équilibre. Pendant ce temps, le waist du laser se déplace et change l'illumination de l'échantillon. C'est le phénomène dont les effets ont empêché les premières acquisitions. Une première solution consiste à moins chauffer le milieu pour minimiser l'effet de lentille thermique. Pour cela, j'ai mis en place un obturateur piloté pour éteindre le laser en dehors des périodes d'acquisition. En illuminant pendant 10 ms d'exposition et en coupant pendant 90 ms de pause, on diminue ainsi par dix la puissance moyenne, et donc l'échauffement. Cela impose une contrainte forte sur la fréquence d'acquisition, mais m'a permis de réaliser des enregistrements.
 Une deuxième solution est de concevoir une cuve dans laquelle l'épaisseur d'eau traversée est plus fine, ce qui diminue l'effet de lentille thermique. Je n'ai pas testé cette solution.
 Une troisième solution est de changer le taux de répétition du laser, comme indiqué en partie \ref{SECTIONconcentrationtemporelle}. Cette solution nécessite un autre laser, je ne l'ai pas explorée.
 
@@ -580,19 +577,19 @@ Outre les défis techniques cités précédemment concernant la fibre optique et
 Je n'ai observé aucune limite liée au photoblanchiment du rapporteur calcique ni à la saturation. Ces phénomènes apparaissent en un photon quand l'intensité absorbée par le fluorophore dépasse un certain seuil. Ce seuil n'a pas été atteint dans mon expérience.
 
 \paragraph{Éviter les yeux}
-Quand la feuille de lumière un photon éclaire le poisson par le côté, elle illumine à la fois des zones transparentes comme le cerveau et des zones opaques comme les yeux ou les pigments. Outre le fait qu'elle constitue une source de lumière forte (1-10 mW) et mouvante éclairant directement l'oeil gauche de la larve, et qu'une zone d'ombre soit générée entre les yeux, cela n'empêche pas le déroulement de l'expérience. Il en va autrement avec un laser pulsé qui met en jeu des puissances moyennes élevées (100-1000 mW) pour atteindre l'intensité instantanée nécessaire à l'effet deux photons. À ces niveaux de puissance, la moindre absorption génère un échauffement intense qui détruit instantanément les tissus biologiques. C'est notamment le cas des yeux qui carbonisent immédiatement si le laser les touche. De même, si une zone présente un niveau d'absorption légèrement plus élevé, elle accumule de la chaleur jusqu'à générer un phénomène de cavitation. Une bulle de gaz se forme alors et grossit en déformant tous les tissus alentour. Si l'on augmente l'énergie crête de l'impulsion en diminuant la fréquence de répétition, on voit ce phénomène apparaître de plus en plus souvent, suggérant qu'à puissance moyenne constante, le degré de phototoxicité augmente avec l'énergie portée par une impulsion. Pour réaliser des enregistrements du volume entier, il a donc fallu procéder en plusieurs étapes : d'abord la partie supérieur entière, puis la partie inférieur en excluant les yeux. 
+Quand la feuille de lumière un photon éclaire le poisson par le côté, elle illumine à la fois des zones transparentes comme le cerveau et des zones opaques comme les yeux ou les pigments. Outre le fait qu'elle constitue une source de lumière forte (1-10 mW) et mouvante éclairant directement l'œil gauche de la larve, et qu'une zone d'ombre soit générée entre les yeux, cela n'empêche pas le déroulement de l'expérience. Il en va autrement avec un laser pulsé qui met en jeu des puissances moyennes élevées (100-1000 mW) pour atteindre l'intensité instantanée nécessaire à l'effet deux photons. À ces niveaux de puissance, la moindre absorption génère un échauffement intense qui détruit instantanément les tissus biologiques. C'est notamment le cas des yeux qui carbonisent immédiatement si le laser les touche. De même, si une zone présente un niveau d'absorption légèrement plus élevé, elle accumule de la chaleur jusqu'à générer un phénomène de cavitation. Une bulle de gaz se forme alors et grossit en déformant tous les tissus alentour. Si l'on augmente l'énergie crête de l'impulsion en diminuant la fréquence de répétition, on voit ce phénomène apparaître de plus en plus souvent, suggérant qu'à puissance moyenne constante, le degré de phototoxicité augmente avec l'énergie portée par une impulsion. Pour réaliser des enregistrements du volume entier, il a donc fallu procéder en plusieurs étapes : d'abord la partie supérieure entière, puis la partie inférieure en excluant les yeux. 
 
 \subsubsection{Rapport signal à bruit}
 
 Le niveau de signal obtenu dans les enregistrements deux-photons est bien plus faible que dans les enregistrements un-photon. Avec les paramètres finaux (exposition, binning, puissance laser, lignées transgéniques...) la valeur d'un pixel de caméra correspondant à un neurone est de l'ordre de 2000 en un-photon et 800 en deux-photons, pour un nivau de bruit de 400 (4 pixels à 100). Un pixel correspondant à l'autofluorescence des tissus est autour de 600 en un-photon et tombe sous le niveau de bruit en deux-photons. Un rapport signal à bruit si faible pose plusieurs problèmes.
 \paragraph{Alignement sur le cerveau de référence}
-Un cervau imagé en deux photons apparaît assez différent d'un cerveau en un photon. J'ai donc réalisé un cerveau de référence en deux photons dans l'espace de référence du laboratoire. Malgré cela, pour un rapport signal à bruit trop faible, l'alignement automatique sur le cerveau de référence est impossible. J'ai donc dû faire la plupart des alignements à la main en utilisant le logiciel 3DSlicer.
+Un cerveau imagé en deux photons apparaît assez différent d'un cerveau en un photon. J'ai donc réalisé un cerveau de référence en deux photons dans l'espace de référence du laboratoire. Malgré cela, pour un rapport signal à bruit trop faible, l'alignement automatique sur le cerveau de référence est impossible. J'ai donc dû faire la plupart des alignements à la main en utilisant le logiciel 3DSlicer.
 \paragraph{Moyennage des cartes de phase}
 Pour réaliser une carte de phase moyenne, on moyenne séparément la partie réelle et la partie imaginaire du nombre imaginaire obtenu au pic de la transformée de Fourier. Cependant, pour un niveau de signal faible, le rapport signal à bruit peut largement varier d'une expérience à l'autre. On doit donc appliquer une égalisation de contraste dépendant du module du nombre complexe.
 % TODO écrire le programme pour faire une égalisation de contraste permettant de moyenner
 
 \subsubsection{Enregistrements en plusieurs étapes}
-Comme on l'a vu en partie \ref{solutionseffetthermique}, la solution adoptée en attente de mieux est de faire des pauses entre deux expositions pour diminuer l'intensité moyenne absorbée. Cela contraint la fréquence d'acquisition des images. Pour conserver une fréquence de 2.5 Hz pour chaque couche, j'ai donc dû réduire le nombre de couches à 4. Chaque volume est donc enregistré non pas en une fois mais en plusieurs. Si à un moment le laser touche un oeil, le poisson est détruit et les enregistrements ultérieurs sont compromis. J'ai donc finalement réalisé assez peu d'acquisitions valides.
+Comme on l'a vu en partie \ref{solutionseffetthermique}, la solution adoptée en attente de mieux est de faire des pauses entre deux expositions pour diminuer l'intensité moyenne absorbée. Cela contraint la fréquence d'acquisition des images. Pour conserver une fréquence de 2.5 Hz pour chaque couche, j'ai donc dû réduire le nombre de couches à 4. Chaque volume est donc enregistré non pas en une fois mais en plusieurs. Si à un moment le laser touche un œil, le poisson est détruit et les enregistrements ultérieurs sont compromis. J'ai donc finalement réalisé assez peu d'acquisitions valides.
 % 11 ms exposition
 % 89 ms pause
 % ×4 = 400 ms
@@ -602,7 +599,7 @@ Comme on l'a vu en partie \ref{solutionseffetthermique}, la solution adoptée en
 \begin{figure}
 \centering
 \includegraphics[width=0.6\textwidth]{./files/graystack_1P-2P.svg.png}
-\caption{Comparaison entre un volume imagé en deux photons (2P) et en un photon (1P). Le volume deux photons est imagé en deux parties pour éviter d'illuminer les yeux (on voit nettement l'ombre de l'oeil sur la coupe sagittale en un photon). Le pas est de 1 µm par couche.
+\caption{Comparaison entre un volume imagé en deux photons (2P) et en un photon (1P). Le volume deux photons est imagé en deux parties pour éviter d'illuminer les yeux (on voit nettement l'ombre de l'œil sur la coupe sagittale en un photon). Le pas est de 1 µm par couche.
 \label{FIG1P2Pgraystack}}
 \end{figure}
 
