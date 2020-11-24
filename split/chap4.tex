@@ -1,11 +1,19 @@
 \chapter{Conclusion}\label{chapV}
 
-Voilà
+% La compréhension du cerveau a longtemps reposé sur son étude statique d'une part sur sa découpe anatomique, qui a permis d'identifier des aires par leur forme (noyau, faisceau, strates...) et leur fonction, et d'autre part par sa composition cellulaire  Considérer le cerveau comme un assemblage de différents composants a permis de découvrir de nombreux mécanismes mais tous ces élements sont en réalité très interconnectés. Considérer le cerveau entier comme un système 
+
+% Je suis nul pour écrire :(
 
 
 
+Le cerveau a pendant longtemps été étudié par sa composition statique au niveau anatomique d'une part et cellulaire d'autre part. L'étude de son fonctionnement dynamique a été réalisée à ces deux échelles à l'aide des techniques IRM et électrophysiologie. Les nouvelles techniques d'imagerie appliquées au cerveau larves de poisson zèbre génétiquement modifiées permettent d'explorer une échelle intermédiaire nouvelle : le cerveau entier à la résolution du neurone. Cette échelle se prête particulièrement à l'étude de phénomènes impliquant un petit nombre de neurones distants les uns des autres. C'est notamment le cas de l'intégration multisensorielle.
 
+Parmi les modèles d'intégration multisensorielle figure l'intégration visuo vestibulaire lors du contrôle postural. J'ai dans un premier temps reproduit cette boucle sensorimotrice dans un environnement de réalité virtuelle où la stimulation vestibulaire et l'environnement visuel sont en rétroaction sur les mouvements du poisson. Mes résultats suggèrent que la présence simultanée des deux modalités sensorielles améliore la qualité du contrôle postural par rapport à la présence d'une modalité seule.
 
-% logiciel de contrôle light sheet capable d'éviter les yeux ?
+Pour reproduire ces observations sous le microscope afin d'en comprendre les mécanismes neuronaux, plusieurs développements techniques étaient nécessaires. Il fallait d'une part construire un microscope à feuille de lumière capable d'enregistrer l'activité du cerveau lors d'une stimulation vestibulaire et d'autre part gagner le contrôle sur l'environnement visuel. Le premier point a été résolu par Geoffrey Migault avec un microscope à feuille de lumière rotatif permettant l'acquisition du cerveau lors d'une stimulation vestibulaire. Le second point a été résolu par Sébastien Wolf avec un microscope à feuille de lumière deux photons permettant l'acquisition du cerveau sans gêne pour le système visuel.
 
-% mieux exploiter la dynamique / améliorations côté analyse ?
+Combiner ces deux innovations a révélé plusieurs défis techniques : acheminer un laser deux photons dans une expérience en mouvement, maintenir une transmission et une polarisation suffisamment stable pour l'imagerie, s'affranchir des limites imposées par l'effet de lentille thermique dans un fluide en mouvement. Ces difficultés m'ont mené à m'intéresser à certains points que j'aborde dans ce manuscrit commes les propriétés de transmission des fibres optiques à cœur creux, aux conditions optimales d'impulsion pour un laser deux photons, à la théorie des lentilles thermiques. 
+
+J'ai finalement obtenu un microscope permettant de réaliser l'acquisition un ou deux photons de l'activité neuronale pendant une stimulation vestibulaire en tangage et présente des cartes de réponse à une stimulation sinusoïdale. Ces cartes peuvent être comparées aux cartes équivalentes pour une stimulation en roulis et révèlent les mêmes zones d'activité, mais avec une temporalité différente. Les cartes en un ou deux photons ne présentent pas de différences notables.
+
+Il reste à adapter ce système pour contrôler l'environnement virtuel et mettre en place la rétroaction permettant de reproduire les expériences de contrôle postural.

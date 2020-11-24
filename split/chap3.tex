@@ -1,4 +1,4 @@
-\chapter{Microscope à feuille de lumière deux photons rotatif}\label{chapIV}
+\chapter[Microscope deux photons rotatif]{Microscope à feuille de lumière deux photons rotatif}\label{chapIV}
 
 % OK VolkerComment
 % General remark: Everything that I discussed about the fibers in my first version of the manuscript has to be discussed in your thesis. And you have to extend this and go beyond this and not give less details and less citations.
@@ -26,8 +26,7 @@
 % - two-photon system for visual control
 %   - fiber coupling
 %   - dynamic effects...
-% 
-
+%   
 
 % Pour étudier à la fois le système visuel et le système vestibulaire du poisson zèbre, une possibilité est de combiner les deux innovations précédemment citées en un seul microscope : un microscope à feuille de lumière deux photons rotatif. C'est la voie que j'ai explorée, qui a révélé plusieurs défis techniques. Le premier et de guider le laser deux photons vers le module light-sheet en restant stable lors de la rotation du microscope. Le second est de mitiger l'effet de lentille thermique lié à la propagation d'un faisceau haute puissance dans l'eau. Après avoir exploré en détail ces aspects techniques, je montrerai comment le microscope a permis de réaliser l'acquisition du cerveau de la larve sans environnement visuel parasite.
 
@@ -40,6 +39,16 @@ Dans le chapitre \ref{chapIII}, je présente un microscope rotatif capable d'ima
 
 % TODO VolkerComment2
 % Change the structure: Talk first about the solution by Vladimirov and then introduce the alternative approach of 2P imaging. In this way you can explain the two photon part step by step from standard 2P scanning microscopy (here you explain the principle) to 2P light-sheet microscopy (here you have to introduce the high laser power required for fast functional 2P light-sheet imaging). Then discuss the challenge of fiber coupling a two photon laser necessary for the development of a rotating 2P microscope (dispersion, non-linear effects at laser powers > 10mW ..., fiber damage). Then write that the field of imaging in freely moving rats with head mounted fiber scopes faces the same challenge. Now introduce fiber light guides in general and then introduce step by the different solutions found in the literature : 1. Precompensation, 2. hollowcore fibers (i. photonic bandgap fibers). Discuss directly in each subsection the applications and the limitations of the solutions (low laser power transmission, single wavelength and not at 930nm ...) . Then finish with a statement that states that broadband fiber coupling with >90% transmission would be desirable. Start a new chapter and present your work with Kagome and NCF fibers. (1) start with the history and the general properties of these fibers. (2) Explain why you selected the fiber that we use now and show the characterization provided by GLO (3) Then continue with you fiber coupling part, (4) introduce the necessity of the NA expander and how you implemented it, (5) discuss your M2 value characterization at the fiber output and the measured beam profile, (6) show that your system can perform high resolution anatomical brain scans in one- and two-photon mode (this figure is currently missing in your manuscript). Now start a new section and discuss the atifact when you rotate the system. Now you describe step by step how you optimized the system to reduce all artifacts (1) bending loss (2) circular polarization (3) average laser power ....
+
+% vladimirov
+% 2P imaging
+% challenge 2P fiber
+% freely moving rats
+% fiber light guides
+% precompensation / HCF
+% NCF 1) history 2) why this one 3) coupling 4) NA exp 5) M² 6) brain scan
+% artifacts 1) bending loss 2) circular polar 3) average power
+
 
 Un microscope à feuille de lumière classique utilise un laser bleu pour stimuler la fluorescence, et cette longueur d'onde réside dans le domaine visible de la larve de poisson zèbre, ce qui peut l'éblouir et perturber son système visuel. Pour cette raison, Ahrens \emph{et al}, pour l'étude de l'OMR, ont utilisé un microscope à deux photons classique \cite{ahrens_brain-wide_2012}. Cela permet d'illuminer dans l'infrarouge, une longueur d'onde invisible pour le poisson. Cependant ils ne bénéficiaient pas des avantages d'un microscope à feuille de lumière et étaient contraints par le balayage point par point à réaliser l'acquisition du cerveau une région après l'autre afin de reconstruire \emph{a prosteriori} l'image du cerveau entier. À peu près en même temps, Truong \emph{et al} publiaient un microscope à feuille de lumière deux photons permettant d'allier les avantages de la microscopie deux photons et de la microscopie à feuille de lumière \cite{truong_deep_2011}.
 
@@ -60,7 +69,7 @@ Plus tard, Vladimirov \emph{et al} \cite{vladimirov_light-sheet_2014} ont montr�
 Pour étudier le cerveau lors du contrôle postural, il est donc nécessaire de réaliser un microscope rotatif deux photons, ce qui soulève plusieurs enjeux techniques. D'une part, pour guider le laser deux photons vers une plateforme mobile, il faut disposer d'une fibre adaptée (transmission de grandes puissances, faible dispersion, maintient de la polarisation, faible gain de courbure), d'autre part il faut minimiser les effets dus à la propagation d'un faisceau intense dans un fluide mobile. Ce chapitre débute sur les fibres optiques adaptées à la transmission d'un laser deux photons et leur utilisation en microscopie embarquée, et poursuit sur la construction d'un microscope deux photons rotatif fibré.
 
 % TOOD VolkerComment2
-% grande puissance
+% (grandes puissances)
 % You have to introduce and discuss the high laser power requirement for 2P LSM in you intro.
 
 
@@ -72,35 +81,34 @@ L'absorption deux photons est un phénomène non linéaire d'absorption simultan
 
 \subsection{Concentration spatiale}
 
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{./files/profile-intensity.png}
+    \caption{Effet deux-photons en microscopie à feuille de lumière. Comparaison du profil d'intensité (haut) et de son carré (bas). On voit que la zone concernée par l'effet deux photons et restreinte. (paramètres : indice optique 1.33, longueur d'onde 915 nm, waist 6.5 µm)
+    }
+    \label{2P-intensity-profile}
+    \end{figure}
+
 Un système optique peut concentrer la lumière localement, ce qui produit un point de plus grande intensité, le point focal. Comme l'effet deux photons est proportionnel au carré de l'intensité, la zone concernée est d'autant plus restreinte. Cette propriété est utilisée en microscopie multiphoton pour produire une illumination ponctuelle qui permet le sectionnement optique dans la direction de propagation. En microscopie à feuille de lumière, au contraire, une illumination linéaire est recherchée. La focalisation est donc bien moindre et l'effet deux photons contribue à affiner la zone d'excitation (cf Fig. \ref{2P-intensity-profile}).
 
 % TODO VolkerComment2
 % You have to make a figure. Show the Jablonski diagram and e.g. this https://www.researchgate.net/figure/Two-photon-fluorescence-vs-normal-fluorescence-The-blue-scanning-laser-in-the-left_fig11_326583720. Discuss that via the two photon effect you can excite the same fluorophore (GCaMP) with an IR laser of double the wavelength compared to the one photon case. In this configuration you laser is outside the sensitive spectrum of the fish retina.
 % Is linear the correct word? An extended focus is needed to create the light-sheet
 
-\begin{figure}
-\centering
-\includegraphics[width=0.8\textwidth]{./files/profile-intensity.png}
-\caption{Effet deux-photons en microscopie à feuille de lumière. Comparaison du profil d'intensité (haut) et de son carré (bas). On voit que la zone concernée par l'effet deux photons et restreinte. (paramètres : indice optique 1.33, longueur d'onde 915 nm, waist 6.5 µm)
-}
-\label{2P-intensity-profile}
-\end{figure}
-
 \subsection{Concentration temporelle}\label{SECTIONconcentrationtemporelle}
 
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{./files/pulsed_laser.svg.png}
+    \caption{Profil temporel de puissance d'un laser pulsé. Chaque impulsion a une durée $\tau$, elles sont espacées d'une durée T=1/f. À puissance moyenne constante, plus $\tau$ est petit, et plus T est grand, plus $P_\text{max}$ est grand. L'effet deux photons est proportionnel au carré de $P_\text{max}$.
+    }
+    \label{pulsed-laser}
+    \end{figure}
+    
 Une autre manière de concentrer la lumière est la concentration temporelle. Dans le cas d'un laser continu, la puissance est répartie sur toute la longueur de propagation du faisceau. En utilisant un laser pulsé, la puissance est concentrée en paquets beaucoup plus courts (cf Fig. \ref{pulsed-laser}). Par exemple, pour des impulsions de 100 fs, malgré la vitesse élevée de la lumière, la longueur de ces paquets est de 30 mm. Si de plus le taux de répétition du laser est de 80 MHz, la puissance d'une impulsion est 125 fois plus élevée qu'un laser continu de même puissance moyenne (1/(100fs x 80MHz)). L'effet deux photons étant proportionnel au carré de la puissance instantanée, on a intérêt à choisir les impulsions les plus courtes possibles (petit $\tau$) et le taux de répétition le plus faible possible (grand T) pour un laser de puissance moyenne fixée \cite{maioli_fast_2020}. Cette tendance est limitée par les photoperturbations induites, qui deviennent importantes au-delà d'une centaine de nanojoules par impulsion. Les conditions optimales en microscopie par fluorescence à nappe laser deux photons sont donc autour de f = 1 MHz, $\tau$ = 100 fs, P = 100 mW, ce que confirme Gasparoli \emph{et al} \cite{gasparoli_is_2020}. % TODO préciser
 
 % TODO VolkerComment2
 % Move this to the discussion. Also from where do you get the numbers? citation is missing. Willy Supatto shows in his 2020 paper that 10MHz is the optimal repetition rate.
-
-\begin{figure}
-\centering
-\includegraphics[width=0.8\textwidth]{./files/pulsed_laser.svg.png}
-\caption{Profil temporel de puissance d'un laser pulsé. Chaque impulsion a une durée $\tau$, elles sont espacées d'une durée T=1/f. À puissance moyenne constante, plus $\tau$ est petit, et plus T est grand, plus $P_\text{max}$ est grand. L'effet deux photons est proportionnel au carré de $P_\text{max}$.
-}
-\label{pulsed-laser}
-\end{figure}
-
 
 
 \section{Fibre optique, principe et état de l'art}
@@ -108,10 +116,10 @@ Une autre manière de concentrer la lumière est la concentration temporelle. Da
 \begin{figure}
 \centering
 \includegraphics[width=0.9\textwidth]{./files/fibers.svg.png}
-\caption{Illustration de différents types de fibres évoquées.\\
-a1. Fibre Kagomé (image extraite de Wang 2011 \cite{wang_low_2011}), schéma du motif en a2.\\
-b1. Fibre à réseaux de tube (image extraite de Cregan 1999 \cite{cregan_single-mode_1999}), schéma du réseau tubulaire comme dans Vincetti 2010 \cite{vincetti_waveguiding_2010} en b2.\\
-c1. Fibre à courbure négative (image extraite de Yu 2016 \cite{yu_negative_2016}), schéma en c2. Voir également Pryamikov \emph{et al} \cite{pryamikov_demonstration_2011} \\}
+\caption{Illustration de différents types de fibres évoquées.
+\\ a1. Fibre Kagomé (image extraite de Wang 2011 \cite{wang_low_2011}), schéma du motif en a2.
+\\ b1. Fibre à réseaux de tube (image extraite de Cregan 1999 \cite{cregan_single-mode_1999}), schéma du réseau tubulaire comme dans Vincetti 2010 \cite{vincetti_waveguiding_2010} en b2.
+\\ c1. Fibre à courbure négative (image extraite de Yu 2016 \cite{yu_negative_2016}), schéma en c2. Voir également Pryamikov \emph{et al} \cite{pryamikov_demonstration_2011}}
 \end{figure}
 
 \subsection{Guide d'onde}
@@ -216,7 +224,7 @@ D'autres techniques d'imagerie neuronale se passent même d'optique et sont uniq
 
 \section{Caractérisation et utilisation de fibres à âme vide}
 
-Nous avons vu dans la partie précédente qu'une fibre optique permet de guider la lumière, que ce soit pour éclairer l'échantillon ou collecter le signal. Les fibres de verre conviennent bien aux applications classiques, mais posent des problèmes d'interaction lumière-matière lors de la transmission d'impulsions à haute énergie pour la microscopie multiphoton et nécessitent une précompensation de la dispersion. Les fibres à âme vide permettent de contourner ces problèmes et ont déjà été largement utilisées dans des microscopes embarqués sur rongeur \cite{tai_two-photon_2004} \cite{flusberg_vivo_2005} \cite{engelbrecht_ultra-compact_2008} \cite{piyawattanametha_vivo_2009} \cite{choi_improving_2014} \cite{klioutchnikov_three-photon_2020}. C'est donc vers celles-ci que nous nous sommes tournés. Aucune fibre optique répondant à nos besoins n'étant disponible commercialement, nous nous sommes tournés vers l'entreprise \href{http://www.glophotonics.fr/}{Glophotonics} et avons testé plusieurs modèles.
+Nous avons vu dans la partie précédente qu'une fibre optique permet de guider la lumière, que ce soit pour éclairer l'échantillon ou collecter le signal. Les fibres de verre conviennent bien aux applications classiques, mais posent des problèmes d'interaction lumière-matière lors de la transmission d'impulsions à haute énergie pour la microscopie multiphoton et nécessitent une précompensation de la dispersion. Les fibres à âme vide permettent de contourner ces problèmes et ont déjà été largement utilisées dans des microscopes embarqués sur rongeur \cite{tai_two-photon_2004} \cite{flusberg_vivo_2005} \cite{engelbrecht_ultra-compact_2008} \cite{piyawattanametha_vivo_2009} \cite{choi_improving_2014} \cite{klioutchnikov_three-photon_2020}. C'est donc vers celles-ci que nous nous sommes tournés. Nous avons testé plusieurs modèles fournis par l'entreprise \href{http://www.glophotonics.fr/}{Glophotonics}.
 
 % TODO VolkerComment2
 % What are our requirements ? Detail this ...
@@ -229,15 +237,16 @@ Nous avons vu dans la partie précédente qu'une fibre optique permet de guider 
 % TODO VolkerComment2
 % No, we did not record with these fibers. The mode field diameter was to large and the instabilities to bending were to large. Or do you have successful recordings with these fibers? The Brighton experiments were done with the fiber PMC-C-1C-R&D2
 
-Au début, nous avons utilisé des fibres ayant une bande de transmission uniquement dans l'infrarouge. Ces fibres ont permis de réaliser l'acquisition deux photons de l'activité neuronale lors de stimulation vestibulaire. Ensuite, nous avons cherché à permettre à la fois la transmission d'un laser 1P et 2P, d'où l'utilisation de fibres avec plusieurs bandes de transmission. Parmi ces fibres, nous avons retenu le modèle PMC-C-9005 B2 qui permet une bonne transmission (97\% à 930 nm sur 1,5 m de fibre contre 70\% pour PMC-C-1C-R\&D2). J'utilise ce modèle comme référence par la suite.
+Au début, nous avons utilisé des fibres ayant une bande de transmission uniquement dans l'infrarouge. Ces fibres ont permis de réaliser les premiers enregistrements deux photons de l'activité neuronale mais sont sensibles aux déformations, ce qui empêche l'enregistrement lors de la rotation du microscope. Ensuite, nous avons cherché à permettre à la fois la transmission d'un laser 1P et 2P, d'où l'utilisation de fibres avec plusieurs bandes de transmission. Parmi ces fibres, nous avons retenu le modèle PMC-C-9005 B2 qui permet une bonne transmission (97\% à 930 nm sur 1,5 m de fibre contre 70\% pour PMC-C-1C-R\&D2). J'utilise ce modèle comme référence par la suite.
 
 \begin{figure}
 \centering
 \includegraphics[width=\textwidth]{./files/glofibers.svg.png}
 \caption{Comparaison de plusieurs fibres fournies par Glophotonics. Les schémas représentent la largeur du cœur (en noir) et la largeur du mode propre (en rouge). Dans le spectre de transmission, on s'intéresse à la valeur à 930 nm et à 488 nm si possible. La valeur de la dispersion est toujours la même, environ à 1 ps/nm.km. Les trois premières fibres ont un motif de Kagomé, alors que la dernière n'est composée que d'une couche de capillaires. Seule la troisième fibre a un cœur hexagonal, les autres ont un cœur hypocycloïde. La valeur du paramètre de courbure est notée b, comme défini dans Debord \emph{et al} \cite{debord_hypocycloid-shaped_2013}.
-}
+\label{FIGfibercomparison}}
 \end{figure}
 
+% La figure \ref{FIGfibercomparison} compare plusieurs modèles de fibre. Les deux premières ont une large bande de transmission dans l'infrarouge et un mode propre large. Les autres ont deux bandes de transmission qui convrent à la fois le bleu et l'infrarouge
 
 \subsection{Injection d'un laser dans une fibre}
 

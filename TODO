@@ -4,6 +4,8 @@ TODO
 par ordre de priorité (quantité de travail +/++/+++)
 ---------------------
 
+(+++) résumé / abstract
+
 (+++) objectifs prespectives discussions conclusions 
 
 (++) re-écrire légendes
@@ -16,6 +18,8 @@ par ordre de priorité (quantité de travail +/++/+++)
 (+) reformuler le choix du langage, séparation texte/annexe
 
 (+) cytoplasmique / nucléaire 
+
+(+) refaire figure effet de lentille thermique
 
 (++) Make a plot that shows the contribution of every lens element as a function of the distance to the focal point. 
 
@@ -48,3 +52,19 @@ non soluble dans les temps
 
 (+) temps gagné par un fichier binaire (nécessite passage au labo)
     dcimg -> tiff -> transfert réseau -> SSD / HDD
+
+
+
+
+
+
+
+
+
+
+
+
+
+% logiciel de contrôle light sheet capable d'éviter les yeux ?
+
+% mieux exploiter la dynamique / améliorations côté analyse ?

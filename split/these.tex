@@ -1,43 +1,50 @@
 %%% Modèle de thèse électronique pour les sciences Jean Hare 2017
 %%% Version modifiée par Hugo Trentesaux 2020
 
-\documentclass[a4paper,12pt]{book} %ADD diffusion OR archiv for final versions
+\documentclass[a4paper,12pt]{book} % LOOK add diffusion or archiv for final versions
 \usepackage[margin=28mm,includeheadfoot,bindingoffset=5mm]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage[french]{babel} % \selectlanguage{french}
+\usepackage[french]{babel}
 \usepackage{xspace}
-\usepackage{amsmath}
-\usepackage{amssymb}
 \usepackage{listings}
 \usepackage{lmodern}
 \usepackage{tgheros}
 \usepackage{setspace}
 \setstretch{1.2} % interligne
-
-\input{./preamb/preamb-graph.tex}
-\input{./preamb/preamb-math.tex}
-\input{./preamb/preamb-util.tex}
-\input{./preamb/preamb-titles.tex}
-
-%% attempt to use biblatex
-% \usepackage{biblatex}
-% \usepackage{csquotes}
-% \addbibresource{./bib/zotero}
-% \usepackage{hyperref}
-% \usepackage{url}
-
-%% using hyperref
+%%% Réglage des graphiques
+\usepackage{graphicx,color} 
+\usepackage[svgnames]{xcolor}
+\renewcommand{\topfraction}{0.7}     % autorise 70% page de graphique en haut
+\renewcommand{\bottomfraction}{0.5}  % autorise 50% page de graphique en bas
+\renewcommand{\floatpagefraction}{0.7}
+\renewcommand{\textfraction}{0.1}
+\usepackage{upgreek}
+\usepackage{amsmath}
+\usepackage{amssymb}
+%%% Réglages des numérotations
+\setcounter{secnumdepth}{4}         % numérote chapter, section, sub(sub)sect
+\setcounter{tocdepth}{3}            % profondeur de la table des matieres
+\numberwithin{equation}{chapter}    % repart de zéro à chaque chapitre
+\numberwithin{figure}{chapter}      % repart de zéro à chaque chapitre
+\numberwithin{table}{chapter}       % repart de zéro à chaque chapitre
+%%% Format des numéros
+\renewcommand{\thechapter}{\Roman{chapter}} % numéros de chapitre: chiffres Romains
+\renewcommand{\thesubsubsection}{\alph{subsubsection})} % numéros de subsusbsec : a) b)
+%%% Règle la police des 3 premiers niveaux de titre en \sffamily\bfseries
+\usepackage{titlesec}                        %pour définir le format des titres
+\titleformat{\chapter}[display]{\Huge\sffamily\bfseries}{\chaptertitlename~\thechapter}{1ex}{}
+\titleformat{\section}[hang]{\Large\sffamily\bfseries}{\rlap{\thesection}}{2em}{}
+\titleformat{\subsection}[hang]{\large\sffamily\bfseries}{\rlap{\thesubsection}}{3em}{}
+%%% Réglage des liens clicables
 \usepackage[pagebackref]{hyperref}
 \hypersetup{colorlinks,linkcolor=DarkBlue,anchorcolor=DarkRed,%
 pdfdisplaydoctitle=true,pdfpagemode=UseOutlines,%
 bookmarksnumbered=true,bookmarksopen=true}
-%%% TOOLS DURING WRITING (to be removed) %%%
-% \input{./preamb/preamb-work.tex}
 
-%% CUSTOM PACKAGES %%%
+% custom package
 \usepackage{thcover}
-% \usepackage{versionswitch}
+
 
 %%% SELECTED INCLUDES %%%
 % accélère la compilation en ne travaillant que sur les parties ciblées
@@ -68,14 +75,13 @@ bookmarksnumbered=true,bookmarksopen=true}
 \cleardoublepage
 \phantomsection
 \addcontentsline{toc}{chapter}{Bibliographie}
-%%% use of BiBTeX:
-% \printbibliography % if using biblatex
-%% using ref style
+%% reference style
 \bibliographystyle{./bib/thesefr-href}
 \bibliography{./bib/zotero}
 
-%%% to be replaced by,  for final version:
+%%% LOOK to be replaced by, for final version:
 %\intput{these.bbl}
-%%%  4th COVER %%%
+
+%%% LOOK 4th COVER %%%
 % \backcover % requires thcover.sty loaded and thcoverdata.tex filled
 \end{document}
