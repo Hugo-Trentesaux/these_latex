@@ -115,7 +115,7 @@ Une autre manière de concentrer la lumière est la concentration temporelle. Da
 
 \begin{figure}
 \centering
-\includegraphics[width=0.9\textwidth]{./files/fibers.svg.png}
+\includegraphics[width=0.8\textwidth]{./files/fibers.svg.png}
 \caption{Illustration de différents types de fibres évoquées.
 \\ a1. Fibre Kagomé (image extraite de Wang 2011 \cite{wang_low_2011}), schéma du motif en a2.
 \\ b1. Fibre à réseaux de tube (image extraite de Cregan 1999 \cite{cregan_single-mode_1999}), schéma du réseau tubulaire comme dans Vincetti 2010 \cite{vincetti_waveguiding_2010} en b2.
@@ -330,14 +330,13 @@ En conditions réelles, on peut s'arranger pour limiter la courbure et répartir
 
 \begin{figure}
 \centering
-\includegraphics[width=0.8\textwidth]{./files/fiber_bending.png}
-\includegraphics[width=0.6\textwidth]{./files/beam_profile.png}
+\includegraphics[width=0.8\textwidth]{./files/fiber_bending.svg.png}
 \caption{Propriétés de la fibre lors d'une courbure.
-\\ A. schéma du setup de catactérisation
-\\ B. gain en fonction de la courbure
-\\ C. ellipticité en fonction de la courbure (quasi circulaire)
-\\ D. angle de polarisation en fonction de la courbure (quasi linéaire)
-\\ Au-dessous figure le profil en sortie de fibre pour différentes courbures. Il n'est pas affecté.
+\\ a. schéma du setup de catactérisation
+\\ b. gain en fonction de la courbure
+\\ c. ellipticité en fonction de la courbure (quasi circulaire)
+\\ d. angle de polarisation en fonction de la courbure (quasi linéaire)
+\\ e. profil d'intensité en sortie de fibre pour différentes courbures (non affecté).
 \label{FIGfibercarac}}
 \end{figure}
 
@@ -367,13 +366,14 @@ On confirme ceci à l'aide d'une lame $\lambda$/2. En tournant une polarisation 
 
 \begin{figure}
 \centering
-\includegraphics[width=0.6\textwidth]{./files/polarization_plane.svg.png}
-\caption{a. Comme dans un microscope deux photons classique, la direction d'émission et de détection sont alignées, et la polarisation est dans le plan orthogonal. Quelle que soit la polarisation, la lumière détectée est toujours la même.
-\\ b. Dans un microscope à feuille de lumière, la direction d'émission est dans le plan orthogonal à la détection. La direction de polarisation fait alors un angle $\alpha$ avec la direction de détection. Pour $\alpha$ = 90°, la lumière détectée est maximale, mais pour $\alpha$ = 0°, elle est nulle.
+\includegraphics[width=0.5\textwidth]{./files/polarization_plane.svg.png}
+\caption{Comparaison d'un microscope classique et d'un microscope à feuille de lumière du point de vue de la polarisation.
+\\ a. Dans un microscope classique, la direction d'émission et de détection sont parallèles, et la polarisation est dans le plan orthogonal. La lumière détectée ne dépend donc pas de la direction de polarisation.
+\\ b. Dans un microscope à feuille de lumière, la direction d'émission est dans le plan orthogonal à la détection. La direction de polarisation fait alors un angle $\alpha$ avec la direction de détection. Pour $\alpha$ = 90°, la lumière détectée est maximale, mais pour $\alpha$ = 0°, elle est minimale.
 \label{FIGpolarisation}}
 \end{figure}
 
-% TODO VolkerComment2
+% OK VolkerComment2
 % Work over the figure legend. Each panel needs a to be introduced in the legend with a subtitle. The blue arrow indicates the excitation and not the emission.
 
 \paragraph{Absorption deux photons}
@@ -407,8 +407,8 @@ Pour tester les variations d'intensité dues aux déformations de la fibre en co
 \begin{figure}
 \centering
 \includegraphics[width=0.7\textwidth]{./files/real-condition_intensity-variation.png}
-\caption{
-\\ a. Setup de test en condition réelle
+\caption{Test de la fibre en conditions expérimentales. La variation de l'intensité détectée est une combinaison des pertes de courbure, du changement d'ellipticité et de la rotation de la polarisation. 
+\\ a. Montage expérimental pour test en conditions réelles. Un puissance-mètre peut être installé en position P1 (intensité seulement) ou P2 (intensité après cube séparateur de polarisation).
 \\ b. Réponse à une stimulation sinusoïdale périodique de 10°. On constate que les variations de puissance ne dépassent pas 0.6\% et que ces variations combinées aux changements de la polarisation (ellipticité et rotation) n'excèdent pas 1.2\%.
 \\ c. Réponse à une stimulation périodique en marches de 20°. Les variations combinées n'excèdent pas 1.2\%. On remarque que l'intensité maximale est atteinte pour un angle du moteur de 0°, soit la position de repos de la fibre.
 \label{FIGrealconditionsfiber}}
@@ -443,11 +443,11 @@ Lorsqu'un faisceau traverse un milieu absorbant, ce milieu chauffe sur la trajec
 \begin{figure}
 \centering
 \includegraphics[width=0.7\textwidth]{./files/water_instability.svg.png}
-\caption{Images extraites d'un film montrant les changements d'intensité liés à l'effet thermique. On y voit la distribution d'intensité lumineuse se déplacer de gauche à droite (direction de propagation du faisceau) au rythme des mouvements du moteur.
+\caption{Images extraites d'un film montrant les changements d'intensité liés à l'effet thermique. On y voit la distribution d'intensité lumineuse se déplacer de gauche à droite (direction de propagation du faisceau) au rythme des mouvements du moteur. La plateforme est tournée suivant un mouvement sinusoïdal d'amplitude 10° à 0.08 Hz (en rouge). Le rectangle indique une zone dont le signal calcique est moyenné pour chaque pas de temps (100 ms d'exposition) et affiché en bleu. Les variations, de l'ordre de 20\%, ne sont pas dues à l'activité des neurones, mais à un changement d'illumination.
 \label{FIGwaterinstability}}
 \end{figure}
 
-% TODO VolkerComment2
+% OK VolkerComment2
 % Add a scale bar. Indicate the microscope rotation angle corresponding to each image. Indicate the time points and show the stimulation. I guess it is a sinus .. . Draw two ROIs mirror symmetric to the midplane and show the average intensity over time.
 
 % -1e-4 par degré
@@ -537,10 +537,11 @@ On a donc une valeur de la focale $f'$ d'une tranche de liquide d'épaisseur $l$
 \begin{figure}
 \centering
 \includegraphics[width=\textwidth]{./files/thermal_shift_model.svg.png}
-\caption{Effet de lentille thermique pour la propagation dans l'eau.
-\\a. Résultat de la simulation pour plusieurs puissances de laser. Comme attendu, plus la puissance est élevée, plus l'effet divergent est fort, et donc plus le waist est éloigné et large.
-\\b. Feuille de lumière imagée dans la fluorescéine pour plusieurs puissances laser différentes. La position du maximum d'intensité est marquée par un trait en pointillé.
-\\c. Comparaison des prévisions du modèle et des données expérimentales.
+\caption{Effet de lentille thermique induite par la propagation dans l'eau d'un faisceau intense.
+\\ a. Feuille de lumière imagée dans la fluorescéine pour plusieurs puissances laser différentes. La position du maximum d'intensité est marquée par un trait en pointillé.
+\\ b. Simulation numérique pour les mêmes puissances. La demi largeur du faisceau est calculée pour chaque pas de propagation. La largeur minimale est marquée d'un trait pointillé.
+\\ c. Comparaison de la simulation numérique et des valeurs expérimentales montrées précédemment.
+\\ d. Illustration du phénomène de lentille thermique : l'indice $n$ est plus petit pour les rayons $r$ plus petits. En conséquence, des rayons focalisés en un point (gris) sont déviés (flèches noires).
 \label{FIGthermalfluorescine}}
 \end{figure}
 
@@ -571,7 +572,7 @@ Une troisième solution est de changer le taux de répétition du laser, comme i
 
 
 
-\section{Feuille de lumière deux photons lors d'une stimulation en tangage}
+\section[Tangage deux photons]{Feuille de lumière deux photons lors d'une stimulation en tangage}
 
 En section \ref{SECTIONtiltmicroscope1P}, je présente un microscope adapté à une stimulation vestibulaire en tangage. Avec la fibre présentée précédemment, j'ai pu utiliser ce montage pour une imagerie deux photons. Je présente ici les résultats.
 
@@ -602,24 +603,24 @@ Comme on l'a vu en partie \ref{solutionseffetthermique}, la solution adoptée en
 % 89 ms pause
 % ×4 = 400 ms
 
-\subsection{Imagerie statique comparée}
+\subsection{Comparaison de l'imagerie 1P/2P}
 
 \begin{figure}
-\centering
-\includegraphics[width=0.6\textwidth]{./files/graystack_1P-2P.svg.png}
-\caption{Comparaison entre un volume imagé en deux photons (2P) et en un photon (1P). Le volume deux photons est imagé en deux parties pour éviter d'illuminer les yeux (on voit nettement l'ombre de l'œil sur la coupe sagittale en un photon). Le pas est de 1 µm par couche.
-\label{FIG1P2Pgraystack}}
-\end{figure}
+    \centering
+    \includegraphics[width=\textwidth]{./files/1P-2P.svg.png}
+    \caption{Comparaison entre l'acquisition un photon (1P) et deux photons (2P) en imagerie statique et dynamique.
+    \\ a. Carte de réponse pour une stimulation en tangage imagée en 1P déjà montrée en figure \ref{FIGtiltroll}.
+    \\ b, c. Cartes de réponse pour une stimulation en tangage imagée en 2P. En (b.) seule la partie supérieure du cerveau est imagée, en (c.), seule la partie inférieure est imagée.
+    \\ d. Comparaison entre un volume imagé en 2P et en 1P. Le volume deux photons est imagé en deux parties pour éviter d'illuminer les yeux (on voit nettement l'ombre de l'œil sur la coupe sagittale en un photon). Le pas est de 1 µm par couche.
+    \label{FIG1P2P}}
+    \end{figure}
 
-Sur la figure \ref{FIG1P2Pgraystack}, je compare la qualité d'imagerie sur le même poisson en utilisant le laser un photon ou deux photons. On voit que le volume deux photons est imagé en deux parties de manière à ne pas illuminer les yeux. Sur la coupe transversale, on voit que la partie gauche (côté par lequel arrive le faisceau) est plus lumineuse que la partie droite.
+\subsubsection{Résultats}
 
-\subsection{Imagerie dynamique comparée}
+Sur la figure \ref{FIG1P2P} (d.), je compare la qualité d'imagerie sur le même poisson en utilisant le laser un photon ou deux photons. On voit que le volume deux photons est imagé en deux parties de manière à ne pas illuminer les yeux. Sur la coupe transversale, on voit que la partie gauche (côté par lequel arrive le faisceau) est plus lumineuse que la partie droite. L'autofluorescence des tissus ressort plus clairement en 2P.
 
-\begin{figure}
-\centering
-\includegraphics[width=\textwidth]{./files/1P-2P_tilt.svg.png}
-\caption{Comparaison entre les cartes de réponse à une stimulation sinusoidale en tangage en un photon (a.) et en deux photons (b, c.).
-\label{FIG1P2Ptilt}}
-\end{figure}
+En bas de la figure \ref{FIG1P2P}, je montre des cartes de phase obtenues en un photon et en deux photons. En (b.), l'enregistrement a été réalisé en quatre étapes de quatre couches, mais pendant la dernière étape, l'œil du poisson a été touché par le laser, ce qui a rendu les données inexploitables. Seules les trois premières étapes apparaissent donc, et les régions profondes comme les noyaux oculomoteurs ne sont pas visibles. En (c.), le laser était plus loin des yeux, ce qui a permis d'enregistrer également les couches profondes sans les endommager. Les noyaux nIII et nIV sont cependant légèrement tronqués. Les réponses obtenues sont globalement très semblables en 1P et 2P.
 
-Sur la figure \ref{FIG1P2Ptilt}, je compare une carte de phase obtenue en un photon et en deux photons. Globalement on trouve la même réponse même si c'est difficile de faire l'acquisition du cerveau entier.
+\subsubsection{Conclusion}
+
+Malgré les difficultés techniques rencontrées, j'ai pu réaliser un microscope rotatif capable de réaliser l'acquisition deux photons de l'activité du cerveau de la larve pendant une stimulation en tangage. Quelques améliorations sont à apporter pour augmenter la fréquence d'acquisition et empêcher le laser d'atteindre l'œil. Cela ouvre cependant la voix à des expériences sur l'intégration visuo-vestibulaire lors du contrôle postural à roulis.
