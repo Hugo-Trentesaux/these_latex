@@ -17,20 +17,16 @@ Dans l'axe de roulis, la larve contrôle son équilibre par des déflexions de l
 
 \subsection{Tangage}
 Dans l'axe de tangage, la situation est plus compliquée. L'angle que fait la larve avec l'horizontale dépend de sa direction de déplacement. Par exemple, une larve se place à un angle positif lorsqu'elle nage vers le haut pour remonter à la surface et un angle négatif quand elle nage vers le bas \cite{ehrlich_primal_2019}. Cet angle constitue une référence autour de laquelle la larve cherche à se stabiliser. Ehrlich et Schoppik ont montré que le contrôle de l'angle se faisait exactement pendant les mouvements de nage \cite{ehrlich_control_2017}. La larve de poisson zèbre nage de manière discrète via des mouvements réguliers à une fréquence d'environ un par seconde en nage libre. Entre deux mouvements, elle est soumise à son déséquilibre et son nez tombe à une vitesse déterminée par sa morphologie. Lors d'un mouvement, en fonction de la force et la position des nageoires, l'angle augmente d'un coup. De plus, les auteurs suggèrent que l'initiation du mouvement est induite par l'angle ressenti. Ils ont augmenté artificiellement le déséquilibre de la larve, conduisant à une chute plus rapide. Ils ont constaté que la larve compensait ce déséquilibre supplémentaire par une augmentation de la fréquence des mouvements de nage.
-Le contrôle postural en tangage est donc le résultat d'une boucle de rétroaction sensorimotrice discrète. L'angle de référence varie entre -15° et +20° environ et dépend de la direction souhaitée par le poisson. L'action de contrôle de l'angle implique à la fois la queue et les nageoires et se fait au moment des événements de nage, dont la fréquence peut être ajustée en fonction du déséquilibre.
+Le contrôle postural en tangage est donc le résultat d'une boucle de rétroaction sensorimotrice discrète. L'angle cible varie entre -15° et +20° environ et dépend de la direction souhaitée par le poisson et d'un certain angle d'attaque \cite{ehrlich_primal_2019}. L'action de contrôle de l'angle implique à la fois la queue et les nageoires et se fait au moment des événements de nage, dont la fréquence peut être ajustée en fonction du déséquilibre.
 
 \begin{figure}
 \centering
 \includegraphics[width=0.9\textwidth]{./files/schoppik_movement-initiation.svg.png}
-\caption{Adapté de Ehrlich et al \cite{ehrlich_control_2017}
-\\
-a. Le centre de gravité et de flottaison de la larve sont décalés, ce qui cause un déséquilibre dans l'axe de tangage.
-\\
-b. La larve nage de manière discrète (non continue), à une fréquence de $\sim$1 Hz. Entre deux événements, la larve inactive est entraînée par son déséquilibre, nez vers le bas à une vitesse de $\sim$6°/sec. Lors des événements de nage (pic de vitesse), l'angle est corrigé de $\sim$6°.
-\\
-c. En remplaçant l'eau de la vessie natatoire par de l'huile, ce qui augmente le déséquilibre, les auteurs ont constaté une augmentation de la fréquence (diminution de l'IEI, intervalle inter-événement), ce qu'ils attribuent au contrôle de la posture via l'information vestibulaire.
-\\
-d. La boucle sensorimotrice discrète responsable du contrôle postural est capable d'une adaptation en fréquence suite à une perturbation de l'équilibre du poisson.}
+\caption{Boucle de rétroaction sensorimotrice et initiation du mouvement. Adapté de Ehrlich et al \cite{ehrlich_control_2017}
+\\ a. Le centre de gravité et de flottaison de la larve sont décalés, ce qui cause un déséquilibre dans l'axe de tangage.
+\\ b. La larve nage de manière discrète (non continue), à une fréquence de $\sim$1 Hz. Entre deux événements, la larve inactive est entraînée par son déséquilibre, nez vers le bas à une vitesse de $\sim$6°/sec. Lors des événements de nage (pic de vitesse), l'angle est corrigé de $\sim$6°.
+\\ c. En remplaçant l'eau de la vessie natatoire par de l'huile, ce qui augmente le déséquilibre, les auteurs ont constaté une augmentation de la fréquence (diminution de l'IEI, intervalle inter-événement), ce qu'ils attribuent au contrôle de la posture via l'information vestibulaire.
+\\ d. La boucle sensorimotrice discrète responsable du contrôle postural est capable d'une adaptation en fréquence suite à une perturbation de l'équilibre du poisson.}
 \end{figure}
 
 On voit ici deux boucles sensorimotrices différentes impliquée dans le contrôle postural. Ces boucles de rétroaction ont des caractéristiques différentes en termes de valeur cible et de mécanisme de contrôle. Je décris par la suite une plateforme expérimentale que j'ai mise au point afin d'étudier le contrôle postural en réalité virtuelle.
@@ -113,7 +109,7 @@ Les paramètres de la boucle sont la vitesse de chute et l'angle de correction l
 
 \begin{figure}
 \centering
-\includegraphics[width=0.9\textwidth]{./files/variation-vitesse.svg.png}
+\includegraphics[width=\textwidth]{./files/variation-vitesse.svg.png}
 \caption{
 Réponse d'une larve à une variation de la vitesse de chute. Trois cycles de une minute de stimulation vestibulaire sont séparés de pause de dix secondes. Le poisson se maintient autour d'un angle de -20° quelle que soit la vitesse de chute imposée, en adaptant la fréquence de ses mouvements.
 \\
@@ -141,12 +137,11 @@ Le protocole commence par un cycle d'OMR qui permet d'évaluer le niveau d'activ
 
 \begin{figure}
 \centering
-\includegraphics[width=0.8\textwidth]{./files/raw_data.svg.png}
+\includegraphics[width=\textwidth]{./files/raw_data.svg.png}
 \caption{
 On voit ici le protocole appliqué sur trois poissons différents. Dans tous les cas, la réponse optomotrice fonctionne, mais on voit des différences au niveau des autres stimuli. Le poisson (a.) répond bien à la stimulation visuelle, mais quasiment pas à la stimulation vestibulaire, le poisson (b.), au contraire, ne répond pas à la stimulation visuelle (bien qu'il réponde à l'OMR), mais répond à la stimulation vestibulaire pure. Le poisson (c.) ne répond ni à la stimulation visuelle pure, ni à la stimulation visuelle pure, mais répond comme les deux autres pendant le cycle multimodal.
-\\
-Ces comportements spécifiques à un poisson sont reproductibles. Le protocole a été répété cinq fois sur le poisson (a.) avec toujours la même réponse.
-}
+\\ Ces comportements semblent spécifiques à un poisson. Par exemple, le protocole a été répété cinq fois sur le poisson (c.) avec chaque fois une réponse similaire : réponse à l'OMR, et réponse multisensorielle, mais peu de réponse pour un stimulus seul.
+\label{FIGprotocolmulti}}
 \end{figure}
 
 La réponse des larves à ce protocole est très variable. De nombreuses données sont inutilisables à cause d'une larve immobile après un mouvement d'échappement, mais dans les données restantes, certains poissons montrent une bonne réponse principalement au stimulus vestibulaire seul, d'autres au stimulus visuel seul, alors que la plupart répondent bien pendant le cycle multimodal. Il semble donc qu'en fonction des poissons l'importance relative des différentes modalités sensorielles dans le contrôle postural soit variable. Pour certains poissons, cependant, la présence simultanée des deux modalités sensorielles semble nécessaire au contrôle postural. Cela peut être interprété de la manière suivante.
@@ -156,36 +151,46 @@ Pendant les phases unimodales visuelles, les sensations visuelle et vestibulaire
 % During the unimodal visual phases the visual and vestibular sensations are in conflict reducing or suppressing the motor response. The strength of this effect varies between fish. In the unimodal vestibular case where the fish does not receive and visual information about its body rotation the behavioral response might be weak due to the unrelieability of the vestibular stimulus. However, in the coherent multimodal case we see a strong multisensory enhanced behaviorial response 
 
 \subsubsection{Interprétation}
-Malgré ces comportements individuels variables, on peut analyser globalement la réponse des larves. La métrique utilisée est la fréquence moyenne des mouvements, calculée comme le rapport entre la quantité de mouvements de nage et la durée du cycle. Cette métrique inclut les périodes d'inactivité qui suivent un mouvement d'échappement, ce qui fausse légèrement la valeur, comme montré dans l'exemple de rétroaction vestibulaire. On observe néanmoins deux phénomènes : le poisson est capable de moduler son activité en fonction de la force du stimulus, et le poisson a une réponse plus forte en présence de deux stimuli cohérents .
 
 \begin{figure}
-\centering
-\includegraphics[width=0.8\textwidth]{./files/stats.svg.png}
-\caption{
-Analyse réalisée sur dix poissons différents parmi trente soumis au protocole. Les valeurs à zéro (poisson entièrement inactif) sont retirées, et il reste donc environ quatre points par moyenne.
-\\
-a. Pour chaque cycle, on observe une adaptation du poisson à la force du stimulus. Le poisson est capable d'adapter sa fréquence de nage pour se stabiliser par rapport à une information visuelle ou vestibulaire.
-\\
-b. Pour chaque vitesse de stimulus, on observe une réponse moyenne différente en fonction du type de stimulus. Alors que le stimulus vestibulaire et visuel pur sont d'efficacité comparable, la présence simultanée des deux modalités sensorielles entraîne globalement une meilleure réponse chez les larves.
-}
-\end{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{./files/stats.svg.png}
+    \caption{
+    Analyse réalisée sur dix poissons différents parmi trente soumis au protocole. Les valeurs à zéro (poisson entièrement inactif) sont retirées, et il reste donc environ quatre points par moyenne.
+    \\ a. Pour chaque cycle, on observe une adaptation du poisson à la force du stimulus. Le poisson est capable d'adapter sa fréquence de nage pour se stabiliser par rapport à une information visuelle ou vestibulaire.
+    \\ b. Pour chaque vitesse de stimulus, on observe une réponse moyenne différente en fonction du type de stimulus. Alors que le stimulus vestibulaire et visuel pur sont d'efficacité comparable, la présence simultanée des deux modalités sensorielles entraîne globalement une meilleure réponse chez les larves.
+    }
+    \end{figure}
 
-% TODO Volker Perspective and interpretation of the results is still to develop. 
+Malgré ces comportements individuels variables, on peut analyser globalement la réponse des larves. La métrique utilisée est la fréquence moyenne des mouvements, calculée comme le rapport entre la quantité de mouvements de nage et la durée du cycle. Cette métrique inclut les périodes d'inactivité qui suivent un mouvement d'échappement, ce qui fausse légèrement la valeur, comme montré dans l'exemple de rétroaction vestibulaire. On observe néanmoins deux phénomènes :
 
-On a montré qu'il était possible de reproduire la boucle de rétroaction sensorimotrice du contrôle postural dans un environnement virtuel. Une des principales limitations est l'immobilisation de la larve, qui provoque des mouvements violents d'échappement suite auxquels la larve est inactive pendant une longue durée. Cela réduit considérablement la quantité de données exploitables (environ 90\% des expériences sont en partie ou totalement inutilisables), les données présentées ici sont donc statistiquement faibles.
+\begin{enumerate}
+    \item une larve est capable de moduler son activité en fonction de la force du stimulus
+    \item une larve a une réponse accrue en présence de deux stimuli cohérents
+\end{enumerate}
 
-Ces résultats montrent qu'un réflexe \emph{a priori} vestibulaire comme le contrôle postural est en réalité largement altéré par d'autres modalités sensorielles comme le système visuel. On peut supposer que la sensation tactile, qui permet au poisson de sentir les écoulements de fluide, joue également un rôle (que je n'ai pas testé). La reproduction de la boucle sensorimotrice dans un environnement en réalité virtuelle ouvre la possibilité d'étudier les mécanismes cérébraux qui en sont à l'origine. Pour comprendre en profondeur ces mécanismes, il est nécessaire de simuler un environnement sensoriel riche  
+Ces résultats montrent qu'un réflexe \emph{a priori} vestibulaire comme le contrôle postural est en réalité largement altéré par d'autres modalités sensorielles comme le système visuel. On peut supposer que la sensation tactile, qui permet au poisson de sentir les écoulements de fluide, joue également un rôle (non testé). 
 
-Une piste d'évolution importante serait de limiter ces comportements d'échappement. 
+\subsection{Ouverture}
+
+Comme montré, ce système permet de reproduire la boucle de rétroaction sensorimotrice du contrôle postural dans un environnement virtuel. Cependant, une limitation importante réside dans les longues périodes d'inactivité qui suivent souvent les mouvements d'échappement de la larve. 
+Ces périodes réduisent considérablement la quantité de données exploitables. Le poisson est en effet quasiment inactif dans environ neuf expériences sur dix, ce qui explique mon échantillon statistique faible.
+Ces comportements d'abandon pourraient être expliqués par un article de Mu \emph{et al} \cite{mu_glia_2019}. Celui-ci décrit comment, suite à une action infructueuse de la larve, des cellules gliales accumulent l'information jusqu'à inhiber le comportement perçu comme inutile.
+Dans le cas d'une larve immobilisée dans un gel d'agarose, si les mouvements de queue de grande amplitude qui caractérisent l'échappement se soldent par une réussite, la larve s'échappe dans le réservoir, mettant fin à l'expérience, et si, au contraire, ils se soldent par un échec, la larve finit par abandonner toute réponse comportementale, réduisant à zéro le nombre d'événements à analyser.
+
+Une piste d'évolution importante serait donc de limiter ces comportements d'échappement. Cela permettrait de réaliser des expériences plus longues et plus complexes afin de mettre à l'épreuve ces observations préliminaires et d'observer d'autres phénomènes.
+Dans les comportements observés, il semblerait que certains poissons répondent mieux à la stimulation visuelle et d'autres mieux à la stimulation vestibulaire. Des expériences plus longues avec plus de cycles permettraient de mettre en évidence ces spécificités individuelles des larves. Par exemple, en figure \ref{FIGprotocolmulti}, l'expérience a été reproduite cinq fois d'affilé sur le poisson (c.) : malgré une réponse systématique à l'OMR, le poisson montre peu de réponse pour un stimulus visuel seul, il répond fortement en présence d'un stimulus vestibulaire accompagné d'un stimulus visuel, mais pas en présence d'un stimulus vestibulaire seul. Ce poisson semble présenter un renforcement multisensoriel robuste.
+
+Des expériences plus longues permettraient aussi de s'intéresser à la question de l'angle cible. Dans la stabilisation en roulis, l'angle cible est fixé à 0°, mais dans la stabilisation en tangage, il peut varier entre des valeurs comprises entre -15° et +20°. Ces valeurs observées en nage libre par Ehrlich et Schoppik \cite{ehrlich_primal_2019} sont associées à des trajectoires allant de -40° à +80° avec une relation affine liée à l'utilisation des nageoires pectorales. La reconstruction de trajectoires virtuelles paraît hors de portée, mais l'on pourrait observer l' évolution de l'angle cible. Reproduit sous microscope, ce comportement permettrait d'identifier les circuits responsables du choix de cet angle, peut être sous forme de copie efférente.
+
+Si l'immobilisation de la larve est responsable de ces comportements d'échappement, on pourrait modifier la manière dont la larve est immobilisée par exemple en changeant la méthode de préparation du gel d'agarose. Les paramètres de rétroaction pourraient également être en cause, et leur ajustement pourrait augmenter l'immersion de la larve dans son environnement virtuel. Sans de telles améliorations, l'expérience serait difficile à reproduire sous microscope, car l'imagerie vient avec un nouveau lot de contraintes, comme nous allons le voir dans les parties suivantes.
+
 % escape/startle/struggle
-%TODOcite
+% TODO lire et intégrer ces papier
 % - Glia Accumulate Evidence that Actions Are Futile and Suppress Unsuccessful Behavior
 % - Escape Behavior Elicited by Single, Channelrhodopsin-2-Evoked Spikes in Zebrafish Somatosensory Neurons
 % - Imaging the Functional Organization of Zebrafish Hindbrain Segments during Escape Behaviors
 % - Evidence for a Widespread Brain Stem Escape Network in Larval Zebrafish
 % - Imaging escape and avoidance behavior in zebrafish larvae
-Ceux-ci diminuent largement l'échantillon statistique en inhibant l'activité du poisson pendant de longues périodes, ce qui rend l'analyse difficile. Cette amélioration pourrait être obtenue en modifiant la manière dont le poisson est retenu immobile et en ajustant les paramètres de rétroaction en fonction des poissons. 
 
-% \subsection{Conclusion}
-
-% TODO Volker Perspective and interpretation of the results is still to develop. 
+% TODO Volker Perspective and interpretation of the results is still to develop.

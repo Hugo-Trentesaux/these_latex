@@ -472,7 +472,7 @@ $$
 n(r,z) = n_0(z) \left( 1 \pm \frac{g^2(z)}{2}r^2\right)
 $$
 
-Dans le cas d'un signe négatif (lentille convergente), les calculs sont largement détaillés et aboutissent à une solution oscillante. Malheureusement le cas d'un signe positif (lentille divergente) n'est pas exploré. Pour obtenir un résultat en ordre de grandeur, nous avons donc opté pour une approche discrète numérique en appliquant à chaque tranche de liquide d'épaisseur $l$ les résultats obtenus pour une cellule fine (partie \ref{simulationthermallens}). Cette approximation ignore la diffusion thermique le long de l'axe et considère l'absorption négligeable.
+Dans le cas d'un signe négatif (lentille convergente), les calculs sont largement détaillés et aboutissent à une solution oscillante. Malheureusement le cas d'un signe positif (lentille divergente) n'est pas exploré. Pour obtenir un résultat en ordre de grandeur, nous avons donc opté pour une approche discrète numérique en appliquant à chaque tranche de liquide d'épaisseur $l$ les résultats obtenus pour une cellule fine (partie \ref{simuthermallens}). Cette approximation ignore la diffusion thermique le long de l'axe et considère l'absorption négligeable.
 
 \subsubsection{Cas d'une cellule fine}\label{cellulefine}
 
@@ -537,22 +537,24 @@ On a donc une valeur de la focale $f'$ d'une tranche de liquide d'épaisseur $l$
 \begin{figure}
 \centering
 \includegraphics[width=\textwidth]{./files/thermal_shift_model.svg.png}
-\caption{Effet de lentille thermique induite par la propagation dans l'eau d'un faisceau intense.
-\\ a. Feuille de lumière imagée dans la fluorescéine pour plusieurs puissances laser différentes. La position du maximum d'intensité est marquée par un trait en pointillé.
-\\ b. Simulation numérique pour les mêmes puissances. La demi largeur du faisceau est calculée pour chaque pas de propagation. La largeur minimale est marquée d'un trait pointillé.
-\\ c. Comparaison de la simulation numérique et des valeurs expérimentales montrées précédemment.
-\\ d. Illustration du phénomène de lentille thermique : l'indice $n$ est plus petit pour les rayons $r$ plus petits. En conséquence, des rayons focalisés en un point (gris) sont déviés (flèches noires).
+\caption{Effet de lentille thermique. La propagation dans l'eau d'un faisceau intense induit un gradient de température et donc un gradient d'indice qui dévie les rayons et décale le waist.
+\\ a. Feuille de lumière imagée dans la fluorescéine pour plusieurs puissances laser différentes. La position mesurée du maximum d'intensité est marquée par un trait pointillé.
+\\ b. Simulation numérique pour les mêmes puissances. La demi largeur du faisceau est calculée pour chaque pas de propagation. La largeur minimale du faisceau selon la simulation est marquée par un point. On remarque par ailleurs que cette largeur minimale augmente avec la puissance.
+\\ c. Comparaison des valeurs expérimentales montrées précédemment avec une simulation numérique réalisée pour des puissances comprises entre 0.2 et 0.38 W.
+\\ d. Contribution de chaque tranche de liquide d'épaisseur 10 µm au décalage du waist pour un faisceau de 0.2 W.
 \label{FIGthermalfluorescine}}
 \end{figure}
 
-\subsubsection{Simulation numérique}\label{simulationthermallens}
+\subsubsection{Simulation numérique}\label{simuthermallens}
 
 Pour décrire la propagation du faisceau à travers un milieu épais, on le divise en éléments fins.
-On part du principe que le faisceau reste gaussien tout au long du parcours, il peut donc être entièrement décrit pour chaque $z$ par la position et la largeur de son waist. Pour chaque tranche de liquide d'épaisseur $l$, on applique l'effet de la lentille équivalente dont la focale est définie suivant la partie précédente pour trouver le déplacement du waist et son élargissement. Le code de cette simulation numérique est publié à l'adresse \href{https://github.com/Hugo-Trentesaux/these}{https://github.com/Hugo-Trentesaux/these}. La figure \ref{FIGthermalfluorescine} montre le résultat de cette simulation comparé à une mesure expérimentale.
+On part du principe que le faisceau reste gaussien tout au long du parcours, il peut donc être entièrement décrit pour chaque $z$ par la position et la largeur de son waist. Pour chaque tranche de liquide d'épaisseur $l$, on applique l'effet de la lentille équivalente dont la focale est définie suivant la partie précédente pour trouver le déplacement du waist et son élargissement. La figure \ref{FIGthermalfluorescine} montre le résultat de cette simulation comparé à une mesure expérimentale. Le code de la simulation est présenté en annexe \ref{APPsimuthermallens}.
 
-% TODO bouger cette référence vers l'annexe
+Lorsqu'on augmente la puissance laser, la largeur du waist augmente, ce qui étale l'intensité lumineuse sur une plus grande surface. Au dessus d'une puissance limite, l'effet résultant est une diminution de l'intensité maximale, et donc de l'effet deux photons. Cette puissance limite est d'environ 0.4 W dans notre cas (valeur expérimentale confirmée par simulation). Un waist plus large signifie également un faisceau moins divergent, la zone d'excitation est donc plus allongée dans le sens de propagation.
 
-% TODO VolkerComment2
+Chaque tranche de liquide d'épaisseur $l$ apporte une contribution différente au décalage du point focal. La contribution relative de chaque lentille élémentaire dépend de deux phénomènes ayant un effet opposé l'un de l'autre. Plus l'on s'approche du waist, plus le gradient de température est fort, et plus la lentille est divergente, ce qui augmente la contribution au décalage. Au contraire, plus on s'approche du waist (au sens de Rayleigh), moins le faisceau est convergeant, ce qui diminue la contribution au décalage. Finalement, la contribution au niveau du waist est légèrement plus élevée qu'en dehors (\ref{FIGthermalfluorescine} d.).
+
+% OK VolkerComment2
 % Make a plot that shows the contribution of every lens element as a function of the distance to the focal point.
 
 \subsection{Effet dynamique}
