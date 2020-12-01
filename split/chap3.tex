@@ -89,7 +89,7 @@ L'absorption deux photons est un phénomène non linéaire d'absorption simultan
     \label{2P-intensity-profile}
     \end{figure}
 
-Un système optique peut concentrer la lumière localement, ce qui produit un point de plus grande intensité, le point focal. Comme l'effet deux photons est proportionnel au carré de l'intensité, la zone concernée est d'autant plus restreinte. Cette propriété est utilisée en microscopie multiphoton pour produire une illumination ponctuelle qui permet le sectionnement optique dans la direction de propagation. En microscopie à feuille de lumière, au contraire, une illumination linéaire est recherchée. La focalisation est donc bien moindre et l'effet deux photons contribue à affiner la zone d'excitation (cf Fig. \ref{2P-intensity-profile}).
+Un système optique peut concentrer la lumière localement, ce qui produit un point de plus grande intensité, le point focal. Comme l'effet deux photons est proportionnel au carré de l'intensité, la zone concernée est d'autant plus restreinte. Cette propriété est utilisée en microscopie multiphoton pour produire une illumination ponctuelle qui permet le sectionnement optique dans la direction de propagation. En microscopie à feuille de lumière, au contraire, une illumination linéaire est recherchée. La focalisation est donc bien moindre et l'effet deux photons contribue à affiner la zone d'excitation, la fluorescence n'étant excitée qu'au centre du faisceau (cf Fig. \ref{2P-intensity-profile}).
 
 % TODO VolkerComment2
 % You have to make a figure. Show the Jablonski diagram and e.g. this https://www.researchgate.net/figure/Two-photon-fluorescence-vs-normal-fluorescence-The-blue-scanning-laser-in-the-left_fig11_326583720. Discuss that via the two photon effect you can excite the same fluorophore (GCaMP) with an IR laser of double the wavelength compared to the one photon case. In this configuration you laser is outside the sensitive spectrum of the fish retina.
@@ -150,13 +150,13 @@ On trouve ce genre de réseau pour la première fois en 1999 sous forme de fibre
 
 \paragraph{Fibres à motif Kagomé}
 L'idée du réseau de diffraction a également donné lieu aux fibres à réseau trihexagonal, ou "Kagomé". De telles fibres ont été construites pour la première fois en 2002 sous le nom de fibre à cristaux photoniques. Le gain était alors de l'ordre de 2 dB/m \cite{benabid_stimulated_2002}. En 2011, un gain de 180 dB/km a été obtenu avec de telles fibres \cite{wang_low_2011}.
-Cependant, en 2010, Février \emph{et al} montrent par analyse numérique que les propriétés de ces fibres ne reposent pas tant vers le motif périodique que sur la forme du cœur \cite{fevrier_understanding_2010}, ce qui ouvre la voie vers les fibres à cœur hypocycloide. 
+Cependant, en 2010, Février \emph{et al} montrent par analyse numérique que les propriétés de ces fibres ne reposent pas tant sur le motif périodique que sur la forme du cœur \cite{fevrier_understanding_2010}, ce qui ouvre la voie aux fibres à cœur hypocycloide. 
 
 % Un des problèmes des fibres à structure géométrique est la sensibilité aux déformations. Puisque le guidage est lié à la géométrie de la fibre, les déformations qui changent cette géométrie altèrent le guidage. Cela peut prendre la forme de perte de transmission, de couplage entre les modes, d'incidence sur la polarisation. Mais cette sensibilité aux déformations dépendant de la géométrie de la fibre, certaines configurations donnent des résultats très satisfaisants.
 
 \subsubsection{Fibres à courbure négative}
 
-Les idées de fibre à réseau de tubes unique et de fibres à cœur hypocycloide se rejoingent dans un même concept : les fibres à courbures négatives. En 2016, Yu et Knight publient une revue sur l'histoire de ces fibres et leurs mécanismes \cite{yu_negative_2016}. Ils commentent entre autres l'atténuation, les bandes de transmission et le gain de courbure. Ces critères rendent cette famille de fibres particulièrement adaptée à notre application. En effet, les larges bandes de transmission permettent de guider plusieurs longueurs d'onde, aussi bien pour l'imagerie un photon que deux photons, la faible atténuation permet de conserver la puissance du laser nécessaire à l'effet deux photons, et le faible gain de courbure permet de conserver une illumination stable pendant la rotation du microscope.
+Les idées de fibre à réseau de tubes unique et de fibres à cœur hypocycloide se rejoignent dans un même concept : les fibres à courbures négatives. En 2016, Yu et Knight publient une revue sur l'histoire de ces fibres et leurs mécanismes \cite{yu_negative_2016}. Ils commentent entre autres l'atténuation, les bandes de transmission et le gain de courbure. Ces critères rendent cette famille de fibres particulièrement adaptée à notre application. En effet, les larges bandes de transmission permettent de guider plusieurs longueurs d'onde, aussi bien pour l'imagerie un photon que deux photons, la faible atténuation permet de conserver la puissance du laser nécessaire à l'effet deux photons, et le faible gain de courbure permet de conserver une illumination stable pendant la rotation du microscope.
 
 % TODO VolkerComment2
 % You have to make the effort and write all this in your thesis. It is not sufficient to just refer to the review. Explain the light guidance mechanism, show figures, ... .
@@ -191,7 +191,7 @@ e. Un endoscope sans optique permet de réduire considérablement l'encombrement
 
 \subsubsection{Imagerie sur rongeur à tête fixée}
 
-Une méthode répandue en imagerie cérébrale sur rongeur est de fixer un animal sous un microscope classique immobile. Le cerveau est rendu accessible par une opération chirurgicale pendant laquelle le crane est retiré localement et remplacé par une vitre. Le fait d'immobiliser la tête pendant l'imagerie peut limiter le répertoire comportemental et constituer une gêne pour l'animal. Une solution est un système où le rat se positionne volontairement sous le microscope \cite{scott_cellular_2013}, une autre est le système en réalité virtuelle. Dans cette deuxième solution, le rongeur marche sur une boule en polystyrène sur coussins d'air alors qu'un environnement visuel est projeté sur un écran autour de lui \cite{dombeck_functional_2010}. Le microscope est ici entièrement statique et rigide. La réalité virtuelle a également été utilisée avec des enregistrements en électrophysiologie \cite{aronov_engagement_2014}\cite{whitlock_navigating_2014}.
+Une méthode répandue en imagerie cérébrale sur rongeur est de fixer un animal sous un microscope classique immobile. Le cerveau est rendu accessible par une opération chirurgicale pendant laquelle la boîte cranienne est retirée localement et remplacée par une vitre. Le fait d'immobiliser la tête pendant l'imagerie peut limiter le répertoire comportemental et constituer une gêne pour l'animal. Une solution est un système où le rat se positionne volontairement sous le microscope \cite{scott_cellular_2013}, une autre est le système en réalité virtuelle. Dans cette deuxième solution, le rongeur marche sur une boule en polystyrène sur coussins d'air alors qu'un environnement visuel est projeté sur un écran autour de lui \cite{dombeck_functional_2010}. Le microscope est ici entièrement statique et rigide. La réalité virtuelle a également été utilisée avec des enregistrements en électrophysiologie \cite{aronov_engagement_2014}\cite{whitlock_navigating_2014}.
 
 % TODO VolkerComment2
 % You have to write all this from the point of view of the fiber application. Go straight to the challenge to record in freely moving animals and the development of portable fiber scopes ...
@@ -388,7 +388,7 @@ Une déformation de la fibre peut entrainer deux modifications sur la polarisati
 
 \paragraph{Rotation de la polarisation}
 
-J'ai montré que la polarisation tournait largement en fonction de la courbure de la fibre. Par exemple, entre un rayon de courbure de 15 cm et 25 cm, une polarisation linéaire peut tourner de 10° (variation du signal de $\sim$5\%). Ces valeurs de courbure sont celles qu'on peut attendre dans de bonnes conditions expérimentales, c'est pourquoi j'ai cherché à obtenir une polarisation invariante par rotation, c'est-à-dire une polarisation circulaire.
+J'ai montré que la polarisation tournait significativement en fonction de la courbure de la fibre. Par exemple, entre un rayon de courbure de 15 cm et 25 cm, une polarisation linéaire peut tourner de 10° (variation du signal de $\sim$5\%). Ces valeurs de courbure sont celles qu'on peut attendre dans de bonnes conditions expérimentales, c'est pourquoi j'ai cherché à obtenir une polarisation invariante par rotation, c'est-à-dire une polarisation circulaire.
 
 % TODO Volker (real condition curvature)
 % Again what is the expected curvature variation in your experimental configuration. What is the expected signal variation.
@@ -459,7 +459,7 @@ Lorsqu'un faisceau traverse un milieu absorbant, ce milieu chauffe sur la trajec
 % TODO Volker (thermal lens effect)
 %  Explain this paper more in detail and show the schematic that explains the calculations and the approximation.
 
-Le phénomène de lentille thermique a été décrit théoriquement en 1965 par Gordon \emph{et al} \cite{gordon_longtransient_1965} et en 1974 par Whinnery \emph{et al} \cite{whinnery_laser_1974} pour une fine cellule de liquide et dans le cadre de l'approximation parabolique (partie \ref{cellulefine}). En 1982, Sheldon \emph{et al} \cite{sheldon_laser-induced_1982} étend cette description hors de l'approximation parabolique pour prendre en compte les aberrations induites. Dans notre cas, il ne s'agit pas d'une cellule fine, car le laser traverse plusieurs centimètres d'eau avant d'atteindre l'échantillon, créant un gradient d'indice sur sa trajectoire. Je me suis donc inspiré du livre \emph{Gradient-Index Optics} \cite{gomez-reino_gradient-index_2002}, dans lequel les auteurs s'intéressent à la propagation d'un faisceau dans un milieu d'indice : (équation 1.63 du livre)
+Le phénomène de lentille thermique a été décrit théoriquement en 1965 par Gordon \emph{et al} \cite{gordon_longtransient_1965} et en 1974 par Whinnery \emph{et al} \cite{whinnery_laser_1974} pour une fine cellule de liquide et dans le cadre de l'approximation parabolique (partie \ref{cellulefine}). En 1982, Sheldon \emph{et al} \cite{sheldon_laser-induced_1982} étend cette description hors de l'approximation parabolique pour prendre en compte les aberrations induites. Dans notre cas, il ne s'agit pas d'une cellule fine, car le laser traverse plusieurs centimètres d'eau avant d'atteindre l'échantillon, créant un gradient d'indice sur sa trajectoire. Je me suis donc inspiré du livre \emph{Gradient-Index Optics} \cite{gomez-reino_gradient-index_2002}, dans lequel les auteurs s'intéressent à la propagation d'un faisceau dans un milieu à gradient d'indice : (équation 1.63 du livre)
 
 \begin{figure}
 \centering
@@ -476,7 +476,7 @@ Dans le cas d'un signe négatif (lentille convergente), les calculs sont largeme
 
 \subsubsection{Cas d'une cellule fine}\label{cellulefine}
 
-Dans cette partie, j'explique le résultat des papiers de Gordon et Whinnery que j'utilise par la suite dans la simulation numérique. Dans une cellule fine traversée par un faisceau, le différentiel de température par rapport à l'équilibre $\Delta T(r,t)$ est décrit par l'équation de diffusion :
+Dans cette partie, j'explique le résultat des papiers de Gordon et Whinnery que j'utilise par la suite dans la simulation numérique. Il s'agit de calculer la focale d'une cellule fine d'épaisseur $l$ traversée par un faisceau gaussien. Le différentiel de température par rapport à l'équilibre $\Delta T(r,t)$ est décrit par l'équation de diffusion ($c$ capacité thermique, $\rho$ masse volumique, $k$ diffusivité thermique) :
 
 $$
 c\rho\frac{\partial}{\partial t}[\Delta T(r,t)] = \dot{q}(r) + k \nabla^2[\Delta T(r,t)]
@@ -493,7 +493,7 @@ Ce qui donne une solution de la forme :
 $$
 \Delta T(r,t) = \frac{\alpha P}{4\pi k} \int_0^t \left( \frac{1}{1+2t'/t_c} \right) \exp \left( \frac{-2r^2/w_z^2}{1+2t'/t_c} \right) \mathrm{d}t'
 \quad \text{où} \quad
-t_c = \frac{w_z^2}{4D}
+t_c = \frac{w_z^2}{4k}
 $$
 
 Dans notre cas, on se contentera de l'approximation au premier ordre de cette solution :
@@ -502,7 +502,7 @@ $$
 \Delta T(r,t) \simeq \frac{\alpha P}{4\pi k} \left[ \ln\left( 1+\frac{2t}{t_c} \right) - \frac{2(r^2/w_z^2)}{1+t_c/2t} \right]
 $$
 
-Le premier terme est indépendant de $r$ et correspond au réchauffement progressif global de la tranche de liquide. De plus, il est de plus en plus lent à mesure que l'on s'éloigne du waist et se retrouve dominé par les conditions aux limites et par la diffusion le long de l'axe ici non exprimées. On peut donc l'ignorer pour simplifier le calcul sans altérer le résultat. On a donc :
+Le premier terme est indépendant de $r$ et correspond au réchauffement progressif global de la tranche de liquide. De plus, il est de plus en plus lent à mesure que l'on s'éloigne du waist et se retrouve dominé par les conditions aux limites et par la diffusion le long de l'axe ici non exprimées. On peut donc l'ignorer \cite{gordon_longtransient_1965} pour simplifier le calcul sans altérer le résultat. On a donc :
 
 $$
 \Delta T(r,t) = \Delta T_\infty \frac{1}{1+t_c/2t}
@@ -514,15 +514,15 @@ $$
 Si l'on suppose constant le coefficient de variation de l'indice optique ($\mathrm{d}n/\mathrm{d}T$), on a donc un profil d'indice quadratique en $r$ :
 
 $$
-n(r,z) = n_0 + \frac{\mathrm{d}n}{\mathrm{d}T}\Delta T = n_0 \left( 1+ \delta (r/w_z)^2 \right)
+n(r,z) = n_0 + \frac{\mathrm{d}n}{\mathrm{d}T}\Delta T = n_0 \left( 1+ \delta_t (r/w_z)^2 \right)
 \quad \text{où} \quad
-\delta = - \frac{\mathrm{d}n}{\mathrm{d}T} \frac{\alpha P}{2\pi kn_0} \frac{2}{1+t_c/2t}
+\delta_t = - \frac{\mathrm{d}n}{\mathrm{d}T} \frac{\alpha P}{2\pi kn_0} \frac{2}{1+t_c/2t}
 $$
 
-Pour un profil d'indice quadratique tel que celui-ci et dans l'approximation des lentilles minces, on peut définir la distance focale équivalente :
+Pour un profil d'indice quadratique tel que celui-ci et dans l'approximation des lentilles minces, on peut définir la distance focale équivalente (cf Fig. \ref{FIGgordonlens}):
 
 $$
-f' = -\frac{w^2_z}{2ln_0\delta}
+f' = -\frac{w^2_z}{2ln_0\delta_t}
 $$
 
 Cela permet d'établir la valeur de la focale $F$ au cours du temps :
@@ -554,6 +554,8 @@ Lorsqu'on augmente la puissance laser, la largeur du waist augmente, ce qui éta
 
 Chaque tranche de liquide d'épaisseur $l$ apporte une contribution différente au décalage du point focal. La contribution relative de chaque lentille élémentaire dépend de deux phénomènes ayant un effet opposé l'un de l'autre. Plus l'on s'approche du waist, plus le gradient de température est fort, et plus la lentille est divergente, ce qui augmente la contribution au décalage. Au contraire, plus on s'approche du waist (au sens de Rayleigh), moins le faisceau est convergeant, ce qui diminue la contribution au décalage. Finalement, la contribution au niveau du waist est légèrement plus élevée qu'en dehors (\ref{FIGthermalfluorescine} d.).
 
+Pour les gammes de puissance présentées ici, l'élargissement du faisceau est petit, mais pour des puissances plus élevées, cela va jusqu'à diminuer l'intensité maximale (cf \ref{AppFIGmaxintensity}).
+
 % OK VolkerComment2
 % Make a plot that shows the contribution of every lens element as a function of the distance to the focal point.
 
@@ -561,7 +563,7 @@ Chaque tranche de liquide d'épaisseur $l$ apporte une contribution différente 
 
 \subsubsection{Temps caractéristique}
 
-L'effet de lentille thermique a une composante dynamique liée au temps d'établissement de l'équilibre de température. Cet effet a un temps caractéristique $t_c = \frac{w_z^2}{4D}$ qui dépend uniquement de la largeur du faisceau (on considère constante $D = 1.43\times 10^{-7} m^2/s$ la diffusivité thermique de l'eau). Au début de la propagation dans la cuve, le faisceau est large (1 mm), ce qui donne un temps caractéristique de l'ordre de plusieurs secondes. Près du waist, au contraire, ce temps est très court, de l'ordre de la microseconde. Il faut donc réaliser une simulation pour estimer la dynamique du système complet. 
+L'effet de lentille thermique a une composante dynamique liée au temps d'établissement de l'équilibre de température. Cet effet a un temps caractéristique $t_c = \frac{w_z^2}{4D}$ qui dépend uniquement de la largeur du faisceau (on considère constante $k = 1.43\times 10^{-7} m^2/s$ la diffusivité thermique de l'eau). Au début de la propagation dans la cuve, le faisceau est large (1 mm), ce qui donne un temps caractéristique de l'ordre de plusieurs secondes. Près du waist, au contraire, ce temps est très court, de l'ordre de la microseconde. Il faut donc réaliser une simulation pour estimer la dynamique du système complet. 
 % TODO modèle Tom
 En pratique, on constate un temps d'établissement de l'ordre de la seconde.
 % TODO mesures établissement
@@ -592,7 +594,7 @@ Quand la feuille de lumière un photon éclaire le poisson par le côté, elle i
 
 \subsubsection{Rapport signal à bruit}
 
-Le niveau de signal obtenu dans les enregistrements deux-photons est bien plus faible que dans les enregistrements un-photon. Avec les paramètres finaux (exposition, binning, puissance laser, lignées transgéniques...) la valeur d'un pixel de caméra correspondant à un neurone est de l'ordre de 2000 en un-photon et 800 en deux-photons, pour un nivau de bruit de 400 (4 pixels à 100). Un pixel correspondant à l'autofluorescence des tissus est autour de 600 en un-photon et tombe sous le niveau de bruit en deux-photons. Un rapport signal à bruit si faible pose plusieurs problèmes.
+Le niveau de signal obtenu dans les enregistrements deux-photons est bien plus faible que dans les enregistrements un-photon. Avec les paramètres finaux (exposition, binning, puissance laser, lignées transgéniques...) la valeur d'un pixel de caméra correspondant à un neurone est de l'ordre de 2000 en un-photon et 800 en deux-photons, pour un nivau de bruit de 400 (le niveau de bruit pour un pixel est de 100, soit 400 après binning par 4 pixels). Un pixel correspondant à l'autofluorescence des tissus est autour de 600 en un-photon et tombe sous le niveau de bruit en deux-photons. Un rapport signal à bruit si faible pose plusieurs problèmes.
 \paragraph{Alignement sur le cerveau de référence}
 Un cerveau imagé en deux photons apparaît assez différent d'un cerveau en un photon. J'ai donc réalisé un cerveau de référence en deux photons dans l'espace de référence du laboratoire. Malgré cela, pour un rapport signal à bruit trop faible, l'alignement automatique sur le cerveau de référence est impossible. J'ai donc dû faire la plupart des alignements à la main en utilisant le logiciel 3DSlicer.
 \paragraph{Moyennage des cartes de phase}
