@@ -4,37 +4,38 @@ TODO
 par ordre de priorité (quantité de travail +/++/+++)
 ---------------------
 
-(+++) résumé / abstract
 
 (+++) objectifs prespectives discussions conclusions 
 
-(++) re-écrire légendes (ok)
+(+) reformuler le choix du langage, séparation texte/annexe
+
+(+) traduire toutes les figures en français
+
+(+++) résumé / abstract
+
+
+
+ok (+) refaire figure effet de lentille thermique
+
+ok (++) Make a plot that shows the contribution of every lens element as a function of the distance to the focal point. 
+
+ok (++) re-écrire légendes
 
 ok (+) relecture orthographique / formulation
 
 ok (++) mieux détailler les comportements d'abandon du poisson
     (Glia Accumulate Evidence that Actions Are Futile and Suppress Unsuccessful Behavior)
 
-(++) distinguer les différents comportements (startle/escape/struggle...)
-
-(+) reformuler le choix du langage, séparation texte/annexe
-
-(+) cytoplasmique / nucléaire 
-
-ok (+) refaire figure effet de lentille thermique
-
-(++) Make a plot that shows the contribution of every lens element as a function of the distance to the focal point. 
-
-(+++) Can you make this simulation? (time simulation focal shift) 
-    dynamique temporelle kymographe
-
-
-
-
-
 
 non soluble dans les temps
 --------------------------
+
+(+) cytoplasmique / nucléaire 
+
+(++) distinguer les différents comportements (startle/escape/struggle...)
+
+(+++) Can you make this simulation? (time simulation focal shift) 
+    dynamique temporelle kymographe
 
 (+++) calculs de polarisation
 

@@ -196,7 +196,7 @@ Si la microscopie par fluorescence à feuille de lumière est une technique part
 
 
 
-\section[Intégration multisensorielle]{Intégration multisensorielle chez la larve de \\ poisson zèbre}
+\section[Chez la larve de poisson zèbre]{Intégration multisensorielle chez la larve de \\ poisson zèbre}
 
 La microscopie à feuille de lumière permet d'enregistrer le cerveau entier d'une larve de poisson zèbre à la résolution du neurone et avec une fréquence de quelques Hertz. Plusieurs études ont appliqué cette technique pour comprendre différents aspects du fonctionnement du cerveau. Je m'intéresse ici aux stratégies mises en œuvre pour étudier l'intégration multisensorielle, la boucle sensorimotrice, et plus particulièrement le modèle visuo-vestibulaire.
 
@@ -288,4 +288,25 @@ Les quatre réflexes cités précédemment peuvent être isolés en laboratoire,
 % TODO Volker (objectifs thèse)
 % Open question. Hypotheses. Outline your personal thesis work and results
 
-Les objectifs de ma thèse ont été d'une part de reproduire la boucle sensorimotrice du contrôle postural dans un environnement virtuel, et d'autre part de réaliser un montage capable d'acquérir l'activité neuronale lors de stimulations visuelle et vestibulaire simultanées.
+Une boucle sensorimotrice souvent étudiée dans des expériences comportales et sous le microscope est celle du réflexe optomoteur. Elle peut être reproduite de manière robuste en utilisant une entrée, l'environnement visuel, et une sortie, les mouvements de la queue. 
+
+Pour reproduire de manière analogue la boucle du contrôle postural, on est amené à se poser certaines questions : 
+
+\begin{itemize}
+  \item Quelle est l'importance relative de l'information visuelle et vestibulaire dans le contrôle postural ?
+  \item La larve est-elle capable d'ajuster son comportement sur une stimulation vestibulaire artificielle ?
+\end{itemize}
+
+Ces questions amènent les hypothèses suivantes, que je cherche à tester :
+
+\begin{itemize}
+  \item Le poisson est capable d'adapter la fréquence de ses mouvements en réponse à une modification de son environnement virtuel vestibulaire.
+  \item Les informations visuelle et vestibulaire ont toutes les deux un rôle dans le contrôle postural.
+  \item La combinaison de ces deux modalités peut provoquer un effet de renforcement multisensoriel.
+\end{itemize}
+
+Je décris dans un premier temps (chapitre \ref{chapII}) comment j'ai reproduit le contrôle postural dans une plateforme rotative pilotée par le poisson pour répondre à ces questions et tester ces hypothèses.
+
+Suite à ces observations comportementales, on peut chercher à comprendre leurs bases neuronales. Pour cela, il faut mettre au point un microscope permettant d'acquérir l'activité neuronale tout en contrôlant à la fois l'environnement visuel et vestibulaire. Je consacre un chapitre (\ref{chapIII}) à l'imagerie sous stimulation vestibulaire seule et à l'analyse des données.
+
+Ajouter le contrôle de l'environnement visuel en utilisant la microscopie deux photons a révélé de nombreux enjeux techniques que je discute dans un dernier chapitre (\ref{chapIV}).

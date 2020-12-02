@@ -74,7 +74,7 @@ Le code de cette simulation numérique est publié à l'adresse :
 \\ \href{https://github.com/Hugo-Trentesaux/these}{https://github.com/Hugo-Trentesaux/these}.
 J'en décris ici le fonctionnement général.
 
-Le fichier \verb|gaussianbeam.jl| contient les fonctions relatives à la propagation d'un faisceau gaussien. Le fichier \verb|grinlens.jl| contient le modèle proprement dit, il définit deux structures (\verb|Parameters| et \verb|Observables|) et une fonction (\verb|propagate|). La structure \verb|Parameters| contient les paramètres de la simulation, la structure \verb|Observables| contient une trace des différentes variables observables tout au long de la simulation. La fonction \verb|propagate| applique la formule des lentilles gaussiennes en itérant sur les lentilles fines successives. Des portions de code sont masquées et remplacées par \verb|[...]| pour plus de lisibilité.
+Le fichier \verb|gaussianbeam.jl| contient les fonctions relatives à la propagation d'un faisceau gaussien. Le fichier \verb|grinlens.jl| contient le modèle proprement dit, il définit deux structures (\verb|Parameters| et \verb|Observables|) et une fonction (\verb|propagate|). La structure \verb|Parameters| contient les paramètres de la simulation, la structure \verb|Observables| contient une trace des différentes variables observables tout au long de la simulation. La fonction \verb|propagate| applique la formule des lentilles gaussiennes en itérant sur les lentilles fines successives. Des portions de code sont masquées et remplacées par \verb|[...]| pour plus de lisibilité (attention, un bug étrange dans \LaTeX déplace certains caractères unicode).
 
 \juliastyle
 \begin{lstlisting}
@@ -84,10 +84,10 @@ Le fichier \verb|gaussianbeam.jl| contient les fonctions relatives à la propaga
 Base.@kwdef struct Parameters
     # medium parameters
     n       # index of refraction
-    λ       # wavelength (m)
+    lλ       # wavelength (m)
     P       # power of laser (W)
     k       # thermic diffusion coefficient (W/m/K)
-    α       # absorption coefficient (1/m)
+    aα       # absorption coefficient (1/m)
     dndT    # index variation coefficient (1/K)
     focale::Function  # thermally induced focal length of liquid slice
 
@@ -116,7 +116,7 @@ mutable struct Observables
 end
 
 # simulate a gaussian beam propagation in water
-function propagate(n,λ,focale,z0,w0,l,steps)
+function propagate(n,lλ,focale,z0,w0,l,steps)
     # observables
     o = Observables(length(steps))   # initialize observables
 

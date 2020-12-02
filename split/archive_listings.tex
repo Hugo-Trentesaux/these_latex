@@ -1,0 +1,65 @@
+
+\usepackage{listings}
+% \usepackage{listingsutf8}
+
+
+
+% colors for code highlighting
+\definecolor{mygreen}{RGB}{28,172,0}
+\definecolor{mylilas}{RGB}{170,55,241}
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepgreen}{rgb}{0,0.5,0}
+\definecolor{lightgray}{rgb}{0.6,0.6,0.6}
+
+% julia langage definition
+\lstdefinelanguage{Julia}%
+  {morekeywords={abstract,break,case,catch,const,continue,do,else,elseif,%
+      end,export,false,for,function,immutable,import,importall,if,in,%
+      macro,module,otherwise,quote,return,struct,switch,true,try,type,typealias,%
+      using,while},%
+   sensitive=true,%
+   alsoother={\$,<:,::},%
+   morecomment=[l]\#,%
+   morecomment=[n]{\#=}{=\#},%
+   morestring=[s]{"}{"},%
+   morestring=[m]{'}{'},%
+}[keywords,comments,strings]%
+
+% general parameters for listings
+\lstset{%
+    breaklines          = true, %
+    showstringspaces    = false,%
+    basicstyle          = \ttfamily\small,
+    inputencoding=utf8,
+    extendedchars=true,
+    % numbers=left, %
+    % numberstyle={\tiny \color{black}},%
+    frame               = leftline,%
+    basewidth           = 0.45em,%
+}
+% MATLAB
+\newcommand\matlabstyle{\lstset{%
+    language=Matlab,%
+    keywordstyle=\color{blue},%
+    stringstyle=\color{mylilas},%
+    commentstyle=\color{mygreen},%
+    numberstyle={\small \color{black}},%
+    numbersep=10pt, % 
+    emph=[1]{classdef, for,end,break},emphstyle=[1]\color{red},%
+}}
+% PYTHON
+\newcommand\pythonstyle{\lstset{%
+    language=Python,%
+    keywordstyle=\color{deepblue},%
+    stringstyle=\color{deepgreen},%
+    commentstyle=\color{lightgray},%
+    otherkeywords={self},
+}}
+% JULIA
+\newcommand\juliastyle{\lstset{%
+    language         = Julia,
+    keywordstyle     = \bfseries\color{blue},
+    stringstyle      = \color{magenta},
+    commentstyle     = \color{ForestGreen},
+}}
