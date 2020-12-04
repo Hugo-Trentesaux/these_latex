@@ -20,7 +20,10 @@
    xml:space="preserve"
    id="svg766"
    sodipodi:docname="vestibular_feedback.svg"
-   inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"><metadata
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   inkscape:export-filename="/home/ljp/Nextcloud/Sync_Hugo/these_Hugo/vestibular_feedback.png"
+   inkscape:export-xdpi="103.46147"
+   inkscape:export-ydpi="103.46147"><metadata
    id="metadata770"><rdf:RDF><cc:Work
        rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
          rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><sodipodi:namedview
@@ -32,15 +35,15 @@
    guidetolerance="10"
    inkscape:pageopacity="0"
    inkscape:pageshadow="2"
-   inkscape:window-width="1920"
-   inkscape:window-height="1024"
+   inkscape:window-width="1865"
+   inkscape:window-height="1025"
    id="namedview768"
    showgrid="false"
    inkscape:zoom="0.5935439"
-   inkscape:cx="673.52704"
-   inkscape:cy="45.107867"
-   inkscape:window-x="0"
-   inkscape:window-y="28"
+   inkscape:cx="515.15628"
+   inkscape:cy="46.792662"
+   inkscape:window-x="55"
+   inkscape:window-y="27"
    inkscape:window-maximized="1"
    inkscape:current-layer="svg766" />
  <defs
@@ -899,6 +902,12 @@
    id="defs239" />
  
  <rect
+   style="opacity:1;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#00a81c;stroke-width:52.91666794;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+   id="rect1117"
+   width="39227.652"
+   height="15869.369"
+   x="-2674.6128"
+   y="-2762.2168" /><rect
    class="BoundingBox"
    stroke="none"
    fill="none"
@@ -954,7 +963,8 @@
        id="tspan338"><tspan
          fill="#000000"
          stroke="none"
-         id="tspan336">pente: “vitesse de chute”</tspan></tspan></tspan></text><rect
+         id="tspan336">pente: “vitesse de chute”</tspan></tspan></tspan></text>
+<rect
    class="BoundingBox"
    stroke="none"
    fill="none"
@@ -987,7 +997,8 @@
        id="tspan360"><tspan
          fill="#000000"
          stroke="none"
-         id="tspan358">pic: correction de l’angle</tspan></tspan></tspan></text><rect
+         id="tspan358">pic: correction de l’angle</tspan></tspan></tspan></text>
+<rect
    class="BoundingBox"
    stroke="none"
    fill="none"
@@ -1449,7 +1460,8 @@
        id="tspan527"><tspan
          fill="#000000"
          stroke="none"
-         id="tspan525">de suite</tspan></tspan></tspan></text><rect
+         id="tspan525">de suite</tspan></tspan></tspan></text>
+<rect
    class="BoundingBox"
    stroke="none"
    fill="none"
@@ -1479,7 +1491,8 @@
        id="tspan542"><tspan
          fill="#000000"
          stroke="none"
-         id="tspan540">0°</tspan></tspan></tspan></text><rect
+         id="tspan540">0°</tspan></tspan></tspan></text>
+<rect
    class="BoundingBox"
    stroke="none"
    fill="none"
@@ -1559,7 +1572,8 @@
        id="tspan587"><tspan
          fill="#000000"
          stroke="none"
-         id="tspan585">(differentes amplitudes non prises en compte)</tspan></tspan></tspan></text><rect
+         id="tspan585">(differentes amplitudes non prises en compte)</tspan></tspan></tspan></text>
+<rect
    class="BoundingBox"
    stroke="none"
    fill="none"
@@ -1595,7 +1609,8 @@
        id="tspan730"><tspan
          fill="#000000"
          stroke="none"
-         id="tspan728">la queue</tspan></tspan></tspan></text><rect
+         id="tspan728">la queue</tspan></tspan></tspan></text>
+<rect
    class="BoundingBox"
    stroke="none"
    fill="none"
@@ -1660,7 +1675,8 @@
          id="tspan619"><tspan
            fill="#000000"
            stroke="none"
-           id="tspan617">0°</tspan></tspan></tspan></text><rect
+           id="tspan617">0°</tspan></tspan></tspan></text>
+<rect
      class="BoundingBox"
      stroke="none"
      fill="none"
@@ -1684,7 +1700,8 @@
          id="tspan632"><tspan
            fill="#000000"
            stroke="none"
-           id="tspan630">+30°</tspan></tspan></tspan></text><rect
+           id="tspan630">+30°</tspan></tspan></tspan></text>
+<rect
      class="BoundingBox"
      stroke="none"
      fill="none"
@@ -1708,7 +1725,8 @@
          id="tspan645"><tspan
            fill="#000000"
            stroke="none"
-           id="tspan643">-30°</tspan></tspan></tspan></text><rect
+           id="tspan643">-30°</tspan></tspan></tspan></text>
+<rect
      class="BoundingBox"
      stroke="none"
      fill="none"
@@ -1732,7 +1750,8 @@
          id="tspan658"><tspan
            fill="#000000"
            stroke="none"
-           id="tspan656">-60°</tspan></tspan></tspan></text><rect
+           id="tspan656">-60°</tspan></tspan></tspan></text>
+<rect
      class="BoundingBox"
      stroke="none"
      fill="none"
@@ -1756,7 +1775,8 @@
          id="tspan671"><tspan
            fill="#000000"
            stroke="none"
-           id="tspan669">+60°</tspan></tspan></tspan></text><rect
+           id="tspan669">+60°</tspan></tspan></tspan></text>
+<rect
      class="BoundingBox"
      stroke="none"
      fill="none"
@@ -1795,7 +1815,8 @@
          id="tspan692"><tspan
            fill="#000000"
            stroke="none"
-           id="tspan690">(moyenne sur dix poissons)</tspan></tspan></tspan></text><rect
+           id="tspan690">(moyenne sur dix poissons)</tspan></tspan></tspan></text>
+<rect
      class="BoundingBox"
      stroke="none"
      fill="none"
@@ -1826,7 +1847,8 @@
          id="tspan709"><tspan
            fill="#000000"
            stroke="none"
-           id="tspan707">inactif</tspan></tspan></tspan></text></g><text
+           id="tspan707">inactif</tspan></tspan></tspan></text>
+</g><text
    class="TextShape"
    id="text753"
    y="-264.58334"
@@ -1855,4 +1877,5 @@
          fill="#000000"
          stroke="none"
          id="tspan747">moteur</tspan></tspan></tspan></text>
+
 </svg>

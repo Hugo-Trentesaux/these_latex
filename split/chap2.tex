@@ -22,29 +22,30 @@ Cette deuxième solution est plus performante, car elle reproduit réellement la
 Un microscope à feuille de lumière par balayage est généralement constitué de deux bras optiques formant un télescope de manière à placer le miroir rotatif galvanométrique de balayage dans le plan congugué de l'échantillon. Ainsi, son mouvement de rotation est transformé en une pure translation du faisceau au niveau de l'échantillon. Ce montage est volumineux et inadapté à un microscope rotatif. Il a donc fallu le miniaturiser et garantir sa stabilité. Les télescopes ont été remplacés par des objectifs de microscope. Le plan de Fourier n'étant pas accessible à cause de la distance frontale arrière, le miroir galvanométrique est légèrement hors du plan conjugué, ce qui introduit une rotation du faisceau dans l'échantillon en plus de la translation. Cette rotation reste cependant faible (<0.4°), et compatible avec une feuille de lumière par balayage.  
 L'unité d'illumination est composée d'un connecteur de fibre monté sur un positionneur piézoélectrique et de deux objectifs en montage confocal de part et d'autre d'un miroir galvanométrique (Fig. \ref{FIGminiaturelightsheet}).
 
-\begin{figure}
+\begin{figure}[b]
     \centering
-    \includegraphics[width=0.8\textwidth]{./files/miniature_light-sheet.svg.png}
-    \caption{Schéma extrait de l'article \cite{migault_whole-brain_2018}. Le module miniature peut être monté sur un microscope rotatif. Le poisson est positionné dans l'axe de rotation, et tourné en roulis. L'illumination vient par le côté.
+    \includegraphics[width=0.9\textwidth]{./files/miniature_light-sheet.svg.png}
+    \caption{Module \emph{light-sheet} miniature. Schéma extrait de l'article \cite{migault_whole-brain_2018}. Le module miniature peut être monté sur un microscope rotatif. Le poisson est positionné dans l'axe de rotation, et tourné en roulis. L'illumination vient par le côté.
     \label{FIGminiaturelightsheet}}
     \end{figure}
 
 \subsubsection{Unité de détection}
 
-L'enjeu pour une unité de détection rapide est de permettre l'enregistrement avec une durée d'exposition la plus courte possible tout en maintenant un rapport signal à bruit suffisant. Pour collecter beaucoup de lumière, il faut une grande ouverture numérique, et donc une distance de travail faible. Cependant, pour une imagerie à champ large, il faut un grandissement faible. La solution retenue est un objectif Olympus d'ouverture numérique 1 et de grandissement x20. Le grandissement est donné pour une lentille de tube de 180 mm, mais une lentille de tube de 150 mm a été utilisée, ce qui donne donc un grandissement de x16.667. Un pixel de la caméra mesure 6.5 µm, ce qui donne un pixel objet de 0.39 µm. Le capteur CMOS est un carré de 2048 pixels de côté, ce qui donne un champ objet de 0.8 mm. Le champ objet correspond à la longueur du cerveau, mais le pixel objet est très petit par rapport à un neurone. Pour limiter la quantité de données à enregistrer et augmenter le rapport signal à bruit, on peut combiner par les pixels de la caméra, opération appellée \emph{binning}. Cela donne un pixel objet de 0.78 µm.
+L'enjeu pour une unité de détection rapide est de permettre l'enregistrement avec une durée d'exposition la plus courte possible tout en maintenant un rapport signal à bruit suffisant. Pour collecter beaucoup de lumière, il faut une grande ouverture numérique, et donc une distance de travail faible. Cependant, pour une imagerie à champ large, il faut un grandissement faible. La solution retenue est un objectif Olympus d'ouverture numérique 1 et de grandissement x20. Le grandissement est donné pour une lentille de tube de 180 mm, mais une lentille de tube de 150 mm a été utilisée, ce qui donne donc un grandissement de $\times$16.667. Un pixel de la caméra mesure 6.5 µm, ce qui donne un pixel objet de 0.39 µm. Le capteur CMOS est un carré de 2048 pixels de côté, ce qui donne un champ objet de 0.8 mm. Le champ objet correspond à la longueur du cerveau, mais le pixel objet est très petit par rapport à un neurone. Pour limiter la quantité de données à enregistrer et augmenter le rapport signal à bruit, on peut combiner par les pixels de la caméra, opération appellée \emph{binning}. Cela donne un pixel objet de 0.78 µm.
 
 \begin{figure}
-\centering
-\includegraphics[width=0.8\textwidth]{./files/detection_unit.svg.png}
-\caption{Schéma du filtrage spectral dans le bras de détection. Le filtre notch (\emph{encoche}) est très étroit et rejette la longueur d'onde du laser (488 nm). Le filtre GFP et plus large et transmet seulement une bande autour de la fréquence de la GFP (525 nm).}
-% 1e-5 à 488 nm pour GFP
-% 1e-6 à 488 nm pour Notch
-\end{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{./files/detection_unit.svg.png}
+    \caption{Schéma du filtrage spectral dans le bras de détection. Le filtre notch (\emph{encoche}) est très étroit et rejette la longueur d'onde du laser (488 nm). Le filtre GFP et plus large et transmet seulement une bande autour de la fréquence de la GFP (525 nm).
+    \label{FIGspectralfiltering}}
+    % 1e-5 à 488 nm pour GFP
+    % 1e-6 à 488 nm pour Notch
+    \end{figure}
 
 % OK VolkerComment
 % Originally, we did the experiments only with the notch filter. All photons emitted by the fluorophore were then collected which maximizes the signal. The GFP filter helps to block some additionally excited autofluorescence in the tissue. With the GFP filter the notch filter is not really anymore necessary. You can keep your figure but show the real GFP filter transmission spectrum in this case !
 
-Pour obtenir un bon rapport signal à bruit, il faut réduire la lumière parasite. Une source puissante est le laser d'illumination, elle peut être bloquée spécifiquement avec un filtre coup bande très étroit à sa longueur d'onde. Un filtre GFP (passe-bande à la longueur d'onde de la GFP) permet de filtrer davantage l'autofluorescence des tissus. Après ce filtrage, les bruits restants sont le bruit de photon et le bruit numérique. Le bruit numérique pourrait être réduit avec un système de refroidissement prévu sur la caméra, mais celui-ci est trop encombrant pour le microscope rotatif, et a donc été retiré. Le bruit de photon ne peut être réduit qu'avec des meilleures sondes calciques ou en exposant plus longtemps, mais il est négligeable devant le bruit numérique d'une caméra non refroidie. Le bruit numérique présente une structure liée à la constitution interne du capteur et qui fait apparaître des raies de pixel et la ligne médiale de l'obturateur déroulant.
+Pour obtenir un bon rapport signal à bruit, il faut réduire la lumière parasite. Une source puissante est le laser d'illumination, elle peut être bloquée spécifiquement avec un filtre coup bande très étroit à sa longueur d'onde. Un filtre GFP (passe-bande à la longueur d'onde de la GFP) permet de filtrer davantage l'autofluorescence des tissus (Fig. \ref{FIGspectralfiltering}). Après ce filtrage, les bruits restants sont le bruit de photon et le bruit numérique. Le bruit numérique pourrait être réduit avec un système de refroidissement prévu sur la caméra, mais celui-ci est trop encombrant pour le microscope rotatif, et a donc été retiré. Le bruit de photon ne peut être réduit qu'avec des meilleures sondes calciques ou en exposant plus longtemps, mais il est négligeable devant le bruit numérique d'une caméra non refroidie. Le bruit numérique présente une structure liée à la constitution interne du capteur et qui fait apparaître des raies de pixel et la ligne médiale de l'obturateur déroulant.
 
 % OK VolkerComment
 % No! We do not filter out light from light sources in the room! The systems are shielded such that this light does not enter the detection path . The GFP filter filters additional excited autofluorescence.
@@ -53,59 +54,61 @@ Pour obtenir un bon rapport signal à bruit, il faut réduire la lumière parasi
 
 \subsubsection{Stabilité mécanique}
 
-Les deux unités (illumination et détection) d'un poids total inférieur à 2 kg tiennent sur une plaque de 50 cm de côté fixée à un moteur à grand couple et grande précision. Le moteur dispose d'un grand rotor permettant une large zone de fixation qui minimise les déformations mécaniques de la plaque qui soutient le microscope. Nous avons caractérisé précisément l'instabilité liée à la rotation du microscope à l'aide de billes micrométriques fluorescentes.
-
-\begin{figure}
+\begin{figure}[b!]
     \centering
     \includegraphics[width=0.7\textwidth]{./files/bead_position.svg.png}
     \caption{Estimation précise de la position d'une bille fluorescente par balayage vertical du profil radial de sa tache de diffraction.
-    \\ a. Image d'une bille dans le plan focal de l'objectif (a1)
-    \\ b. Image d'une bille hors du plan focal de l'objectif (b1)
-    \\ c. Établissement du profil radial par moyennage autour du centre de gravité de l'image
+    \\ a. Image d'une bille dans le plan focal de l'objectif (a1).
+    \\ b. Image d'une bille hors du plan focal de l'objectif (b1).
+    \\ c. Établissement du profil radial par moyennage autour du centre de gravité de l'image, après retranchement du bruit de fond.
     \\ d. Profil cylindrique de la figure de diffraction constitué du profil radial pour plusieurs positions de l'objectif espacées de 20 nm. Les traits pointillés correspondent aux plans (a) et (b). La corrélation verticale du profil cylindrique pour plusieurs positions du microscope donne avec précision le déplacement de la bille.
     \label{FIGbeadstability}}
     \end{figure}
 
-Une bille fluorescente de 1 µm est éclairée transversalement par le laser d'excitation, qui coïncide avec le plan focal de l'objectif de détection. Elle est imagée pour plusieurs positions hors focus de l'objectif, ce qui fait apparaître des franges d'interférence. Un profil cylindrique de ces franges est réalisé pour plusieurs positions du microscope et à plusieurs intervalles de temps ce qui permet de mettre en évidence le déplacement latéral et vertical de la bille au cours du temps et en fonction de la position du microscope. Cette technique a l'avantage d'être précise (de l'ordre de 100 nm) et robuste aux variations liées au photoblanchiment. Elle a permis de montrer que lors de la rotation du microscope, le déplacement reste inférieur à 500 nm dans la direction verticale et 2 µm dans la direction latérale (cette dernière peut être corrigée lors de l'analyse comme on le verra plus tard).
+Les deux unités (illumination et détection) d'un poids total inférieur à 2 kg tiennent sur une plaque de 50 cm de côté fixée à un moteur à grand couple et grande précision. Le moteur dispose d'un grand rotor permettant une large zone de fixation qui minimise les déformations mécaniques de la plaque qui soutient le microscope. Nous avons caractérisé précisément l'instabilité liée à la rotation du microscope à l'aide de billes micrométriques fluorescentes.
+
+Une bille fluorescente de 1 µm est éclairée transversalement par le laser d'excitation, qui coïncide avec le plan focal de l'objectif de détection. Elle est imagée pour plusieurs positions hors focus de l'objectif, ce qui fait apparaître des franges d'interférence. Un profil cylindrique de ces franges est réalisé pour plusieurs positions du microscope et à plusieurs intervalles de temps, ce qui permet de mettre en évidence le déplacement latéral et vertical de la bille au cours du temps et en fonction de la position du microscope. Cette technique a l'avantage d'être précise (de l'ordre de 100 nm) et robuste aux variations liées au photoblanchiment. Elle a permis de montrer que lors de la rotation du microscope, le déplacement reste inférieur à 500 nm dans la direction verticale et 2 µm dans la direction latérale (cette dernière peut être corrigée lors de l'analyse comme on le verra plus tard).
+
+\begin{figure}[b!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{./files/possible-waist_1P.png}
+    \caption{Demie largeur du profil gaussien à 488 nm dans l'eau pour différentes valeurs du waist. Le trait en pointillé montre le rayon d'un neurone. On cherche à minimiser l'épaisseur du faisceau entre -100 µm à 100 µm. Le trait épais marque la position optimale pour ce critère (les autres profils sont tous plus larges à 100 µm du centre). L'ouverture numérique associée vaut $ \mathrm{NA} = n\sin(\lambda/\pi n w_0) $.
+    \label{FIGoptimalwaist}}
+    \end{figure}
+
+% OK VolkerComment
+% Indicate the NA used for the different curves.
 
 \subsection{Nappe laser par balayage}
 
 \subsubsection{Ouverture numérique optimale}
 
-Le volume d'un cerveau de larve de poisson zèbre mesure 400 µm de largeur × 800 µm de longueur × 300 µm de hauteur et est situé dans la partie dorsale du corps de la larve. Afin de minimiser l'épaisseur de tissus traversée, on place donc l'objectif de détection sur la partie supérieure. Le laser peut donc être placé sur le côté. Les yeux sont très pigmentés et opaques à la lumière, ce qui crée une zone d'ombre entre les yeux. Certains laboratoires qui sont intéressés par ces régions appartenant au télencéphale et au diencéphale peuvent donc ajouter un deuxième laser à l'avant pour éclairer cette région.
+Le volume d'un cerveau de larve de poisson zèbre mesure 400 µm de largeur × 800 µm de longueur × 300 µm de hauteur et est situé dans la partie dorsale du corps de la larve. Afin de minimiser l'épaisseur de tissus traversée, on place donc l'objectif de détection sur la partie supérieure. Le laser peut donc être placé sur le côté. Les yeux sont très pigmentés et opaques à la lumière, ce qui crée une zone d'ombre entre les yeux. Certains laboratoires qui sont intéressés par ces régions appartenant au télencéphale et au diencéphale peuvent donc ajouter un deuxième laser à l'avant pour éclairer cette région \cite{vladimirov_light-sheet_2014}.
 
-Pour produire un faisceau laser le plus fin possible sur une longueur de 400 µm, il faut minimiser la largeur après 200 µm de propagation avec comme variable le waist $w_0$ placé au milieu de l'échantillon :
+Pour produire un faisceau laser le plus fin possible sur une longueur de 400 µm, il faut minimiser la largeur à 200 µm du waist suivant la direction de propagation, avec comme variable le waist $w_0$ placé au milieu de l'échantillon :
 
 $$
 w(z) = w_0 \, \sqrt{ 1+ {\left( \frac{z}{z_\mathrm{R}} \right)}^2 } \qquad z_\mathrm{R} = \frac{n \pi w_0^2 }{\lambda}
 $$
 
-\begin{figure}
-\centering
-\includegraphics[width=0.8\textwidth]{./files/possible-waist_1P.png}
-\caption{Demie largeur du profil gaussien à 488 nm dans l'eau pour différentes valeurs du waist. Le trait en pointillé montre le rayon d'un neurone. On cherche à minimiser l'épaisseur du faisceau entre -100 µm à 100 µm. Le trait épais marque la position optimale pour ce critère (les autres profils sont tous plus larges à 100 µm du centre). L'ouverture numérique associée vaut $ \mathrm{NA} = n\sin(\lambda/\pi n w_0) $.}
-\end{figure}
-
-% OK VolkerComment
-% Indicate the NA used for the different curves.
-
-Un waist trop petit est trop divergeant, et donc trop large sur les bords, mais un waist trop large limite la résolution. Il faut donc trouver un optimum. La taille d'un neurone étant de 8 µm environ, des valeurs inférieures sont souhaitables.
+Un waist trop petit est trop divergeant, et donc trop large sur les bords, mais un waist trop large limite la résolution. Il faut donc trouver un optimum (Fig. \ref{FIGoptimalwaist}). Le rayon d'un neurone étant de 4 µm environ, des valeurs inférieures sont souhaitables.
 
 Une valeur de waist possible pour un échantillon de 400 µm est de 3 µm à 488 nm et de 5 µm à 915 nm. Pour ces valeurs, la largeur du faisceau à 488 nm vaut 3 µm au centre et 10 µm sur les bords du cerveau. À 915 nm c'est 5 µm au centre et 14 µm sur les bords, mais il faut aussi prendre en compte l'effet deux photons. En pratique, la plupart des neurones (75\% \cite{panier_fast_2013}) sont situés entre -150 µm et +150 µm, la largeur du faisceau aux extrémités n'est donc pas critique.
 
 \subsubsection{Balayage horizontal et vertical}
 
-Pour effectuer le balayage, on déplace le faisceau horizontalement. Pour que l'intensité soit homogène sur une image, il faut adopter une vitesse de déplacement constante. Il est alors possible de faire un aller simple ou des allers-retours en nombre entier pendant le temps d'exposition. Pour obtenir une image volumétrique, il suffit de répéter l'opération pour plusieurs couches, en changeant le plan focal de l'objectif de détection et la position vertical de la nappe. Procéder de cette manière couche après couche force à attendre entre deux couches pour laisser le temps aux éléments mécaniques de se positionner, ce qui prend un temps (environ 10 ms) non négligeable pour des durées d'exposition courtes. Il est également possible de bouger les éléments mécaniques de manière continue en balayant en aller simple. Les couches sont donc légèrement obliques, mais on gagne considérablement en fréquence d'acquisition. Cela est possible grâce au mode \emph{synchronous readout} de la caméra qui permet de lire les valeurs d'une ligne de pixels tout en exposant une autre.
+Pour effectuer le balayage, on déplace le faisceau horizontalement. Pour que l'intensité soit homogène sur une image, il faut adopter une vitesse de déplacement constante (balayage en dents de scie) et effectuer un nombre entier de passages. Il est donc possible de faire un aller simple ou des allers-retours pendant le temps d'exposition. Pour obtenir une image volumétrique, il suffit de répéter l'opération pour plusieurs couches, en changeant le plan focal de l'objectif de détection et la position vertical de la nappe. Procéder de cette manière couche après couche force à attendre entre deux couches pour laisser le temps aux éléments mécaniques de se positionner, ce qui prend un temps (environ 10 ms) non négligeable pour des durées d'exposition courtes. Il est également possible de bouger les éléments mécaniques de manière continue en balayant en aller simple. Les couches sont donc légèrement obliques, mais on gagne considérablement en fréquence d'acquisition. Cela est possible grâce au mode \emph{synchronous readout} de la caméra qui permet de lire les valeurs d'une ligne de pixels tout en exposant une autre (Fig. \ref{FIGsynchronousreadout}).
 
 
 \begin{figure}
-\centering
-\includegraphics[width=0.6\textwidth]{./files/schema_balayage.svg.png}
-\caption{Différents modes de balayage et de lecture du capteur CMOS. Les couches z successives sont représentées à gauche, le capteur (dans le plan xy) est représenté à droite.\\
-a. Balayage par allers-retours lors de l'exposition de tous les pixels, puis lecture de tous les pixels et déplacement à la couche suivante. Le déplacement étant lent, une pause est nécessaire. Pas d'exposition pendant la pause\\
-b. Balayage par aller simple lors de l'exposition, lecture successives des rangées de pixels et ré-exposition immédiate. Le déplacement vertical est continu à vitesse constante, les couches en z sont légèrement obliques. Le cycle exposition-lecture est décalé dans le temps pour chaque rangée de pixels.}
-\end{figure}
-% Add a figure that shows the different scan protocols and that explains the camera readout
+    \centering
+    \includegraphics[width=0.6\textwidth]{./files/schema_balayage.svg.png}
+    \caption{Différents modes de balayage et de lecture du capteur CMOS. Les couches z successives sont représentées à gauche, le capteur (dans le plan xy) est représenté à droite.\\
+    a. Balayage par allers-retours lors de l'exposition de tous les pixels, puis lecture de tous les pixels et déplacement à la couche suivante. Le déplacement étant lent, une pause est nécessaire. Pas d'exposition pendant la pause\\
+    b. Balayage par aller simple lors de l'exposition, lecture successives des rangées de pixels et ré-exposition immédiate. Le déplacement vertical est continu à vitesse constante, les couches en z sont légèrement obliques. Le cycle exposition-lecture est décalé dans le temps pour chaque rangée de pixels.
+    \label{FIGsynchronousreadout}}
+    \end{figure}
+    % Add a figure that shows the different scan protocols and that explains the camera readout
 
 Pour un temps d'exposition par couche de 10 ms en mode d'acquisition continu, on peut par exemple réaliser un scan du cerveau à 2,5 Hz en 30 couches espacées de 8µm. Cela permet d'imager la majeure partie du cerveau du poisson. Les couches les plus profondes sont moins nettes, car le signal traverse plus de tissus avant d'atteindre l'objectif, et la zone située entre les yeux reste dans l'ombre si on n'utilise qu'un laser. Mais chaque neurone visible est imagé à une fréquence de 2.5 Hz.
 
@@ -121,7 +124,7 @@ Pour un temps d'exposition par couche de 10 ms en mode d'acquisition continu, on
 
 \section{Analyse des données}
 
-L'analyse des données produites par le microscope est en enjeu en lui-même. En effet, avec des images de 1024$\times$600 pixels, 20 couches et 25 minutes d'enregistrement à 2 volumes par seconde (3000 pas de temps), on obtient 60000 images. Pour des pixels stockés sur 16 bits, cela donne près de 60 Go de données brutes. Dans ce chapitre, je m'intéresse aux stratégies pour traiter ces données. Les chiffres donnés ci-dessus sont ceux utilisés pour les calculs en ordre de grandeur par la suite.
+L'analyse des données produites par le microscope est en enjeu en elle-même. En effet, avec des images de 1024$\times$600 pixels, 20 couches et 25 minutes d'enregistrement à 2 volumes par seconde (3000 pas de temps), on obtient 60000 images. Pour des pixels stockés sur 16 bits, cela donne près de 60 Go de données brutes. Dans ce chapitre, je m'intéresse aux stratégies pour traiter ces données. Les chiffres donnés ci-dessus sont ceux utilisés pour les calculs en ordre de grandeur par la suite.
 
 \subsection{Logiciels existants}
 
@@ -148,13 +151,14 @@ Aucun logiciel adapté à nos données n'étant disponible à l'époque, nous av
 
 \paragraph{Espace de référence}
 
-Dans la suite de cette section, j'appellerai de manière équivalente (x,y,z,t) les coordonnées d'un point et les axes dans le repère du poisson. Ces coordonnées sont données dans l'espace de référence RAST (\emph{Right Anterior Superior Time}), c'est-à-dire que l'axe x est orienté vers la droite de la larve, l'axe y vers l'avant, l'axe z vers le haut, et le temps dans le sens naturel.
-
-\begin{figure}
+\begin{figure}[b]
     \centering
     \includegraphics[width=0.6\textwidth]{./files/RAST.svg.png}
-    \caption{Convention d'orientation RAS (a.) et comparaison avec les systèmes de coordonnées naturels de ImageJ (b. coordonnées des pixels d'un écran) et Matlab (c. coordonnées des éléments d'une matrice).}
+    \caption{Convention d'orientation RAS (a.) et comparaison avec les systèmes de coordonnées naturels de ImageJ (b. coordonnées des pixels d'un écran) et Matlab (c. coordonnées des éléments d'une matrice).
+    \label{FIGorientationconvention}}
     \end{figure}
+
+Dans la suite de cette section, j'appellerai de manière équivalente (x,y,z,t) les coordonnées d'un point et les axes dans le repère du poisson. Ces coordonnées sont données dans l'espace de référence RAST (\emph{Right Anterior Superior Time}), c'est-à-dire que l'axe x est orienté vers la droite de la larve, l'axe y vers l'avant, l'axe z vers le haut, et le temps dans le sens naturel (Fig. \ref{FIGorientationconvention}).
 
 % OK VolkerComment
 % Add a figure illustrating the RAST definition and add your wiki page with the corresponding figures about the different coordinate systems used in Matlab, Fiji, cmtk
@@ -164,11 +168,11 @@ Dans la suite de cette section, j'appellerai de manière équivalente (x,y,z,t) 
 % OK VolkerComment
 % Start introducing the problem. We have two main problems. Slow thermal drift and fast stimulus induced movements. In addition we have to scope with tissue deformation but normally we discard these runs. Then discuss the different approaches that you developed. Autocorrelation with the first image, autocorrelation with an average image, treatment of all layers independently, estimating the drift per stack based on one layer with good contrast or selecting high contrast landmarks to calculated the drift. Discuss that you developed different approaches: 1. Estimating the fast and slow movements together, 2. Estimating and correcting slow and fast drift sequentially. 3. Correcting the sinusoïdal stimulus induced fast component by hand by applying a sinusoïdal drift correction with user defined amplitude and phase. Make a figure that illustrates the different approaches
 
-Pour des données à quatre dimensions (x,y,z,t), il est impératif qu'un pixel (x,y,z) représente toujours le même espace objet dans le cerveau. Une première étape consiste donc à aligner toutes les images entre elles. Dans un cas totalement général, le tissu imagé peut connaître des déformations au cours de l'expérience, et il faut estimer et appliquer la transformation inverse. Suite2P et CaImAn fournissent tous les deux des algorithmes de déformation non rigide, mais ces algorithmes sont couteux en temps et il est difficile d'estimer numériquement leur performance. De plus, sur des expériences de vingt minutes, les déformations sont généralement trop faibles pour que cette étape soit réellement nécessaire, nous avons donc opté pour une transformation rigide. Cette transformation rigide peut avoir plusieurs degrés de liberté en translation et rotation. Comme précisé dans la partie sur la conception de la plateforme rotative, nous avons obtenu une excellente stabilité en z, les translations restantes sont donc uniquement selon (x,y), et les rotations sont également négligeables. 
+Pour des données à quatre dimensions (x,y,z,t), il est impératif qu'un pixel (x,y,z) représente toujours le même espace objet dans le cerveau. Une première étape consiste donc à aligner toutes les images entre elles. Dans un cas totalement général, le tissu imagé peut connaître des déformations au cours de l'expérience, et il faut estimer et appliquer la transformation inverse. Suite2P et CaImAn implémentent tous les deux des algorithmes de déformation non rigide (phase correlation, NoRMCorre \emph{non rigid motion correction}), mais ces algorithmes sont coûteux en temps et il est difficile d'estimer numériquement leur performance. De plus, sur des expériences de vingt minutes, les déformations sont généralement trop faibles pour que cette étape soit réellement nécessaire, nous avons donc opté pour une transformation rigide. Cette transformation rigide peut avoir plusieurs degrés de liberté en translation et rotation. Comme précisé dans la partie sur la conception de la plateforme rotative, nous avons obtenu une excellente stabilité en z, les translations restantes sont donc uniquement selon (x,y), et les rotations sont également négligeables. 
 
 Une difficulté pour trouver cette translation est que l'image peut évoluer le long de l'enregistrement. En effet, en fonction de l'activité des différentes régions, l'image peut se transformer entre le début et la fin de l'expérience à un point suffisant pour empêcher tout algorithme naïf de fonctionner. Dans le cas de l'imagerie monophotonique, le signal de fond est suffisant pour qu'une simple autocorrélation sur l'ensemble de l'image permette de trouver le déplacement. Dans le cas de l'imagerie deux photons, ce signal étant bien plus faible, l'autocorrélation sur l'ensemble de l'image est dominée par les changements de fluorescence liée à l'activité de neurones. La dernière solution retenue a donc été de réaliser l'autocorrélation sur une zone de l'image stable pendant toute la durée de l'expérience facilement identifiable à l'œil. C'est par exemple le cas pour un neurone mort qui reste toujours dépolarisé (on en trouve toujours quelques-uns par volume).
 
-Cette étape nécessite donc une supervision rapide à l'œil humain mais fonctionne en général du premier coup et est extrêmement rapide par rapport à tout autre algorithme utilisant l'image entière. De plus, il suffit de réaliser l'opération pour une seule couche et d'extrapoler à tout le volume. Cette étape permet de corriger les déplacements latéraux rapides ($x$, $y$) liés directement à la rotation de la plateforme ainsi que la dérive lente en $y$ liée à la contraction du boudin d'agar tenant le poisson.
+Cette étape nécessite donc une supervision rapide à l'œil mais fonctionne en général du premier coup et est extrêmement rapide par rapport à tout autre algorithme utilisant l'image entière. De plus, il suffit de réaliser l'opération pour une seule couche et d'extrapoler à tout le volume. Cette étape permet de corriger les déplacements latéraux rapides ($x$, $y$) liés directement à la rotation de la plateforme ainsi que la dérive lente en $y$ liée à la contraction du boudin d'agar tenant le poisson.
 
 \paragraph{Alignement sur un cerveau de référence}
 
@@ -182,15 +186,15 @@ Aligner le volume sur un cerveau de référence permet d'une part de comparer pl
 \paragraph{Analyse de Fourier par pixel}
 
 \begin{figure}
-\centering
-\includegraphics[width=1\textwidth]{./files/analysis_illustration.svg.png}
-\caption{Différentes étapes de l'analyse.
-\\a. Segmentation par l'algorithme \emph{watershed} affichée par-dessus une image moyenne.
-\\b. Détail de la segmentation. Un extrait du signal du neurone en vert est affiché dessous. Chaque trait léger correspond à un pixel du neurone, le trait épais correspond à la moyenne de tous les pixels pour ce neurone. L'histogramme montre la répartition des tailles des régions pour cette couche. La plupart des segments contiennent entre 20 et 50 pixels.
-\\c. Valeur de signal pour un pixel (le pixel en magenta sur le neurone vert) tout au long de l'enregistrement (le niveau de bruit de la caméra est à 400). Un détail sur la partie encadrée met en évidence son activité périodique.
-\\d. Détail de l'amplitude de la transformée de Fourier discrète du signal précédent. On voit un large pic à la fréquence de stimulation, largement au-dessus du bruit évalué sur une fenêtre avoisinante.
-\label{FIGfourier}}
-\end{figure}    
+    \centering
+    \includegraphics[width=1\textwidth]{./files/analysis_illustration.svg.png}
+    \caption{Différentes étapes de l'analyse.
+    \\a. Segmentation par l'algorithme \emph{watershed} affichée par-dessus une image moyenne.
+    \\b. Détail de la segmentation. Un extrait du signal du neurone en vert est affiché dessous. Chaque trait léger correspond à un pixel du neurone, le trait épais correspond à la moyenne de tous les pixels pour ce neurone. L'histogramme montre la répartition des tailles des régions pour cette couche. La plupart des segments contiennent entre 20 et 50 pixels.
+    \\c. Valeur de signal pour un pixel (le pixel en magenta sur le neurone vert) tout au long de l'enregistrement (le niveau de bruit de la caméra est à 400). Un détail sur la partie encadrée met en évidence son activité périodique.
+    \\d. Détail de l'amplitude de la transformée de Fourier discrète du signal précédent. On voit un large pic à la fréquence de stimulation, largement au-dessus du bruit évalué sur une fenêtre avoisinante.
+    \label{FIGfourier}}
+    \end{figure}    
 
 % OK VolkerComment
 % Add a figure of a typical PSD and show visually how you extract the data
@@ -202,7 +206,7 @@ Ces valeurs pour chaque pixel sont ensuite utilisées pour représenter une coul
 
 \paragraph{Segmentation et analyse par neurone}
 
-L'analyse par pixel est pertinente pour des études préliminaires simples, car elle est gourmande en calcul, chaque section de neurone (environ 6 µm de diamètre) étant imagée sur environ 30 pixels (pixel objet de 0.8 µm de côté) (cf histogramme Fig. \ref{FIGfourier} b.). En regroupant les pixels appartenant au même neurone, on peut réduire le volume de données à traiter tout en conservant leur qualité (Fig. \ref{FIGfourier} b.). Il existe de nombreux algorithmes de segmentation, certains faisant appel aux données temporelles pour tirer profit de l'activité des neurones, d'autre opérant sur l'image moyenne. Nous avons pour l'instant uniquement utilisé l'algorithme de ligne de partage des eaux (\emph{watershed}) combiné à une égalisation locale de contraste. Cela donne des résultats satisfaisants comme on le voit en figure \ref{FIGfourier} (a.).
+L'analyse par pixel est pertinente pour des études préliminaires simples, car elle est gourmande en calcul, chaque section de neurone (environ 6 µm de diamètre) étant imagée sur environ 30 pixels (pixel objet de 0.8 µm de côté) (cf histogramme Fig. \ref{FIGfourier} b.). En regroupant les pixels appartenant au même neurone, on peut réduire le volume de données à traiter tout en conservant leur qualité (Fig. \ref{FIGfourier} b.). Il existe de nombreux algorithmes de segmentation, certains faisant appel aux données temporelles pour tirer profit de l'activité des neurones, d'autre opérant sur l'image moyenne. Suite2P utilise la PCA (\emph{Principal Component Analysis}), la SVD (\emph{Single Value Decomposition}) et des algorithmes \emph{custom} ; CaImAn utilise une CNMF (\emph{Coupled Nonnegative Matrix Factorization}). Nous avons pour l'instant uniquement utilisé l'algorithme de ligne de partage des eaux (\emph{watershed}) combiné à une égalisation locale de contraste. Cela donne des résultats satisfaisants comme on le voit en figure \ref{FIGfourier} (a.).
 
 % OK illustrer pixellation du neurone
 % OK vérifier taille neurone en pixel
@@ -225,15 +229,15 @@ Après segmentation, on définit la valeur d'un neurone comme la moyenne des val
 Le code utilisé pour l'analyse étant volumineux, sa gestion "génétique" (duplication et mutation) posait problème. J'ai donc mis en place un gestionnaire de version qui a permis d'unir les efforts de développement et de faciliter les mises à jour (correction de bugs, nouvelles fonctionnalités). Son utilisation a eu un effet positif sur la qualité du code, sa réutilisabilité, et sa prise en main. 
 
 \paragraph{Support matériel}
-Lors de l'acquisition, \href{https://hcimage.com/}{HCImage} le logiciel édité par Hamamatsu pour l'utilisation de la caméra propose deux options. L'une consiste à enregistrer en mémoire vive les images au cours de l'enregistrement et à les exporter sur le disque à la fin, l'autre consiste à enregistrer un fichier de cache au format propriétaire dcimg directement sur le disque. Dans le premier cas, la vitesse d'enregistrement ne pose pas problème, mais la taille de la mémoire vive est limitée, ce qui ne convient pas pour de longues expériences. Dans le deuxième cas, la vitesse d'enregistrement est limitante pour des images volumineuses avec une fréquence élevée, un disque dur rotatif ne convient pas et nous avons donc utilisé un disque SSD.
+Lors de l'acquisition, \href{https://hcimage.com/}{HCImage} le logiciel édité par Hamamatsu pour l'utilisation de la caméra propose deux options. L'une consiste à enregistrer en mémoire vive les images au cours de l'enregistrement et à les exporter sur le disque à la fin, l'autre consiste à enregistrer un fichier de cache au format propriétaire \verb|dcimg| directement sur le disque. Dans le premier cas, la vitesse d'enregistrement ne pose pas problème, mais la taille de la mémoire vive est limitée, ce qui ne convient pas pour de longues expériences. Dans le deuxième cas, la vitesse d'enregistrement est limitante pour des images volumineuses avec une fréquence élevée, un disque dur rotatif ne convient pas et nous avons donc utilisé un disque SSD.
 
-\paragraph{Fichier de cache}
-Initialement, ce fichier de cache était converti en une collection d'images au format tiff via HCImage, qui étaient ensuite transférées sur le réseau interne depuis l'ordinateur d'acquisition vers l'ordinateur d'analyse pour enfin être traitées. Les programmes et systèmes de fichiers n'étant pas adaptés à la gestion de si nombreux fichiers, cela occasionnait un surcoût sur le temps de transfert et le temps de copie. Pour résoudre ce problème, nous sommes passés à l'utilisation directe du format dcimg. Après plusieurs tentatives infructueuses d'obtenir de la documentation auprès de l'entreprise Hamamatsu, nous avons opté pour une approche par rétroingénierie (d'autres implémentations plus complètes ont été développées par la suite comme \href{https://github.com/lens-biophotonics/dcimg}{ce module dcimg pour python}).
+\paragraph{Fichier de cache dcimg}
+Initialement, ce fichier de cache était converti en une collection d'images au format tiff via HCImage, qui étaient ensuite transférées sur le réseau interne depuis l'ordinateur d'acquisition vers l'ordinateur d'analyse pour enfin être traitées. Les programmes et systèmes de fichiers n'étant pas adaptés à la gestion de si nombreux fichiers, cela occasionnait un surcoût sur le temps de transfert et le temps de copie. Pour résoudre ce problème, nous sommes passés à l'utilisation directe du format \verb|dcimg|. Après plusieurs tentatives infructueuses d'obtenir de la documentation auprès de l'entreprise Hamamatsu, nous avons opté pour une approche par rétroingénierie (d'autres implémentations plus complètes ont été développées par la suite comme \href{https://github.com/lens-biophotonics/dcimg}{ce module dcimg pour python}).
 
 \paragraph{Memory mapping}
-Il n'est pas envisageable de charger un jeu de données de plus de 60 Go en mémoire vive, il faut donc ouvrir les données au moment de leur utilisation. Pour obtenir une tranche d'un pixel selon (t) sur des images individuelles, il est nécessaire d'ouvrir chacune des images. Le grand nombre d'opérations de fichiers requis peut être réduit en groupant plusieurs pixels, mais au prix d'une perte de simplicité qui rend le code difficile à gérer. La solution retenue est le memory mapping, qui permet de manipuler un fichier sur le disque comme un fichier en mémoire vive, entrainant un gain de simplicité et de performance. De plus, le memory mapping permet de travailler directement sur le fichier de cache, ce qui évite des copies supplémentaires couteuses en espace et en temps.
+Il n'est pas envisageable de charger un jeu de données de plus de 60 Go en mémoire vive, il faut donc ouvrir les données au moment de leur utilisation. Pour obtenir une tranche d'un pixel selon (t) sur des images individuelles, il est nécessaire d'ouvrir chacune des images. Le grand nombre d'opérations de fichiers requis peut être réduit en groupant plusieurs pixels, mais au prix d'une perte de simplicité qui rend le code difficile à gérer. La solution retenue est le memory mapping, qui permet de manipuler un fichier sur le disque comme un fichier en mémoire vive, entrainant un gain de simplicité et de performance. De plus, le memory mapping permet de travailler directement sur le fichier de cache, ce qui évite des copies supplémentaires coûteuses en espace et en temps.
 
-Le memory mapping peut être combiné à l'allocation de mémoire disque pour être utilisé au moment de l'écriture. Cela facilite la manipulation des données par rapport à une écriture séquentielle dans un fichier binaire, et permet la modification d'une partie du fichier et la parallélisation de l'écriture. Pour cela, j'ai utilisé la fonction système \verb|fallocate| qui alloue de l'espace sur un disque formaté en \verb|ext4|.
+Le \verb|memory mapping| peut être combiné à l'allocation de mémoire disque pour être utilisé au moment de l'écriture. Cela facilite la manipulation des données par rapport à une écriture séquentielle dans un fichier binaire, et permet la modification d'une partie du fichier et la parallélisation de l'écriture. Pour cela, j'ai utilisé la fonction système \verb|fallocate| qui alloue de l'espace sur un disque formaté en \verb|ext4|.
 
 \paragraph{Calcul du quantile glissant}
 Une définition courante de la valeur de référence d'un signal calcique repose sur le calcul d'un quantile glissant (le huitième centile  \cite{dombeck_imaging_2007}). L'algorithme naïf qui consiste à calculer le quantile sur chaque fenêtre est inefficace ($\mathcal{O}(n^2)$), j'ai donc cherché une implémentation astucieuse et ai trouvé la fonction \verb|runquantile| de la bibliothèque \verb|caTools|, qui a apporté un gain en vitesse par rapport à l'implémentation précédente. Cette implémentation repose sur le tri par insertion mais retient le tri effectué sur la fenêtre précédente, ce qui lui permet d'atteindre une complexité en $\mathcal{O}(n\times k)$, où $n$ est le nombre de valeurs et $k$ la taille de la fenêtre.
@@ -249,7 +253,7 @@ Une définition courante de la valeur de référence d'un signal calcique repose
 \subsubsection{Pistes d'améliorations}
 
 \paragraph{Ordre des dimensions}
-L'ordre naturel des dimensions en mémoire est l'ordre obtenu lors de l'écriture ($(x,y),z,t$). Cet ordre permet de lire et écrire rapidement une image, mais n'est pas adapté à une tranche selon $t$. En effet les valeurs à deux instant successifs pour un même pixel ($x,y,z$) sont séparées en mémoire de 12 288 000 valeurs. Lire une tranche temporelle est extrêmement long sur un disque dur rotatif et reste limitant sur un SSD. Un gain de vitesse pour des tranches temporelles peut être obtenu en permutant l'ordre des dimensions en mémoire, au prix d'une perte pour la lecture d'images (tranche $(x,y)$). Pour un ordre ($t,x,y,z$), la vitesse de lecture des images reste suffisamment rapide pour un affichage à fréquence vidéo tout en accélérant immensément la lecture de tranches temporelles, bien plus sollicitée lors de l'analyse. Réaliser ce changement nécessite la ré-écriture d'une grande part du code actuel.
+L'ordre naturel des dimensions en mémoire est l'ordre obtenu lors de l'écriture ($(x,y),z,t$). Cet ordre permet de lire et écrire rapidement une image, mais n'est pas adapté à une tranche selon $t$. En effet les valeurs à deux instant successifs pour un même pixel ($x,y,z$) sont séparées en mémoire de 12 288 000 valeurs. Lire une tranche temporelle est extrêmement long sur un disque dur rotatif et reste limitant sur un SSD. Un gain de vitesse pour des tranches temporelles peut être obtenu en permutant l'ordre des dimensions en mémoire, au prix d'une perte pour la lecture d'images (tranche $(x,y)$). Pour un ordre ($t,x,y,z$), la vitesse de lecture des images reste suffisamment rapide pour un affichage à fréquence vidéo tout en accélérant immensément la lecture de tranches temporelles, bien plus sollicitée lors de l'analyse.
 
 % TODO ressortir les benchmarks ordre dimensions
 
@@ -259,7 +263,7 @@ La taille des données brutes pourrait être largement réduite, ce qui accélé
 % TODO estimer la taille de la ROI sur plusieurs runs
 
 \paragraph{Langage adapté}
-Les amélioration que je propose impliquent beaucoup de ré-écriture de code, c'est donc l'occasion de se poser des questions sur le langage à utiliser. Le code actuel est en Matlab, un langage qui n'est pas très adapté à la gestion de ce type de données. Changer pour un langage plus complet permettrait de gérer des données sur 12bits, d'écrire de manière plus modulaire, et autres avantages que je discute plus précisément en annexe \ref{langageadapte}.
+Les amélioration que je propose impliquent beaucoup de ré-écriture de code, c'est donc l'occasion de se poser des questions sur le langage à utiliser. Le code actuel est en Matlab, un langage qui n'est pas très adapté à la gestion de ce type de données. Changer pour un langage plus complet permettrait de changer simplement l'ordre des dimensions, de gérer des données sur 12bits, d'écrire de manière plus modulaire, de faciliter la maintenance, et autres avantages que je discute plus précisément en annexe \ref{langageadapte}.
 
 % (ancien paragraphe)
 % Jusque-là, une grande partie des données ont été analysées en langage Matlab. Ce langage n'est pas très adapté à la gestion de données de ce type et souffre de plusieurs lacunes. Matlab est généralement lent, ce qui est handicapant. Matlab n'accepte de données que sur 8, 16, 32, ou 64 bits, ce qui interdit l'amélioration consistant à encoder les données sur 12 bits. Matlab est mauvais pour réaliser un système modulaire, ce qui augmente dramatiquement les efforts pour maintenir un programme. Matlab est fermé, opaque, et sous licence propriétaire, ce qui diminue les possibilités d'utilisation du code.
@@ -295,40 +299,40 @@ Les expériences de Favre-Bulle \emph{et al} ont permis de confirmer la présenc
 \subsubsection{Carte de réponse}
 
 \begin{figure}
-\centering
-\includegraphics[width=0.95\textwidth]{./files/Migault_et-al_Fig4.jpg}
-\caption{\label{FIGMigault4}} 
-\end{figure}
+    \centering
+    \includegraphics[width=0.95\textwidth]{./files/Migault_et-al_Fig4.jpg}
+    \caption{\label{FIGMigault4}} 
+    \end{figure}
 
 \addtocounter{figure}{-1}
 \begin{figure}
-\caption{
-Figure extraite du papier de Migault \emph{et al} \cite{migault_whole-brain_2018}. Cartes de la réponse fonctionnelle à une stimulation vestibulaire en roulis. Poisson paralysé exprimant le rapporteur GCaMP6s dans le noyau des neurones (elavl3:H2B-GCaMP6s).
-\\\textbf{A}. Haut : réponse par neurone en coordonnées polaires. Quatre zones sont identifiées en niveau de gris (i, ii, iii, iv). La couleur indique le déphasage avec le stimulus. La ligne en pointillé indique la position attendue d'un signal à déphasage nul après correction du délai dû à un rapporteur GCaMP6s. Bas : schéma d'un cycle de stimulus, les flèches montrent le pic d'activité des neurones dont la réponse est la plus forte (en tenant en compte le délai du rapporteur calcique).
-\\\textbf{B}. Haut : dix couches de la carte pour une réponse typique après alignement sur le cerveau de référence Z-Brain. Bas : agrandissement des zones encadrées par les rectangles.
-\\\textbf{C}. Fraction des neurones répondant parmi les treize zones sélectionnées colorés selon leur phase.
-\\\textbf{D}. Projection maximale horizontale (moitié gauche seulement) et verticale (cerveau entier) de la carte montrée en B. pour les quatre intervalles de phase identifiés en A.
-\\\textbf{E}. Comme C. mais en moyenne sur huit poissons.
-\\\textbf{F}. Projection maximale horizontale et verticale de la carte moyennée pour huit poissons (gauche) et neuf poissons énucléés (droite).
-\\Abbréviations : \emph{Orientation} \textbf{Ro} rostral, \textbf{C} caudal, \textbf{D} dorsal, \textbf{V} ventral, \textbf{L} left, \textbf{R} right,
-\\\emph{Régions}  \textbf{Hab} habenula, \textbf{IO} inferior olive, \textbf{TL} torus longitudinalis, \textbf{Teg} tegmentum, \textbf{nMLF} nuclear medial fasciculus, \textbf{nIII} oculomotor nucleus, \textbf{nIV} trochlear nucleus, \textbf{Cer} cerebellum, \textbf{Rh} rhombomere
-}
-\end{figure}
+    \caption{
+    Figure extraite du papier de Migault \emph{et al} \cite{migault_whole-brain_2018}. Cartes de la réponse fonctionnelle à une stimulation vestibulaire en roulis. Poisson paralysé exprimant le rapporteur GCaMP6s dans le noyau des neurones (elavl3:H2B-GCaMP6s).
+    \\\textbf{A}. Haut : réponse par neurone en coordonnées polaires. Quatre zones sont identifiées en niveau de gris (i, ii, iii, iv). La couleur indique le déphasage avec le stimulus. La ligne en pointillé indique la position attendue d'un signal à déphasage nul après correction du délai dû à un rapporteur GCaMP6s. Bas : schéma d'un cycle de stimulus, les flèches montrent le pic d'activité des neurones dont la réponse est la plus forte (en tenant en compte le délai du rapporteur calcique).
+    \\\textbf{B}. Haut : dix couches de la carte pour une réponse typique après alignement sur le cerveau de référence Z-Brain. Bas : agrandissement des zones encadrées par les rectangles.
+    \\\textbf{C}. Fraction des neurones répondant parmi les treize zones sélectionnées colorés selon leur phase.
+    \\\textbf{D}. Projection maximale horizontale (moitié gauche seulement) et verticale (cerveau entier) de la carte montrée en B. pour les quatre intervalles de phase identifiés en A.
+    \\\textbf{E}. Comme C. mais en moyenne sur huit poissons.
+    \\\textbf{F}. Projection maximale horizontale et verticale de la carte moyennée pour huit poissons (gauche) et neuf poissons énucléés (droite).
+    \\Abbréviations : \emph{Orientation} \textbf{Ro} rostral, \textbf{C} caudal, \textbf{D} dorsal, \textbf{V} ventral, \textbf{L} left, \textbf{R} right,
+    \\\emph{Régions}  \textbf{Hab} habenula, \textbf{IO} inferior olive, \textbf{TL} torus longitudinalis, \textbf{Teg} tegmentum, \textbf{nMLF} nuclear medial fasciculus, \textbf{nIII} oculomotor nucleus, \textbf{nIV} trochlear nucleus, \textbf{Cer} cerebellum, \textbf{Rh} rhombomere
+    }
+    \end{figure}
 
 On voit sur la figure \ref{FIGMigault4} les cartes de réponse fonctionnelle du cerveau de larve pour une stimulation vestibulaire en roulis. La carte présente bien une antisymétrie bilatérale : les neurones de l'hémisphère gauche sont actifs en opposition de phase par rapport à ceux de l'hémisphère droit. Les neurones coactifs temporellement semblent être organisés en groupes colocalisés spatialement, ce qui dégage plusieurs groupes fonctionnels également symétriques.
 Ces groupes sont situés dans le tegmentum, le nMLF, le noyau oculomoteur (dans le mésencéphale (nIII) et dans le rhombencéphale (nIV)), le noyau octavolatéral, le noyau vestibulaire tangantiel, le noyau vestibulo-spinal, le rhombomère 7, et l'olive inférieure. Dans d'autres régions l'activité est plus éparse : le torus longitudinalis, l'habenula, le tectum optique, le cerebellum.
 
 \subsubsection{Déphasage de GCaMP6s}
 
-\begin{figure}
-\centering
-\includegraphics[width=0.8\textwidth]{./files/chen2013_GCaMP6.svg.png}
-\caption{Graphiques extraits de Chen \emph{et al} \cite{chen_ultrasensitive_2013}
-montrant la réponse à un train de potentiels d'action pour le rapporteur calcique GCaMP6 exprimé dans le cytoplasme pour ses trois versions (slow (s), medium (m), fast (f)). Le modèle en montée instantanée et en déclin exponentiel est ajouté sur (a.) ($\tau$ = 0.27, 0.73, 1.0) et sur (b.) ($\tau$ = 0.4, 1.16, 1.81). Les valeurs correspondent à une lecture graphique de (d.). 
-\label{FIGcalciumkernel}} 
-\end{figure}
+\begin{figure}[b!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{./files/chen2013_GCaMP6.svg.png}
+    \caption{Graphiques extraits de Chen \emph{et al} \cite{chen_ultrasensitive_2013}
+    montrant la réponse à un train de potentiels d'action pour le rapporteur calcique GCaMP6 exprimé dans le cytoplasme pour ses trois versions (slow (s), medium (m), fast (f)). Le modèle en montée instantanée et en déclin exponentiel est ajouté sur (a.) ($\tau$ = 0.27, 0.73, 1.0) et sur (b.) ($\tau$ = 0.4, 1.16, 1.81). Les valeurs correspondent à une lecture graphique de (d.). 
+    \label{FIGcalciumkernel}} 
+    \end{figure}
 
-On trouve des neurones à toutes les valeurs de déphasage possible, mais la plupart se situent à des valeurs de -$\pi$/8 et son symétrique, 7$\pi$/8. Cette valeur représente le décalage entre le stimulus sinusoïdal et la fluorescence mesurée. Par exemple, un déphasage de zéro correspond à un signal maximum lorsque la valeur de l'angle est maximale, c'est-à-dire une larve inclinée de 10° vers la droite. Toutefois, cela ne représente pas directement l'activité du neurone. En effet, il faut prendre en compte le décalage dû à la constante de temps du rapporteur calcique. En figure \ref{FIGcalciumkernel}, on montre la réponse d'un rapporteur calcique dans un neurone en fonction du nombre de potentiels d'action. On remarque que le modèle en déclin exponentiel résume bien la réponse dans la plupart des cas, on peut donc ignorer le temps de montée. Cependant, le temps de relaxation caractéristique évolue significativement entre un seul potentiel d'action et cent potentiels d'action sans montrer de phénomène de pallier. Pour estimer le déphasage lié à la réponse du rapporteur calcique, nous avons enregistré l'activité spontanée des neurones pour plusieurs poissons et appliqué l'algorithme de déconvolution aveugle développé par Tubiana \emph{et al} \cite{tubiana_blind_2017} qui a estimé un temps de relaxation de $\tau_\text{H2B-GCaMP6s-Nuclear} = 3.5 \pm 0.7 s$. Avec cette valeur de $\tau$ on approche le noyau du rapporteur calcique par :
+On trouve des neurones à toutes les valeurs de déphasage possible, mais la plupart se situent à des valeurs de -$\pi$/8 et son symétrique, 7$\pi$/8. Cette valeur représente le décalage entre le stimulus sinusoïdal et la fluorescence mesurée. Par exemple, un déphasage de zéro correspond à un signal maximum lorsque la valeur de l'angle est maximale, c'est-à-dire une larve inclinée de 10° vers la droite. Toutefois, cela ne représente pas directement l'activité du neurone. En effet, il faut prendre en compte le décalage dû à la constante de temps du rapporteur calcique. En figure \ref{FIGcalciumkernel}, on montre la réponse d'un rapporteur calcique dans un neurone en fonction du nombre de potentiels d'action. On remarque que le modèle en déclin exponentiel résume bien la réponse dans la plupart des cas, on peut donc ignorer le temps de montée. Cependant, le temps de relaxation caractéristique évolue significativement entre un seul potentiel d'action et cent potentiels d'action sans montrer de phénomène de pallier. Pour estimer le déphasage lié à la réponse du rapporteur calcique, nous avons enregistré l'activité spontanée des neurones pour plusieurs poissons et appliqué l'algorithme de déconvolution aveugle développé par Tubiana \emph{et al} \cite{tubiana_blind_2017} qui a estimé un temps de relaxation de $\tau_\text{H2B-GCaMP6s-Nuclear} = 3.5 \pm 0.7 s$. Avec cette valeur de $\tau$ on approche le noyau $K(t)$ du rapporteur calcique par la forumle ($H$ fonction de Heaviside) :
 
 $$
 K(t) = \frac{1}{\tau}\exp\left(-\frac{t}{\tau}\right)H(t)
@@ -348,15 +352,16 @@ Nous avons vu dans la section précédente la réponse à une stimulation en rou
 
 \subsection{Description du montage}
 
-\begin{figure}
-\centering
-\includegraphics[width=0.8\textwidth]{./files/miniature_light-sheet_tilt.svg.png}
-\caption{Microscope rotatif conçu pour la stimulation en tangage.
-\\a. Module de balayage adapté avec un miroir fixe. La fibre arrive dans la même direction que l'axe de rotation.
-\\b. Schéma du montage. L'unité d'illumination est fixée sur une plaque optique qu'elle traverse. La fibre arrive par derrière la nappe laser ressort par devant, du côté de l'échantillon. Le module de détection est fixé par-dessus l'échantillon.
-\\c. Un système bielle-manivelle entraîne la plaque optique fixée à un roulement annulaire. La position de l'axe moteur (O) est réglable et permet une oscillation sinusoïdale (au niveau de B, la longueur OA permet de régler l'amplitude) ou un mouvement circulaire (au niveau de C, avec une manivelle de longueur BC). La stabilité du système en fonction de l'angle est indiquée en encart.
-\label{FIGtiltlightsheet}}
-\end{figure}
+\begin{figure}[b!]
+    \centering
+    \includegraphics[width=\textwidth]{./files/miniature_light-sheet_tilt.svg.png}
+    \caption{Microscope rotatif conçu pour la stimulation en tangage.
+    \\a. Module de balayage adapté avec un miroir fixe. La fibre arrive dans la même direction que l'axe de rotation.
+    \\b. Schéma du montage. L'unité d'illumination est fixée sur une plaque optique qu'elle traverse. La fibre arrive par derrière la nappe laser ressort par devant, du côté de l'échantillon. Le module de détection est fixé par-dessus l'échantillon.
+    \\c. Un système bielle-manivelle entraîne la plaque optique fixée à un roulement annulaire. La position de l'axe moteur (O) est réglable et permet une oscillation sinusoïdale (au niveau de B, la longueur OA permet de régler l'amplitude) ou un mouvement circulaire (au niveau de C, avec une manivelle de longueur BC).
+    \\d. Stabilité du système caractérisée par la méthode décrite en figure \ref{FIGbeadstability}.
+    \label{FIGtiltlightsheet}}
+    \end{figure}
 
 Pour une stimulation en tangage, le poisson doit être placé perpendiculairement à l'axe de rotation, avec les deux oreilles internes sur l'axe. Le laser devant arriver par le côté, le module de balayage a été adapté avec un miroir fixe pour que la direction d'entrée et de sortie soient parallèles. Ainsi, la fibre peut être placée le long de l'axe de rotation, ce qui minimise ses déformations.
 
@@ -367,12 +372,12 @@ L'entrée de fibre se fait au moyen d'un connecteur FC/PC (\emph{Fiber Connector
 \subsection{Carte de réponse comparée}
 
 \begin{figure}
-\centering
-\includegraphics[width=\textwidth]{./files/tilt_roll.svg.png}
-\caption{Cartes de réponses obtenues pour une stimulation de rotation sinusoïdale selon l'axe de roulis (a, premier microscope) et de tangage (b, second microscope). On remarque que la carte est antisymétrique dans le cas du roulis et symétrique dans le cas du tangage.
-Pour le roulis, la vue de côté est réalisée sur la moitié gauche du volume seulement.
-\label{FIGtiltroll}}
-\end{figure}
+    \centering
+    \includegraphics[width=\textwidth]{./files/tilt_roll.svg.jpg}
+    \caption{Cartes de réponses obtenues pour une stimulation de rotation sinusoïdale selon l'axe de roulis (a, premier microscope) et de tangage (b, second microscope). On remarque que la carte est antisymétrique dans le cas du roulis et symétrique dans le cas du tangage.
+    Pour le roulis, la vue de côté est réalisée sur la moitié gauche du volume seulement.
+    \label{FIGtiltroll}}
+    \end{figure}
 
 En figure \ref{FIGtiltroll}, je montre côte à côte une des cartes de réponse en roulis présentées dans la section précédente et une carte en tangage obtenue sur ce second microscope (en acquisition un photon). L'observation la plus évidente est que la carte en tangage présente une symétrie bilatérale. En effet, les deux utricules sont activés exactement en même temps avec la même amplitude par la rotation de la larve. Les phases les plus représentées (rouge et cyan) sont les mêmes que pour la carte en roulis, ce qui confirme que les neurones sont excités par le même type de stimulation (mélange de vitesse et de position). La zone qui présente le plus d'activité est également le noyau oculomoteur nIII et nIV. On distingue cependant une différence avec la carte en roulis : alors que tous les neurones situés du même côté du tegmentum sont en phase dans la stimulation en roulis, on remarque deux zones en opposition de phase dans la simulation en tangage. Ces deux zones peuvent être séparées en deux par un plan horizontal. La zone dorsale recouvre à la fois le nMLF, et le noyau oculomoteur nIII et nIV. La zone ventrale recouvre surtout le nMLF et nIII. Des zones plus rostrales semblent aussi actives comme un cluster de neurones glutamatergiques du mésencéphale (région 111 de l'atlas zbrain) et une bande d'oligodendrocytes du diencéphale (région 043 de l'atlas zbrain). Cela est cohérent avec les connaissances actuelles sur les neurones oculomoteurs \cite{schoppik_gaze-stabilizing_2017} et l'activation des muscles oculaires pendant le VOR.
 
@@ -383,4 +388,6 @@ Une autre observation un peu moins évidente est la répartition des phases. En 
 
 \subsection{Conclusion}
 
-Ce nouveau microscope a permis de réaliser la cartographie du cerveau en réponse à une stimulation vestibulaire en tangage en répondant aux exigences de stabilité. Toutefois, avant de s'en servir pour réaliser un environnement de réalité virtuelle capable de reproduire les expériences présentées en partie \ref{chapII}, il faut gagner le contrôle sur l'environnement visuel et passer d'une excitation un photon à une excitation deux photons. C'est l'objectif du chapitre suivant, dans lequel je présente les enjeux d'une feuille de lumière deux photons rotative et les solutions techniques mises en œuvre pour la réaliser.
+Ce nouveau microscope a permis de réaliser la cartographie du cerveau en réponse à une stimulation vestibulaire en tangage en répondant aux exigences de stabilité. Cette carte révèle des similarités et des différences. Comme pour une rotation en roulis, la rotation en tangage déplace les utricules et stimule le circuit vestibulaire, entraînant des mouvements compensatoires des yeux. Les mêmes zones du cerveau sont activées, ce que j'ai pu vérifier. Cependant, au contraire d'une rotation en roulis qui stimule les utricules de manière antisymétrique, la rotation en tangage stimule les utricules de manière symétrique. Cette caractéristique de la stimulation se retrouve dans l'activité neuronale : le cerveau présente une symétrie bilatérale et son activité traduit les stimuli auxquels le système sensoriel est soumis. La stimulation en tangage a également permis de distinguer des régions du noyau oculomoteur qui paraissaient rassemblées en roulis. Ces neurones moteurs sont en effet responsables de l'activation des muscles extra-oculaires droits médians, droits latéraux, droits supérieurs, droits inférieurs, obliques inférieurs et obliques supérieurs \cite{straka_vestibular_2013}\cite{straka_connecting_2014}.
+
+Avant de se servir de ce microscope dans un environnement de réalité virtuelle capable de reproduire les expériences présentées en chapitre \ref{chapII}, il faut gagner le contrôle sur l'environnement visuel et passer d'une excitation un photon à une excitation deux photons. C'est l'objectif du chapitre \ref{chapIII}, dans lequel je présente les enjeux d'une feuille de lumière deux photons rotative et les solutions techniques mises en œuvre pour la réaliser.

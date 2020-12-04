@@ -114,10 +114,10 @@ Comme nous l'avons vu, les techniques d'acquisition de l'activité neuronale com
 
 \subsubsection{Architecture et fonctionnement du neurone}
 
-\begin{figure}
+\begin{figure}[b]
   \centering
   \includegraphics[width=0.8\textwidth]{./files/neurone.svg.png}
-  \caption{Schéma d'un neurone accompagné de cellules gliales. Astrocytes (en vert), oligodendrocytes (en bleu). Le neurone dispose d'un long prolongement appelé axone qui le connecte à d'autres neurones via des boutons synaptiques.}
+  \caption{Neurone accompagné de cellules gliales. Astrocytes (en vert), oligodendrocytes (en bleu). Le neurone dispose d'un long prolongement appelé axone qui le connecte à d'autres neurones via des boutons synaptiques.}
   \end{figure}
 
 Le neurone est une cellule caractérisée par son prolongement axonal capable de transmettre un influx nerveux. Il est toujours accompagné par des cellules gliales comme les astrocytes ou les oligodendrocytes qui assurent en grande partie les fonctions métaboliques. Le neurone est aujourd'hui considéré comme le principal responsable des processus cognitifs bien que de nombreuses recherches montrent l'importance des cellules gliales dans des phénomènes tels que l'intégration du signal calcique et l'établissement de connexions synaptiques \cite{verkhratsky_calcium_1996} \cite{pfrieger_synaptic_1997}.
@@ -158,7 +158,7 @@ La fluorescence est un phénomène d’absorption-réémission de lumière par u
 
 \begin{figure}
 \centering
-\includegraphics[width=0.8\textwidth]{./files/fluo_couleur.svg.png}
+\includegraphics[width=0.95\textwidth]{./files/fluo_couleur.svg.png}
 \caption{Illustration du phénomène de fluorescence. À gauche, le point de vue quantique avec les niveaux d'énergie interne, à droite, les spectres d’absorption et d'émission qui en résultent.}
 \end{figure}
 
@@ -255,17 +255,18 @@ L'OKR est un mécanisme de stabilisation de la vision dans lequel l’œil compe
 \subsubsection{Système vestibulaire}
 
 \paragraph{Organisation}
-L'organe vestibulaire, quant à lui, est situé dans l'oreille interne. Grâce à des cellules ciliées sensibles à leur propre déflexion, il peut mesurer les accélérations inertielle et gravitationnelle auxquelles sont soumises les otolithes (petites pierres osseuses) et les accélérations angulaires du liquide présent dans les canaux semi-circulaires. Bien que quasiment matures chez la larve dès cinq jours, la taille des canaux semi-circulaires les rend inefficaces. Seuls les otolithes sont fonctionnels et seul l'utricule (un des otolithes, Fig. \ref{FIGorganevestib}) sert à la détection vestibulaire. Cela est cependant suffisant (et nécessaire \cite{riley_development_2000}) pour que la larve puisse nager tout en conservant son équilibre.
 
 \begin{figure}
   \centering
-  \includegraphics[width=0.7\textwidth]{./files/appareil_vestibulaire.svg.png}
+  \includegraphics[width=0.75\textwidth]{./files/appareil_vestibulaire.svg.png}
   \caption{Photographies et schéma des organes vestibulaires. Adapté de G. Migault
-  \\ A. Larve de poisson zèbre de 6 jours vue de dessus (haut) et de côté (bas). On distingue les yeux (Y), l'oreille interne avec ses otolithes (O) et la vessie natatoire (VNat).
-  \\ B. Agrandissement de l'oreille interne vue de côté (B1) avec le schéma correspondant (B2). On souligne en pointillé les canaux semi-circulaires, en gris les deux otolithes, et en couleur les neuro-épithéliums.
-  \\ C. Otolithe en fonctionnement. Lorsqu'il est à l'horizontale (C1), les cils sont au repos, lorsqu'il est incliné (C2), les cils sont défléchis car l'accélération gravitationnelle change de direction, lorsqu'il est en mouvement accéléré vers la gauche (C3), l'accélération inertielle (a) s'ajoute à l'accélération gravitationnelle (g) et donne la résultante (r). On voit que l'utricule ne permet pas de différencier l'accélération gravitationnelle de l'accélération inertielle.
+  \\ a. Larve de poisson zèbre de 6 jours vue de dessus (haut) et de côté (bas). On distingue les yeux (Y), l'oreille interne avec ses otolithes (O) et la vessie natatoire (VNat).
+  \\ b. Agrandissement de l'oreille interne vue de côté (b1.) avec le schéma correspondant (b2.). On souligne en pointillé les canaux semi-circulaires, en gris les deux otolithes, et en couleur les neuro-épithéliums.
+  \\ c. Otolithe en fonctionnement. Lorsqu'il est à l'horizontale (c1.), les cils sont au repos, lorsqu'il est incliné (c2.), les cils sont défléchis car l'accélération gravitationnelle change de direction, lorsqu'il est en mouvement accéléré vers la gauche (c3.), l'accélération inertielle (a) s'ajoute à l'accélération gravitationnelle (g) et donne la résultante (r). On voit que l'utricule ne permet pas de différencier l'accélération gravitationnelle de l'accélération inertielle.
   \label{FIGorganevestib}}
   \end{figure}
+
+L'organe vestibulaire, quant à lui, est situé dans l'oreille interne. Grâce à des cellules ciliées sensibles à leur propre déflexion, il peut mesurer les accélérations inertielle et gravitationnelle auxquelles sont soumises les otolithes (petites pierres osseuses) et les accélérations angulaires du liquide présent dans les canaux semi-circulaires. Bien que quasiment matures chez la larve dès cinq jours, la taille des canaux semi-circulaires les rend inefficaces. Seuls les otolithes sont fonctionnels et seul l'utricule (un des otolithes, Fig. \ref{FIGorganevestib}) sert à la détection vestibulaire. Cela est cependant suffisant (et nécessaire \cite{riley_development_2000}) pour que la larve puisse nager tout en conservant son équilibre.
 
 Les neurones répondant aux stimulations vestibulaires sont présents à de nombreux endroits du cerveau, à la fois dans le prosencéphale (télencéphale, habenulae, thalamus, prétectum), dans le mésencéphale (tectum, nMLF, tegentum), et dans le rombencéphale (cervelet, MON, rhombomère 5-7) \cite{favre-bulle_cellular-resolution_2018}. Chacune de ces régions est impliquée différemment dans les réflexes vestibulaires comme le réflexe vestibulo-oculaire (\emph{vestibulo-ocular reflex}, VOR) et le contrôle postural ou réflexe vestibulo-spinal (\emph{vestibulo-spinal reflex}, VSR).
 
@@ -273,7 +274,7 @@ Les neurones répondant aux stimulations vestibulaires sont présents à de nomb
 Le VOR, largement répandu chez les vertébrés, est également observé chez le poisson-zèbre \cite{bianco_tangential_2012}. C'est un mouvement réflexe des yeux qui compense les mouvements de la tête pour stabiliser la vision. Bianco \emph{et al} l'ont mis en évidence chez la larve de poisson zèbre de plus de 4 jours en la soumettant à une rotation selon l'axe de tangage, ce qui génère une rotation des yeux opposée, avec un angle limité par le maximum physiologique. Le circuit neuronal associé est constitué d'un neurone afférent primaire, un neurone vestibulaire de second ordre, et un motoneurone oculaire qui guide la rotation de l’œil. Ce circuit est présent en deux exemplaires avec une symétrie bilatérale, un pour chaque utricule (gauche et droit). Il a également été montré que les neurones du noyau tangentiel ont des projections dans les motoneurones oculaires contra-latéraux, et que ces neurones sont essentiels au fonctionnement du réflexe. 
 
 \paragraph{VSR, réflexe vestibulo-spinal} \label{VSR}
-Le VSR est un réflexe de contrôle de posture qui utilise également l'information vestibulaire. Chez le poisson zèbre adulte, la vessie natatoire est un organe important qui permet de contrôler la flottaison, mais chez la larve, elle n'est pas encore fonctionnelle. Les effecteurs du contrôle postural sont donc surtout la queue et les nageoires. Ehrlich \emph{et al} ont étudié le déséquilibre naturel de la larve en \emph{tangage} et ont montré que les événements de nage sont à la base du développement de l'équilibre \cite{ehrlich_control_2017}. Favre-Bulle \emph{et al} ont étudié le contrôle de l'équilibre dans l'axe de \emph{roulis} en stimulant directement les utricules dans l'oreille interne et ont constaté une déflexion proportionnelle de la queue \cite{favre-bulle_cellular-resolution_2018}.
+Le VSR est un réflexe de contrôle de posture qui utilise également l'information vestibulaire. Chez le poisson zèbre adulte, la vessie natatoire est un organe important qui permet de contrôler la flottaison, mais chez la larve, elle n'est pas encore fonctionnelle. Les effecteurs du contrôle postural sont donc surtout la queue et les nageoires. Ehrlich \emph{et al} ont étudié le déséquilibre naturel de la larve en \emph{tangage} et ont montré que les événements de nage sont à la base du développement de l'équilibre \cite{ehrlich_control_2017}. Favre-Bulle \emph{et al} ont étudié le contrôle de l'équilibre dans l'axe de \emph{roulis} en stimulant directement les utricules dans l'oreille interne et ont constaté une déflexion proportionnelle de la queue \cite{favre-bulle_cellular-resolution_2018}. Thiele \emph{et al} ont étudié en détail les bases neuronales du contrôle postural en roulis \cite{thiele_descending_2014}.
 
 \subsubsection{Intégration visuo-vestibulaire}
 

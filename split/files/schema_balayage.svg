@@ -13,11 +13,11 @@
    viewBox="0 0 177 124"
    version="1.1"
    id="svg8"
-   inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
    sodipodi:docname="schema_balayage.svg"
    inkscape:export-filename="/home/ljp/Nextcloud/Sync_Hugo/these_Hugo/schema_balayage.svg.png"
-   inkscape:export-xdpi="103"
-   inkscape:export-ydpi="103">
+   inkscape:export-xdpi="100"
+   inkscape:export-ydpi="100">
   <defs
      id="defs2">
     <marker
@@ -373,17 +373,17 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.4"
-     inkscape:cx="343.85502"
-     inkscape:cy="473.37368"
+     inkscape:zoom="0.7"
+     inkscape:cx="455.02858"
+     inkscape:cy="214.33079"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
      showgrid="false"
-     inkscape:window-width="1920"
-     inkscape:window-height="1024"
-     inkscape:window-x="0"
-     inkscape:window-y="28"
+     inkscape:window-width="1865"
+     inkscape:window-height="1025"
+     inkscape:window-x="55"
+     inkscape:window-y="27"
      inkscape:window-maximized="1" />
   <metadata
      id="metadata5">
@@ -401,6 +401,13 @@
      inkscape:label="Calque 1"
      inkscape:groupmode="layer"
      id="layer1">
+    <rect
+       style="opacity:1;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#5983b0;stroke-width:1.83409166;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       id="rect1068"
+       width="188.9881"
+       height="138.33928"
+       x="-4.5357141"
+       y="-6.7797618" />
     <path
        style="fill:none;stroke:#000000;stroke-width:0.569;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.569, 0.56899999999999995;stroke-opacity:0.8003723;marker-end:url(#Arrow1Send-2-3);stroke-dashoffset:0"
        d="M 59.371075,97.185763 7.9638098,97.847691"

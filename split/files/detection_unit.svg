@@ -9,8 +9,8 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   inkscape:export-ydpi="104"
-   inkscape:export-xdpi="104"
+   inkscape:export-ydpi="120"
+   inkscape:export-xdpi="120"
    inkscape:export-filename="/home/ljp/Nextcloud/Sync_Hugo/these_Hugo/detection_unit.svg.png"
    sodipodi:docname="detection_unit.svg"
    inkscape:version="0.92.3 (2405546, 2018-03-11)"
@@ -18898,13 +18898,13 @@
      inkscape:window-maximized="1"
      inkscape:window-y="27"
      inkscape:window-x="55"
-     inkscape:window-height="1145"
+     inkscape:window-height="1025"
      inkscape:window-width="1865"
      showgrid="false"
-     inkscape:current-layer="g11674"
+     inkscape:current-layer="g13250"
      inkscape:document-units="mm"
-     inkscape:cy="286.84407"
-     inkscape:cx="282.75851"
+     inkscape:cy="243.75475"
+     inkscape:cx="360.65074"
      inkscape:zoom="0.90509672"
      inkscape:pageshadow="2"
      inkscape:pageopacity="0.0"
@@ -19320,6 +19320,14 @@
            inkscape:transform-center-y="-17.289419"
            inkscape:transform-center-x="3.7142581"
            id="g13250">
+          <rect
+             style="display:inline;opacity:1;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#00a81c;stroke-width:0.9008013;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+             id="rect6322"
+             width="392.62778"
+             height="159.24068"
+             x="126.31686"
+             y="194.13934"
+             transform="rotate(-30.164086)" />
           <g
              id="g11612"
              transform="translate(9.6720698,14.056026)">
