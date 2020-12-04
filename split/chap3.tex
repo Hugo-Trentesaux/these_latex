@@ -89,7 +89,7 @@ L'absorption deux photons est un phénomène non linéaire d'absorption simultan
     \label{2P-intensity-profile}
     \end{figure}
 
-Un système optique peut concentrer la lumière localement, ce qui produit un point de plus grande intensité, le point focal. Comme l'effet deux photons est proportionnel au carré de l'intensité, la zone concernée est d'autant plus restreinte. Cette propriété est utilisée en microscopie multiphoton pour produire une illumination ponctuelle qui permet le sectionnement optique dans la direction de propagation. En microscopie à feuille de lumière, au contraire, une illumination linéaire est recherchée. La focalisation est donc bien moindre et l'effet deux photons contribue à affiner la zone d'excitation, la fluorescence n'étant excitée qu'au centre du faisceau (cf Fig. \ref{2P-intensity-profile}).
+Un système optique peut concentrer la lumière localement, ce qui produit un point de plus grande intensité, le point focal. Comme l'effet deux photons est proportionnel au carré de l'intensité, la zone concernée est d'autant plus restreinte. Cette propriété est utilisée en microscopie multiphoton pour produire une illumination ponctuelle qui permet le sectionnement optique dans la direction de propagation. En microscopie à feuille de lumière, au contraire, une illumination linéaire est recherchée. La focalisation est donc bien moindre et l'effet deux photons contribue à affiner la zone d'excitation, la fluorescence n'étant excitée qu'au centre du faisceau (Fig. \ref{2P-intensity-profile}).
 
 % TODO VolkerComment2
 % You have to make a figure. Show the Jablonski diagram and e.g. this https://www.researchgate.net/figure/Two-photon-fluorescence-vs-normal-fluorescence-The-blue-scanning-laser-in-the-left_fig11_326583720. Discuss that via the two photon effect you can excite the same fluorophore (GCaMP) with an IR laser of double the wavelength compared to the one photon case. In this configuration you laser is outside the sensitive spectrum of the fish retina.
@@ -105,7 +105,7 @@ Un système optique peut concentrer la lumière localement, ce qui produit un po
     \label{pulsed-laser}
     \end{figure}
     
-Une autre manière de concentrer la lumière est la concentration temporelle. Dans le cas d'un laser continu, la puissance est répartie sur toute la longueur de propagation du faisceau. En utilisant un laser pulsé, la puissance est concentrée en paquets beaucoup plus courts (cf Fig. \ref{pulsed-laser}). Par exemple, pour des impulsions de 100 fs, malgré la vitesse élevée de la lumière, la longueur de ces paquets est de 30 mm. Si de plus le taux de répétition du laser est de 80 MHz, la puissance d'une impulsion est 125 fois plus élevée qu'un laser continu de même puissance moyenne (1/(100fs x 80MHz)). L'effet deux photons étant proportionnel au carré de la puissance instantanée, on a intérêt à choisir les impulsions les plus courtes possibles (petit $\tau$) et le taux de répétition le plus faible possible (grand T) pour un laser de puissance moyenne fixée \cite{maioli_fast_2020}. Cette tendance est limitée par les photoperturbations induites, qui deviennent importantes au-delà d'une centaine de nanojoules par impulsion. Les conditions optimales en microscopie par fluorescence à nappe laser deux photons sont donc autour de f = 1 MHz, $\tau$ = 100 fs, P = 100 mW, ce que confirme Gasparoli \emph{et al} \cite{gasparoli_is_2020}. % TODO préciser
+Une autre manière de concentrer la lumière est la concentration temporelle. Dans le cas d'un laser continu, la puissance est répartie sur toute la longueur de propagation du faisceau. En utilisant un laser pulsé, la puissance est concentrée en paquets beaucoup plus courts (Fig. \ref{pulsed-laser}). Par exemple, pour des impulsions de 100 fs, malgré la vitesse élevée de la lumière, la longueur de ces paquets est de 30 mm. Si de plus le taux de répétition du laser est de 80 MHz, la puissance d'une impulsion est 125 fois plus élevée qu'un laser continu de même puissance moyenne (1/(100fs x 80MHz)). L'effet deux photons étant proportionnel au carré de la puissance instantanée, on a intérêt à choisir les impulsions les plus courtes possibles (petit $\tau$) et le taux de répétition le plus faible possible (grand T) pour un laser de puissance moyenne fixée \cite{maioli_fast_2020}. Cette tendance est limitée par les photoperturbations induites, qui deviennent importantes au-delà d'une centaine de nanojoules par impulsion. Les conditions optimales en microscopie par fluorescence à nappe laser deux photons sont donc autour de f = 1 MHz, $\tau$ = 100 fs, P = 100 mW, ce que confirme Gasparoli \emph{et al} \cite{gasparoli_is_2020}. % TODO préciser
 
 % TODO VolkerComment2
 % Move this to the discussion. Also from where do you get the numbers? citation is missing. Willy Supatto shows in his 2020 paper that 10MHz is the optimal repetition rate.
@@ -114,13 +114,14 @@ Une autre manière de concentrer la lumière est la concentration temporelle. Da
 \section{Fibre optique, principe et état de l'art}
 
 \begin{figure}
-\centering
-\includegraphics[width=0.8\textwidth]{./files/fibers.svg.png}
-\caption{Illustration de différents types de fibres évoquées.
-\\ a1. Fibre Kagomé (image extraite de Wang 2011 \cite{wang_low_2011}), schéma du motif en a2.
-\\ b1. Fibre à réseaux de tube (image extraite de Cregan 1999 \cite{cregan_single-mode_1999}), schéma du réseau tubulaire comme dans Vincetti 2010 \cite{vincetti_waveguiding_2010} en b2.
-\\ c1. Fibre à courbure négative (image extraite de Yu 2016 \cite{yu_negative_2016}), schéma en c2. Voir également Pryamikov \emph{et al} \cite{pryamikov_demonstration_2011}}
-\end{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{./files/fibers.svg.png}
+    \caption{Différents types de fibres évoquées.
+    \\ a1. Fibre Kagomé (image extraite de Wang 2011 \cite{wang_low_2011}), schéma du motif en a2.
+    \\ b1. Fibre à réseaux de tube (image extraite de Cregan 1999 \cite{cregan_single-mode_1999}), schéma du réseau tubulaire comme dans Vincetti 2010 \cite{vincetti_waveguiding_2010} en b2.
+    \\ c1. Fibre à courbure négative (image extraite de Yu 2016 \cite{yu_negative_2016}), schéma en c2. Voir également Pryamikov \emph{et al} \cite{pryamikov_demonstration_2011}
+    \label{FIGfiberexamples}}
+    \end{figure}
 
 \subsection{Guide d'onde}
 
@@ -143,7 +144,7 @@ Une idée pour confiner la lumière dans un guide unidimensionnel est d'utiliser
 
 \subsubsection{Fibres à cristaux photoniques}
 
-Une autre idée consiste à utiliser un phénomène de réflexion par interférences comme le miroir de Bragg. Un tel miroir est constitué d'une succession périodique de couches d'indice différents et permet d'obtenir une réflexion quasi totale à la longueur d'onde du motif. 
+Une autre idée consiste à utiliser un phénomène de réflexion par interférences comme le miroir de Bragg. Un tel miroir est constitué d'une succession périodique de couches d'indice différents et permet d'obtenir une réflexion quasi totale à la longueur d'onde du motif. Différents modèles sont illustrés en figure \ref{FIGfiberexamples}.
 
 \paragraph{Fibres à réseaux de tubes}
 On trouve ce genre de réseau pour la première fois en 1999 sous forme de fibre à cristaux photoniques \cite{cregan_single-mode_1999} ou plus tard sous la forme de fibre microstructurées \cite{argyros_hollow-core_2006}. En 2010, Vincetti \emph{et al} montrent par analyse numérique que seule la première couche de tubes joue un rôle important dans les propriétés de ces fibres \cite{vincetti_waveguiding_2010}. Ce qui donne des fibres constituées d'un seul réseau de tube.
@@ -156,12 +157,11 @@ Cependant, en 2010, Février \emph{et al} montrent par analyse numérique que le
 
 \subsubsection{Fibres à courbure négative}
 
-Les idées de fibre à réseau de tubes unique et de fibres à cœur hypocycloide se rejoignent dans un même concept : les fibres à courbures négatives. En 2016, Yu et Knight publient une revue sur l'histoire de ces fibres et leurs mécanismes \cite{yu_negative_2016}. Ils commentent entre autres l'atténuation, les bandes de transmission et le gain de courbure. Ces critères rendent cette famille de fibres particulièrement adaptée à notre application. En effet, les larges bandes de transmission permettent de guider plusieurs longueurs d'onde, aussi bien pour l'imagerie un photon que deux photons, la faible atténuation permet de conserver la puissance du laser nécessaire à l'effet deux photons, et le faible gain de courbure permet de conserver une illumination stable pendant la rotation du microscope.
+Les idées de fibre à réseau de tubes unique et de fibres à cœur hypocycloide se rejoignent dans un même concept : les fibres à courbures négatives. En 2016, Yu et Knight publient une revue sur l'histoire de ces fibres et leurs mécanismes \cite{yu_negative_2016}. Ils commentent entre autres l'atténuation, les bandes de transmission et le gain de courbure \cite{belardi_effect_2013}. Ces critères rendent cette famille de fibres particulièrement adaptée à notre application. En effet, les larges bandes de transmission permettent de guider plusieurs longueurs d'onde, aussi bien pour l'imagerie un photon que deux photons, la faible atténuation permet de conserver la puissance du laser nécessaire à l'effet deux photons, et le faible gain de courbure permet de conserver une illumination stable pendant la rotation du microscope.
 
 % TODO VolkerComment2
 % You have to make the effort and write all this in your thesis. It is not sufficient to just refer to the review. Explain the light guidance mechanism, show figures, ... .
 
-% TODOcite \cite{belardi_effect_2013}
 
 
 \subsection{Utilisation des fibres en microscopie embarquée}
@@ -355,7 +355,7 @@ On voit dans la section précédente que la courbure a un effet sur la transmiss
 
 \paragraph{Direction d'illumination}
 
-Un fluorophore peut être modélisé par un dipôle électrostatique. La fluorescence consiste en l'absorption d'un photon incident et la ré-émission d'un photon de fluorescence selon les lois du rayonnement dipolaire électrique. Ce phénomène est anisotrope, il dépend de l'angle entre le vecteur de polarisation et le moment dipolaire. Quand l'axe d'excitation est parallèle à l'axe d'observation (par exemple en microscopie confocale ou deux photons classique), le plan de polarisation est orthogonal aux deux, un photon absorbé est donc réémis dans la même direction quelle que soit la polarisation (cf Fig \ref{FIGpolarisation} a.). Au contraire, quand l'axe d'excitation est orthogonal à l'axe d'observation (par exemple en microscopie à feuille de lumière), l'angle de polarisation influe sur la direction d'émission (cf Fig \ref{FIGpolarisation} b.). Pour une polarisation linéaire orthogonale à l'axe d'observation ($\alpha$=0), on se retrouve dans un cas similaire au précédent, mais pour une polarisation linéaire qui contient l'axe d'observation ($\alpha$=90°), on obtient une diminution du signal de fluorescence dans l'axe d'observation.
+Un fluorophore peut être modélisé par un dipôle électrostatique. La fluorescence consiste en l'absorption d'un photon incident et la ré-émission d'un photon de fluorescence selon les lois du rayonnement dipolaire électrique. Ce phénomène est anisotrope, il dépend de l'angle entre le vecteur de polarisation et le moment dipolaire. Quand l'axe d'excitation est parallèle à l'axe d'observation (par exemple en microscopie confocale ou deux photons classique), le plan de polarisation est orthogonal aux deux, un photon absorbé est donc réémis dans la même direction quelle que soit la polarisation (Fig. \ref{FIGpolarisation} a.). Au contraire, quand l'axe d'excitation est orthogonal à l'axe d'observation (par exemple en microscopie à feuille de lumière), l'angle de polarisation influe sur la direction d'émission (Fig. \ref{FIGpolarisation} b.). Pour une polarisation linéaire orthogonale à l'axe d'observation ($\alpha$=0), on se retrouve dans un cas similaire au précédent, mais pour une polarisation linéaire qui contient l'axe d'observation ($\alpha$=90°), on obtient une diminution du signal de fluorescence dans l'axe d'observation.
 On confirme ceci à l'aide d'une lame $\lambda$/2. En tournant une polarisation linéaire et en observant la fluorescence du cerveau, on passe d'une intensité détectée maximale (100\%) à une intensité minimale (50\%) \cite{de_vito_effects_2020}.
 
 % TODO faire des calculs compliqués pour remplacer ces calculs faux
@@ -384,7 +384,7 @@ En excitation deux photons, l'état de polarisation influe sur l'efficacité d'a
 
 \paragraph{Caractérisation des effets sur la polarisation}
 
-Une déformation de la fibre peut entrainer deux modifications sur la polarisation : une rotation et un changement d'ellipticité. Pour les mesurer, j'ai placé un cube polariseur en sortie de fibre équipé d'un puissance-mètre sur chaque bras. Pour chaque position de la fibre, j'ai tourné le cube de manière à minimiser la puissance mesurée sur un bras (et donc maximiser la puissance sur l'autre bras). Cela permet de déduire l'orientation de la polarisation (angle du cube) et son ellipticité (valeur du grand axe et petit axe). L'ellipticité ($\theta$) est définie par $\tan(\theta)=\frac{b}{a}$ où (a) est le grand axe et (b) le petit axe de l'ellipse. J'ai positionné la fibre en forme de U et ai réalisé des mesures pour des diamètres allant de 5 cm à 40 cm (cf Fig. \ref{FIGfibercarac}).
+Une déformation de la fibre peut entrainer deux modifications sur la polarisation : une rotation et un changement d'ellipticité. Pour les mesurer, j'ai placé un cube polariseur en sortie de fibre équipé d'un puissance-mètre sur chaque bras. Pour chaque position de la fibre, j'ai tourné le cube de manière à minimiser la puissance mesurée sur un bras (et donc maximiser la puissance sur l'autre bras). Cela permet de déduire l'orientation de la polarisation (angle du cube) et son ellipticité (valeur du grand axe et petit axe). L'ellipticité ($\theta$) est définie par $\tan(\theta)=\frac{b}{a}$ où (a) est le grand axe et (b) le petit axe de l'ellipse. J'ai positionné la fibre en forme de U et ai réalisé des mesures pour des diamètres allant de 5 cm à 40 cm (Fig. \ref{FIGfibercarac}).
 
 \paragraph{Rotation de la polarisation}
 
@@ -402,7 +402,7 @@ En polarisation circulaire ($\theta$ = 45°), la rotation n'est plus un problèm
 % TODO VolkerComment2
 % You have to introduce the NA expander and show a schematic of the experiment
 
-Pour tester les variations d'intensité dues aux déformations de la fibre en conditions réelles, j'ai monté un cube polariseur et un puissance-mètre à la place de l'échantillon et ai soumis l'ensemble à des stimulations périodiques guidées par un moteur (cf Fig. \ref{FIGrealconditionsfiber}).
+Pour tester les variations d'intensité dues aux déformations de la fibre en conditions réelles, j'ai monté un cube polariseur et un puissance-mètre à la place de l'échantillon et ai soumis l'ensemble à des stimulations périodiques guidées par un moteur (Fig. \ref{FIGrealconditionsfiber}).
 
 \begin{figure}
 \centering
@@ -519,7 +519,7 @@ n(r,z) = n_0 + \frac{\mathrm{d}n}{\mathrm{d}T}\Delta T = n_0 \left( 1+ \delta_t 
 \delta_t = - \frac{\mathrm{d}n}{\mathrm{d}T} \frac{\alpha P}{2\pi kn_0} \frac{2}{1+t_c/2t}
 $$
 
-Pour un profil d'indice quadratique tel que celui-ci et dans l'approximation des lentilles minces, on peut définir la distance focale équivalente (cf Fig. \ref{FIGgordonlens}):
+Pour un profil d'indice quadratique tel que celui-ci et dans l'approximation des lentilles minces, on peut définir la distance focale équivalente (Fig. \ref{FIGgordonlens}):
 
 $$
 f' = -\frac{w^2_z}{2ln_0\delta_t}

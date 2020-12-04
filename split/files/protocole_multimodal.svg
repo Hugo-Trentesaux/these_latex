@@ -37,9 +37,9 @@
    inkscape:window-height="1025"
    id="namedview693"
    showgrid="false"
-   inkscape:zoom="0.35022999"
-   inkscape:cx="660.44174"
-   inkscape:cy="-61.981107"
+   inkscape:zoom="0.9906"
+   inkscape:cx="354.3194"
+   inkscape:cy="294.99848"
    inkscape:window-x="55"
    inkscape:window-y="27"
    inkscape:window-maximized="1"
@@ -1507,6 +1507,7 @@
          style="fill:#000000;stroke:none"
          id="tspan410">&quot;but&quot; du poisson = 1Hz</tspan></tspan></tspan></text>
 
+
 <rect
    style="fill:none;stroke:none"
    id="rect421"
@@ -1559,6 +1560,7 @@
          style="fill:#000000;stroke:none"
          id="tspan441">&quot;but&quot; = 0.2 Hz, 0.4 Hz, 0.6 Hz</tspan></tspan></tspan></text>
 
+
 <rect
    style="fill:none;stroke:none"
    id="rect452"
@@ -1604,6 +1606,7 @@
          style="fill:#000000;stroke:none"
          id="tspan466">mêmes paramètres</tspan></tspan></tspan></text>
 
+
 <rect
    style="fill:none;stroke:none"
    id="rect477"
@@ -1638,6 +1641,7 @@
          style="fill:#000000;stroke:none"
          id="tspan485">même paramètres</tspan></tspan></tspan></text>
 
+
 <rect
    style="fill:none;stroke:none"
    id="rect643"
@@ -1663,6 +1667,7 @@
        id="tspan647"><tspan
          id="tspan645"
          style="fill:#407927;stroke:none">pause (20 sec)</tspan></tspan></tspan></text>
+
 
 <rect
    class="BoundingBox"
@@ -1713,6 +1718,7 @@
        id="tspan674">visuel <tspan
    id="tspan2325"
    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:529.16668701px;font-family:'Liberation Sans', sans-serif;-inkscape-font-specification:'Liberation Sans, sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start">(1 min)</tspan></tspan></tspan></text>
+
 
 </g>
 
@@ -1963,6 +1969,7 @@
      id="tspan1870"
      sodipodi:role="line">2°/sec</tspan></text>
 
+
 <text
    id="text1872-9"
    y="-34.097172"
@@ -1975,6 +1982,7 @@
      id="tspan1870-1"
      sodipodi:role="line">4°/sec</tspan></text>
 
+
 <text
    id="text1872-2"
    y="-34.097172"
@@ -1986,6 +1994,7 @@
      x="2.5481088"
      id="tspan1870-7"
      sodipodi:role="line">6°/sec</tspan></text>
+
 
 </g><g
    transform="matrix(67.831525,0,0,67.831525,15506.248,11229.833)"
@@ -2002,6 +2011,7 @@
      id="tspan1870-6"
      sodipodi:role="line">2°/sec</tspan></text>
 
+
 <text
    id="text1872-9-0"
    y="-34.097172"
@@ -2014,6 +2024,7 @@
      id="tspan1870-1-6"
      sodipodi:role="line">4°/sec</tspan></text>
 
+
 <text
    id="text1872-2-2"
    y="-34.097172"
@@ -2025,6 +2036,7 @@
      x="2.5481088"
      id="tspan1870-7-6"
      sodipodi:role="line">6°/sec</tspan></text>
+
 
 </g><g
    transform="matrix(67.831525,0,0,67.831525,22694.515,11229.833)"
@@ -2041,6 +2053,7 @@
      id="tspan1870-79"
      sodipodi:role="line">2°/sec</tspan></text>
 
+
 <text
    id="text1872-9-2"
    y="-34.097172"
@@ -2053,6 +2066,7 @@
      id="tspan1870-1-0"
      sodipodi:role="line">4°/sec</tspan></text>
 
+
 <text
    id="text1872-2-23"
    y="-34.097172"
@@ -2064,6 +2078,7 @@
      x="2.5481088"
      id="tspan1870-7-7"
      sodipodi:role="line">6°/sec</tspan></text>
+
 
 </g><g
    id="g2279"
@@ -2532,6 +2547,7 @@
      id="tspan1978"
      sodipodi:role="line">a.</tspan></text>
 
+
 <text
    id="text1984"
    y="16500.232"
@@ -2544,6 +2560,7 @@
      id="tspan1982"
      sodipodi:role="line">b.</tspan></text>
 
+
 <text
    id="text1988"
    y="21412.949"
@@ -2555,6 +2572,7 @@
      x="93.190315"
      id="tspan1986"
      sodipodi:role="line">c.</tspan></text>
+
 
 </g><g
    id="g2348"
@@ -2581,6 +2599,7 @@
    id="tspan2328"
    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:529.16668701px;font-family:'Liberation Sans', sans-serif;-inkscape-font-specification:'Liberation Sans, sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start">(1 min)</tspan></tspan></tspan></text>
 
+
 </g><g
    id="g2341"
    transform="translate(0.00135964,54.700857)"><path
@@ -2606,4 +2625,50 @@
    id="tspan2331"
    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:529.16668701px;font-family:'Liberation Sans', sans-serif;-inkscape-font-specification:'Liberation Sans, sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start">(1 min)</tspan></tspan></tspan></text>
 
-</g></svg>
+
+</g><path
+   style="fill:none;stroke:#000000;stroke-width:52.91666794;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+   d="m 103.17264,22757.372 v 1502.403"
+   id="path1302"
+   inkscape:connector-curvature="0" /><text
+   xml:space="preserve"
+   style="font-style:normal;font-weight:normal;font-size:1058.33337402px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:746.70709229"
+   x="269.8287"
+   y="23673.477"
+   id="text1306"><tspan
+     sodipodi:role="line"
+     id="tspan1304"
+     x="269.8287"
+     y="23673.477"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:529.16668701px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:746.70709229">60°</tspan></text>
+<path
+   style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:52.91666794;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+   d="M 140.60022,24315.011 H 1622.9722"
+   id="path1308"
+   inkscape:connector-curvature="0" /><text
+   xml:space="preserve"
+   style="font-style:normal;font-weight:normal;font-size:1058.33349609px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:746.70721436;stroke-linejoin:round"
+   x="1769.6599"
+   y="24347.1"
+   id="text1306-7"><tspan
+     sodipodi:role="line"
+     id="tspan1304-6"
+     x="1769.6599"
+     y="24347.1"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:529.16674805px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:746.70721436">1 min</tspan></text>
+<path
+   style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:52.91667175;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+   d="m 99.458113,21102.911 v 1502.404"
+   id="path1302-1"
+   inkscape:connector-curvature="0" /><text
+   xml:space="preserve"
+   style="font-style:normal;font-weight:normal;font-size:1058.33349609px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:746.70721436;stroke-linejoin:round"
+   x="211.53185"
+   y="22066.568"
+   id="text1306-8"><tspan
+     sodipodi:role="line"
+     id="tspan1304-5"
+     x="211.53185"
+     y="22066.568"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:529.16674805px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:746.70721436">A.U.</tspan></text>
+</svg>

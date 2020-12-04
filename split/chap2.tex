@@ -20,14 +20,14 @@ Cette deuxième solution est plus performante, car elle reproduit réellement la
 \subsubsection{Unité d'illumination}
 
 Un microscope à feuille de lumière par balayage est généralement constitué de deux bras optiques formant un télescope de manière à placer le miroir rotatif galvanométrique de balayage dans le plan congugué de l'échantillon. Ainsi, son mouvement de rotation est transformé en une pure translation du faisceau au niveau de l'échantillon. Ce montage est volumineux et inadapté à un microscope rotatif. Il a donc fallu le miniaturiser et garantir sa stabilité. Les télescopes ont été remplacés par des objectifs de microscope. Le plan de Fourier n'étant pas accessible à cause de la distance frontale arrière, le miroir galvanométrique est légèrement hors du plan conjugué, ce qui introduit une rotation du faisceau dans l'échantillon en plus de la translation. Cette rotation reste cependant faible (<0.4°), et compatible avec une feuille de lumière par balayage.  
-L'unité d'illumination est composée d'un connecteur de fibre monté sur un positionneur piézoélectrique et de deux objectifs en montage confocal de part et d'autre d'un miroir galvanométrique. 
+L'unité d'illumination est composée d'un connecteur de fibre monté sur un positionneur piézoélectrique et de deux objectifs en montage confocal de part et d'autre d'un miroir galvanométrique (Fig. \ref{FIGminiaturelightsheet}).
 
 \begin{figure}
-\centering
-\includegraphics[width=0.8\textwidth]{./files/miniature_light-sheet.svg.png}
-\caption{Schéma extrait de l'article \cite{migault_whole-brain_2018}. Le module miniature peut être monté sur un microscope rotatif. Le poisson est positionné dans l'axe de rotation, et tourné en roulis. L'illumination vient par le côté.
-}
-\end{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{./files/miniature_light-sheet.svg.png}
+    \caption{Schéma extrait de l'article \cite{migault_whole-brain_2018}. Le module miniature peut être monté sur un microscope rotatif. Le poisson est positionné dans l'axe de rotation, et tourné en roulis. L'illumination vient par le côté.
+    \label{FIGminiaturelightsheet}}
+    \end{figure}
 
 \subsubsection{Unité de détection}
 
@@ -56,15 +56,15 @@ Pour obtenir un bon rapport signal à bruit, il faut réduire la lumière parasi
 Les deux unités (illumination et détection) d'un poids total inférieur à 2 kg tiennent sur une plaque de 50 cm de côté fixée à un moteur à grand couple et grande précision. Le moteur dispose d'un grand rotor permettant une large zone de fixation qui minimise les déformations mécaniques de la plaque qui soutient le microscope. Nous avons caractérisé précisément l'instabilité liée à la rotation du microscope à l'aide de billes micrométriques fluorescentes.
 
 \begin{figure}
-\centering
-\includegraphics[width=0.7\textwidth]{./files/bead_position.svg.png}
-\caption{Schéma des étapes pour estimer avec précision la position d'une bille fluorescente.\\
-a. Image d'une bille dans le plan focal de l'objectif (a1)\\
-b. Image d'une bille hors du plan focal de l'objectif (a2)\\
-c. Établissement du profil radial par moyennage autour du centre de gravité de l'image\\
-d. Profil cylindrique de la figure de diffraction constitué du profil radial pour plusieurs positions de l'objectif espacées de 20 nm. Les traits pointillés correspondent aux plans (a) et (b). La corrélation verticale du profil cylindrique pour plusieurs positions du microscope donne avec précision le déplacement de la bille.
-\label{FIGbeadstability}}
-\end{figure}
+    \centering
+    \includegraphics[width=0.7\textwidth]{./files/bead_position.svg.png}
+    \caption{Estimation précise de la position d'une bille fluorescente par balayage vertical du profil radial de sa tache de diffraction.
+    \\ a. Image d'une bille dans le plan focal de l'objectif (a1)
+    \\ b. Image d'une bille hors du plan focal de l'objectif (b1)
+    \\ c. Établissement du profil radial par moyennage autour du centre de gravité de l'image
+    \\ d. Profil cylindrique de la figure de diffraction constitué du profil radial pour plusieurs positions de l'objectif espacées de 20 nm. Les traits pointillés correspondent aux plans (a) et (b). La corrélation verticale du profil cylindrique pour plusieurs positions du microscope donne avec précision le déplacement de la bille.
+    \label{FIGbeadstability}}
+    \end{figure}
 
 Une bille fluorescente de 1 µm est éclairée transversalement par le laser d'excitation, qui coïncide avec le plan focal de l'objectif de détection. Elle est imagée pour plusieurs positions hors focus de l'objectif, ce qui fait apparaître des franges d'interférence. Un profil cylindrique de ces franges est réalisé pour plusieurs positions du microscope et à plusieurs intervalles de temps ce qui permet de mettre en évidence le déplacement latéral et vertical de la bille au cours du temps et en fonction de la position du microscope. Cette technique a l'avantage d'être précise (de l'ordre de 100 nm) et robuste aux variations liées au photoblanchiment. Elle a permis de montrer que lors de la rotation du microscope, le déplacement reste inférieur à 500 nm dans la direction verticale et 2 µm dans la direction latérale (cette dernière peut être corrigée lors de l'analyse comme on le verra plus tard).
 
@@ -83,7 +83,7 @@ $$
 \begin{figure}
 \centering
 \includegraphics[width=0.8\textwidth]{./files/possible-waist_1P.png}
-\caption{On voit ici la demie largeur du profil gaussien à 488 nm dans l'eau pour différentes valeurs du waist. Le trait en pointillé montre le rayon d'un neurone. On cherche à minimiser l'épaisseur du faisceau entre -100 µm à 100 µm. Le trait épais marque la position optimale pour ce critère (les autres profils sont tous plus larges à 100 µm du centre). L'ouverture numérique associée vaut $ \mathrm{NA} = n\sin(\lambda/\pi n w_0) $.}
+\caption{Demie largeur du profil gaussien à 488 nm dans l'eau pour différentes valeurs du waist. Le trait en pointillé montre le rayon d'un neurone. On cherche à minimiser l'épaisseur du faisceau entre -100 µm à 100 µm. Le trait épais marque la position optimale pour ce critère (les autres profils sont tous plus larges à 100 µm du centre). L'ouverture numérique associée vaut $ \mathrm{NA} = n\sin(\lambda/\pi n w_0) $.}
 \end{figure}
 
 % OK VolkerComment
@@ -91,7 +91,7 @@ $$
 
 Un waist trop petit est trop divergeant, et donc trop large sur les bords, mais un waist trop large limite la résolution. Il faut donc trouver un optimum. La taille d'un neurone étant de 8 µm environ, des valeurs inférieures sont souhaitables.
 
-Une valeur de waist possible pour un échantillon de 400 µm est de 3 µm à 488 nm et de 5 µm à 915 nm. Pour ces valeurs, la largeur du faisceau à 488 nm vaut 3 µm au centre et 10 µm sur les bords du cerveau. À 915 nm c'est 5 µm au centre et 14 µm sur les bords, mais il faut aussi prendre en compte l'effet deux photons. En pratique, la plupart des neurones sont situés entre -150 µm et +150 µm, la largeur du faisceau aux extrémités n'est donc pas critique.
+Une valeur de waist possible pour un échantillon de 400 µm est de 3 µm à 488 nm et de 5 µm à 915 nm. Pour ces valeurs, la largeur du faisceau à 488 nm vaut 3 µm au centre et 10 µm sur les bords du cerveau. À 915 nm c'est 5 µm au centre et 14 µm sur les bords, mais il faut aussi prendre en compte l'effet deux photons. En pratique, la plupart des neurones (75\% \cite{panier_fast_2013}) sont situés entre -150 µm et +150 µm, la largeur du faisceau aux extrémités n'est donc pas critique.
 
 \subsubsection{Balayage horizontal et vertical}
 
@@ -151,10 +151,10 @@ Aucun logiciel adapté à nos données n'étant disponible à l'époque, nous av
 Dans la suite de cette section, j'appellerai de manière équivalente (x,y,z,t) les coordonnées d'un point et les axes dans le repère du poisson. Ces coordonnées sont données dans l'espace de référence RAST (\emph{Right Anterior Superior Time}), c'est-à-dire que l'axe x est orienté vers la droite de la larve, l'axe y vers l'avant, l'axe z vers le haut, et le temps dans le sens naturel.
 
 \begin{figure}
-\centering
-\includegraphics[width=0.6\textwidth]{./files/RAST.svg.png}
-\caption{Illustration de la convention d'orientation RAS (a.) et comparaison avec les systèmes de coordonnées naturels de ImageJ (b. coordonnées des pixels d'un écran) et Matlab (c. coordonnées des éléments d'une matrice).}
-\end{figure}
+    \centering
+    \includegraphics[width=0.6\textwidth]{./files/RAST.svg.png}
+    \caption{Convention d'orientation RAS (a.) et comparaison avec les systèmes de coordonnées naturels de ImageJ (b. coordonnées des pixels d'un écran) et Matlab (c. coordonnées des éléments d'une matrice).}
+    \end{figure}
 
 % OK VolkerComment
 % Add a figure illustrating the RAST definition and add your wiki page with the corresponding figures about the different coordinate systems used in Matlab, Fiji, cmtk
@@ -166,7 +166,7 @@ Dans la suite de cette section, j'appellerai de manière équivalente (x,y,z,t) 
 
 Pour des données à quatre dimensions (x,y,z,t), il est impératif qu'un pixel (x,y,z) représente toujours le même espace objet dans le cerveau. Une première étape consiste donc à aligner toutes les images entre elles. Dans un cas totalement général, le tissu imagé peut connaître des déformations au cours de l'expérience, et il faut estimer et appliquer la transformation inverse. Suite2P et CaImAn fournissent tous les deux des algorithmes de déformation non rigide, mais ces algorithmes sont couteux en temps et il est difficile d'estimer numériquement leur performance. De plus, sur des expériences de vingt minutes, les déformations sont généralement trop faibles pour que cette étape soit réellement nécessaire, nous avons donc opté pour une transformation rigide. Cette transformation rigide peut avoir plusieurs degrés de liberté en translation et rotation. Comme précisé dans la partie sur la conception de la plateforme rotative, nous avons obtenu une excellente stabilité en z, les translations restantes sont donc uniquement selon (x,y), et les rotations sont également négligeables. 
 
-Une difficulté pour trouver cette translation est que l'image peut évoluer le long de l'enregistrement. En effet, en fonction de l'activité des différentes régions, l'image peut se transformer entre le début et la fin de l'expérience à un point suffisant pour empêcher tout algorithme naïf de fonctionner. Dans le cas de l'imagerie monophotonique, le signal de fond est suffisant pour qu'une simple autocorrélation sur l'ensemble de l'image permette de trouver le déplacement. Dans le cas de l'imagerie deux photons, ce signal étant bien plus faible, l'autocorrélation sur l'ensemble de l'image est dominée par les changements de fluorescence liée à l'activité de neurones. La solution retenue a donc été de réaliser l'autocorrélation sur une zone de l'image stable pendant toute la durée de l'expérience facilement identifiable à l'œil. C'est par exemple le cas pour un neurone mort qui reste toujours dépolarisé (on en trouve toujours quelques-uns par volume).
+Une difficulté pour trouver cette translation est que l'image peut évoluer le long de l'enregistrement. En effet, en fonction de l'activité des différentes régions, l'image peut se transformer entre le début et la fin de l'expérience à un point suffisant pour empêcher tout algorithme naïf de fonctionner. Dans le cas de l'imagerie monophotonique, le signal de fond est suffisant pour qu'une simple autocorrélation sur l'ensemble de l'image permette de trouver le déplacement. Dans le cas de l'imagerie deux photons, ce signal étant bien plus faible, l'autocorrélation sur l'ensemble de l'image est dominée par les changements de fluorescence liée à l'activité de neurones. La dernière solution retenue a donc été de réaliser l'autocorrélation sur une zone de l'image stable pendant toute la durée de l'expérience facilement identifiable à l'œil. C'est par exemple le cas pour un neurone mort qui reste toujours dépolarisé (on en trouve toujours quelques-uns par volume).
 
 Cette étape nécessite donc une supervision rapide à l'œil humain mais fonctionne en général du premier coup et est extrêmement rapide par rapport à tout autre algorithme utilisant l'image entière. De plus, il suffit de réaliser l'opération pour une seule couche et d'extrapoler à tout le volume. Cette étape permet de corriger les déplacements latéraux rapides ($x$, $y$) liés directement à la rotation de la plateforme ainsi que la dérive lente en $y$ liée à la contraction du boudin d'agar tenant le poisson.
 
@@ -184,7 +184,7 @@ Aligner le volume sur un cerveau de référence permet d'une part de comparer pl
 \begin{figure}
 \centering
 \includegraphics[width=1\textwidth]{./files/analysis_illustration.svg.png}
-\caption{Illustration de différentes étapes de l'analyse.
+\caption{Différentes étapes de l'analyse.
 \\a. Segmentation par l'algorithme \emph{watershed} affichée par-dessus une image moyenne.
 \\b. Détail de la segmentation. Un extrait du signal du neurone en vert est affiché dessous. Chaque trait léger correspond à un pixel du neurone, le trait épais correspond à la moyenne de tous les pixels pour ce neurone. L'histogramme montre la répartition des tailles des régions pour cette couche. La plupart des segments contiennent entre 20 et 50 pixels.
 \\c. Valeur de signal pour un pixel (le pixel en magenta sur le neurone vert) tout au long de l'enregistrement (le niveau de bruit de la caméra est à 400). Un détail sur la partie encadrée met en évidence son activité périodique.
@@ -197,12 +197,12 @@ Aligner le volume sur un cerveau de référence permet d'une part de comparer pl
 % (PSD = DSP)
 
 Il est intéressant de réaliser certaines analyses directement sur les pixels de l'image. Cela permet d'obtenir des figures avec une bonne résolution et contourne le problème de la segmentation des neurones tout en profitant au mieux de l'échantillonnage permis par la caméra. Cependant, cette approche est coûteuse en calcul, car elle opère sur un grand nombre d'éléments. Nous l'avons principalement réservée à l'analyse de Fourier pour une stimulation périodique.
-Pour chaque pixel dans la région d'intérêt, on applique la transformée de Fourier discrète sur son profil temporel (cf Fig. \ref{FIGfourier} c.). Cela donne un pic en amplitude à la fréquence de stimulation et du bruit en dehors (cf Fig. \ref{FIGfourier} d.). On calcule un rapport signal à bruit comme le rapport de l'amplitude du signal sur l'amplitude du bruit moyennée sur une fenêtre autour du pic de largeur arbitraire. On considère également la phase du pic, qui représente le déphasage du signal de fluorescence avec le stimulus.
+Pour chaque pixel dans la région d'intérêt, on applique la transformée de Fourier discrète sur son profil temporel (Fig. \ref{FIGfourier} c.). Cela donne un pic en amplitude à la fréquence de stimulation et du bruit en dehors (Fig. \ref{FIGfourier} d.). On calcule un rapport signal à bruit comme le rapport de l'amplitude du signal sur l'amplitude du bruit moyennée sur une fenêtre autour du pic de largeur arbitraire. On considère également la phase du pic, qui représente le déphasage du signal de fluorescence avec le stimulus.
 Ces valeurs pour chaque pixel sont ensuite utilisées pour représenter une couleur dans l'espace HSV (\emph{Hue, Saturation, Value} soit Teinte, Saturation, Valeur). La teinte représente le déphasage, la saturation est fixée à 1, et la valeur représente le rapport signal à bruit. 
 
 \paragraph{Segmentation et analyse par neurone}
 
-L'analyse par pixel est pertinente pour des études préliminaires simples, car elle est gourmande en calcul, chaque section de neurone (environ 6 µm de diamètre) étant imagée sur environ 30 pixels (pixel objet de 0.8 µm de côté) (cf histogramme Fig. \ref{FIGfourier} b.). En regroupant les pixels appartenant au même neurone, on peut réduire le volume de données à traiter tout en conservant leur qualité (cf Fig. \ref{FIGfourier} b.). Il existe de nombreux algorithmes de segmentation, certains faisant appel aux données temporelles pour tirer profit de l'activité des neurones, d'autre opérant sur l'image moyenne. Nous avons pour l'instant uniquement utilisé l'algorithme de ligne de partage des eaux (\emph{watershed}) combiné à une égalisation locale de contraste. Cela donne des résultats satisfaisants comme on le voit en figure \ref{FIGfourier} (a.).
+L'analyse par pixel est pertinente pour des études préliminaires simples, car elle est gourmande en calcul, chaque section de neurone (environ 6 µm de diamètre) étant imagée sur environ 30 pixels (pixel objet de 0.8 µm de côté) (cf histogramme Fig. \ref{FIGfourier} b.). En regroupant les pixels appartenant au même neurone, on peut réduire le volume de données à traiter tout en conservant leur qualité (Fig. \ref{FIGfourier} b.). Il existe de nombreux algorithmes de segmentation, certains faisant appel aux données temporelles pour tirer profit de l'activité des neurones, d'autre opérant sur l'image moyenne. Nous avons pour l'instant uniquement utilisé l'algorithme de ligne de partage des eaux (\emph{watershed}) combiné à une égalisation locale de contraste. Cela donne des résultats satisfaisants comme on le voit en figure \ref{FIGfourier} (a.).
 
 % OK illustrer pixellation du neurone
 % OK vérifier taille neurone en pixel
@@ -249,7 +249,7 @@ Une définition courante de la valeur de référence d'un signal calcique repose
 \subsubsection{Pistes d'améliorations}
 
 \paragraph{Ordre des dimensions}
-L'ordre naturel des dimensions en mémoire est l'ordre obtenu lors de l'écriture ($(x,y),z,t$). Cet ordre permet de lire et écrire rapidement une image, mais n'est pas adapté à une tranche selon $t$. En effet les valeurs à deux instant successifs pour un même pixel ($x,y,z$) sont séparées en mémoire de 12 288 000 valeurs. Lire une tranche temporelle est extrêmement long sur un disque dur rotatif et reste limitant sur un SSD. Un gain de vitesse pour des tranches temporelles peut être obtenu en permutant l'ordre des dimensions en mémoire, au prix d'une perte pour la lecture d'images (tranche $(x,y)$). Pour un ordre ($t,x,y,z$), la vitesse de lecture des images reste suffisamment rapide pour un affichage à fréquence vidéo tout en accélérant immensément la lecture de tranches temporelles, bien plus sollicitée lors de l'analyse. Réaliser ce changement nécessite une grande part de ré-écriture du code actuel et bénéficierait d'un langage plus adapté.
+L'ordre naturel des dimensions en mémoire est l'ordre obtenu lors de l'écriture ($(x,y),z,t$). Cet ordre permet de lire et écrire rapidement une image, mais n'est pas adapté à une tranche selon $t$. En effet les valeurs à deux instant successifs pour un même pixel ($x,y,z$) sont séparées en mémoire de 12 288 000 valeurs. Lire une tranche temporelle est extrêmement long sur un disque dur rotatif et reste limitant sur un SSD. Un gain de vitesse pour des tranches temporelles peut être obtenu en permutant l'ordre des dimensions en mémoire, au prix d'une perte pour la lecture d'images (tranche $(x,y)$). Pour un ordre ($t,x,y,z$), la vitesse de lecture des images reste suffisamment rapide pour un affichage à fréquence vidéo tout en accélérant immensément la lecture de tranches temporelles, bien plus sollicitée lors de l'analyse. Réaliser ce changement nécessite la ré-écriture d'une grande part du code actuel.
 
 % TODO ressortir les benchmarks ordre dimensions
 
@@ -258,9 +258,12 @@ La taille des données brutes pourrait être largement réduite, ce qui accélé
 
 % TODO estimer la taille de la ROI sur plusieurs runs
 
-\paragraph{Langage adapté} % TODO reformuler ce paragraphe
-Jusque-là, une grande partie des données ont été analysées en langage Matlab. Ce langage n'est pas très adapté à la gestion de données de ce type et souffre de plusieurs lacunes. Matlab est généralement lent, ce qui est handicapant. Matlab n'accepte de données que sur 8, 16, 32, ou 64 bits, ce qui interdit l'amélioration consistant à encoder les données sur 12 bits. Matlab est mauvais pour réaliser un système modulaire, ce qui augmente dramatiquement les efforts pour maintenir un programme. Matlab est fermé, opaque, et sous licence propriétaire, ce qui diminue les possibilités d'utilisation du code.
-J'ai réalisé un prototype rapide détaillé en annexe pour évaluer l'intérêt de traiter des données en langage Julia. Le principe d'interface, et spécifiquement des \verb|AbstractArray| (\href{https://docs.julialang.org/en/v1/manual/interfaces/#man-interface-array-1}{doc}) est particulièrement adapté à la manipulation de données matricielles en memory mapping, bien plus que le \verb|memmapfile| de Matlab (\href{https://fr.mathworks.com/help/matlab/ref/memmapfile.html}{doc}) car il permet un traitement plus bas niveau tout en fournissant des abstractions plus haut niveau. Ces considérations m'ont conduit à penser que pour produire et maintenir une base de code saine et efficace pour l'analyse, il était indispensable de s'éloigner du langage Matlab, que le langage Python était une alternative possible, mais que le langage Julia était préférable. Ceci aussi bien pour une évolution à court, moyen et long terme.
+\paragraph{Langage adapté}
+Les amélioration que je propose impliquent beaucoup de ré-écriture de code, c'est donc l'occasion de se poser des questions sur le langage à utiliser. Le code actuel est en Matlab, un langage qui n'est pas très adapté à la gestion de ce type de données. Changer pour un langage plus complet permettrait de gérer des données sur 12bits, d'écrire de manière plus modulaire, et autres avantages que je discute plus précisément en annexe \ref{langageadapte}.
+
+% (ancien paragraphe)
+% Jusque-là, une grande partie des données ont été analysées en langage Matlab. Ce langage n'est pas très adapté à la gestion de données de ce type et souffre de plusieurs lacunes. Matlab est généralement lent, ce qui est handicapant. Matlab n'accepte de données que sur 8, 16, 32, ou 64 bits, ce qui interdit l'amélioration consistant à encoder les données sur 12 bits. Matlab est mauvais pour réaliser un système modulaire, ce qui augmente dramatiquement les efforts pour maintenir un programme. Matlab est fermé, opaque, et sous licence propriétaire, ce qui diminue les possibilités d'utilisation du code.
+% J'ai réalisé un prototype rapide détaillé en annexe pour évaluer l'intérêt de traiter des données en langage Julia. Le principe d'interface, et spécifiquement des \verb|AbstractArray| (\href{https://docs.julialang.org/en/v1/manual/interfaces/#man-interface-array-1}{doc}) est particulièrement adapté à la manipulation de données matricielles en memory mapping, bien plus que le \verb|memmapfile| de Matlab (\href{https://fr.mathworks.com/help/matlab/ref/memmapfile.html}{doc}) car il permet un traitement plus bas niveau tout en fournissant des abstractions plus haut niveau. Ces considérations m'ont conduit à penser que pour produire et maintenir une base de code saine et efficace pour l'analyse, il était indispensable de s'éloigner du langage Matlab, que le langage Python était une alternative possible, mais que le langage Julia était préférable. Ceci aussi bien pour une évolution à court, moyen et long terme.
 
 % nrrd et ses limites
 % 3Dslicer vs cmtk vs ants...
@@ -357,7 +360,7 @@ Nous avons vu dans la section précédente la réponse à une stimulation en rou
 
 Pour une stimulation en tangage, le poisson doit être placé perpendiculairement à l'axe de rotation, avec les deux oreilles internes sur l'axe. Le laser devant arriver par le côté, le module de balayage a été adapté avec un miroir fixe pour que la direction d'entrée et de sortie soient parallèles. Ainsi, la fibre peut être placée le long de l'axe de rotation, ce qui minimise ses déformations.
 
-Pour tourner la plateforme, un moteur pas à pas actionne à travers un réducteur un système bielle manivelle fixé à la plaque optique sur laquelle sont fixés les différents éléments du microscope (cf Fig. \ref{FIGtiltlightsheet}). La stabilité du système a été caractérisée par la méthode détaillée en figure \ref{FIGbeadstability} et présente les mêmes caractéristiques (excellente stabilité en z, stabilité horizontale raisonnable pouvant être facilement corrigée \emph{a posteriori}).
+Pour tourner la plateforme, un moteur pas à pas actionne à travers un réducteur un système bielle manivelle fixé à la plaque optique sur laquelle sont fixés les différents éléments du microscope (Fig. \ref{FIGtiltlightsheet}). La stabilité du système a été caractérisée par la méthode détaillée en figure \ref{FIGbeadstability} et présente les mêmes caractéristiques (excellente stabilité en z, stabilité horizontale raisonnable pouvant être facilement corrigée \emph{a posteriori}).
 
 L'entrée de fibre se fait au moyen d'un connecteur FC/PC (\emph{Fiber Connector with Physical Contact}) qui permet de changer facilement de fibre tout en conservant l'alignement. Pour les fibres ayant une ouverture numérique faible, une lentille placée en sortie de fibre permet d'adapter l'ouverture numérique du faisceau et ainsi de couvrir l'ensemble de la pupille d'entrée de l'objectif d'entrée du module de balayage. Les premières acquisitions un photon ont été réalisées à l'aide d'une fibre monomode identique à celle du microscope précédent.
 
