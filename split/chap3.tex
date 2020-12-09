@@ -61,6 +61,9 @@ Un microscope à feuille de lumière classique utilise un laser bleu pour stimul
 % Vladimirov
 % Show the figure that demonstrates the configuration of the two light-sheets
 
+% TODO VolkerComment5
+% Truong et al used the 2P for structural imaging. Wolf observed that you can use it also in the context of functionnal brain imaging with much higher required volumetric recording rates and so higher laser power and that you do not burn the fish
+
 Plus tard, Vladimirov \emph{et al} \cite{vladimirov_light-sheet_2014} ont montré que l'étude de l'OMR était également possible en microscopie à feuille de lumière un photon, à condition de ne pas éclairer directement l'œil du poisson. Ils ont utilisé deux feuilles de lumière, l'une éclairant le cerveau par le côté et l'autre par l'avant, entre les deux yeux. Cependant, l'OMR est un réflexe robuste qui ne recourt pas aux fonctions avancées de la vision, et la perturbation due à l'illumination des autres processus visuels n'est pas contrôlée. C'est pourquoi Wolf \emph{et al} ont appliqué la technique mise au point par Truong à l'étude du système visuel de la larve de poisson zèbre \cite{wolf_whole-brain_2015}. Ils ont construit un microscope à feuille de lumière deux photons et réalisé l'acquisition du cerveau entier lors de stimulations visuelles.
 
 % TODO VolkerComment2
@@ -80,31 +83,33 @@ Pour étudier le cerveau lors du contrôle postural, il est donc nécessaire de 
 L'absorption deux photons est un phénomène non linéaire d'absorption simultanée de deux photons par une molécule ou un atome. Cet effet est proportionnel au carré de l'intensité lumineuse incidente et est lié au caractère anharmonique du dipôle oscillant. Pour cette raison, il est négligeable aux petites énergies mais devient important pour une intensité lumineuse élevée. On peut l'observer en concentrant fortement un faisceau puissant. La concentration peut être à la fois spatiale par focalisation et temporelle par impulsion temporelle.
 
 \subsection{Concentration spatiale}
-
-\begin{figure}[p]
-    \centering
-    \includegraphics[width=0.8\textwidth]{./files/profile-intensity.png}
-    \caption{Effet deux-photons en microscopie à feuille de lumière. Comparaison du profil d'intensité (haut) et de son carré (bas). On voit que la zone concernée par l'effet deux photons et restreinte. (paramètres : indice optique 1.33, longueur d'onde 915 nm, waist 6.5 µm)}
-    \label{2P-intensity-profile}
-    \end{figure}
  
-Un système optique peut concentrer la lumière localement, ce qui produit un point de plus grande intensité, le point focal. Comme l'effet deux photons est proportionnel au carré de l'intensité, la zone concernée est d'autant plus restreinte. Cette propriété est utilisée en microscopie multiphoton pour produire une illumination ponctuelle qui permet le sectionnement optique dans la direction de propagation. En microscopie à feuille de lumière, au contraire, une illumination linéaire est recherchée. La focalisation est donc bien moindre et l'effet deux photons contribue à affiner la zone d'excitation, la fluorescence n'étant excitée qu'au centre du faisceau (Fig. \ref{2P-intensity-profile}).
+Un système optique peut concentrer la lumière localement, ce qui produit un point de plus grande intensité, le point focal. Comme l'effet deux photons est proportionnel au carré de l'intensité, la zone concernée est d'autant plus restreinte. Cette propriété est utilisée en microscopie multiphoton pour produire une illumination ponctuelle qui permet le sectionnement optique dans la direction de propagation. En microscopie à feuille de lumière, au contraire, une illumination linéaire est recherchée. La focalisation est donc bien moindre et l'effet deux photons contribue à affiner la zone d'excitation, la fluorescence n'étant excitée qu'au centre du faisceau (Fig. \ref{FIG2P-intensity-profile}).
 
 % TODO VolkerComment2
 % You have to make a figure. Show the Jablonski diagram and e.g. this https://www.researchgate.net/figure/Two-photon-fluorescence-vs-normal-fluorescence-The-blue-scanning-laser-in-the-left_fig11_326583720. Discuss that via the two photon effect you can excite the same fluorophore (GCaMP) with an IR laser of double the wavelength compared to the one photon case. In this configuration you laser is outside the sensitive spectrum of the fish retina.
 % Is linear the correct word? An extended focus is needed to create the light-sheet
 
-\subsection{Concentration temporelle}\label{SECTIONconcentrationtemporelle}
+\begin{figure}[p]
+    \centering
+    \includegraphics[width=0.8\textwidth]{./files/profile-intensity.png}
+    \caption{Effet deux-photons en microscopie à feuille de lumière. Comparaison du profil d'intensité (haut) et de son carré (bas). On voit que la zone concernée par l'effet deux photons et restreinte, ce qui permet d'obtenir un sectionnement vertical comparable à la feuille de lumière 1P malgré une longueur d'onde plus élevée. On voit aussi que l'intensité décroit plus vite dans la direction de propagation, ce qui diminue le signal sur les bords du cerveau. (paramètres : indice optique 1.33, longueur d'onde 915 nm, waist 6.5 µm)}
+    \label{FIG2P-intensity-profile}
+    \end{figure}
 
 \begin{figure}[p]
     \centering
-    \includegraphics[width=0.8\textwidth]{./files/pulsed_laser.svg.png}
-    \caption{Profil temporel de puissance d'un laser pulsé. Chaque impulsion a une durée $\tau$, elles sont espacées d'une durée T=1/f. À puissance moyenne constante, plus $\tau$ est petit, et plus T est grand, plus $P_\text{max}$ est grand. L'effet deux photons est proportionnel au carré de $P_\text{max}$.
+    \includegraphics[width=\textwidth]{./files/pulsed_laser.svg.png}
+    \caption{Profil temporel de puissance d'un laser pulsé. Chaque impulsion a une durée $\tau$, elles sont espacées d'une durée $T=1/f$, où $f$ est la fréquence de répétition du laser. À puissance moyenne $P_\text{moy}$ constante, plus $\tau$ est petit, et plus $T$ est grand, plus la puissance maximale $P_\text{max}$ est grande. L'intensité de fluorescence en deux photons est proportionnelle au carré de $P_\text{max}$ alors qu'elle est proportionelle à $P_\text{moy}$ en un photon.
     }
-    \label{pulsed-laser}
+    \label{FIGpulsed-laser}
     \end{figure}
+
+\subsection{Concentration temporelle}\label{SECTIONconcentrationtemporelle}
     
-Une autre manière de concentrer la lumière est la concentration temporelle. Dans le cas d'un laser continu, la puissance est répartie sur toute la longueur de propagation du faisceau. En utilisant un laser pulsé, la puissance est concentrée en paquets beaucoup plus courts (Fig. \ref{pulsed-laser}). Par exemple, pour des impulsions de 100 fs, malgré la vitesse élevée de la lumière, la longueur de ces paquets est de 30 mm. Si de plus le taux de répétition du laser est de 80 MHz, la puissance d'une impulsion est 125 fois plus élevée qu'un laser continu de même puissance moyenne (1/(100 fs $\times$ 80 MHz)). L'effet deux photons étant proportionnel au carré de la puissance instantanée, on a intérêt à choisir les impulsions les plus courtes possibles (petit $\tau$) et le taux de répétition le plus faible possible (grand T) pour un laser de puissance moyenne fixée \cite{maioli_fast_2020}. Cette tendance est limitée par les photoperturbations induites, qui deviennent importantes au-delà d'une centaine de nanojoules par impulsion. Les conditions optimales en microscopie par fluorescence à nappe laser deux photons sont autour de f = 1 MHz, $\tau$ = 100 fs, P = 100 mW \cite{gasparoli_is_2020}.
+Une autre manière de concentrer la lumière est la concentration temporelle. Dans le cas d'un laser continu, la puissance est répartie sur toute la longueur de propagation du faisceau. En utilisant un laser pulsé, la puissance est concentrée en paquets beaucoup plus courts (Fig. \ref{FIGpulsed-laser}). Par exemple, pour des impulsions de 100 fs, malgré la vitesse élevée de la lumière, la longueur de ces paquets est de 30 µm (100e-15 $\times$ 3e8 = 3e-5). Si de plus le taux de répétition du laser est de 80 MHz, la puissance d'une impulsion est 125 fois plus élevée qu'un laser continu de même puissance moyenne (1/(100 fs $\times$ 80 MHz)). L'effet deux photons étant proportionnel au carré de la puissance instantanée, on a intérêt à choisir les impulsions les plus courtes possibles (petit $\tau$) et le taux de répétition le plus faible possible (grand T) pour un laser de puissance moyenne fixée \cite{maioli_fast_2020}. Cette tendance est limitée par les photoperturbations induites, qui deviennent importantes au-delà d'une centaine de nanojoules par impulsion. Pour Gasparoli \emph{et al}, les conditions optimales en microscopie par fluorescence à nappe laser deux photons sont f = 1 MHz, $\tau$ = 100 fs, P = 100 mW, $\lambda$ = 920 nm \cite{gasparoli_is_2020}. Pour Maioli \emph{et al}, elles sont de f = 10 MHz, $\tau$ = 300 fs, P = 70 mW, $\lambda$ = 1030 nm \cite{maioli_fast_2020}.
+
+% Cependant, ces derniers suggèrent de repousser la longueur d'onde vers les 1100 nm pour réduire l'absorption. (cf partie lentille thermique)
 
 % TODO VolkerComment2
 % Move this to the discussion. Also from where do you get the numbers? citation is missing. Willy Supatto shows in his 2020 paper that 10MHz is the optimal repetition rate.
@@ -112,13 +117,18 @@ Une autre manière de concentrer la lumière est la concentration temporelle. Da
 
 \section{Fibre optique, principe et état de l'art}
 
+Pour obtenir un bon signal de fluorescence par excitation deux photons, il est donc nécessaire de transmettre jusqu'à l'échantillon un faisceau à haute puissance tout en conservant des impulsions courtes. Les fibres classiques comme celle utilisée dans la version un photon du microscope n'ont pas ces propriétés et il faut donc s'intéresser aux mécanismes du guide d'onde pour trouver une solution à ce problème.
+
 \begin{figure}
     \centering
-    \includegraphics[width=0.8\textwidth]{./files/fibers.svg.png}
-    \caption{Différents types de fibres évoquées.
+    \includegraphics[width=\textwidth]{./files/fibers.svg.png}
+    \caption{Aperçu sur les fibres et exemples de fibres à cœur creux évoquées dans le texte.
     \\ a1. Fibre Kagomé (image extraite de Wang 2011 \cite{wang_low_2011}), schéma du motif en a2.
     \\ b1. Fibre à réseaux de tube (image extraite de Cregan 1999 \cite{cregan_single-mode_1999}), schéma du réseau tubulaire comme dans Vincetti 2010 \cite{vincetti_waveguiding_2010} en b2.
     \\ c1. Fibre à courbure négative (image extraite de Yu 2016 \cite{yu_negative_2016}), schéma en c2. Voir également Pryamikov \emph{et al} \cite{pryamikov_demonstration_2011}
+    \\ d. Modes de Laguerre Gauss. Adapté de \href{https://en.wikipedia.org/wiki/Transverse_mode}{Wikipédia}.
+    \\ f. Fibre multimode du point de vue de l'optique géométrique. La condition de réflexion totale impose un angle limite pour les rayons transmis. Adapté de \href{https://en.wikipedia.org/wiki/Optical_fiber}{Wikipédia}
+    \\ g. Une fibre monomode ne peut pas être décrite du point de vue de l'optique géométrique. La description du point de vue électromagnétique fait apparaître les modes illustrés en (d.).
     \label{FIGfiberexamples}}
     \end{figure}
 
@@ -129,7 +139,14 @@ Dans le domaine des fréquences optiques, les guides d'ondes à saut d'indice so
 
 \subsection{Fibre optique monomode à saut d'indice} % et précompensation de la dispersion
 
-Une fibre optique monomode avec un mode propre quasiment gaussien est adaptée à la transmission d'un faisceau gaussien \cite{ankiewicz_generalized_1992}. C'est le genre de fibre que l'on utilise pour guider le laser d'excitation dans le modèle un photon du microscope à feuille de lumière \cite{migault_whole-brain_2018}. Si l'on tente de transmettre un faisceau pulsé dans ces fibres, on se heurte au phénomène de dispersion \cite{gloge_dispersion_1971} \cite{jurgensen_gaussian_1978}. La largeur spectrale d'un laser pulsé est d'autant plus grande que l'impulsion est courte et la durée de l'impulsion réside dans la synchronicité des différentes fréquences. Dans un milieu dispersif, les différentes longueurs d'onde se propagent à une vitesse différente, ce qui désynchronise les oscillations et élargit le pic. L'effet deux photons étant proportionnel au carré de la puissance instantanée, il est fortement dégradé par l'élargissement du pic. % TODO illustration
+Une fibre optique monomode avec un mode propre quasiment gaussien est adaptée à la transmission d'un faisceau gaussien \cite{ankiewicz_generalized_1992}. C'est le genre de fibre que l'on utilise pour guider le laser d'excitation dans le modèle un photon du microscope à feuille de lumière \cite{migault_whole-brain_2018}. Si l'on tente de transmettre un faisceau pulsé dans ces fibres, on se heurte au phénomène de dispersion \cite{gloge_dispersion_1971} \cite{jurgensen_gaussian_1978}. La largeur spectrale d'un laser pulsé est d'autant plus grande que l'impulsion est courte et la durée de l'impulsion réside dans la synchronicité des différentes fréquences. Dans un milieu dispersif, les différentes longueurs d'onde se propagent à une vitesse différente, ce qui désynchronise les oscillations et élargit le pic (illustration ci-contre). L'effet deux photons étant proportionnel au carré de la puissance instantanée, il est fortement dégradé par l'élargissement du pic. % TODO illustration
+
+\begin{wrapfigure}[5]{r}[0\width]{0.5\textwidth}
+    \vspace{-30pt}
+    \begin{flushright}
+      \includegraphics[width=0.5\textwidth]{./files/dispersion.svg.png}
+    \end{flushright}
+  \end{wrapfigure}
 
 Une solution consiste à précompenser cette dispersion via des éléments optiques comme une suite de prismes ou de réseaux de diffraction positionnés en amont de l'injection \cite{fork_negative_1984}. Cette solution permet de réduire la largeur temporelle du pic en sortie de fibre, et donc de conserver l'effet deux photons. On rencontre un autre obstacle pour des impulsions de haute énergie. C'est l'automodulation de phase par effet Kerr \cite{agrawal_nonlinear_2000}. Cet effet est lié aux propriétés non linéaires du milieu traversé, qui change d'indice en fonction de l'intensité lumineuse qui le parcourt. Il en résulte également un élargissement de l'impulsion. Cet effet apparaît pour des puissances moyennes relativement faibles (10 mw \cite{helmchen_miniaturization_2013}), ce qui empêche d'utiliser des impulsions optimalement courtes (<1 ps \cite{helmchen_miniaturization_2013}) avec de telles fibres. Des techniques existent pour précompenser cette distorsion \cite{clark_fiber_2001} \cite{lefort_sub-30-fs_2014}, mais elles sont peu répandues car difficiles à mettre en place \cite{helmchen_miniaturization_2013}. De plus, ces problèmes peuvent être contournés par les fibres à âme vide.
 
@@ -206,7 +223,7 @@ La partie de détection est quant à elle également embarquée. On peut avoir u
 
 \subsubsection{Déportation de l'illumination et de la détection}
 
-Dans les exemples précédents, le laser est amené par une fibre, mais le capteur est sur place, le signal repartant sous forme de signal électrique. Il est également possible de déporter le système de détection en collectant la lumière par fibre optique. Certains utilisent pour cela une fibre multimode \cite{piyawattanametha_vivo_2009} \cite{sawinski_visually_2009}, d'autres une \emph{fibre plastique} \cite{klioutchnikov_three-photon_2020}, d'autres encore un faisceau de fibres \cite{zong_fast_2017}. Dans ce cas, la lumière collectée est mesurée en sortie de fibre à l'aide d'un système optique adapté sans limite d'encombrement. On peut ainsi utiliser des sytèmes régulés en température ou munis d'une électronique complexe.
+Dans les exemples précédents, le laser est amené par une fibre, mais le capteur est sur place, le signal repartant sous forme de signal électrique. Il est également possible de déporter le système de détection en collectant la lumière par fibre optique. Certains utilisent pour cela une fibre multimode \cite{piyawattanametha_vivo_2009} \cite{sawinski_visually_2009}, d'autres une \emph{fibre plastique} \cite{klioutchnikov_three-photon_2020}, d'autres encore un faisceau de fibres \cite{zong_fast_2017}. Dans ce cas, la lumière collectée est mesurée en sortie de fibre à l'aide d'un système optique adapté sans limite d'encombrement. On peut ainsi utiliser des sytèmes volumineux et sensibles aux vibrations comme des sources laser régulés en température ou des circuits de détection munis d'une électronique complexe.
 
 \subsubsection{Lentilles à gradient d'indice}
 
@@ -223,7 +240,7 @@ D'autres techniques d'imagerie neuronale se passent même d'optique et sont uniq
 
 \section{Caractérisation et utilisation de fibres à âme vide}
 
-Nous avons vu dans la partie précédente qu'une fibre optique permet de guider la lumière, que ce soit pour éclairer l'échantillon ou collecter le signal. Les fibres de verre conviennent bien aux applications classiques, mais posent des problèmes d'interaction lumière-matière lors de la transmission d'impulsions à haute énergie pour la microscopie multiphoton et nécessitent une précompensation de la dispersion. Les fibres à âme vide permettent de contourner ces problèmes et ont déjà été largement utilisées dans des microscopes embarqués sur rongeur \cite{tai_two-photon_2004} \cite{flusberg_vivo_2005} \cite{engelbrecht_ultra-compact_2008} \cite{piyawattanametha_vivo_2009} \cite{choi_improving_2014} \cite{klioutchnikov_three-photon_2020}. C'est donc vers celles-ci que nous nous sommes tournés. Nous avons testé plusieurs modèles fournis par l'entreprise \href{http://www.glophotonics.fr/}{Glophotonics} (Fig. \ref{FIGfibercomparison}).
+Nous avons vu dans la partie précédente qu'une fibre optique permet de guider la lumière, que ce soit pour éclairer l'échantillon ou collecter le signal. Les fibres de verre conviennent bien aux applications classiques, mais posent des problèmes d'interaction lumière-matière lors de la transmission d'impulsions à haute énergie pour la microscopie multiphoton et nécessitent une précompensation de la dispersion. Les fibres à âme vide permettent de contourner ces problèmes et ont déjà été largement utilisées dans des microscopes embarqués sur rongeur \cite{tai_two-photon_2004} \cite{flusberg_vivo_2005} \cite{engelbrecht_ultra-compact_2008} \cite{piyawattanametha_vivo_2009} \cite{choi_improving_2014} \cite{klioutchnikov_three-photon_2020}. C'est donc vers celles-ci que nous nous sommes tournés. Aucune fibre disponible commercialement ne permettait de transmettre à 930 nm, nous avons donc testé plusieurs modèles de recherche et développement de l'entreprise \href{http://www.glophotonics.fr/}{Glophotonics} (Fig. \ref{FIGfibercomparison}).
 
 % TODO VolkerComment2
 % What are our requirements ? Detail this ...
@@ -236,7 +253,7 @@ Nous avons vu dans la partie précédente qu'une fibre optique permet de guider 
 % TODO VolkerComment2
 % No, we did not record with these fibers. The mode field diameter was to large and the instabilities to bending were to large. Or do you have successful recordings with these fibers? The Brighton experiments were done with the fiber PMC-C-1C-R&D2
 
-Au début, nous avons utilisé des fibres ayant une bande de transmission uniquement dans l'infrarouge. Ces fibres ont permis de réaliser les premiers enregistrements deux photons de l'activité neuronale mais sont sensibles aux déformations, ce qui empêche l'enregistrement lors de la rotation du microscope. Ensuite, nous avons cherché à permettre à la fois la transmission d'un laser 1P et 2P, d'où l'utilisation de fibres avec plusieurs bandes de transmission. Parmi ces fibres, nous avons retenu le modèle PMC-C-9005 B2 qui permet une bonne transmission (97\% à 930 nm sur 1,5 m de fibre contre 70\% pour PMC-C-1C-R\&D2) (Fig. \ref{FIGfibercomparison}). J'utilise ce modèle comme référence par la suite.
+Au début, nous avons utilisé des fibres Kagome ayant une bande de transmission dans l'infrarouge. Ces fibres ont permis de réaliser les premiers enregistrements deux photons de l'activité neuronale mais sont sensibles aux déformations, ce qui empêche l'enregistrement lors de la rotation du microscope. Ensuite, nous avons cherché à permettre à la fois la transmission d'un laser 1P et 2P, d'où l'utilisation de fibres avec plusieurs bandes de transmission. Parmi ces fibres, nous avons retenu le modèle PMC-C-9005 B2 qui permet une bonne transmission (97\% à 930 nm sur 1,5 m de fibre contre 70\% pour PMC-C-1C-R\&D2) (Fig. \ref{FIGfibercomparison}). J'utilise ce modèle comme référence par la suite.
 
 \begin{figure}
     \centering
@@ -251,11 +268,11 @@ Au début, nous avons utilisé des fibres ayant une bande de transmission unique
 
 % OK Volker Add a motivation (for 1P)
 
-Une fibre capable de guider à la fois un laser 1P et un laser 2P permettrait de réaliser l'acquisition du cerveau en changeant facilement la longueur d'onde d'excitation. Cela permettrait de mettre en évidence les différences dans l'activité neuronale causées par l'environnement visuel. Je décris ici le processus d'injection dans une fibre et le montage que j'ai mis en place pour passer du laser 1P au laser 2P à l'aide d'un miroir amovible. 
+Une fibre capable de guider à la fois un laser 1P et un laser 2P permettrait de réaliser l'acquisition du cerveau en changeant facilement la longueur d'onde d'excitation et de mettre en évidence les différences dans l'activité neuronale causées par l'environnement visuel. Un autre avantage non négligeable est de faciliter l'alignement du système optique et de l'échantillon, plus difficile en lumière infrarouge. Je décris ici le processus d'injection dans une fibre et le montage que j'ai mis en place pour passer du laser 1P au laser 2P à l'aide d'un miroir amovible. 
 
 \subsubsection{Principe}
 
-Pour injecter le laser dans la fibre, il faut aligner tous les éléments dans l'axe optique et régler finement les degrés de liberté en translation et en rotation. De plus, comme on souhaite un couplage monomode, il faut faire coincider le mode laser d'entrée de fibre avec le mode propre de la fibre. Le laser ayant une largeur initiale de D, il faut le ramener à une largeur de fibre $w$ (23 µm ± 1 µm d'après la documentation). Pour cela, il faut utiliser une lentille de focale f et satisfaire l'équation suivante :
+Pour injecter le laser dans la fibre, il faut aligner tous les éléments dans l'axe optique et régler finement les degrés de liberté en translation et en rotation. De plus, comme on souhaite un couplage monomode, il faut faire coincider le mode laser d'entrée de fibre avec le mode propre de la fibre. Le laser ayant une largeur initiale de D, il faut le ramener à une largeur $w$ égale au mode propre de la fibre (23 µm ± 1 µm d'après la documentation). Pour cela, il faut utiliser une lentille de focale f et satisfaire l'équation suivante :
 
 $$
 f = D\frac{\pi w}{4\lambda}
@@ -319,10 +336,9 @@ En mesurant la durée de l'impulsion en sortie de fibre à l'aide d'un autocorr�
 Les propriétés de transmission de la fibre peuvent varier avec la courbure de celle-ci. La transmission est généralement optimale pour une fibre droite et se détériore suivant le rayon de courbure avec des pertes mesurées en dB. Une fibre PCNC-FC-K13-001 que je ne présente pas ici donnait des variations de transmission de l'ordre de 20\% pour un rayon de courbure de 5 cm.
 Lors d'une expérience, la rotation du microscope engendre des déformations de la fibre, et donc des variations de transmission. L'éclairage incident se retrouve corrélé à la stimulation, ce qui crée un signal parasite. Un signal parasite supérieur à 1\% détériore trop le rapport signal à bruit et empêche l'analyse des données. On cherche donc à caractériser les pertes de transmission liées à la courbure. Pour cela, il suffit de placer un puissance-mètre en sortie de fibre et de faire varier la courbure.
 
-Des modèles numériques \cite{yu_negative_2016} \cite{setti_flexible_2013} \cite{frosz_analytical_2017} suggèrent que le gain évolue de manière inversement proportionelle au carré du rayon de courbure. Cette relation est également observée sur notre fibre.
-Les pertes par mètre de fibre courbée restent cependant petites même pour un rayon assez court. Elles valent 0.1 dB ($\sim$2\%) pour un rayon de courbure de 7 cm.
+Pour tester les propriétés de la fibre en fonction de sa courbure, j'ai mesuré l'intensité et la polarisation du faisceau en sortie pour une polarisation linéaire et circulaire en entrée. Des modèles numériques \cite{yu_negative_2016} \cite{setti_flexible_2013} \cite{frosz_analytical_2017} suggèrent que le gain évolue de manière inversement proportionel au carré du rayon de courbure. Cette relation est également observée sur notre fibre (Fig. \ref{FIGfibercarac}). Les pertes par mètre de fibre courbée restent cependant petites même pour un rayon assez court. Elles valent 0.1 dB ($\sim$2\%) pour un rayon de courbure de 7 cm (Fig. \ref{FIGfibercarac}). Je n'ai trouvé aucun modèle pour la polarisation, mais les experiences montrent que pour une polarisation linéaire en entrée, une courbure de la fibre engendre une rotation de la polarisation en sortie. Pour une polarisation circulaire en entrée, invariante par rotation, on détecte de plus un léger changement d'ellipticité en sortie.
 
-En conditions réelles, on peut s'arranger pour limiter la courbure et répartir les déformations sur l'ensemble de la fibre. Par exemple, la fibre peut être placée le long d'une tige de rigidité plus élevée. Lors du déplacement d'une extrémité, une portion droite de 1 m de fibre se trouve courbée avec un rayon de 20 cm, ce qui donne des pertes de 0.01 dB, soit 0.2\%.
+En conditions réelles, on peut s'arranger pour limiter la courbure et répartir les déformations sur l'ensemble de la fibre. Par exemple, la fibre peut être attachée à une tige de rigidité plus élevée. On peut alors facilement interdire un rayon de courbure inférieur à 20 cm sur un mètre de fibre et donc limiter les pertes associées à 0.01 dB, soit 0.2\%.
 
 % OK Volker (fiber curvature real conditions)
 % pourqui c'est le pire des cas ? Dans quelle context? I do not understand your argument. What is the range of curvature change in your experimental configuration?
@@ -330,12 +346,12 @@ En conditions réelles, on peut s'arranger pour limiter la courbure et répartir
 \begin{figure}[t!]
     \centering
     \includegraphics[width=0.7\textwidth]{./files/fiber_bending.svg.png}
-    \caption{Propriétés de la fibre lors d'une courbure.
-    \\ a. schéma du setup de catactérisation
-    \\ b. gain en fonction de la courbure
-    \\ c. ellipticité en fonction de la courbure (quasi circulaire)
-    \\ d. angle de polarisation en fonction de la courbure (quasi linéaire)
-    \\ e. profil d'intensité en sortie de fibre pour différentes courbures (non affecté).
+    \caption{Propriétés de la fibre en réponse à une courbure en demi arc de cercle (gain et polarisation).
+    \\ a. La fibre est courbée sur un demi arc de cercle avec un rayon de courbure variable. Les puissance-mètres Pm1 et Pm2 mesurent l'intensité sur les deux bras de polarisation en sortie d'un cube monté sur un goniomètre. 
+    \\ b. Pertes en sortie de fibre exprimé en dB par mètre de fibre courbée en fonction du rayon de courbure.
+    \\ c. Profil d'intensité en sortie de fibre pour différentes courbures (non affecté).
+    \\ d. Pour une polarisation quasi circulaire, variation de l'ellipticité en fonction du diamètre de courbure.
+    \\ e. Pour une polarisation quasi linéaire, variation de l'angle de polarisation en fonction du diamètre de courbure.
     \label{FIGfibercarac}}
     \end{figure}
 
@@ -349,21 +365,29 @@ En conditions réelles, on peut s'arranger pour limiter la courbure et répartir
 % OK Volker (context for polarization -> de Vito)
 % You start this paragraph totally out of context. So far you talked about the fiber properties. Here you talk about detected signal in the light sheet configuration. You have to introduce this properly and develop the transition.
 
-On voit dans la section précédente que la courbure a un effet sur la transmission négligeable dans le contexte de l'imagerie. Cependant, un autre aspect peut influencer la quantité de lumière détectée : la polarisation. La sensibilité à la polarisation dépend de la configuration d'éclairage (parallèle ou orthogonale, Fig. \ref{FIGpolarisation}), du type d'absorption (un ou deux photons), et du comportement de la fibre en réponse à une courbure.
+On voit dans la section précédente que la courbure a un effet sur la transmission négligeable dans le contexte de l'imagerie. Cependant, un autre aspect peut influencer la quantité de lumière détectée : la polarisation. La sensibilité d'un milieu fluorescent aux variations de polarisation dépend de la polarisation (rectiligne, circulaire, orientation), de la configuration d'éclairage (parallèle ou orthogonale, Fig. \ref{FIGpolarisation}), du type d'absorption (un ou deux photons).
 
 \begin{figure}[hb!]
     \centering
-    \includegraphics[width=0.5\textwidth]{./files/polarization_plane.svg.png}
+    \includegraphics[width=0.85\textwidth]{./files/polarization_plane.svg.png}
     \caption{Comparaison d'un microscope classique et d'un microscope à feuille de lumière du point de vue de la polarisation.
-    \\ a. Dans un microscope classique, la direction d'émission et de détection sont parallèles, et la polarisation est dans le plan orthogonal. La lumière détectée ne dépend donc pas de la direction de polarisation.
-    \\ b. Dans un microscope à feuille de lumière, la direction d'émission est dans le plan orthogonal à la détection. La direction de polarisation fait alors un angle $\alpha$ avec la direction de détection. Pour $\alpha$ = 90°, la lumière détectée est maximale, mais pour $\alpha$ = 0°, elle est minimale.
+    \\ a. Dans un microscope classique, la direction d'excitation et de détection sont parallèles, et la polarisation est dans le plan orthogonal. La lumière détectée ne dépend donc pas de la direction de polarisation.
+    \\ b. Dans un microscope à feuille de lumière, la direction d'excitation est dans le plan orthogonal à la détection et la polarisation est dans le plan vertical. On note $\alpha$ l'angle entre la polarisation et le plan horizontal. Pour $\alpha$ = 0°, la lumière détectée est maximale, pour $\alpha$ = 90°, elle est minimale.
     \label{FIGpolarisation}}
-    \end{figure}
+\end{figure}
 
-\paragraph{Direction d'illumination}
+\paragraph{Direction du fluorophore}
 
-Un fluorophore peut être modélisé par un dipôle électrostatique. La fluorescence consiste en l'absorption d'un photon incident et la ré-émission d'un photon de fluorescence selon les lois du rayonnement dipolaire électrique. Ce phénomène est anisotrope, il dépend de l'angle entre le vecteur de polarisation et le moment dipolaire. Quand l'axe d'excitation est parallèle à l'axe d'observation (par exemple en microscopie confocale ou deux photons classique), le plan de polarisation est orthogonal aux deux, un photon absorbé est donc réémis dans la même direction quelle que soit la polarisation (Fig. \ref{FIGpolarisation} a.). Au contraire, quand l'axe d'excitation est orthogonal à l'axe d'observation (par exemple en microscopie à feuille de lumière), l'angle de polarisation influe sur la direction d'émission (Fig. \ref{FIGpolarisation} b.). Pour une polarisation linéaire orthogonale à l'axe d'observation ($\alpha$=0), on se retrouve dans un cas similaire au précédent, mais pour une polarisation linéaire qui contient l'axe d'observation ($\alpha$=90°), on obtient une diminution du signal de fluorescence dans l'axe d'observation.
-On confirme ceci à l'aide d'une lame $\lambda$/2. En tournant une polarisation linéaire et en observant la fluorescence du cerveau, on passe d'une intensité détectée maximale (100\%) à une intensité minimale (50\%) \cite{de_vito_effects_2020}.
+Un fluorophore peut être modélisé par un dipôle électrostatique. La fluorescence peut alors être décrite comme la succession d'un phénomène d'absorption de l'onde incidente et d'un phénomène de ré-émission selon les lois du rayonnement dipolaire électrique. Ce phénomène est anisotrope et dépend de la polarisation incidente et du moment dipolaire. Dans un milieu fluorescent isotrope, la fluorescence est en majorité dûe aux fluorophores correctement orientés, ce qu'on appelle la photosélection. Par exemple, pour une polarisation rectiligne, ceux dont le moment dipolaire est aligné avec le vecteur de polarisation.
+
+% TODOcite Weber rotational 1953
+% fluorophores soumis à un mouvement Brownien
+
+\paragraph{Direction d'excitation}
+
+Quand l'axe d'excitation est parallèle à l'axe d'observation (par exemple en microscopie confocale ou deux photons classique), le plan de polarisation est orthogonal aux deux, un photon absorbé est donc réémis dans la même direction quelle que soit la polarisation (Fig. \ref{FIGpolarisation} a.). Au contraire, quand l'axe d'excitation est orthogonal à l'axe d'observation (par exemple en microscopie à feuille de lumière), l'angle de polarisation influe sur la direction d'émission (Fig. \ref{FIGpolarisation} b.). Pour une polarisation rectiligne orthogonale à l'axe d'observation ($\alpha$=0°), on se retrouve dans un cas similaire au précédent, mais pour une polarisation rectiligne colinéaire à l'axe d'observation ($\alpha$=90°), on obtient une diminution du signal de fluorescence dans l'axe d'observation.
+On confirme ceci à l'aide d'une lame $\lambda$/2. En tournant une polarisation rectiligne et en observant la fluorescence du cerveau, on passe d'une intensité détectée maximale à une intensité minimale. Pour une polarisation circulaire, on obtient une valeur intermédiaire.
+
 
 % TODO faire des calculs compliqués pour remplacer ces calculs faux
 % Cette valeur de l'intensité minimale s'explique ainsi : pour une polarisation orthogonale à l'axe d'observation ($\alpha$=90°), un dipôle faisant un angle $\theta$ avec la polarisation (et donc $\frac{\pi}{2}-\theta$ avec la détection) est excité proportionnellement à $\cos\theta$ et détecté proportionnellement à $\cos(\frac{\pi}{2}-\theta) = \sin\theta$. Pour une répartition égale des dipôles pour tout ange $\theta$, la fluorescence détectée est donc de :
@@ -377,13 +401,13 @@ On confirme ceci à l'aide d'une lame $\lambda$/2. En tournant une polarisation 
 
 \paragraph{Absorption deux photons}
 
-En excitation deux photons, l'état de polarisation influe sur l'efficacité d'absorption. Un faisceau polarisé linéairement a un taux d'absorption deux photons plus élevé qu'un faisceau polarisé circulairement. Cependant, un faisceau polarisé circulairement conduit à une excitation plus homogène du fluorophore \cite{de_vito_effects_2020}. Le résultat est qu'une polarisation circulaire conduit à un signal détecté deux fois plus faible qu'une polarisation linéaire optimale, et de l'ordre d'une polarisation linéaire à 90°. Idéalement, la polarisation en sortie de fibre doit donc rester linéaire et horizontale quelle que soit sa déformation. J'ai donc cherché à caractériser les modifications de polarisation induites par une déformation de la fibre.
+En excitation deux photons, l'état de polarisation influe sur l'efficacité d'absorption. Un faisceau polarisé linéairement a un taux d'absorption deux photons plus élevé qu'un faisceau polarisé circulairement. Cependant, un faisceau polarisé circulairement conduit à une excitation plus homogène du fluorophore par photosélection. Le résultat est qu'une polarisation circulaire conduit à un signal détecté deux fois plus faible qu'une polarisation linéaire optimale, et de l'ordre d'une polarisation linéaire à 90° \cite{de_vito_effects_2020}. Idéalement, la polarisation en sortie de fibre doit donc rester linéaire et horizontale quelle que soit sa déformation. J'ai donc cherché à caractériser les modifications de polarisation induites par une déformation de la fibre.
 
 % TODO faire les mêmes calculs compliqués mais avec ^4 au lieu de ^2
 
 \paragraph{Caractérisation des effets sur la polarisation}
 
-Une déformation de la fibre peut entrainer deux modifications sur la polarisation : une rotation et un changement d'ellipticité. Pour les mesurer, j'ai placé un cube polariseur en sortie de fibre équipé d'un puissance-mètre sur chaque bras. Pour chaque position de la fibre, j'ai tourné le cube de manière à minimiser la puissance mesurée sur un bras (et donc maximiser la puissance sur l'autre bras). Cela permet de déduire l'orientation de la polarisation (angle du cube) et son ellipticité (valeur du grand axe et petit axe). L'ellipticité ($\theta$) est définie par $\tan(\theta)=\frac{b}{a}$ où (a) est le grand axe et (b) le petit axe de l'ellipse. J'ai positionné la fibre en forme de U et ai réalisé des mesures pour des diamètres allant de 5 cm à 40 cm (Fig. \ref{FIGfibercarac}).
+Une déformation de la fibre peut entrainer deux modifications sur la polarisation : une rotation et un changement d'ellipticité. Pour les mesurer, j'ai placé un cube polariseur en sortie de fibre équipé d'un puissance-mètre sur chaque bras. Pour chaque position de la fibre, j'ai tourné le cube de manière à minimiser la puissance mesurée sur un bras (et donc maximiser la puissance sur l'autre bras). Cela permet de déduire l'orientation de la polarisation (angle du cube) et son ellipticité (valeur du grand axe et petit axe). L'ellipticité ($\theta$) est définie par $\tan(\theta)=\frac{b}{a}$ où (a) est le grand axe et (b) le petit axe de l'ellipse. J'ai positionné la fibre en forme de U et ai réalisé des mesures pour des diamètres de courbure allant de 5 cm à 40 cm (Fig. \ref{FIGfibercarac}).
 
 \paragraph{Rotation de la polarisation}
 
@@ -398,7 +422,7 @@ En polarisation circulaire ($\theta$ = 45°), la rotation n'est plus un problèm
 
 \begin{figure}[hb!]
     \centering
-    \includegraphics[width=0.6\textwidth]{./files/real-condition_intensity-variation.png}
+    \includegraphics[width=0.75\textwidth]{./files/real-condition_intensity-variation.svg.png}
     \caption{Test de la fibre en conditions expérimentales. La variation de l'intensité détectée est une combinaison des pertes de courbure, du changement d'ellipticité et de la rotation de la polarisation. 
     \\ a. Montage expérimental pour test en conditions réelles. Un puissance-mètre peut être installé en position P1 (intensité seulement) ou P2 (intensité après cube séparateur de polarisation).
     \\ b. Réponse à une stimulation sinusoïdale périodique de 10°. On constate que les variations de puissance ne dépassent pas 0.6\% et que ces variations combinées aux changements de la polarisation (ellipticité et rotation) n'excèdent pas 1.2\%.
@@ -409,7 +433,7 @@ En polarisation circulaire ($\theta$ = 45°), la rotation n'est plus un problèm
 % TODO VolkerComment2
 % You have to introduce the NA expander and show a schematic of the experiment
 
-\subsubsection{Test en conditions réelles}
+\subsubsection{Test avec rotation du microscope}
 
 Pour tester les variations d'intensité dues aux déformations de la fibre en conditions réelles, j'ai monté un cube polariseur et un puissance-mètre à la place de l'échantillon et ai soumis l'ensemble à des stimulations périodiques guidées par un moteur (Fig. \ref{FIGrealconditionsfiber}).
 
@@ -420,7 +444,7 @@ Finalement, tous les effets liés à la position de la fibre engendrent des vari
 
 
 
-\section{Effet de lentille thermique}
+\section{Effet de lentille thermique}\label{sectionthermallenseffect}
 
 % TODO VolkerComment (introduce thermal lens effect)
 % You need to introduce better this part. In the previous sections you characterized hollow core fibers and identified a fiber that fulfills the stringent requirements to build a fiber coupled 2P-RLS. You should finish this part with the demonstration of successful 2P whole-brain imaging with single cell resolution in static mode. Then you discuss the next challenge to record during dynamic microscope rotation. The challenge arises as you observed large intensity fluctuations during microscope rotation that are independent of fiber properties. Then you discuss that this instability is related to water movements as you can induce it by moving the water in the chamber while keeping the microscope static. You discovered that this instability results from a thermal lens effect ....

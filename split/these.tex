@@ -8,7 +8,8 @@
 \usepackage[french]{babel}
 \usepackage{xspace}
 \usepackage{listings} 
-\usepackage[shortlabels]{enumitem} 
+\usepackage[shortlabels]{enumitem}
+\usepackage{wrapfig} 
 % \usepackage{listingsutf8}
 % \usepackage{fourier}
 % \usepackage{lmodern}
@@ -42,6 +43,7 @@
 %%% Règle la police des 3 premiers niveaux de titre en \sffamily\bfseries
 \usepackage{titlesec}                        %pour définir le format des titres
 \titleformat{\chapter}[display]{\Huge\sffamily\bfseries}{\chaptertitlename~\thechapter}{1ex}{}
+\titlespacing*{\chapter}{0pt}{-30pt}{40pt}
 \titleformat{\section}[hang]{\Large\sffamily\bfseries}{\rlap{\thesection}}{2em}{}
 \titleformat{\subsection}[hang]{\large\sffamily\bfseries}{\rlap{\thesubsection}}{3em}{}
 %%% Réglage des liens clicables
