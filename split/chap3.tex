@@ -297,7 +297,7 @@ J'ai fixé une extrémité de la fibre sur une platine de translation $xyz$ à 4
 
 \subsubsection{Injection combinée 2P + 1P}
 
-\begin{figure}[b!]
+\begin{figure}
     \centering
     \includegraphics[width=0.7\textwidth]{./files/injection.svg.png}
     \caption{Injection à deux lasers dans la fibre. Le miroir M2 est amovible et permet de basculer entre l'injection 1P et 2P. (BEX = \emph{Beam Expander}, IL = \emph{Injection Lens}, NCF = \emph{Negative Curvature Fiber})
@@ -306,6 +306,16 @@ J'ai fixé une extrémité de la fibre sur une platine de translation $xyz$ à 4
     \end{figure}
 
 Pour injecter un deuxième laser, il faut à nouveau faire coïncider le mode de la fibre avec celui du laser, mais en conservant la même lentille d'injection et sans utiliser la platine de translation (Fig. \ref{FIGinjection}). Il faut donc adapter la largeur du faisceau à l'aide d'un télescope ou \emph{beam expander} (BEX). En remplaçant 915 nm par 488 nm, on obtient D = 1 mm. La lentille étant optimisée pour l'infrarouge, sa transmission dans le bleu n'est que de 50\%, mais la puissance du laser bleu est suffisante pour compenser cette perte. Par contre, la fibre n'est pas tout à fait monomode à cette longueur d'onde, et l'on distingue clairement en sortie le mode TEM11 ou les modes TEM10 / TEM01 en fonction de la position de la fibre. La meilleure transmission obtenue est de l'ordre de 50\%, mais cela est suffisant pour l'imagerie statique (fibre immobile).
+
+
+ 
+% \begin{figure}[h!]
+%     \centering
+%     \includegraphics[width=0.6\textwidth]{./files/graystack_1P-2P.svg.png}
+%     \caption{Comparaison entre un volume statique imagé en deux photons (2P) et en un photon (1P). Le volume deux photons est imagé en deux parties pour éviter d’illuminer les yeux (on voit nettement l’ombre de œil sur la coupe sagittale en un photon). Le pas est de 1 μm par couche. \label{FIG1P2Pgraystack}}
+%     \end{figure}
+
+% À ce stade, on peut déjà réaliser l'imagerie statique en 1P ou 2P à travers la fibre à courbure négative comme on peut le voir en figure \ref{FIG1P2Pgraystack}.
 
 
 \subsection{Propriétés}
@@ -343,9 +353,9 @@ En conditions réelles, on peut s'arranger pour limiter la courbure et répartir
 % OK Volker (fiber curvature real conditions)
 % pourqui c'est le pire des cas ? Dans quelle context? I do not understand your argument. What is the range of curvature change in your experimental configuration?
 
-\begin{figure}[t!]
+\begin{figure}[hb!]
     \centering
-    \includegraphics[width=0.7\textwidth]{./files/fiber_bending.svg.png}
+    \includegraphics[width=0.75\textwidth]{./files/fiber_bending.svg.png}
     \caption{Propriétés de la fibre en réponse à une courbure en demi arc de cercle (gain et polarisation).
     \\ a. La fibre est courbée sur un demi arc de cercle avec un rayon de courbure variable. Les puissance-mètres Pm1 et Pm2 mesurent l'intensité sur les deux bras de polarisation en sortie d'un cube monté sur un goniomètre. 
     \\ b. Pertes en sortie de fibre exprimé en dB par mètre de fibre courbée en fonction du rayon de courbure.
@@ -367,9 +377,9 @@ En conditions réelles, on peut s'arranger pour limiter la courbure et répartir
 
 On voit dans la section précédente que la courbure a un effet sur la transmission négligeable dans le contexte de l'imagerie. Cependant, un autre aspect peut influencer la quantité de lumière détectée : la polarisation. La sensibilité d'un milieu fluorescent aux variations de polarisation dépend de la polarisation (rectiligne, circulaire, orientation), de la configuration d'éclairage (parallèle ou orthogonale, Fig. \ref{FIGpolarisation}), du type d'absorption (un ou deux photons).
 
-\begin{figure}[hb!]
+\begin{figure}[h!]
     \centering
-    \includegraphics[width=0.85\textwidth]{./files/polarization_plane.svg.png}
+    \includegraphics[width=0.75\textwidth]{./files/polarization_plane.svg.png}
     \caption{Comparaison d'un microscope classique et d'un microscope à feuille de lumière du point de vue de la polarisation.
     \\ a. Dans un microscope classique, la direction d'excitation et de détection sont parallèles, et la polarisation est dans le plan orthogonal. La lumière détectée ne dépend donc pas de la direction de polarisation.
     \\ b. Dans un microscope à feuille de lumière, la direction d'excitation est dans le plan orthogonal à la détection et la polarisation est dans le plan vertical. On note $\alpha$ l'angle entre la polarisation et le plan horizontal. Pour $\alpha$ = 0°, la lumière détectée est maximale, pour $\alpha$ = 90°, elle est minimale.
@@ -420,7 +430,7 @@ J'ai montré que la polarisation tournait significativement en fonction de la co
 
 En polarisation circulaire ($\theta$ = 45°), la rotation n'est plus un problème, mais la fibre peut toujours transformer la polarisation circulaire en une polarisation elliptique, qui perd sa symétrie et devient donc sensible à la rotation. J'ai caractérisé la variation d'ellipticité dans le cas d'une polarisation circulaire. Les plus grandes variations d'ellipticité enregistrées sont de l'ordre de 5°. Pour vérifier comment ces différents éléments entrent en jeu, j'ai réalisé des tests en conditions réelles.
 
-\begin{figure}[hb!]
+\begin{figure}
     \centering
     \includegraphics[width=0.75\textwidth]{./files/real-condition_intensity-variation.svg.png}
     \caption{Test de la fibre en conditions expérimentales. La variation de l'intensité détectée est une combinaison des pertes de courbure, du changement d'ellipticité et de la rotation de la polarisation. 
@@ -428,20 +438,19 @@ En polarisation circulaire ($\theta$ = 45°), la rotation n'est plus un problèm
     \\ b. Réponse à une stimulation sinusoïdale périodique de 10°. On constate que les variations de puissance ne dépassent pas 0.6\% et que ces variations combinées aux changements de la polarisation (ellipticité et rotation) n'excèdent pas 1.2\%.
     \\ c. Réponse à une stimulation périodique en marches de 20°. Les variations combinées n'excèdent pas 1.2\%. On remarque que l'intensité maximale est atteinte pour un angle du moteur de 0°, soit la position de repos de la fibre.
     \label{FIGrealconditionsfiber}}
-\end{figure}
+    \end{figure}
 
 % TODO VolkerComment2
 % You have to introduce the NA expander and show a schematic of the experiment
 
 \subsubsection{Test avec rotation du microscope}
 
-Pour tester les variations d'intensité dues aux déformations de la fibre en conditions réelles, j'ai monté un cube polariseur et un puissance-mètre à la place de l'échantillon et ai soumis l'ensemble à des stimulations périodiques guidées par un moteur (Fig. \ref{FIGrealconditionsfiber}).
+Après cette caractérisation statique de la fibre, j'ai testé comment les différents effets se combinent entre eux lors des déformations de la fibre attendues en conditions expérimentales. En retirant le deuxième objectif du module de feuille de lumière pour garder un faisceau colimaté, j'ai monté un cube polariseur et une puissance-mètre à la place de l'échantillon. À l'aide du moteur, j'ai soumis l'ensemble à des stimulations périodiques sinusoïdale et en rampe et ai mesuré les variations d'intensité pure, et les variations d'intensité après polariseur (Fig. \ref{FIGrealconditionsfiber}).
 
-Finalement, tous les effets liés à la position de la fibre engendrent des variations de l'intensité détectée inférieures à 1.2\% dans les conditions des expériences. Les effets parasites sont donc connus et mineurs, ce qui est à prendre en compte lors de l'analyse des données.
+Finalement, les effets combinés du gain de courbure, de la rotation de la polarisation et du changement d'ellipticité, engendrent des variations de l'intensité après polariseur inférieures à 1.2\% de la valeur au repos pour des déformations de la fibre atteintes en conditions expérimentales. Les effets parasites existent donc, mais ils sont connus et mineurs. Ils constituent une source de bruit d'amplitude connue, ce qui permet de les prendre en compte lors de l'analyse des données.
 
 % TODO Volker (intensity change due to polarization)
 % You have also to add the measured intensity change in the case if you would work with linear polarized light. In addition you have to make a measurement with GFP fish to see how much the real collected fluorescence depends on polarization and ellipticity.
-
 
 
 \section{Effet de lentille thermique}\label{sectionthermallenseffect}
@@ -482,12 +491,12 @@ Lorsqu'un faisceau traverse un milieu absorbant, ce milieu chauffe sur la trajec
 % TODO Volker (thermal lens effect)
 %  Explain this paper more in detail and show the schematic that explains the calculations and the approximation.
 
-Le phénomène de lentille thermique a été décrit théoriquement en 1965 par Gordon \emph{et al} \cite{gordon_longtransient_1965} et en 1974 par Whinnery \emph{et al} \cite{whinnery_laser_1974} pour une fine cellule de liquide et dans le cadre de l'approximation parabolique (partie \ref{cellulefine}). En 1982, Sheldon \emph{et al} \cite{sheldon_laser-induced_1982} étend cette description hors de l'approximation parabolique pour prendre en compte les aberrations induites. Dans notre cas, il ne s'agit pas d'une cellule fine, car le laser traverse plusieurs centimètres d'eau avant d'atteindre l'échantillon, créant un gradient d'indice sur sa trajectoire. Je me suis donc inspiré du livre \emph{Gradient-Index Optics} \cite{gomez-reino_gradient-index_2002}, dans lequel les auteurs s'intéressent à la propagation d'un faisceau dans un milieu à gradient d'indice : (équation 1.63 du livre)
+Le phénomène de lentille thermique a été décrit théoriquement en 1965 par Gordon \emph{et al} \cite{gordon_longtransient_1965} et en 1974 par Whinnery \emph{et al} \cite{whinnery_laser_1974} pour une fine cellule de liquide et dans le cadre de l'approximation parabolique (partie \ref{cellulefine}). En 1982, Sheldon \emph{et al} \cite{sheldon_laser-induced_1982} étend cette description hors de l'approximation parabolique pour prendre en compte les aberrations induites. Dans notre cas, il ne s'agit pas d'une cellule fine, car le laser traverse plusieurs centimètres d'eau avant d'atteindre l'échantillon, créant un gradient d'indice sur sa trajectoire. Je me suis donc inspiré du livre \emph{Gradient-Index Optics} \cite{gomez-reino_gradient-index_2002}, dans lequel les auteurs s'intéressent à la propagation d'un faisceau dans un milieu à gradient d'indice (équation 1.63 du livre, $n$ indice de réfraction, $r,z$ coordonnées cylindriques, $g$ fonction de $z$) :
 
 \begin{figure}
     \centering
     \includegraphics[width=0.6\textwidth]{./files/gordon_lens.png}
-    \caption{Lentille équivalente pour une cellule de largeur $l$ d'indice parabolique dans laquelle un rayon lumineux se propage en arc de cercle. Extrait de Gordon \emph{et al} \cite{gordon_longtransient_1965}.
+    \caption{Lentille équivalente pour une cellule de largeur $l$ d'indice parabolique dans laquelle un rayon lumineux se propage en arc de cercle. Extrait de Gordon \emph{et al} \cite{gordon_longtransient_1965}. $R$ est le rayon de courbure de la trajectoire du rayon lumineux, $\theta$ est l'angle d'un rayon d'incidence nulle après la lentille élémentaire, $F$ est la distance focale (que je note $f'$ distance algébrique focale image par la suite), $w(z)$ est la demi largeur à 1/e du faisceau gaussien. Dans l'approximation des petits angles et pour une cellule fine, on trouve $F = rR/l$ et $\frac{1}{R} = \frac{1}{n}\frac{\mathrm{d}n}{\mathrm{d}r}$.
     \label{FIGgordonlens}}
     \end{figure}
 
@@ -505,13 +514,13 @@ $$
 c\rho\frac{\partial}{\partial t}[\Delta T(r,t)] = \dot{q}(r) + k \nabla^2[\Delta T(r,t)]
 $$
 
-Le terme source de l'équation lié à l'absorption du faisceau de puissance $P$ par le milieu de coefficient d'absorption $\alpha$ vaut :
+Le terme source $q$ de l'équation lié à l'absorption du faisceau de puissance $P$ par le milieu de coefficient d'absorption $\alpha$ vaut \cite{gordon_longtransient_1965} :
 
 $$
 \dot{q}(r) = \frac{\alpha P}{\pi w^2_z}\exp \left(\frac{-2r^2}{w^2_z} \right)
 $$
 
-Ce qui donne une solution de la forme :
+Ce qui donne une solution de la forme \cite{gordon_longtransient_1965} :
 
 $$
 \Delta T(r,t) = \frac{\alpha P}{4\pi k} \int_0^t \left( \frac{1}{1+2t'/t_c} \right) \exp \left( \frac{-2r^2/w_z^2}{1+2t'/t_c} \right) \mathrm{d}t'
@@ -519,7 +528,7 @@ $$
 t_c = \frac{w_z^2}{4k}
 $$
 
-Dans notre cas, on se contentera de l'approximation au premier ordre de cette solution :
+Dans notre cas, on se contentera de l'approximation au premier ordre de cette solution \cite{gordon_longtransient_1965} :
 
 $$
 \Delta T(r,t) \simeq \frac{\alpha P}{4\pi k} \left[ \ln\left( 1+\frac{2t}{t_c} \right) - \frac{2(r^2/w_z^2)}{1+t_c/2t} \right]
@@ -558,26 +567,24 @@ $$
 On a donc une valeur de la focale $f'$ d'une tranche de liquide d'épaisseur $l$. Dans un premier temps, intéressons-nous au régime stationnaire à $t_\infty$.
 
 \begin{figure}
-\centering
-\includegraphics[width=\textwidth]{./files/thermal_shift_model.svg.png}
-\caption{Effet de lentille thermique. La propagation dans l'eau d'un faisceau intense induit un gradient de température et donc un gradient d'indice qui dévie les rayons et décale le waist.
-\\ a. Feuille de lumière imagée dans la fluorescéine pour plusieurs puissances laser différentes. La position mesurée du maximum d'intensité est marquée par un trait pointillé.
-\\ b. Simulation numérique pour les mêmes puissances. La demi largeur du faisceau est calculée pour chaque pas de propagation. La largeur minimale du faisceau selon la simulation est marquée par un point. On remarque par ailleurs que cette largeur minimale augmente avec la puissance.
-\\ c. Comparaison des valeurs expérimentales montrées précédemment avec une simulation numérique réalisée pour des puissances comprises entre 0.2 et 0.38 W.
-\\ d. Contribution de chaque tranche de liquide d'épaisseur 10 µm au décalage du waist pour un faisceau de 0.2 W.
-\label{FIGthermalfluorescine}}
-\end{figure}
+    \centering
+    \includegraphics[width=\textwidth]{./files/thermal_shift_model.svg.png}
+    \caption{Effet de lentille thermique. La propagation dans l'eau d'un faisceau intense induit un gradient de température et donc un gradient d'indice qui dévie les rayons et décale le waist.
+    \\ a. Feuille de lumière imagée dans la fluorescéine pour plusieurs puissances laser différentes. La position mesurée du maximum d'intensité est marquée par un trait pointillé.
+    \\ b. Simulation numérique pour les mêmes puissances. La demi largeur du faisceau est calculée pour chaque pas de propagation. La largeur minimale du faisceau selon la simulation est marquée par un point. On remarque par ailleurs que cette largeur minimale augmente avec la puissance.
+    \\ c. Comparaison des valeurs expérimentales montrées précédemment avec une simulation numérique réalisée pour des puissances comprises entre 0.2 et 0.38 W.
+    \\ d. Contribution de chaque tranche de liquide d'épaisseur 10 µm au décalage du waist pour un faisceau de 0.2 W. La contribution maximale a lieu autour du waist, après 1 cm de propagation plus 0.35 mm de décalage.
+    \label{FIGthermalfluorescine}}
+    \end{figure}
 
 \subsubsection{Simulation numérique}\label{simuthermallens}
 
 Pour décrire la propagation du faisceau à travers un milieu épais, on le divise en éléments fins.
-On part du principe que le faisceau reste gaussien tout au long du parcours, il peut donc être entièrement décrit pour chaque $z$ par la position et la largeur de son waist. Pour chaque tranche de liquide d'épaisseur $l$, on applique l'effet de la lentille équivalente dont la focale est définie suivant la partie précédente pour trouver le déplacement du waist et son élargissement. La figure \ref{FIGthermalfluorescine} montre le résultat de cette simulation comparé à une mesure expérimentale. Le code de la simulation est présenté en annexe \ref{APPsimuthermallens}.
+On part du principe que le faisceau reste gaussien tout au long du parcours, il peut donc être entièrement décrit pour chaque $z$ par la position et la largeur de son waist. Pour chaque tranche de liquide d'épaisseur $l$, on applique l'effet de la lentille équivalente dont la focale est définie suivant la partie précédente pour trouver le déplacement du waist et son élargissement. La figure \ref{FIGthermalfluorescine} montre le résultat de cette simulation comparé à une mesure expérimentale. Le code de la simulation est présenté en annexe \ref{APPsimuthermallens}. Les valeurs numériques utilisées sont fournies en annexe \ref{paramvalue}.
 
-Lorsqu'on augmente la puissance laser, la largeur du waist augmente, ce qui étale l'intensité lumineuse sur une plus grande surface. Au dessus d'une puissance limite, l'effet résultant est une diminution de l'intensité maximale, et donc de l'effet deux photons. Cette puissance limite est d'environ 0.4 W dans notre cas (valeur expérimentale confirmée par simulation). Un waist plus large signifie également un faisceau moins divergent, la zone d'excitation est donc plus allongée dans le sens de propagation.
+Lorsqu'on augmente la puissance laser, la largeur du waist augmente, ce qui étale l'intensité lumineuse sur une plus grande surface. Au dessus d'une puissance limite, l'effet résultant est une diminution de l'intensité maximale, et donc de l'effet deux photons. La valeur expérimentale de cette puissance limite est d'environ 0.4 W (on retrouve également cette valeur par simulation \ref{AppFIGmaxintensity}).
 
 Chaque tranche de liquide d'épaisseur $l$ apporte une contribution différente au décalage du point focal. La contribution relative de chaque lentille élémentaire dépend de deux phénomènes ayant un effet opposé l'un de l'autre. Plus l'on s'approche du waist, plus le gradient de température est fort, et plus la lentille est divergente, ce qui augmente la contribution au décalage. Au contraire, plus on s'approche du waist (au sens de Rayleigh), moins le faisceau est convergeant, ce qui diminue la contribution au décalage. Finalement, la contribution au niveau du waist est légèrement plus élevée qu'en dehors (\ref{FIGthermalfluorescine} d.).
-
-Pour les gammes de puissance présentées ici, l'élargissement du faisceau est petit, mais pour des puissances plus élevées, cela va jusqu'à diminuer l'intensité maximale (cf \ref{AppFIGmaxintensity}).
 
 % OK VolkerComment2
 % Make a plot that shows the contribution of every lens element as a function of the distance to the focal point.
@@ -594,9 +601,8 @@ En pratique, on constate un temps d'établissement de l'ordre de la seconde.
 \subsubsection{Solutions}\label{solutionseffetthermique}
 
 Lorsque l'eau bouge dans la cuve, l'équilibre thermique est rompu et il faut attendre quelque temps caractéristiques avant de retrouver l'équilibre. Pendant ce temps, le waist du laser se déplace et change l'illumination de l'échantillon. C'est le phénomène dont les effets ont empêché les premières acquisitions. Une première solution consiste à moins chauffer le milieu pour minimiser l'effet de lentille thermique. Pour cela, j'ai mis en place un obturateur piloté pour éteindre le laser en dehors des périodes d'acquisition. En illuminant pendant 10 ms d'exposition et en coupant pendant 90 ms de pause, on diminue ainsi par dix la puissance moyenne, et donc l'échauffement. Cela impose une contrainte forte sur la fréquence d'acquisition, mais m'a permis de réaliser des enregistrements.
-Une deuxième solution est de concevoir une cuve dans laquelle l'épaisseur d'eau traversée est plus fine, ce qui diminue l'effet de lentille thermique. Je n'ai pas testé cette solution.
-Une troisième solution est de changer le taux de répétition du laser, comme indiqué en partie \ref{SECTIONconcentrationtemporelle}. Cette solution nécessite un autre laser, je ne l'ai pas explorée.
-
+Comme le décalage du waist est en première approximation proportionnel à la longueur traversée, une deuxième solution pour le réduire est de concevoir une cuve dans laquelle l'épaisseur d'eau traversée est plus fine. Je n'ai pas testé cette solution.
+Une troisième solution est de diminuer le taux de répétition du laser, comme indiqué en partie \ref{SECTIONconcentrationtemporelle}. Cette solution nécessite un autre laser, je ne l'ai pas explorée.
 
 
 \section[Tangage deux photons]{Feuille de lumière deux photons lors d'une stimulation en tangage}
@@ -613,10 +619,12 @@ Outre les défis techniques cités précédemment concernant la fibre optique et
 Je n'ai observé aucune limite liée au photoblanchiment du rapporteur calcique ni à la saturation. Ces phénomènes apparaissent en un photon quand l'intensité absorbée par le fluorophore dépasse un certain seuil. Ce seuil n'a pas été atteint dans mon expérience.
 
 \paragraph{Éviter les yeux}
-Quand la feuille de lumière un photon éclaire le poisson par le côté, elle illumine à la fois des zones transparentes comme le cerveau et des zones opaques comme les yeux ou les pigments. Outre le fait qu'elle constitue une source de lumière forte (1-10 mW) et mouvante éclairant directement l'œil gauche de la larve, et qu'une zone d'ombre soit générée entre les yeux, cela n'empêche pas le déroulement de l'expérience. Il en va autrement avec un laser pulsé qui met en jeu des puissances moyennes élevées (100-1000 mW) pour atteindre l'intensité instantanée nécessaire à l'effet deux photons. À ces niveaux de puissance, la moindre absorption génère un échauffement intense qui détruit instantanément les tissus biologiques. C'est notamment le cas des yeux qui carbonisent immédiatement si le laser les touche. De même, si une zone présente un niveau d'absorption légèrement plus élevé, elle accumule de la chaleur jusqu'à générer un phénomène de cavitation. Une bulle de gaz se forme alors et grossit en déformant tous les tissus alentour. Si l'on augmente l'énergie crête de l'impulsion en diminuant la fréquence de répétition, on voit ce phénomène apparaître de plus en plus souvent, suggérant qu'à puissance moyenne constante, le degré de phototoxicité augmente avec l'énergie portée par une impulsion. Pour réaliser des enregistrements du volume entier, il a donc fallu procéder en plusieurs étapes : d'abord la partie supérieure entière, puis la partie inférieure en excluant les yeux. 
+Le laser un photon pénètre les zones transparentes mais est absorbé par les zones opaques comme les yeux. Cela éblouit le poisson et crée une zone d'ombre, mais n'endommage pas la larve car les puissances en jeu sont relativement faibles (1-10 mW en continu). Le laser deux photons fonctionne à des puissances moyennes bien plus élevées (100-1000 mW) nécessaires à l'effet deux photons. À ces niveaux de puissance, la moindre absorption génère un échauffement intense qui détruit instantanément les tissus biologiques. C'est notamment le cas des yeux qui carbonisent immédiatement si le laser les touche. Pour réaliser des enregistrements du volume entier, il a donc fallu procéder en plusieurs étapes : d'abord la partie supérieure entière, puis la partie inférieure en excluant les yeux. 
+
+\paragraph{Cavitation}
+Si une zone transparente du tissus présente un niveau d'absorption légèrement trop élevé, la chaleur s'y accumule et donne lieu à un phénomène de cavitation. Une bulle de gaz se forme alors et grossit en déformant tous les tissus alentour, et en augmentant localement l'absorption. Si l'on augmente l'énergie des impulsions, le phénomène de cavitation apparaît plus facilement et s'auto-entretient. Le degré de phototoxicité augmente avec l'énergie portée par une impulsion. Même à énergie plus faible, il est possible que le laser touche un pigment et déclenche la cavitation.
 
 \subsubsection{Rapport signal à bruit}
-
 Le niveau de signal obtenu dans les enregistrements deux-photons est bien plus faible que dans les enregistrements un-photon. Avec les paramètres finaux (exposition, binning, puissance laser, lignées transgéniques...) la valeur d'un pixel de caméra correspondant à un neurone est de l'ordre de 2000 en un-photon et 800 en deux-photons, pour un nivau de bruit de 400 (le niveau de bruit pour un pixel est de 100, soit 400 après binning par 4 pixels). Un pixel correspondant à l'autofluorescence des tissus est autour de 600 en un-photon et tombe sous le niveau de bruit en deux-photons. Un rapport signal à bruit si faible pose plusieurs problèmes.
 \paragraph{Alignement sur le cerveau de référence}
 Un cerveau imagé en deux photons apparaît assez différent d'un cerveau en un photon. J'ai donc réalisé un cerveau de référence en deux photons dans l'espace de référence du laboratoire. Malgré cela, pour un rapport signal à bruit trop faible, l'alignement automatique sur le cerveau de référence est impossible. J'ai donc dû faire la plupart des alignements à la main en utilisant le logiciel 3DSlicer.
@@ -634,11 +642,11 @@ Comme on l'a vu en partie \ref{solutionseffetthermique}, la solution adoptée en
 
 \begin{figure}
     \centering
-    \includegraphics[width=\textwidth]{./files/1P-2P.svg.png}
+    \includegraphics[width=\textwidth]{./files/1P-2P.svg.jpg }
     \caption{Comparaison entre l'acquisition un photon (1P) et deux photons (2P) en imagerie statique et dynamique.
     \\ a. Carte de réponse pour une stimulation en tangage imagée en 1P déjà montrée en figure \ref{FIGtiltroll}.
-    \\ b, c. Cartes de réponse pour une stimulation en tangage imagée en 2P. En (b.) seule la partie supérieure du cerveau est imagée, en (c.), seule la partie inférieure est imagée.
-    \\ d. Comparaison entre un volume imagé en 2P et en 1P. Le volume deux photons est imagé en deux parties pour éviter d'illuminer les yeux (on voit nettement l'ombre de l'œil sur la coupe sagittale en un photon). Le pas est de 1 µm par couche.
+    \\ b. Légende des couleurs de la carte. Les noyaux nIII et nIV sont notés sur leur couleur dominante à titre indicatif.
+    \\ c, d. Cartes de réponse pour une stimulation en tangage imagée en 2P. En (b.) seule la partie supérieure du cerveau est imagée, en (c.), seule la partie inférieure est imagée.
     \label{FIG1P2P}}
     \end{figure}
 
@@ -648,6 +656,8 @@ Sur la figure \ref{FIG1P2P} (d.), je compare la qualité d'imagerie sur le même
 
 En bas de la figure \ref{FIG1P2P}, je montre des cartes de phase obtenues en un photon et en deux photons. En (b.), l'enregistrement a été réalisé en quatre étapes de quatre couches, mais pendant la dernière étape, l'œil du poisson a été touché par le laser, ce qui a rendu les données inexploitables. Seules les trois premières étapes apparaissent donc, et les régions profondes comme les noyaux oculomoteurs ne sont pas visibles. En (c.), le laser était plus loin des yeux, ce qui a permis d'enregistrer également les couches profondes sans les endommager. Les noyaux nIII et nIV sont cependant légèrement tronqués. Les réponses obtenues sont globalement très semblables en 1P et 2P.
 
+Ces cartes de phase sont une preuve de faisabilité pour le microscope deux photons rotatif appliqué à une stimulation vestibulaire.
+
 \subsubsection{Conclusion}
 
-Malgré les difficultés techniques rencontrées, j'ai pu réaliser un microscope rotatif capable de réaliser l'acquisition deux photons de l'activité du cerveau de la larve pendant une stimulation en tangage. Quelques améliorations sont à apporter pour augmenter la fréquence d'acquisition et empêcher le laser d'atteindre l'œil. Cela ouvre cependant la voix à des expériences sur l'intégration visuo-vestibulaire lors du contrôle postural à roulis.
+Malgré les difficultés techniques rencontrées, j'ai pu réaliser un microscope rotatif capable de réaliser l'acquisition deux photons de l'activité du cerveau de la larve pendant une stimulation en tangage. Quelques améliorations sont à apporter pour augmenter la fréquence d'acquisition et empêcher le laser d'atteindre l'œil. On peut par exemple diminuer la distance de propagation dans l'eau et diminuer la fréquence de répétition du laser. Cela ouvre cependant la voix à des expériences sur l'intégration visuo-vestibulaire lors du contrôle postural à roulis.

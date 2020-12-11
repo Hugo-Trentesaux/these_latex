@@ -185,6 +185,27 @@ savefig("grinlensplots_these_maxpower.png")
     \label{AppFIGmaxintensity}}
     \end{figure}
 
+\subsection{Valeurs des paramètres}
+
+Je liste ici les valeurs des paramètres utilisés dans la simulation numérique de l'effet de lentille thermique.
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|l|l|l|l|}
+        \hline
+        \textbf{variable} & \textbf{nom} & \textbf{valeur} & \textbf{unité}\\
+        \hline
+        indice de l'eau & $n$ & 1.33 & 1 \\
+        longueur d'onde & $\lambda$ & 915 & nm \\
+        diffusivité thermique & D & 0.6 & W/m/K \\
+        coefficient d'absorption & $\alpha$ & 8 & $m^{-1}$ \\
+        variation d'indice & $\frac{\mathrm{d}n}{\mathrm{d}T}$ & -1e-4 & $K^{-1}$ \\
+        distance entrée cuve - waist initial & $z_0$ & 1 & cm \\
+        demi largeur à 1/e du waist initial & $w_0$ & 6.5 & µm \\
+        \hline
+    \end{tabular}
+    \caption{Liste des valeurs utilisées dans la simulation numérique. \label{paramvalue}}
+\end{table}
 
 \section{Langage de programmation adapté}\label{langageadapte}
 
