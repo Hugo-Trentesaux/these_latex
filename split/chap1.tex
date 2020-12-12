@@ -60,7 +60,7 @@ L'objectif du système d'imagerie est choisi pour que le poisson soit imagé sur
     \item dilatation (fonction \verb|imdilate|)
     \item remplissage (fonction \verb|imfill|)
     \item ouverture (fonction \verb|bwareaopen|)
-    \item ellipse équivalente (fonction \verb|regionprops|, option \verb|Orientation| )
+    \item ellipse équivalente (fonction \verb|regionprops|, option \verb|Orientation|)
 \end{enumerate}
 
 Ce qui permet de trouver l'angle du poisson de manière reproductible d'une image sur l'autre, afin de détecter les mouvements de queue.
@@ -72,7 +72,7 @@ Ce qui permet de trouver l'angle du poisson de manière reproductible d'une imag
     \label{FIGimageprocessing}}
     \end{figure}
 
-% TODO Volker add figure with tail bend / struggle
+% IGN Volker add figure with tail bend / struggle
 
 \subsubsection{Stimulation visuelle}
 Pour avoir un contrôle très souple sur l'environnement visuel du poisson du point de vue des couleurs, de la luminosité, et des formes, la solution idéale est un projecteur. Afin d'obtenir un bon contraste, les parois de la cuve sont coniques et blanches, réalisées dans un cylindre de PVC. Un cache évite d'éclairer directement le poisson pour ne pas perturber son environnement visuel. Les motifs sont réalisés à l'aide de \href{http://psychtoolbox.org/}{psychtoolbox}, une bibliothèque conçue pour l'affichage de stimulations visuelles. Pour conserver une fréquence d'affichage indépendante de la boucle de rétroaction et ainsi garantir un taux constant d'images par seconde d'expérience en expérience, j'ai séparé le processus de la boucle principale, avec laquelle il communique par le protocole TCP/IP.
@@ -121,7 +121,7 @@ Pour mettre en place la boucle de rétroaction vestibulaire, je me suis inspiré
     \includegraphics[width=\textwidth]{./files/variation-vitesse.svg.png}
     \caption{
     Réponse d'une larve à une variation de la vitesse de chute. Trois cycles de une minute de stimulation vestibulaire sont séparés de pause de dix secondes. Le poisson se maintient autour d'un angle de -20° quelle que soit la vitesse de chute imposée, en adaptant la fréquence de ses mouvements.
-    \\La fréquence moyenne du deuxième cycle est légèrement inférieure à sa valeur attendue (0.35 Hz au lieu de 0.4 Hz). Cela est du au fait que, suite à un mouvement d'échappement, le poisson est totalement inactif à la fin du cycle et stationne à -60°. Si l'on calcule la fréquence en ignorant les dix dernières secondes, la fréquence moyenne est bien de 0.4 Hz.
+    \\La fréquence moyenne du deuxième cycle est légèrement inférieure à sa valeur attendue (0.35 Hz au lieu de 0.4 Hz). Cela est dû au fait que, suite à un mouvement d'échappement, le poisson est totalement inactif à la fin du cycle et stationne à -60°. Si l'on calcule la fréquence en ignorant les dix dernières secondes, la fréquence moyenne est bien de 0.4 Hz.
     \label{FIGvariationvitesse}}
     \end{figure}
 
@@ -159,9 +159,9 @@ Le protocole (illustré en Fig. \ref{FIGprotocolmulti}) comporte les étapes sui
 
 Chaque phase est séparée en trois sous-phases, avec trois vitesses de stimulus différentes (2, 4, et 6 degrés par seconde), pour étudier l'adaptation aux conditions virtuelles.
 
-% TODO discuter de la distinction entre OMR et rotation visuelle
+% IGN discuter de la distinction entre OMR et rotation visuelle
 
-Sur un total de 113 larves préparées, 24 se sont échappées ou sont mortes avant l'expérience (reste 89), j'ai appliqué le protocole décrit ci-dessus et 53 larves ne présentaient aucune réponse optomotrice, ou seulement des tentatives d'échappement (reste 36). Sur ces 36 larves restantes, qui présentaient donc toutes une réponse optomotrice, 24 ont montré une réponse quasi nulle lors des autres étapes du protocole et ont donc été retirée du compte (reste 12). Les 12 larves restantes ont eu des réponse différentes au protocole. Certaines (3) répondaient principalement au stimulus visuel seul ou bimodal (Fig. \ref{FIGprotocolmulti} a.), certaines (5) répondaient principalement au stimulus vestibulaire seul ou bimodal (Fig. \ref{FIGprotocolmulti} b.), certaines (4) surtout au stimulus bimodal (Fig. \ref{FIGprotocolmulti} c.).
+Sur un total de 113 larves préparées, 24 se sont échappées ou sont mortes avant l'expérience (reste 89), j'ai appliqué le protocole décrit ci-dessus et 53 larves ne présentaient aucune réponse optomotrice, ou seulement des tentatives d'échappement (reste 36). Sur ces 36 larves restantes, qui présentaient donc toutes une réponse optomotrice, 24 ont montré une réponse quasi nulle lors des autres étapes du protocole et ont donc été retirée du compte (reste 12). Les 12 larves restantes ont eu des réponses différentes au protocole. Certaines (3) répondaient principalement au stimulus visuel seul ou bimodal (Fig. \ref{FIGprotocolmulti} a.), certaines (5) répondaient principalement au stimulus vestibulaire seul ou bimodal (Fig. \ref{FIGprotocolmulti} b.), certaines (4) surtout au stimulus bimodal (Fig. \ref{FIGprotocolmulti} c.).
 
 \begin{figure}
     \centering
@@ -173,7 +173,7 @@ Sur un total de 113 larves préparées, 24 se sont échappées ou sont mortes av
 
 \subsubsection{Interprétation}
 
-Il semble donc qu'en fonction des poissons l'importance relative des différentes modalités sensorielles dans le contrôle postural soit variable. Pour certains poissons, cependant, la présence simultanée des deux modalités sensorielles semble nécessaire au contrôle postural. Ces données peuvent être interprétées en terme de fréquence moyenne calculée comme le rapport entre la quantité de mouvements de nage et la durée du cycle. Cette métrique inclut les périodes d'inactivité qui suivent un mouvement d'échappement, ce qui fausse légèrement la valeur, comme montré en figure \ref{FIGvariationvitesse}. Les résultats sont présentés en figure \ref{FIGstatsmultimodal} et l'on observe deux phénomènes :
+Il semble donc qu'en fonction des poissons l'importance relative des différentes modalités sensorielles dans le contrôle postural soit variable. Pour certains poissons, cependant, la présence simultanée des deux modalités sensorielles semble nécessaire au contrôle postural. Ces données peuvent être interprétées en termes de fréquence moyenne calculée comme le rapport entre la quantité de mouvements de nage et la durée du cycle. Cette métrique inclut les périodes d'inactivité qui suivent un mouvement d'échappement, ce qui fausse légèrement la valeur, comme montré en figure \ref{FIGvariationvitesse}. Les résultats sont présentés en figure \ref{FIGstatsmultimodal} et l'on observe deux phénomènes :
 
 \begin{enumerate}
     \item Une larve est capable de moduler son activité en fonction de la force du stimulus.
@@ -182,7 +182,7 @@ Il semble donc qu'en fonction des poissons l'importance relative des différente
 
 Ces résultats montrent qu'un réflexe \emph{a priori} vestibulaire comme le contrôle postural est en réalité altéré par d'autres modalités sensorielles comme le système visuel. On peut supposer que la sensation tactile, qui permet au poisson de sentir les écoulements de fluide, joue également un rôle (non testé). 
 
-Le renforcement multisensoriel peut être interprétée ainsi : pendant les phases unimodales visuelles, les sensations visuelle et vestibulaire sont en conflit, ce qui peut réduire et même supprimer la réponse motrice, la force de cet effet variant d'un poisson à l'autre. Dans les phases unimodales vestibulaires, le poisson ne reçoit aucune information visuelle sur sa position et la réponse comportementale peut être affaiblie par un manque de fiabilité de l'information vestibulaire. Au contraire, pendant les phases de stimulus multimodal cohérent, on remarque une réponse comportementale forte, augmentée par l'intégration multisensorielle.
+Le renforcement multisensoriel peut être interprété ainsi : pendant les phases unimodales visuelles, les sensations visuelle et vestibulaire sont en conflit, ce qui peut réduire et même supprimer la réponse motrice, la force de cet effet variant d'un poisson à l'autre. Dans les phases unimodales vestibulaires, le poisson ne reçoit aucune information visuelle sur sa position et la réponse comportementale peut être affaiblie par un manque de fiabilité de l'information vestibulaire. Au contraire, pendant les phases de stimulus multimodal cohérent, on remarque une réponse comportementale forte, augmentée par l'intégration multisensorielle.
 
 % Volker suggestion
 % During the unimodal visual phases the visual and vestibular sensations are in conflict reducing or suppressing the motor response. The strength of this effect varies between fish. In the unimodal vestibular case where the fish does not receive and visual information about its body rotation the behavioral response might be weak due to the unrelieability of the vestibular stimulus. However, in the coherent multimodal case we see a strong multisensory enhanced behaviorial response 
@@ -195,18 +195,18 @@ Ces comportements d'abandon pourraient être expliqués par un article de Mu \em
 Dans le cas d'une larve immobilisée dans un gel d'agarose, si les mouvements de queue de grande amplitude qui caractérisent l'échappement se soldent par une réussite, la larve s'échappe dans le réservoir, mettant fin à l'expérience, et si, au contraire, ils se soldent par un échec, la larve finit par abandonner toute réponse comportementale, réduisant à zéro le nombre d'événements à analyser.
 
 Une piste d'évolution importante serait donc de limiter ces comportements d'échappement. Cela permettrait de réaliser des expériences plus longues et plus complexes afin de mettre à l'épreuve ces observations préliminaires et d'observer d'autres phénomènes.
-Dans les comportements observés, il semblerait que certains poissons répondent mieux à la stimulation visuelle et d'autres mieux à la stimulation vestibulaire. Des expériences plus longues avec plus de cycles permettraient de mettre en évidence ces spécificités individuelles des larves. Par exemple, en figure \ref{FIGprotocolmulti}, l'expérience a été reproduite cinq fois d'affilé sur le poisson (c.) : malgré une réponse systématique à l'OMR, le poisson montre peu de réponse pour un stimulus visuel seul, il répond fortement en présence d'un stimulus vestibulaire accompagné d'un stimulus visuel, mais pas en présence d'un stimulus vestibulaire seul. Ce poisson semble présenter un renforcement multisensoriel robuste.
+Dans les comportements observés, il semblerait que certains poissons répondent mieux à la stimulation visuelle et d'autres mieux à la stimulation vestibulaire. Des expériences plus longues avec plus de cycles permettraient de mettre en évidence ces spécificités individuelles des larves. Par exemple, en figure \ref{FIGprotocolmulti}, l'expérience a été reproduite cinq fois d'affilée sur le poisson (c.) : malgré une réponse systématique à l'OMR, le poisson montre peu de réponse pour un stimulus visuel seul, il répond fortement en présence d'un stimulus vestibulaire accompagné d'un stimulus visuel, mais pas en présence d'un stimulus vestibulaire seul. Ce poisson semble présenter un renforcement multisensoriel robuste.
 
-Des expériences plus longues permettraient aussi de s'intéresser à la question de l'angle cible. Dans la stabilisation en roulis, l'angle cible est fixé à 0°, mais dans la stabilisation en tangage, il peut varier entre des valeurs comprises entre -15° et +20°. Ces valeurs observées en nage libre par Ehrlich et Schoppik \cite{ehrlich_primal_2019} sont associées à des trajectoires allant de -40° à +80° avec une relation affine liée à l'utilisation des nageoires pectorales. La reconstruction de trajectoires virtuelles paraît hors de portée, mais l'on pourrait observer l' évolution de l'angle cible. Reproduit sous microscope, ce comportement permettrait d'identifier les circuits responsables du choix de cet angle, peut être sous forme de copie efférente.
+Des expériences plus longues permettraient aussi de s'intéresser à la question de l'angle cible. Dans la stabilisation en roulis, l'angle cible est fixé à 0°, mais dans la stabilisation en tangage, il peut varier entre des valeurs comprises entre -15° et +20°. Ces valeurs observées en nage libre par Ehrlich et Schoppik \cite{ehrlich_primal_2019} sont associées à des trajectoires allant de -40° à +80° avec une relation affine liée à l'utilisation des nageoires pectorales. La reconstruction de trajectoires virtuelles paraît hors de portée, mais l'on pourrait observer l'évolution de l'angle cible. Reproduit sous microscope, ce comportement permettrait d'identifier les circuits responsables du choix de cet angle, peut être sous forme de copie efférente.
 
 Si l'immobilisation de la larve est responsable de ces comportements d'échappement, on pourrait modifier la manière dont la larve est immobilisée par exemple en changeant la méthode de préparation du gel d'agarose. Les paramètres de rétroaction pourraient également être en cause, et leur ajustement pourrait augmenter l'immersion de la larve dans son environnement virtuel. Sans de telles améliorations, l'expérience serait difficile à reproduire sous microscope, car l'imagerie vient avec un nouveau lot de contraintes, comme nous allons le voir dans les parties suivantes.
 
 % escape/startle/struggle
-% TODO lire et intégrer ces papier
+% IGN lire et intégrer ces papiers
 % - Glia Accumulate Evidence that Actions Are Futile and Suppress Unsuccessful Behavior
 % - Escape Behavior Elicited by Single, Channelrhodopsin-2-Evoked Spikes in Zebrafish Somatosensory Neurons
 % - Imaging the Functional Organization of Zebrafish Hindbrain Segments during Escape Behaviors
 % - Evidence for a Widespread Brain Stem Escape Network in Larval Zebrafish
 % - Imaging escape and avoidance behavior in zebrafish larvae
 
-% TODO Volker Perspective and interpretation of the results is still to develop.
+% IGN Volker Perspective and interpretation of the results is still to develop.

@@ -4,31 +4,8 @@ TODO
 par ordre de priorité (quantité de travail +/++/+++)
 ---------------------
 
-INDISPENSABLE
 
-
-
-
-IMPORTANT
-
-(+) mieux expliquer figure effet thermique
-
-(++) revoir conclusion
-
-(++) statistiques sur le nombre de poissons cramés
-
-(+++) raconter les étapes pour l'effet de lentille thermique
-
-(++) montrer le kymographe et l'évolution temporelle
-
-(+) mettre la fig de simu en annexe dans le texte principal
-
-
-À FAIRE
-
-(+) séparer la cavitation du paragraphe sur les yeux
-
-(+) fait un tableau avec les valeurs numériques de la simulation
+À faire
 
 (+++) objectifs prespectives discussions conclusions 
 
@@ -36,11 +13,12 @@ IMPORTANT
 
 
 
-Julia : NRRD reader
 
 
 
+ok (+) fait un tableau avec les valeurs numériques de la simulation
 
+ok (+) séparer la cavitation du paragraphe sur les yeux
 
 ok (++) déplacer le graystack 1p-2p avant la description de l'effet thermique
 
@@ -64,6 +42,22 @@ ok (++) mieux détailler les comportements d'abandon du poisson
 
 non soluble dans les temps
 --------------------------
+
+
+(++) Julia : NRRD reader
+
+(+) mieux expliquer figure effet thermique
+
+(++) revoir conclusion
+
+(++) statistiques sur le nombre de poissons cramés
+
+(+++) raconter les étapes pour l'effet de lentille thermique
+
+(++) montrer le kymographe et l'évolution temporelle
+
+(+) mettre la fig de simu en annexe dans le texte principal
+
 
 (++) faire une phasemap pour l'effet dynamique
 

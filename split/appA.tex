@@ -217,7 +217,7 @@ Du fait du volume des données traitées, notre processus d'analyse repose large
 
 \subsubsection{Matlab}
 
-La langage Matlab fournit la fonction \verb|memmapfile| (\href{https://fr.mathworks.com/help/matlab/ref/memmapfile.html}{doc}) qui permet de cartographier une zone mémoire contenant des données de type \verb|int8|, \verb|int16|, \verb|int32|, \verb|int64|, \verb|uint8|, \verb|uint16|, \verb|uint32|, \verb|uint64|, \verb|single|, ou \verb|double|.
+Le langage Matlab fournit la fonction \verb|memmapfile| (\href{https://fr.mathworks.com/help/matlab/ref/memmapfile.html}{doc}) qui permet de cartographier une zone mémoire contenant des données de type \verb|int8|, \verb|int16|, \verb|int32|, \verb|int64|, \verb|uint8|, \verb|uint16|, \verb|uint32|, \verb|uint64|, \verb|single|, ou \verb|double|.
 J'ai implémenté plusieurs surcouches de la classe Matlab \verb|memmapfile| qui permettent de gérer l'accès à des données stockées sous différents formats comme le \verb|dcimg|, d'autres orientations que celle par défaut, et en utilisant l'indexation linéaire suivant (xy) en une seule ligne. Ces classes ont facilité l'écriture de code pour la manipulation des données brutes et aux différentes étapes de traitement, ainsi que des interfaces graphiques rudimentaires utilisées pour les visualiser mais ne permettent pas de profiter des optimisations de Matlab sur la vectorisation du calcul.
 De plus, une gestion manuelle de la mémoire et des abstractions sur les tableaux de données manquent au langage pour que ces classes soit facilement réutilisables, ce qui conduit à de la duplication de code. Ci-dessous on peut voir la structure adoptée pour ces classes, qui surchargent les méthodes intégrées au langage \verb|subsref| et \verb|subsasgn|.
 
@@ -448,7 +448,7 @@ Le \href{http://zbbrowser.com}{Zebrafish Brain Browser} \cite{tabor_brain-wide_2
 \subsection{MapZebrain}
 
 Le \href{https://fishatlas.neuro.mpg.de/}{Max Planck Zebrafish Brain Atlas} \cite{kunst_cellular-resolution_2019} propose trois outils très riches en fonctionnalités pour explorer le cerveau à travers une vue tridimensionnelle. Cette vue peut être en 3D réelle avec perspective avec un angle de vue réglable, en tranche suivant trois plans (sagittal, frontal, transverse), ou en projection isométrique autour de l'axe rostro-caudal.
-L'un permet de visualiser les régions anatomiques du cerveau sélectionnées dans une arborescence, ce qui permet de se représenter leur structure tridimensionnelle et leur positions relatives.
+L'un permet de visualiser les régions anatomiques du cerveau sélectionnées dans une arborescence, ce qui permet de se représenter leur structure tridimensionnelle et leur position relative.
 Un autre permet de sélectionner la structure tridimensionnelle de neurones uniques filtrés suivant la position du soma, les régions traversées, ou leur position terminale. Un troisième permet de superposer dans plusieurs canaux de couleur les images matricielles correspondant à des cerveaux marqués pour différents cibles.
 
 % \subsection{FishExplorer}
