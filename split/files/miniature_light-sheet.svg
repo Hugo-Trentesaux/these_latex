@@ -18968,6 +18968,20 @@
          transform="matrix(-0.4,0,0,-0.4,-4,0)"
          inkscape:connector-curvature="0" />
     </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow1Mstart-0-3-7"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mstart">
+      <path
+         inkscape:connector-curvature="0"
+         transform="matrix(0.4,0,0,0.4,4,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path3807-13-7-4" />
+    </marker>
   </defs>
   <sodipodi:namedview
      inkscape:document-rotation="0"
@@ -18987,9 +19001,9 @@
      showgrid="false"
      inkscape:current-layer="layer1"
      inkscape:document-units="mm"
-     inkscape:cy="314.01903"
-     inkscape:cx="518.30533"
-     inkscape:zoom="0.45254836"
+     inkscape:cy="158.69942"
+     inkscape:cx="512.45702"
+     inkscape:zoom="0.90509672"
      inkscape:pageshadow="2"
      inkscape:pageopacity="0.0"
      borderopacity="1.0"
@@ -19870,6 +19884,12 @@
              y="279.37885"
              style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.23289013px;line-height:125%;font-family:'Liberation Sans';-inkscape-font-specification:'Liberation Sans';text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.86898398"
              id="tspan12691-35"> </tspan></text>
+        <path
+           style="display:inline;fill:none;stroke:#000000;stroke-width:0.76781201;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#Arrow1Mstart-0-3-7)"
+           d="m 440.48677,197.1129 7.46666,-29.75348"
+           id="path10184-1"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cc" />
       </g>
     </g>
     <g
@@ -20428,6 +20448,17 @@
          id="tspan15544"
          x="1967.113"
          y="1062.9625"> </tspan></text>
+    <text
+       id="text12687-33"
+       y="613.63666"
+       x="366.73755"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:25.65452003px;line-height:0%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2.13787341"
+       xml:space="preserve"><tspan
+         id="tspan12691-0"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20.25451851px;line-height:125%;font-family:'Liberation Sans';-inkscape-font-specification:'Liberation Sans';text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:2.13787341"
+         y="613.63666"
+         x="366.73755"
+         sodipodi:role="line">Échantillon</tspan></text>
   </g>
   <g
      transform="translate(-2.4364357,-372.51405)"
