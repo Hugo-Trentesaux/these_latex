@@ -1128,6 +1128,7 @@ FUNCTION {format.organization.address}
 FUNCTION {article}
 { output.bibitem
   format.authors "author" output.check
+  format.date "date" output.check
   format.title "title" output.check
   end.quote.title
   %=>added

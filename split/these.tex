@@ -3,14 +3,14 @@
 
 \documentclass[a4paper,12pt]{book} % LOOK add diffusion or archiv for final versions
 \usepackage[margin=28mm,includeheadfoot,bindingoffset=5mm]{geometry}
-% \usepackage[utf8]{inputenc}
+% \usepackage[utf8]{inputenc} % (not needed: using lualatek)
 \usepackage[T1]{fontenc}
 \usepackage[french]{babel}
 \usepackage{xspace}
 \usepackage{listings} 
 \usepackage[shortlabels]{enumitem}
 \usepackage{wrapfig} 
-% \usepackage{listingsutf8}
+% \usepackage{listingsutf8} % (not needed: using lualatek)
 % \usepackage{fourier}
 % \usepackage{lmodern}
 % \usepackage{tgheros}
@@ -86,11 +86,11 @@ bookmarksnumbered=true,bookmarksopen=true}
 \phantomsection
 \addcontentsline{toc}{chapter}{Bibliographie}
 %% reference style
-\bibliographystyle{./bib/thesefr-href}
+\bibliographystyle{./bib/thesefr-href} 
 \bibliography{./bib/zotero}
 
 %%% LOOK to be replaced by, for final version:
-%\intput{these.bbl}
+% \input{these.bbl}
 
 %%% LOOK 4th COVER %%%
 % \backcover % requires thcover.sty loaded and thcoverdata.tex filled
