@@ -92,15 +92,15 @@ Un système optique peut concentrer la lumière localement, ce qui produit un po
 
 \begin{figure}[p]
     \centering
-    \includegraphics[width=0.8\textwidth]{./files/profile-intensity.png}
+    \includegraphics[width=0.75\textwidth]{./files/profile-intensity.png}
     \caption{Effet deux-photons en microscopie à feuille de lumière. Comparaison du profil d'intensité (haut) et de son carré (bas). On voit que la zone concernée par l'effet deux photons est restreinte, ce qui permet d'obtenir un sectionnement vertical comparable à la feuille de lumière 1P malgré une longueur d'onde plus élevée. On voit aussi que l'intensité décroit plus vite dans la direction de propagation, ce qui diminue le signal sur les bords du cerveau. (paramètres : indice optique 1.33, longueur d'onde 915 nm, waist 6.5 µm)}
     \label{FIG2P-intensity-profile}
     \end{figure}
 
 \begin{figure}[p]
     \centering
-    \includegraphics[width=\textwidth]{./files/pulsed_laser.svg.png}
-    \caption{Profil temporel de puissance d'un laser pulsé. Chaque impulsion a une durée $\tau$, elles sont espacées d'une durée $T=1/f$, où $f$ est la fréquence de répétition du laser. À puissance moyenne $P_\text{moy}$ constante, plus $\tau$ est petit, et plus $T$ est grand, plus la puissance maximale $P_\text{max}$ est grande. L'intensité de fluorescence en deux photons est proportionnelle au carré de $P_\text{max}$ alors qu'elle est proportionnelle à $P_\text{moy}$ en un photon.
+    \includegraphics[width=0.95\textwidth]{./files/pulsed_laser.svg.png}
+    \caption{Profil temporel de puissance d'un laser pulsé. Chaque impulsion a une durée $\tau$, elles sont espacées d'une durée $T=1/f$, où $f$ est la fréquence de répétition du laser. À puissance moyenne $P_\text{moy}$ constante, plus $\tau$ est petit, et plus $T$ est grand, plus la puissance maximale $P_\text{max}$ est grande. L'intensité de fluorescence en deux photons est proportionnelle à la moyenne du carré de l'intensité alors qu'en un photon elle est proportionnelle à l'intensité moyenne \cite{maioli_fast_2020}.
     }
     \label{FIGpulsed-laser}
     \end{figure}
@@ -185,7 +185,7 @@ Les idées de fibre à réseau de tubes unique et de fibres à cœur hypocycloï
 
 % Dans un microscope statique, la source laser peut être guidée jusqu'à l'échantillon par des miroirs, mais dans un microscope mobile il faut soit embarquer la source laser directement sur le microscope, soit la guider de manière flexible quels que soient les mouvements. Dans le cas d'une source laser deux photons très volumineuse, il est impossible de l'embarquer, la solution adoptée est donc une fibre optique adaptée. De telles fibres optiques capables de guider un laser deux photons sont complexes à produire. Avant de nous intéresser aux microscopes à fibre couramment utilisés dans la recherche sur le rongeur, introduisons les caractéristiques d'un guide d'onde. 
 
-Les propriétés de guidage de la lumière d'une fibre optique lui permettent d'alléger considérablement ou de déporter certaines parties des microscopes pour les rendre compatibles avec l'imagerie embarquée. Un microscope est en effet composé d'un axe d'illumination, d'un échantillon, et d'un axe de détection. Les axes peuvent être séparés dans différents bras ou réunis sur une portion du montage optique et sont généralement composés d'éléments optiques rigides passifs tels que des objectifs, miroirs, filtres... Ces différentes parties parfois très volumineuses peuvent être remplacées ou déportées à l'aide d'une fibre optique. Nous allons voir par la suite plusieurs types de microscopes embarqués utilisant une fibre optique.
+Les propriétés de guidage de la lumière d'une fibre optique lui permettent d'alléger considérablement ou de déporter certaines parties des microscopes pour les rendre compatibles avec l'imagerie embarquée. Un microscope est en effet composé d'un axe d'illumination, d'un échantillon, et d'un axe de détection. Les axes peuvent être séparés dans différents bras ou réunis sur une portion du montage optique et sont généralement composés d'éléments optiques rigides passifs tels que des objectifs, miroirs, filtres... Ces différentes parties parfois très volumineuses peuvent être remplacées ou déportées à l'aide d'une fibre optique. Après avoir montré les problèmes d'un microscope statique (section \ref{rongeur_fixe}), nous allons voir plusieurs types de microscopes embarqués utilisant une fibre optique.
 
 \begin{figure}
 \centering
@@ -206,7 +206,7 @@ e. Un endoscope sans optique permet de réduire considérablement l'encombrement
 % 1P vs 2P
 % Fiber optic in vivo imaging in the mammalian nervous system
 
-\subsubsection{Imagerie sur rongeur à tête fixée}
+\subsubsection{Imagerie sur rongeur à tête fixée}\label{rongeur_fixe}
 
 Une méthode répandue en imagerie cérébrale sur rongeur est de fixer un animal sous un microscope classique immobile. Le cerveau est rendu accessible par une opération chirurgicale pendant laquelle la boîte crânienne est retirée localement et remplacée par une vitre. Le fait d'immobiliser la tête pendant l'imagerie peut limiter le répertoire comportemental et constituer une gêne pour l'animal. Une solution est un système où le rat se positionne volontairement sous le microscope \cite{scott_cellular_2013}, une autre est le système en réalité virtuelle. Dans cette deuxième solution, le rongeur marche sur une boule en polystyrène sur coussins d'air alors qu'un environnement visuel est projeté sur un écran autour de lui \cite{dombeck_functional_2010}. Le microscope est ici entièrement statique et rigide. La réalité virtuelle a également été utilisée avec des enregistrements en électrophysiologie \cite{aronov_engagement_2014}\cite{whitlock_navigating_2014}.
 
@@ -219,23 +219,23 @@ Une méthode répandue en imagerie cérébrale sur rongeur est de fixer un anima
 
 \subsubsection{Déportation de l'illumination}
 
-Une pièce particulièrement volumineuse dans les microscopes multiphotons utilisée pour l'imagerie neuronale est le laser pulsé. En effet, ces systèmes dépendent de beaucoup d'éléments optiques et d'une stabilité thermique et mécanique poussée. Pour construire des microscopes embarqués, il est donc nécessaire de guider le laser depuis la source jusqu'à l'échantillon, ce qui est réalisé à l'aide de fibre optique. Il est possible d'utiliser une fibre optique monomode à cœur de verre \cite{helmchen_miniature_2001} \cite{sawinski_visually_2009} \cite{zong_fast_2017} à condition de précompenser la dispersion pour conserver une impulsion suffisamment courte pour produire l'effet non linéaire recherché, ce qui est réalisé avec une paire de réseaux de diffraction. Une alternative est d'utiliser une fibre à cœur creux \cite{tai_two-photon_2004} \cite{choi_improving_2014} \cite{piyawattanametha_vivo_2009} \cite{klioutchnikov_three-photon_2020}.
-La partie de détection est quant à elle également embarquée. On peut avoir un simple photomultiplicateur/photodiode pour l'imagerie par balayage \cite{helmchen_miniature_2001} ou un capteur CMOS pour une imagerie en champ plein \cite{scott_imaging_2018}.
+Une pièce particulièrement volumineuse dans les microscopes multiphotons utilisée pour l'imagerie neuronale est le laser pulsé. En effet, ces systèmes dépendent de beaucoup d'éléments optiques et d'une stabilité thermique et mécanique poussée. Pour construire des microscopes embarqués, il est donc nécessaire de guider le laser depuis la source jusqu'à l'échantillon, ce qui est réalisé à l'aide de fibre optique. Il est possible d'utiliser une fibre optique monomode à cœur de verre \cite{helmchen_miniature_2001} à condition de précompenser la dispersion pour conserver une impulsion suffisamment courte pour produire l'effet non linéaire recherché, ce qui est réalisé avec une paire de réseaux de diffraction. Une alternative est d'utiliser une fibre à cœur creux \cite{piyawattanametha_vivo_2009}.
+Dans certains cas, la détection est embarquée par exemple avec un simple photomultiplicateur/photodiode pour l'imagerie par balayage \cite{helmchen_miniature_2001} alors que dand d'autres, elle est également déportée, comme on le voit dans la partie suivante.
 
-\subsubsection{Déportation de l'illumination et de la détection}
+\subsubsection{Déportation de la détection}
 
-Dans les exemples précédents, le laser est amené par une fibre, mais le capteur est sur place, le signal repartant sous forme de signal électrique. Il est également possible de déporter le système de détection en collectant la lumière par fibre optique. Certains utilisent pour cela une fibre multimode \cite{piyawattanametha_vivo_2009} \cite{sawinski_visually_2009}, d'autres une \emph{fibre plastique} \cite{klioutchnikov_three-photon_2020}, d'autres encore un faisceau de fibres \cite{zong_fast_2017}. Dans ce cas, la lumière collectée est mesurée en sortie de fibre à l'aide d'un système optique adapté sans limite d'encombrement. On peut ainsi utiliser des systèmes volumineux et sensibles aux vibrations comme des sources laser régulés en température ou des circuits de détection munis d'une électronique complexe.
+Il est possible de déporter le système de détection en collectant la lumière au moyen d'une fibre optique. Certains utilisent pour cela une fibre multimode \cite{piyawattanametha_vivo_2009} \cite{sawinski_visually_2009}, d'autres une \emph{fibre plastique} \cite{klioutchnikov_three-photon_2020}, d'autres encore un faisceau de fibres \cite{zong_fast_2017}. Dans ce cas, la lumière collectée est mesurée en sortie de fibre à l'aide d'un système optique adapté sans limite d'encombrement.
 
 \subsubsection{Lentilles à gradient d'indice}
 
-Malgré la déportation de l'illumination et de la détection, les systèmes optiques restent encore assez volumineux du fait des composants utilisés et des éléments mécaniques nécessaires. Une possibilité pour pousser la miniaturisation encore plus loin est d'utiliser des fibres à gradient d'indice (\emph{GRIN lens, GRadient INdex lens}). Ces fibres sont constituées d'un milieu à gradient d'indice qui leur donne des propriétés similaires à des lentilles mais sont plus fines et ne nécessitent pas d'éléments mécaniques. Cela permet d'obtenir des microscopes ultra-compacts portables et de poids très réduit \cite{flusberg_vivo_2005}\cite{engelbrecht_ultra-compact_2008}.
+Malgré la déportation de l'illumination et de la détection, les systèmes optiques restent encore assez volumineux du fait des composants utilisés et des éléments mécaniques nécessaires. Une des possibilités pour miniaturisater davantage est d'utiliser des lentilles à gradient d'indice (\emph{GRIN lens, GRadient INdex lens}). Ces fibres sont constituées d'un milieu à gradient d'indice qui leur donne des propriétés similaires à des lentilles mais sont plus fines et ne nécessitent pas d'éléments mécaniques. Cela permet d'obtenir des microscopes ultra-compacts portables et de poids très réduit \cite{flusberg_vivo_2005}\cite{engelbrecht_ultra-compact_2008}.
 
 \subsubsection{Microendoscopes}
 
 % IGN VolkerComment2
 % Why do you describe this. Where is the link to your work? You can use this in the discussion and propose that your fiber can be also used to collect the fluorescent light. With the small mode field diameter this would create a confocal like configuration.
 
-D'autres techniques d'imagerie neuronale se passent même d'optique et sont uniquement constitués d'une fibre insérée dans l'échantillon. On parle alors plutôt de microendoscope. L'idée générale est d'utiliser la même fibre pour éclairer l'échantillon et collecter la lumière. Des éléments actifs peuvent être utilisés pour moduler le front d'onde, et plusieurs techniques reposent sur une phase de calibration préalable \cite{papadopoulos_high-resolution_2013}\cite{ohayon_minimally_2018}\cite{turtaev_high-fidelity_2018}. Ces techniques utilisent des fibres optiques multimodes classiques. L'avantage de l'endoscopie est que les tissus sont traversés par la fibre, et pas directement par la lumière, ce qui contourne le phénomène de dispersion. Il existe également des systèmes plus sophistiqués qui combinent plusieurs fibres en une seule de manière à profiter de propriétés différentes pour l'émission et collection de lumière \cite{andresen_two-photon_2013}\cite{kudlinski_double_2020}\cite{lombardini_high-resolution_2018}.
+D'autres techniques d'imagerie neuronale se passent même d'optique et sont uniquement constitués d'une fibre insérée en profondeur dans l'échantillon. On parle alors plutôt de microendoscope. L'idée générale est d'utiliser la même fibre pour éclairer l'échantillon et collecter la lumière. Des éléments actifs peuvent être utilisés pour moduler le front d'onde, et plusieurs techniques reposent sur une phase de calibration préalable \cite{papadopoulos_high-resolution_2013}\cite{ohayon_minimally_2018}\cite{turtaev_high-fidelity_2018}. Ces techniques utilisent des fibres optiques multimodes classiques. L'avantage de l'endoscopie est que les tissus sont traversés par la fibre, et pas directement par la lumière, ce qui contourne le phénomène de dispersion. Il existe également des systèmes plus sophistiqués qui combinent plusieurs fibres en une seule de manière à profiter de propriétés différentes pour l'émission et collection de lumière \cite{andresen_two-photon_2013}.
 
 
 
@@ -254,7 +254,7 @@ Nous avons vu dans la partie précédente qu'une fibre optique permet de guider 
 % OK VolkerComment2
 % No, we did not record with these fibers. The mode field diameter was to large and the instabilities to bending were to large. Or do you have successful recordings with these fibers? The Brighton experiments were done with the fiber PMC-C-1C-R&D2
 
-Au début, nous avons utilisé des fibres Kagome ayant une bande de transmission dans l'infrarouge. Ces fibres ont permis de réaliser les premiers enregistrements deux photons de l'activité neuronale mais sont sensibles aux déformations, ce qui empêche l'enregistrement lors de la rotation du microscope. Ensuite, nous avons cherché à permettre à la fois la transmission d'un laser 1P et 2P, d'où l'utilisation de fibres avec plusieurs bandes de transmission. Parmi ces fibres, nous avons retenu le modèle PMC-C-9005 B2 qui permet une bonne transmission (97\% à 930 nm sur 1,5 m de fibre contre 70\% pour PMC-C-1C-R\&D2) (Fig. \ref{FIGfibercomparison}). J'utilise ce modèle comme référence par la suite.
+Au début, nous avons utilisé des fibres Kagome ayant une bande de transmission dans l'infrarouge. Ces fibres ont permis de réaliser les premiers enregistrements deux photons de l'activité neuronale mais sont sensibles aux déformations, ce qui empêche l'enregistrement lors de la rotation du microscope. Ensuite, nous avons cherché à permettre à la fois la transmission d'un laser 1P et 2P, d'où l'utilisation de fibres avec plusieurs bandes de transmission. Parmi ces fibres, nous avons retenu le modèle à courbure négative PMC-C-9005 B2 qui permet une bonne transmission (97\% à 930 nm sur 1,5 m de fibre contre 70\% pour PMC-C-1C-R\&D2) (Fig. \ref{FIGfibercomparison}). J'utilise ce modèle comme référence par la suite.
 
 \begin{figure}
     \centering
@@ -269,7 +269,7 @@ Au début, nous avons utilisé des fibres Kagome ayant une bande de transmission
 
 % OK Volker Add a motivation (for 1P)
 
-Une fibre capable de guider à la fois un laser 1P et un laser 2P permettrait de réaliser l'acquisition du cerveau en changeant facilement la longueur d'onde d'excitation et de mettre en évidence les différences dans l'activité neuronale causées par l'environnement visuel. Un autre avantage non négligeable est de faciliter l'alignement du système optique et de l'échantillon, plus difficile en lumière infrarouge. Je décris ici le processus d'injection dans une fibre et le montage que j'ai mis en place pour passer du laser 1P au laser 2P à l'aide d'un miroir amovible. 
+Une fibre capable de guider à la fois un laser 1P et un laser 2P permettrait de réaliser l'imagerie du cerveau en changeant facilement la longueur d'onde d'excitation et de mettre en évidence les différences dans l'activité neuronale causées par l'environnement visuel. Un autre avantage non négligeable est de faciliter l'alignement du système optique et de l'échantillon, plus difficile en lumière infrarouge. Je décris ici le processus d'injection dans une fibre et le montage que j'ai mis en place pour passer du laser 1P au laser 2P à l'aide d'un miroir amovible. 
 
 \subsubsection{Principe}
 
@@ -303,7 +303,7 @@ J'ai fixé une extrémité de la fibre sur une platine de translation $xyz$ à 4
     \includegraphics[width=\textwidth]{./files/injection+graystack_1P2P.svg.png}
     \caption{Injection des deux lasers dans la fibre et images ainsi obtenues.
     \\a. Pour aligner la source 1P et 2P, on injecte dans un premier temps un laser visible par l'autre extrémité de la fibre et l'on joue sur les miroirs M1 et M2 pour pointer vers la sortie du laser 2P. Une fois les miroirs préalignés, on règle le laser 2P et on optimise la puissance en sortie de la fibre avec les miroirs M1 et M2 et la platine xyz. Ensuite, on escamote le miroir M2 pour aligner le laser 1P avec les miroirs M3 et M4 sans toucher à la platine xyz. Le miroir M2 est amovible et permet de basculer entre l'injection 1P et 2P. (BEX = \emph{Beam Expander}, IL = \emph{Injection Lens}, NCF = \emph{Negative Curvature Fiber})
-    \\ b. Comparaison entre un volume statique imagé en deux photons (2P) et en un photon (1P). Le volume deux photons est imagé en deux parties pour éviter d’illuminer les yeux (on voit nettement l’ombre de l'œil sur la coupe sagittale en un photon). Le pas est de 1 μm par couche. Le temps d'exposition est de 10 ms dans les deux cas.
+    \\ b. Comparaison entre un volume statique imagé en deux photons (2P) et en un photon (1P). Le volume deux photons est imagé en deux parties pour éviter d’illuminer les yeux (on voit nettement l’ombre de l'œil sur la coupe sagittale en un photon). Le pas est de 1 $\mu$m par couche. Le temps d'exposition est de 10 ms dans les deux cas.
     \label{FIGinjectiongraystack}}
     \end{figure}
 
@@ -324,7 +324,7 @@ $$
 \Delta \lambda_t = \frac{\lambda^2}{c\Delta t}
 $$
 
-Pour une impulsion de 100 fs à 915 nm, cela donne un élargissement de l'ordre de 28 fs au bout d'un mètre de propagation dans la fibre, soit une perte de concentration de 30\% et donc une perte d'effet deux photons de 50\%. Heureusement, il est possible de pré-compenser cette dispersion à l'aide d'un système optique placé en amont de la fibre. Le laser \emph{Mai-Tai} est justement accompagné d'un élément \emph{Deepsee} qui permet une telle précompensation réglable de -8 900 à -24 500 fs² d'après la documentation.
+Pour une impulsion de 100 fs à 915 nm, cela donne un élargissement de l'ordre de 28 fs au bout d'un mètre de propagation dans la fibre. L'intensité deux photons étant inversement proportionelle à la durée d'impulsion, cela engendre une perte de signal de 22\% (1-100/128). Heureusement, il est possible de pré-compenser cette dispersion à l'aide d'un système optique placé en amont de la fibre. Le laser \emph{Mai-Tai} est justement accompagné d'un élément \emph{Deepsee} qui permet une telle précompensation réglable de -8 900 à -24 500 fs² d'après la documentation.
 
 % (citation documentation)
 % > The amount of dispersion, or GVD compensation, provided for each wavelength depends on the position of the DeepSee motor that moves optical material on a stage within the beam path.
@@ -354,8 +354,8 @@ En conditions réelles, on peut s'arranger pour limiter la courbure et répartir
     \\ a. La fibre est courbée sur un demi arc de cercle avec un rayon de courbure variable. Les puissance-mètres Pm1 et Pm2 mesurent l'intensité sur les deux bras de polarisation en sortie d'un cube monté sur un goniomètre. 
     \\ b. Pertes en sortie de fibre exprimé en dB par mètre de fibre courbée en fonction du rayon de courbure.
     \\ c. Profil d'intensité en sortie de fibre pour différentes courbures (non affecté).
-    \\ d. Pour une polarisation quasi circulaire, variation de l'ellipticité en fonction du diamètre de courbure.
-    \\ e. Pour une polarisation quasi linéaire, variation de l'angle de polarisation en fonction du diamètre de courbure.
+    \\ d. Pour une polarisation quasi circulaire, variation de l'ellipticité en fonction du diamètre de courbure (couleurs : répétitions de la mesure).
+    \\ e. Pour une polarisation quasi linéaire, variation de l'angle de polarisation en fonction du diamètre de courbure (couleurs : répétition de la mesure).
     \label{FIGfibercarac}}
     \end{figure}
 
@@ -588,7 +588,7 @@ Chaque tranche de liquide d'épaisseur $l$ apporte une contribution différente 
 
 \subsubsection{Temps caractéristique}
 
-L'effet de lentille thermique a une composante dynamique liée au temps d'établissement de l'équilibre de température. Cet effet a un temps caractéristique $t_c = \frac{w_z^2}{4D}$ qui dépend uniquement de la largeur du faisceau (on considère constante $k = 1.43\times 10^{-7} m^2/s$ la diffusivité thermique de l'eau). Au début de la propagation dans la cuve, le faisceau est large (1 mm), ce qui donne un temps caractéristique de l'ordre de plusieurs secondes. Près du waist, au contraire, ce temps est très court, de l'ordre de la microseconde. Il faut donc réaliser une simulation pour estimer la dynamique du système complet. 
+L'effet de lentille thermique a une composante dynamique liée au temps d'établissement de l'équilibre de température. Cet effet a un temps caractéristique $t_c = \frac{w_z^2}{4k}$ qui dépend uniquement de la largeur du faisceau (on considère constante $k = 1.43\times 10^{-7} m^2/s$ la diffusivité thermique de l'eau). Au début de la propagation dans la cuve, le faisceau est large (1 mm), ce qui donne un temps caractéristique de l'ordre de plusieurs secondes. Près du waist, au contraire, ce temps est très court, de l'ordre de la microseconde. Il faut donc réaliser une simulation pour estimer la dynamique du système complet. 
 % IGN modèle Tom
 En pratique, on constate un temps d'établissement de l'ordre de la seconde.
 % IGN mesures établissement
@@ -620,7 +620,7 @@ Le laser un photon pénètre les zones transparentes mais est absorbé par les z
 Si une zone transparente du tissu présente un niveau d'absorption légèrement trop élevé, la chaleur s'y accumule et donne lieu à un phénomène de cavitation. Une bulle de gaz se forme alors et grossit en déformant tous les tissus alentour, et en augmentant localement l'absorption. Si l'on augmente l'énergie des impulsions, le phénomène de cavitation apparaît plus facilement et s'auto-entretient. Le degré de phototoxicité augmente avec l'énergie portée par une impulsion. Même à énergie plus faible, il est possible que le laser touche un pigment et déclenche la cavitation.
 
 \subsubsection{Rapport signal à bruit}
-Le niveau de signal obtenu dans les enregistrements deux-photons est bien plus faible que dans les enregistrements un-photon. Avec les paramètres finaux (exposition, binning, puissance laser, lignées transgéniques...) la valeur d'un pixel de caméra correspondant à un neurone est de l'ordre de 2000 en un-photon et 800 en deux-photons, pour un niveau de bruit de 400 (le niveau de bruit pour un pixel est de 100, soit 400 après binning par 4 pixels). Un pixel correspondant à l'autofluorescence des tissus est autour de 600 en un-photon et tombe sous le niveau de bruit en deux-photons. Un rapport signal à bruit si faible pose plusieurs problèmes.
+Le niveau de signal obtenu dans les enregistrements deux-photons est bien plus faible que dans les enregistrements un-photon. Avec les paramètres finaux (exposition, binning, puissance laser, lignées transgéniques...) la valeur d'un pixel de caméra correspondant à un neurone est de l'ordre de 2000 en un-photon et 800 en deux-photons. Le bruit est blanc (DSP constante), gaussien, centré autour de 400 (le niveau de base pour un pixel est de 100, soit 400 après binning par 4 pixels) et avec un écart type de 5. Un pixel correspondant à l'autofluorescence des tissus est autour de 600 en un-photon mais tombe dans le bruit en deux-photons. Un rapport signal à bruit si faible pose plusieurs problèmes.
 \paragraph{Alignement sur le cerveau de référence}
 Un cerveau imagé en deux photons apparaît assez différent d'un cerveau en un photon. J'ai donc réalisé un cerveau de référence en deux photons dans l'espace de référence du laboratoire. Malgré cela, pour un rapport signal à bruit trop faible, l'alignement automatique sur le cerveau de référence est impossible. J'ai donc dû faire la plupart des alignements à la main en utilisant le logiciel 3DSlicer.
 \paragraph{Moyennage des cartes de phase}
@@ -641,7 +641,7 @@ Comme on l'a vu en partie \ref{solutionseffetthermique}, la solution adoptée en
     \caption{Comparaison entre l'acquisition un photon (1P) et deux photons (2P) en imagerie statique et dynamique.
     \\ a. Carte de réponse pour une stimulation en tangage imagée en 1P déjà montrée en figure \ref{FIGtiltroll}.
     \\ b. Légende des couleurs de la carte. Les noyaux nIII et nIV sont notés sur leur couleur dominante à titre indicatif.
-    \\ c, d. Cartes de réponse pour une stimulation en tangage imagée en 2P. En (b.) seule la partie supérieure du cerveau est imagée, en (c.), seule la partie inférieure est imagée.
+    \\ c, d. Cartes de réponse pour une stimulation en tangage imagée en 2P. En (c.) seule la partie supérieure du cerveau est imagée, en (d.), seule la partie inférieure est imagée.
     \label{FIG1P2P}}
     \end{figure}
 

@@ -172,17 +172,17 @@ La fluorescence est un phénomène d’absorption-réémission de lumière par u
 \caption{Illustration du phénomène de fluorescence. À gauche, le point de vue quantique avec les niveaux d'énergie interne, à droite, les spectres d’absorption et d'émission qui en résultent.}
 \end{figure}
 
-Un des avantages de la microscopie à fluorescence est qu'avec un jeu de filtres adapté, on peut obtenir un excellent rapport signal à bruit. Ainsi, en plaçant sur la ligne de détection un filtre coupe-bande à la longueur d'onde du laser, on peut couper toute lumière venant de celui-ci. En ajoutant un filtre passe-bande vert, seule la lumière liée à la fluorescence est détectée.
+À l'aide d'un jeu de filtre adapté, on obtient des images sur fond noir, c'est-à-dire un bon rapport entre l'intensité du signal d'intérêt et du signal de fond. Par exemple, en plaçant sur la ligne de détection un filtre coupe-bande à la longueur d'onde du laser, on peut couper toute lumière venant de celui-ci. En ajoutant un filtre passe-bande vert, seule la lumière liée à la fluorescence est détectée. Cela représente un grand avantage de la microscopie à fluorescence.
 
 \subsubsection{Sectionnement optique}
 
 Si l'on éclaire l'ensemble d'un échantillon fluorescent et que l'on tente de l'imager avec un objectif de microscope, le rapport signal à bruit est catastrophique. En effet, pour collecter le maximum de lumière, il faut une grande ouverture numérique et donc une faible profondeur de champ. Un objet lumineux hors du plan focal apparaît donc totalement flou, ce qui constitue une lumière parasite qui couvre celle émise par les objets dans le plan focal. Il faut donc d'une manière ou d'une autre éliminer la lumière provenant d'en dehors du plan focal.
-
+ 
 \begin{figure}
   \centering
   \includegraphics[width=0.8\textwidth]{./files/optical_sectionning.svg.png}
   \caption{Sectionnement optique par différentes techniques \\
-  a. Microscopie confocale, un sténopé est placé de manière à bloquer la lumière provenant des points hors focus. \\
+  a. Microscopie confocale, un sténopé est placé dans le plan image de manière à bloquer la lumière provenant des points hors focus. \\
   b. Microscopie deux photons, l'effet deux photons permet d'exciter uniquement la fluorescence dans le point de focalisation du laser. \\
   c. Feuille de lumière, une nappe produite avec une lentille cylindrique éclaire une couche de l'échantillon. \\
   d. Balayage laser, une nappe produite par balayage laser éclaire une couche de l'échantillon. \\
@@ -191,8 +191,7 @@ Si l'on éclaire l'ensemble d'un échantillon fluorescent et que l'on tente de l
 
 \subsubsection{Microscopie confocale}
 
-Il existe pour cela plusieurs techniques dites de "sectionnement optique". La plus connue, la microscopie confocale, utilise une illumination focalisée en un seul point. L'objet en ce point est donc fortement éclairé, et le reste beaucoup moins. De plus, un sténopé conjugué à ce point ne laisse passer que la lumière qui en est issue. L'imagerie d'un plan est ensuite obtenue en scannant ce point dans le plan focal, et l'imagerie d'un volume en répétant l'opération pour plusieurs couches. Cette technique est largement répandue et déclinée, et a l'avantage d'être souple et d'atteindre des résolutions submicrométriques. Cependant, à cause du balayage point par point, elle ne peut pas combiner un nombre élevé de voxels ($\sim 10^8$ voxels) à une fréquence élevée ($\sim 1$ Hz) et doit sacrifier l'un pour l'autre. Elle est donc réservée soit à l'observation détaillée d'échantillons statiques, soit à l'observation peu détaillée d'échantillons dynamiques. Cette lenteur est liée au fait de scanner un seul point sur une surface, mais on peut gagner en vitesse au détriment du rapport signal à bruit en éclairant plusieurs points conjugués à plusieurs sténopés en même temps. C'est le principe du microscope confocal à disque rotatif (\emph{spinning disk}).
-
+Il existe pour cela plusieurs techniques dites de "sectionnement optique". La plus connue, la microscopie confocale, utilise une illumination focalisée en un seul point. L'objet en ce point est donc fortement éclairé, et le reste beaucoup moins. De plus, un sténopé conjugué à ce point ne laisse passer que la lumière qui en est issue. L'imagerie d'un plan est ensuite obtenue en scannant ce point dans le plan focal, et l'imagerie d'un volume en répétant l'opération pour plusieurs couches. Cette technique est largement répandue et déclinée, et a l'avantage d'être souple et d'atteindre des résolutions submicrométriques. Cependant, à cause du balayage point par point, elle ne peut pas combiner un nombre élevé de voxels ($\sim 10^8$ voxels) à une fréquence élevée ($\sim 1$ Hz) et doit sacrifier l'un pour l'autre. Elle est donc réservée soit à l'observation détaillée d'échantillons statiques, soit à l'observation peu détaillée d'échantillons dynamiques. Cette lenteur est liée au fait de scanner un seul point sur une surface, mais on peut gagner en vitesse en éclairant plusieurs points conjugués à plusieurs sténopés en même temps. Cela se fait au détriment du rapport entre le signal issu des points sélectionnés et des points hors focus qui sont soumis à une illumination d'autant plus forte que le nombre de points est élevé. C'est le principe du microscope confocal à disque rotatif (\emph{spinning disk}), très répandu dans les plateformes de bio-imagerie.
 
 \subsubsection{Microscopie deux photons}
 
@@ -200,10 +199,9 @@ La microscopie deux photons utilise une propriété non linéaire de la lumière
 
 \subsubsection{Microscopie à feuille de lumière}
 
-En microscopie confocale ou deux photons, l'illumination passe par le même objectif que la détection. Mais pour certains échantillons, l'éclairage peut également être fait par le côté. Une feuille de lumière coïncidant avec le plan focal de l'objectif peut être produite à l'aide d'une lentille cylindrique, ou bien par balayage d'un faisceau laser. C'est ce qu'on appelle la microscopie à feuille de lumière, microscopie à nappe laser, ou encore SPIM pour \emph{Single Plane Imaging Microscopy}. Cette technique, en dépit d'un rapport signal à bruit et d'une résolution inférieurs à la microscopie confocale, suffit pour réaliser l'imagerie à la résolution cellulaire. De plus, elle permet d'imager un plan entier d'un seul coup, ce qui est bien plus rapide. En scannant l'objectif et la feuille de lumière, on peut ainsi produire une imagerie volumique à fréquence bien plus élevée qu'en microscopie confocale. Par exemple, avec trente couches espacées de dix microns (taille moyenne d'un neurone), on peut acquérir l'ensemble du cerveau d'une larve de poisson zèbre à environ 2Hz.
+En microscopie confocale ou deux photons, l'illumination passe par le même objectif que la détection. Mais pour certains échantillons, l'éclairage peut également être fait par le côté. Une feuille de lumière coïncidant avec le plan focal de l'objectif peut être produite à l'aide d'une lentille cylindrique, ou bien par balayage d'un faisceau laser. C'est ce qu'on appelle la microscopie à feuille de lumière, microscopie à nappe laser, ou encore SPIM pour \emph{Single Plane Imaging Microscopy}. Cette technique, en dépit d'une résolution inférieure à la microscopie confocale, suffit pour réaliser l'imagerie à la résolution cellulaire. De plus, elle permet d'imager un plan entier d'un seul coup, ce qui est bien plus rapide. En scannant l'objectif et la feuille de lumière, on peut ainsi produire une imagerie volumique à fréquence bien plus élevée qu'en microscopie confocale. Par exemple, avec trente couches espacées de dix microns (taille moyenne d'un neurone), on peut acquérir l'ensemble du cerveau d'une larve de poisson zèbre à environ 2Hz.
 
 Si la microscopie par fluorescence à feuille de lumière est une technique particulièrement adaptée à la bio-imagerie fonctionnelle, son utilisation reste toutefois relativement limitée. En 2011, un article de revue pointait le manque de système commercial en microscopie à feuille de lumière \cite{santi_light_2011}. En 2017, un autre déplorait le faible niveau de propagation de cette technique au regard de ses performances \cite{power_guide_2017}. La technique reste donc cantonnée à des laboratoires capables de développer leur propre microscope, en dépit du succès qu'elle rencontre dans ses applications.
-
 
 
 \section[Chez la larve de poisson zèbre]{Intégration multisensorielle chez la larve de \\ poisson zèbre}
